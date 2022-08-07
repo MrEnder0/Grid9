@@ -11,15 +11,6 @@ Usage:
     args_docopt interpret <path>
     args_docopt i <path>
     args_docopt glyth_value_get <glyth>
-
-Options:
-    version                     Returns language version
-    v                           Returns language version
-    interpret                   Interpretes the code at the given path
-    i                           Interpretes the code at the given path
-    glyth_value_get                  Returns the speficied glyth value
-    <path>                      Specify path to input files
-    <glyth>                     Specify glyth to return value for
 """
 
 proc main() =
