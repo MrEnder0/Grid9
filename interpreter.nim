@@ -1,2 +1,2 @@
-proc interpret*(code: string) : string =
-    return "beans"
+proc interpret*(parsed_code: string) : string {.discardable.} =
+    return "temp"
