@@ -1,5 +1,5 @@
 from code_parser import nil
-from interpreter import nil
+from code_interpreter import nil
 from glyths import nil
 import docopt
 
@@ -22,11 +22,11 @@ proc main() =
 
     if args["interpret"] or args["i"]:
         var parsed_code = code_parser.parse($args["<path>"])
-        interpreter.interpret(parsed_code)
+        code_interpreter.interpret(parsed_code)
+        echo "Code finished successfully!"
 
     if args["glyth_value_get"]:
         echo glyths.get_glyth($args["<glyth>"])
 
 when isMainModule:
     main()
-
