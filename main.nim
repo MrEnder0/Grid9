@@ -1,4 +1,5 @@
 from code_parser import nil
+from interpreter import nil
 from glyths import nil
 import docopt
 
@@ -20,7 +21,8 @@ proc main() =
         echo "0.0.3"
 
     if args["interpret"] or args["i"]:
-        echo code_parser.parse($args["<path>"])
+        var parsed_code = code_parser.parse($args["<path>"])
+        interpreter.interpret(parsed_code)
 
     if args["glyth_value_get"]:
         echo glyths.get_glyth($args["<glyth>"])
