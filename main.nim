@@ -1,5 +1,5 @@
-from code_parser import nil
 from code_interpreter import nil
+from code_parser import nil
 from glyths import nil
 import docopt
 
