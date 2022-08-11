@@ -18,7 +18,7 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
     for i in 0...8:
         mem_grid[fmt"{i}"] = "0"
 
-    while c_index + 1 < len(parsed_code):
+    while c_index < len(parsed_code):
         #flip command
         if parsed_code[c_index] == 'f':
             if len(parsed_code) > c_index + 1:
@@ -48,13 +48,19 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
         #while command
         elif parsed_code[c_index] == 'w':
             if len(parsed_code) > c_index + 3:
-                if parsed_code[c_index + 3] == '0':
-                    if parseint(mem_grid[fmt"{parsed_code[c_index + 1]}"]) == 0:
-                        while_pos = c_index + 1
-                    else:
-                        return
-                if parsed_code[c_index + 3] == '1':
-                    if parseint(mem_grid[fmt"{parsed_code[c_index + 1]}"]) == 1:
+                if parsed_code[c_index + 2] == '=':
+                    if parsed_code[c_index + 3] == '0':
+                        if parseint(mem_grid[fmt"{parsed_code[c_index + 1]}"]) == 0:
+                            while_pos = c_index + 1
+                        else:
+                            return
+                    if parsed_code[c_index + 3] == '1':
+                        if parseint(mem_grid[fmt"{parsed_code[c_index + 1]}"]) == 1:
+                            while_pos = c_index + 1
+                        else:
+                            return
+                elif parsed_code[c_index + 2] == '!':
+                    if parseint(mem_grid[fmt"{parsed_code[c_index + 1]}"]) != parseint(mem_grid[fmt"{parsed_code[c_index + 3]}"]):
                         while_pos = c_index + 1
                     else:
                         return
