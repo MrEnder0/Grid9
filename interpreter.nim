@@ -66,7 +66,7 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
                         return
     
         #Go to start of while loop
-        if c_index == len(parsed_code)-1:
+        if c_index == len(parsed_code)-1 or parsed_code[c_index] == '|':
             if while_pos == -1:
                 return
             else:
