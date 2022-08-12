@@ -18,7 +18,7 @@ proc main() =
     let args = docopt(doc, version = "1.0")
 
     if args["version"] or args["v"]:
-        echo "0.3.6"
+        echo "0.3.9"
 
     if args["interpret"] or args["i"]:
         var parsed_code = code_parser.parse($args["<path>"])
@@ -30,3 +30,4 @@ proc main() =
 
 when isMainModule:
     main()
+
