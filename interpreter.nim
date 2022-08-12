@@ -11,6 +11,7 @@ iterator `...`*[T](a: T, b: T): T =
 
 proc interpret*(parsed_code: string) : string {.discardable.} =
     var mem_grid: Table[string, string]
+    var mem_queue: string = ""
     var while_pos: int = -1
     var c_index: int = 0
 
@@ -36,14 +37,22 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
             if len(parsed_code) > c_index + 1:
                 for i in 0...8:
                     mem_grid[fmt"{i}"] = fmt"{parsed_code[c_index + 1]}"
-        
+
+        #queue command
+        elif parsed_code[c_index] == 'q':
+            if len(parsed_code) > c_index + 1:
+                if parsed_code[c_index + 1] == 's':
+                    mem_queue = mem_queue & glyths.get_glyth(mem_grid["0"]&mem_grid["1"]&mem_grid["2"]&mem_grid["3"]&mem_grid["4"]&mem_grid["5"]&mem_grid["6"]&mem_grid["7"]&mem_grid["8"])
+                elif parsed_code[c_index + 1] == 'c':
+                    mem_queue = ""
+
         #print command
         elif parsed_code[c_index] == 'p':
-            echo glyths.get_glyth(mem_grid["0"] & mem_grid["1"] & mem_grid["2"] & mem_grid["3"] & mem_grid["4"] & mem_grid["5"] & mem_grid["6"] & mem_grid["7"] & mem_grid["8"])
-
-        #terminate command
-        elif parsed_code[c_index] == 't':
-            break
+            if mem_queue != "":
+                print mem_queue
+                mem_queue = ""
+            else:
+                echo glyths.get_glyth(mem_grid["0"]&mem_grid["1"]&mem_grid["2"]&mem_grid["3"]&mem_grid["4"]&mem_grid["5"]&mem_grid["6"]&mem_grid["7"]&mem_grid["8"])
 
         #while command
         elif parsed_code[c_index] == 'w':
@@ -64,6 +73,10 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
                         while_pos = c_index + 1
                     else:
                         return
+
+        #terminate command
+        elif parsed_code[c_index] == 't':
+            break
     
         #Go to start of while loop
         if c_index == len(parsed_code)-1 or parsed_code[c_index] == '|':
@@ -73,5 +86,3 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
                 c_index = while_pos
         
         c_index += 1
-
-    echo "Final mem: " & mem_grid["0"] & mem_grid["1"] & mem_grid["2"] & mem_grid["3"] & mem_grid["4"] & mem_grid["5"] & mem_grid["6"] & mem_grid["7"] & mem_grid["8"]
