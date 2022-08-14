@@ -23,7 +23,7 @@ proc main() =
         echo "\nGrid9 is a esoteric programming language that is based on a 3x3 grid of memory cells where you make patterns glyths.\nThis language created by MrEnder in the Nim programming language.\n"
 
     if args["version"] or args["v"]:
-        echo "\n0.4.3\n"
+        echo "\n0.5.0\n"
 
     if args["interpret"] or args["i"]:
         echo "\n"
