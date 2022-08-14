@@ -13,6 +13,7 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
     var mem_grid: Table[string, string]
     var mem_queue: string = ""
     var while_pos: int = -1
+    var if_pos_end: int
     var c_index: int = 0
 
     #generate memory grid
@@ -74,12 +75,47 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
                     else:
                         return
 
+        #if command
+        elif parsed_code[c_index] == 'i':
+            if len(parsed_code) > c_index + 3:
+                if parsed_code[c_index + 2] == '=':
+
+                    if parsed_code[c_index + 3] == '0':
+                        if parseint(mem_grid[fmt"{parsed_code[c_index + 1]}"]) == 0:
+                            discard
+                        else:
+                            #skip to end of if
+                            if_pos_end = c_index + 1
+                            while parsed_code[if_pos_end] != '}':
+                                if_pos_end += 1
+                            c_index = if_pos_end
+
+                    if parsed_code[c_index + 3] == '1':
+                        if parseint(mem_grid[fmt"{parsed_code[c_index + 1]}"]) == 1:
+                            discard
+                        else:
+                            #skip to end of if
+                            if_pos_end = c_index + 1
+                            while parsed_code[if_pos_end] != '}':
+                                if_pos_end += 1
+                            c_index = if_pos_end
+
+                elif parsed_code[c_index + 2] == '!':
+                    if parseint(mem_grid[fmt"{parsed_code[c_index + 1]}"]) != parseint(mem_grid[fmt"{parsed_code[c_index + 3]}"]):
+                        discard
+                    else:
+                        #skip to end of if
+                        if_pos_end = c_index + 1
+                        while parsed_code[if_pos_end] != '}':
+                            if_pos_end += 1
+                        c_index = if_pos_end
+
         #terminate command
         elif parsed_code[c_index] == 't':
             break
     
         #Go to start of while loop
-        if c_index == len(parsed_code)-1 or parsed_code[c_index] == '|':
+        if c_index == len(parsed_code)-1 or parsed_code[c_index] == ']':
             if while_pos == -1:
                 return
             else:
