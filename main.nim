@@ -18,7 +18,7 @@ proc main() =
     let args = docopt(doc, version = "1.0")
 
     if args["version"] or args["v"]:
-        echo "0.4.0"
+        echo "0.4.2"
 
     if args["interpret"] or args["i"]:
         var parsed_code = code_parser.parse($args["<path>"])
