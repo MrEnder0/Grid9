@@ -9,14 +9,14 @@ A esoteric interpreted language made in Nim based on a 3x3 grid of zeros and one
 Note in between updatesw there will be smaller changes.
 
 ### 0.7
- [x] Will add new commands like exit (escapes the current while loop).
- [ ] Will replace current if and loop end and begining storing system to allow nesting.
+ -  [x] Will add new commands like exit (escapes the current while loop).
+ - [ ] Will replace current if and loop end and begining storing system to allow nesting.
 
 ### 0.8
- [ ] Will added error and logging system.
+ - [ ] Will added error and logging system.
 
 ### 0.9
- [ ] will add pharser caching and overall performce changes.
+ - [ ] will add pharser caching and overall performce changes.
 
 ### 1.0
- [ ] will make installer in inno setup.
+ - [ ] will make installer in inno setup.
