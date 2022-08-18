@@ -12,8 +12,11 @@ iterator `...`*[T](a: T, b: T): T =
 proc interpret*(parsed_code: string) : string {.discardable.} =
     var mem_grid: Table[string, string]
     var mem_queue: string = ""
+
     var while_pos: int = -1
+    var while_pos_end: int
     var if_pos_end: int
+
     var c_index: int = 0
 
     #generates a 3x3 memory grid
@@ -109,6 +112,13 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
                         while_pos = c_index + 1
                     else:
                         return
+
+        #exit command
+        elif parsed_code[c_index] == 'x':
+            while_pos_end = c_index + 1
+            while parsed_code[while_pos_end] != ']':
+                while_pos_end += 1
+            c_index = if_pos_end
 
         #back command
         elif parsed_code[c_index] == 'b':
