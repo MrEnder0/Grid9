@@ -16,7 +16,9 @@ Note in between updatesw there will be smaller changes.
  - [ ] Will added error and logging system.
 
 ### 0.9
- - [ ] will add pharser caching and overall performce changes.
+ - [ ] Will use case statements instead of if statements.
+ - [ ] will add pharser caching.
+ - [ ] Overall performce changes.
 
 ### 1.0
  - [ ] will make installer in inno setup.
