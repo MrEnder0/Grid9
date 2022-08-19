@@ -50,7 +50,7 @@ proc main() =
 
 when isMainModule:
     var commandLineParams = os.commandLineParams()
-    if len(commandLineParams) == 1:
+    if os.fileExists(commandLineParams[0]):
         interpret(commandLineParams[0])
     else:
         main()
