@@ -6,7 +6,6 @@ import os
 
 const doc = """
 CoolSeq - a program to do things
-
 Usage:
     args_docopt about
     args_docopt a
@@ -51,8 +50,7 @@ proc main() =
 
 when isMainModule:
     var commandLineParams = os.commandLineParams()
-    if commandLineParams != @[]:
+    if len(commandLineParams) == 1:
         interpret(commandLineParams[0])
     else:
         main()
-
