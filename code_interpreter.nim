@@ -13,6 +13,7 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
     var mem_grid: Table[string, string]
     var mem_queue: string = ""
 
+    var if_nest_depth: int = 0
     var while_pos: int = -1
     var while_pos_end: int
     var if_pos_end: int
@@ -68,8 +69,15 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
                             discard
                         else:
                             #skip to end of if
+                            if_nest_depth = 1
                             if_pos_end = c_index + 1
                             while parsed_code[if_pos_end] != '}':
+                                if parsed_code[if_pos_end] == 'i':
+                                    if_nest_depth += 1
+                                elif parsed_code[if_pos_end] == '}':
+                                    if_nest_depth -= 1
+                                    if if_nest_depth == 0:
+                                        c_index = if_pos_end
                                 if_pos_end += 1
                             c_index = if_pos_end
 
@@ -78,8 +86,15 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
                             discard
                         else:
                             #skip to end of if
+                            if_nest_depth = 1
                             if_pos_end = c_index + 1
                             while parsed_code[if_pos_end] != '}':
+                                if parsed_code[if_pos_end] == 'i':
+                                    if_nest_depth += 1
+                                elif parsed_code[if_pos_end] == '}':
+                                    if_nest_depth -= 1
+                                    if if_nest_depth == 0:
+                                        c_index = if_pos_end
                                 if_pos_end += 1
                             c_index = if_pos_end
 
@@ -88,8 +103,15 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
                         discard
                     else:
                         #skip to end of if
+                        if_nest_depth = 1
                         if_pos_end = c_index + 1
                         while parsed_code[if_pos_end] != '}':
+                            if parsed_code[if_pos_end] == 'i':
+                                if_nest_depth += 1
+                            elif parsed_code[if_pos_end] == '}':
+                                if_nest_depth -= 1
+                                if if_nest_depth == 0:
+                                    c_index = if_pos_end
                             if_pos_end += 1
                         c_index = if_pos_end
 
