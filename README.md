@@ -10,7 +10,7 @@ Note in between updatesw there will be smaller changes.
 
 ### 0.7
  -  [x] Will add new commands like exit (escapes the current while loop).
- - [ ] Will replace current if and loop end and begining storing system to allow nesting.
+ - [ ] Will allow if nesting
 
 ### 0.8
  - [ ] Will added error and logging system.
