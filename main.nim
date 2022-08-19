@@ -20,7 +20,7 @@ proc about() =
     echo "\nGrid9 is a esoteric programming language that is based on a 3x3 grid of memory cells where you make patterns glyths.\nThis language created by MrEnder in the Nim programming language.\n"
 
 proc version() =
-    echo "\n0.6.3\n"
+    echo "\n0.7.0\n"
 
 proc interpret*(path: string) =
     var parsed_code = code_parser.parse(path)
