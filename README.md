@@ -10,6 +10,7 @@ Note in between updatesw there will be smaller changes.
 
 ### 0.8
  - [ ] Will added error and logging system.
+ - [ ] Will add help command to the cli.
  - [ ] Will and syntax table to readme.
 
 ### 0.9
