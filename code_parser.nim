@@ -1,6 +1,7 @@
 import std/strutils
 
 proc parse*(path: string) : string =
+    echo path
     let code = open(path)
     var parsed_code: string
     var line: string
@@ -37,5 +38,7 @@ proc parse*(path: string) : string =
         parsed_code = parsed_code.replace("X", "")
         parsed_code = parsed_code.replace("Y", "")
         parsed_code = parsed_code.replace("Z", "")
+        parsed_code = parsed_code.replace("(", "")
+        parsed_code = parsed_code.replace(")", "")
 
     return parsed_code
