@@ -10,6 +10,8 @@ Here is a example of a conditional statement.
 
 i0=1f7p}
 
+This checks if cell 0 = 1 and then if so it will flip cell 7 and print the glyth value.
+
 ## Plans
 Note in between updatesw there will be smaller changes.
 
