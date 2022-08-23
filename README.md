@@ -18,10 +18,7 @@ p
 
 It can also look like this
 
-i0=1
-f7
-p
-}
+i0=1f7p}
 
 ## Plans
 Note in between updatesw there will be smaller changes.
