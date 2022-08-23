@@ -6,17 +6,7 @@ A esoteric interpreted language made in Nim based on a 3x3 grid of zeros and one
 ![](https://img.shields.io/github/issues-pr-raw/MrEnder0/Grid9?style=for-the-badge "PRs")
 
 ## Syntax Example
-Here is a conditional statement
-
-i0=1
-
-f7
-
-p
-
-}
-
-It can also look like this
+Here is a example of a conditional statement.
 
 i0=1f7p}
 
