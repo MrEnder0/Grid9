@@ -5,15 +5,27 @@ A esoteric interpreted language made in Nim based on a 3x3 grid of zeros and one
 ![](https://img.shields.io/github/issues-raw/MrEnder0/Grid9?style=for-the-badge "Bugs")
 ![](https://img.shields.io/github/issues-pr-raw/MrEnder0/Grid9?style=for-the-badge "PRs")
 
-## Syntax
-| Will Show soon  | * |
-| ------------- | ------------- |
+## Syntax Example
+Here is a conditional statement
+
+i0=1
+
+f7
+
+p
+
+}
+
+It can also look like this
+
+i0=1
+f7
+p
+}
 
 ## Plans
 Note in between updatesw there will be smaller changes.
 
-
- - [ ] Will and syntax table to readme.
  - [ ] Will added error logging system.
  - [ ] will add pharser caching.
  - [ ] Overall performce changes.
