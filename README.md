@@ -16,6 +16,4 @@ This checks if cell 0 = 1 and then if so it will flip cell 7 and print the glyth
 Note in between updatesw there will be smaller changes.
 
  - [ ] Will added error logging system.
- - [ ] will add pharser caching.
- - [ ] Overall performce changes.
  - [ ] will make installer in inno setup.
