@@ -13,7 +13,12 @@ i0=1f7p}
 This checks if cell 0 = 1 and then if so it will flip cell 7 and print the glyth value.
 
 ## Plans
-Note in between updatesw there will be smaller changes.
+Note in between updates there may be other smaller changes.
 
- - [ ] Will added error logging system.
- - [ ] will make installer in inno setup.
+### High priority
+ - Will allow while nesting
+ - Will make installer in inno setup.
+
+### Low priority
+ - Will use booleans instead of strings for the grid array for better memory ussage and performance.
+ - Will added error logging system.
