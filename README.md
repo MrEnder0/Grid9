@@ -16,7 +16,8 @@ Note in between updates there may be other smaller changes.
 
 ### Low priority
  - Will use booleans instead of strings for the grid array for better memory ussage and performance.
- - Will added error logging system.
+ - Will add ability to use q (queue) in any command that accepts input as a input
+ - Will add error logging system.
 
 ## Syntax Example:
 Here is a example of a conditional statement.
