@@ -11,13 +11,16 @@ A esoteric interpreted language made in Nim based on a 3x3 grid of zeros and one
 Note in between updates there may be other smaller changes.
 
 ### High priority
- - Will allow while nesting
- - Will make installer in inno setup.
+ - Allow while nesting
+ - Make installer in inno setup.
+ - Add update command for the cli tool
+ - Add chache clear command for the cli tool
+ - Add Grid9 code examples to the cli tool
 
 ### Low priority
- - Will use booleans instead of strings for the grid array for better memory ussage and performance.
- - Will add ability to use q (queue) in any command that accepts input as a input
- - Will add error logging system.
+ - Use booleans instead of strings for the grid array for better memory ussage and performance.
+ - Add ability to use q (queue) in any command that accepts input as a input
+ - Add error logging system.
 
 ## Syntax Example:
 Here is a example of a conditional statement.
