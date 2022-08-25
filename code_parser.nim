@@ -5,14 +5,20 @@ import os
 proc parse*(path: string) : string =
     let code = open(path)
 
-    let file_hash = hash(code)
-    let file_path: string = r"C:\ProgramData\C" & $file_hash & ".g9"
+    if not dirExists(r"C:\ProgramData\Grid9"):
+        createDir(r"C:\ProgramData\Grid9")
+        if not dirExists(r"C:\ProgramData\Grid9\parser_cache"):
+            createDir(r"C:\ProgramData\Grid9\parser_cache")
+        if not dirExists(r"C:\ProgramData\Grid9\logs"):
+            createDir(r"C:\ProgramData\Grid9\logs")
+
+    let file_hash = hash(path)
     var parsed_code: string
     var line: string
 
-    if os.fileExists($file_path):
-        echo "Using Cached File\n"
-        parsed_code = open(file_path).read_line()
+    if os.fileExists(r"C:\ProgramData\Grid9\parser_cache\" & $file_hash & ".g9") and readFile(path) & "\n" ==  readFile(r"C:\ProgramData\Grid9\parser_cache\" & $file_hash & "_pre.g9"):
+        echo "Using Cached Code\n"
+        parsed_code = open(r"C:\ProgramData\Grid9\parser_cache\" & $file_hash & ".g9").read_line()
         return parsed_code
     else:
         while code.read_line(line):
@@ -49,7 +55,10 @@ proc parse*(path: string) : string =
             parsed_code = parsed_code.replace("Z", "")
             parsed_code = parsed_code.replace("(", "")
             parsed_code = parsed_code.replace(")", "")
+            parsed_code = parsed_code.replace("*", "")
 
-        let parsed_code_file = open(file_path, fmWrite)
+        let parsed_code_file = open(r"C:\ProgramData\Grid9\parser_cache\" & $file_hash & ".g9", fmWrite)
+        let unparsed_code_file = open(r"C:\ProgramData\Grid9\parser_cache\" & $file_hash & "_pre.g9", fmWrite)
         parsed_code_file.writeLine(parsed_code)
+        unparsed_code_file.writeLine(readFile(path))
         return parsed_code
