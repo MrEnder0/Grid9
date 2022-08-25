@@ -13,6 +13,8 @@ Usage:
     args_docopt v
     args_docopt help <command>
     args_docopt h <command>
+    args_docopt clean <folder>
+    args_docopt c <folder>
     args_docopt interpret <path>
     args_docopt i <path>
     args_docopt glyth_value_get <glyth>
@@ -22,7 +24,7 @@ proc about() =
     echo "\nGrid9 is a esoteric programming language that is based on a 3x3 grid of memory cells where you make patterns glyths.\nThis language created by MrEnder in the Nim programming language.\n"
 
 proc version() =
-    echo "\n2022-005\n"
+    echo "\n2022-006\n"
 
 proc help(command: string) =
     case $command
@@ -33,7 +35,7 @@ proc help(command: string) =
     of $'a':
         echo "\nThe 'a' command is used to set all the values on the memory grid and is used as 'a0' the 0 can be a 0 or a 1 and all the memory grid cells will be set to it.\n"
     of $'q':
-        echo "\nThe 'q' command is used to store the current glyth (memory grid) as a character in a queue to be printed out when the 'p' command is used.\n"
+        echo "\nThe 'q' command is used to store the current glyth (memory grid) as a character added to the end of the queue. The queue will be printed out and cleared when the 'p' command is used. If the letter 'c' is following a queue command it will only clear the queue with no output.\n"
     of $'p':
         echo "\nThe 'p' command is used to print the queue if it contains any data or the current glyth if the queue is empty.\n"
     of $'i':
@@ -41,11 +43,34 @@ proc help(command: string) =
     of $'w':
         echo "\nThe 'w' command is used as a while statement like 'w0=0' it uses the same logic as a if statement so do 'help i' for info on that but this time it will read code until a } and loop back the begining of the while statement if it is still true.\n"
     of $'x':
-        echo "\nThe 'x' command is used as a break or exit statment where it will skip code until it finds a ].\n"
+        echo "\nThe 'x' command is used as a break or exit statment where it will skip code until it finds a ] (a end of a while ).\n"
     of $'b':
         echo "\nThe 'b' command is used like this 'b0' the 0 can be a 0-9 and will go back that many characters (automatically skips whitespace and upercase characters) and is a basic implimentation of a goto statement.\n"
     of $'t':
-        echo "\nThe 't' command is used to terminate the current script instantly.\n"
+        echo "\nThe 't' command is used to terminate the current script and not interpret any code past this point unless it gets ignored by a non true if statment or by a break command in a while if its before it.\n"
+    of "example1":
+        echo "\nThis example shows how to use basic language features such as the memory grid, queue and  printing.\n"
+    of "example2":
+        echo "\nThis example shows how to use if statements and while statements.\n"
+    of "example3":
+        echo "\nThis example shows how to use the break and goto commands.\n"
+    else:
+        echo "\nNo help found your input try any of the following 'f', 's', 'a', 'q', 'p', 'i', 'w', 'x', 'b', 't' or 'example1', 'example2', 'example3'.\n"
+        
+proc clean(folder: string) =
+    case $folder
+    of "parser_cache":
+        if os.dirExists(r"C:\ProgramData\Grid9\parser_cache"):
+            echo "\nCleaning parser cache folder\n"
+            os.removeDir(r"C:\ProgramData\Grid9\parser_cache")
+            os.createDir(r"C:\ProgramData\Grid9\parser_cache")
+    of "logs":
+        if os.dirExists(r"C:\ProgramData\Grid9\logs"):
+            echo "\nCleaning logs folder\n"
+            os.removeDir(r"C:\ProgramData\Grid9\logs")
+            os.createDir(r"C:\ProgramData\Grid9\logs")
+    else:
+        echo "\nFolder not found try 'parser_cache' or 'logs'.\n"
 
 proc interpret*(path: string) =
     var parsed_code = code_parser.parse(path)
@@ -69,6 +94,9 @@ proc main() =
     
     if args["help"] or args["h"]:
         help($args["<command>"])
+
+    if args["clean"] or args["c"]:
+        clean($args["<folder>"])
 
     if args["interpret"] or args["i"]:
         interpret($args["<path>"])
