@@ -14,7 +14,6 @@ Note in between updates there may be other smaller changes.
  - Allow while nesting
  - Make installer in inno setup.
  - Add update command for the cli tool
- - Add chache clear command for the cli tool
  - Add Grid9 code examples to the cli tool
 
 ### Low priority
