@@ -13,7 +13,6 @@ Note in between updates there may be other smaller changes.
 ### High priority
  - Allow while nesting
  - Make installer in inno setup.
- - Add update command for the cli tool
  - Add Grid9 code examples to the cli tool
 
 ### Low priority
