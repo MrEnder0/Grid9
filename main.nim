@@ -24,7 +24,7 @@ proc about() =
     echo "\nGrid9 is a esoteric programming language that is based on a 3x3 grid of memory cells where you make patterns glyths.\nThis language created by MrEnder in the Nim programming language.\n"
 
 proc version() =
-    echo "\n2022-006\n"
+    echo "\n2022-007\n"
 
 proc help(command: string) =
     case $command
@@ -49,11 +49,14 @@ proc help(command: string) =
     of $'t':
         echo "\nThe 't' command is used to terminate the current script and not interpret any code past this point unless it gets ignored by a non true if statment or by a break command in a while if its before it.\n"
     of "example1":
-        echo "\nThis example shows how to use basic language features such as the memory grid, queue and  printing.\n"
+        echo "\n**This example shows how to use basic language features such as the memory grid, queue and  printing.**\n"
+        echo readFile("examples/example1.g9")
     of "example2":
-        echo "\nThis example shows how to use if statements and while statements.\n"
+        echo "\n**This example shows how to use if statements and while statements.**\n"
+        echo readFile("examples/example2.g9")
     of "example3":
-        echo "\nThis example shows how to use the break and goto commands.\n"
+        echo "\n**This example shows how to use the break and goto commands.**\n"
+        echo readFile("examples/example3.g9")
     else:
         echo "\nNo help found your input try any of the following 'f', 's', 'a', 'q', 'p', 'i', 'w', 'x', 'b', 't' or 'example1', 'example2', 'example3'.\n"
         
@@ -106,7 +109,8 @@ proc main() =
 
 when isMainModule:
     var commandLineParams = os.commandLineParams()
-    if os.fileExists(commandLineParams[0]):
-        interpret(commandLineParams[0])
-    else:
-        main()
+    echo commandLineParams
+    try:
+        if os.fileExists(commandLineParams[0]): interpret(commandLineParams[0])
+        else: main()
+    except: main()
