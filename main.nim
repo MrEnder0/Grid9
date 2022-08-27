@@ -109,7 +109,6 @@ proc main() =
 
 when isMainModule:
     var commandLineParams = os.commandLineParams()
-    echo commandLineParams
     try:
         if os.fileExists(commandLineParams[0]): interpret(commandLineParams[0])
         else: main()
