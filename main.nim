@@ -5,7 +5,6 @@ import docopt
 import os
 
 const doc = """
-Grid9 CLI
 Usage:
     args_docopt about
     args_docopt a
@@ -107,12 +106,13 @@ proc main() =
     if args["glyth_value_get"]:
         glyth_value_get($args["<glyth>"])
 
+proc non_terminal() =
+    echo "\nThis program is meant to be ran in a terminal with arguments.\n"
+    while 1 == 1:
+        discard
+
 when isMainModule:
-    var commandLineParams = os.commandLineParams()
     try:
-        if os.fileExists(commandLineParams[0]): interpret(commandLineParams[0])
+        if os.fileExists(os.commandLineParams()[0]): interpret(os.commandLineParams()[0])
         else: main()
-    except:
-        echo doc
-        while 1 == 1:
-            discard
+    except: non_terminal()
