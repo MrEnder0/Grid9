@@ -5,7 +5,7 @@ import docopt
 import os
 
 const doc = """
-CoolSeq - a program to do things
+Grid9 CLI
 Usage:
     args_docopt about
     args_docopt a
@@ -112,4 +112,7 @@ when isMainModule:
     try:
         if os.fileExists(commandLineParams[0]): interpret(commandLineParams[0])
         else: main()
-    except: main()
+    except:
+        echo doc
+        while 1 == 1:
+            discard
