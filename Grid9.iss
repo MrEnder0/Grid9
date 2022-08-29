@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Grid9"
-#define MyAppVersion "2022-007"
+#define MyAppVersion "2022-008"
 #define MyAppPublisher "MrEnder"
 #define MyAppURL "https://github.com/MrEnder0/Grid9"
 #define MyAppExeName "main.exe"
