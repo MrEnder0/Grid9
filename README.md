@@ -12,8 +12,7 @@ Note in between updates there may be other smaller changes.
 
 ### High priority
  - Allow while nesting
- - Make installer in inno setup.
- - Add Grid9 code examples to the cli tool
+ - Make a update command for the cli tool
 
 ### Low priority
  - Use booleans instead of strings for the grid array for better memory ussage and performance.
