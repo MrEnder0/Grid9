@@ -50,3 +50,17 @@ Root: HKA; Subkey: "Software\Classes\Applications\{#MyAppExeName}\SupportedTypes
 Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
 Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 
+[Code]
+ procedure CurUninstallStepChanged (CurUninstallStep: TUninstallStep);
+ var
+     mres : integer;
+ begin
+    case CurUninstallStep of                   
+      usPostUninstall:
+        begin
+          mres := MsgBox('Do you want to Remove logs and cached code?', mbConfirmation, MB_YESNO or MB_DEFBUTTON2)
+          if mres = IDYES then
+            DelTree(ExpandConstant('C:\ProgramData\Grid9'), True, True, True);
+       end;
+   end;
+end; 
