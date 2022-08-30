@@ -107,7 +107,7 @@ proc main() =
         glyth_value_get($args["<glyth>"])
 
 proc non_terminal() =
-    echo "\nThis program is meant to be ran in a terminal with arguments.\n"
+    echo "\nThis program is meant to be ran in a terminal with arguments. \n You can find the executable inside of your program files(x86). \n"
     while 1 == 1:
         discard
 
