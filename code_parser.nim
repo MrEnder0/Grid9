@@ -5,6 +5,7 @@ import os
 proc parse*(path: string) : string =
     let code = open(path)
 
+    #Create the file structure for info if it doesn't exist
     if not dirExists(r"C:\ProgramData\Grid9"):
         createDir(r"C:\ProgramData\Grid9")
         if not dirExists(r"C:\ProgramData\Grid9\parser_cache"):
@@ -56,6 +57,7 @@ proc parse*(path: string) : string =
             parsed_code = parsed_code.replace("(", "")
             parsed_code = parsed_code.replace(")", "")
             parsed_code = parsed_code.replace("*", "")
+            parsed_code = parsed_code.replace("-", "")
 
         let parsed_code_file = open(r"C:\ProgramData\Grid9\parser_cache\" & $file_hash & ".g9", fmWrite)
         let unparsed_code_file = open(r"C:\ProgramData\Grid9\parser_cache\" & $file_hash & "_pre.g9", fmWrite)
