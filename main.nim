@@ -23,7 +23,7 @@ proc about() =
     echo "\nGrid9 is a esoteric programming language that is based on a 3x3 grid of memory cells where you make patterns glyths.\nThis language created by MrEnder in the Nim programming language.\n"
 
 proc version() =
-    echo "\n2022-008\n"
+    echo "\n2022-009\n"
 
 proc help(command: string) =
     case $command
@@ -107,9 +107,7 @@ proc main() =
         glyth_value_get($args["<glyth>"])
 
 proc non_terminal() =
-    echo "\nThis program is meant to be ran in a terminal with arguments. \n You can find the executable inside of your program files(x86). \n"
-    while 1 == 1:
-        discard
+    echo "\nThis program is meant to be ran in a terminal with arguments. \n If you are in your terminal run arguments with the exe like \"Grid9 interpret C:/script.g9\" \n"
 
 when isMainModule:
     try:
