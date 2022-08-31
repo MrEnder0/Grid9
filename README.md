@@ -11,7 +11,7 @@ A esoteric interpreted language made in Nim based on a 3x3 grid of zeros and one
 Note in between updates there may be other smaller changes.
 
 ### High priority
- - Make innosetup add Grid9 to path or find simular solution
+ - Add more options to the installer
  - Allow while nesting
  - Make a update command for the cli tool
 
