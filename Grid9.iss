@@ -32,6 +32,7 @@ WizardStyle=modern
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Tasks]
+Name: envPath; Description: "Add to PATH variable"; GroupDescription: "Registry:"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
@@ -53,7 +54,7 @@ Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: de
 [Code]
 procedure CurStepChanged(CurStep: TSetupStep);
 begin
-    if CurStep = ssPostInstall 
+    if (CurStep = ssPostInstall) and WizardIsTaskSelected('envPath') 
      then EnvAddPath(ExpandConstant('{app}'));
 end;
 
