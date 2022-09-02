@@ -6,24 +6,19 @@ import os
 
 const doc = """
 Usage:
-    args_docopt about
-    args_docopt a
-    args_docopt version
-    args_docopt v
-    args_docopt help <command>
-    args_docopt h <command>
-    args_docopt clean <folder>
-    args_docopt c <folder>
-    args_docopt interpret <path>
-    args_docopt i <path>
-    args_docopt glyth_value_get <glyth>
+    Grid9 (about | -a)
+    Grid9 (version | -v)
+    Grid9 (help | -h) <command>
+    Grid9 (clean | -c) <folder>
+    Grid9 (interpret | -i) <path>
+    Grid9 glyth_value_get <glyth>
 """
 
 proc about() =
     echo "\nGrid9 is a esoteric programming language that is based on a 3x3 grid of memory cells where you make patterns glyths.\nThis language created by MrEnder in the Nim programming language.\n"
 
 proc version() =
-    echo "\n2022-009\n"
+    echo "\n2022-010\n"
 
 proc help(command: string) =
     case $command
@@ -86,7 +81,7 @@ proc glyth_value_get(glyth: string) =
     echo glyths.get_glyth(glyth)
 
 proc main() =
-    let args = docopt(doc, version = "1.0")
+    let args = docopt(doc, version = "2022-010")
 
     if args["about"] or args["a"]:
         about()
