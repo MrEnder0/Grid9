@@ -5,7 +5,7 @@
 #define MyAppPublisher "MrEnder"
 #define MyAppURL "https://github.com/MrEnder0/Grid9"
 #define MyAppExeName "Grid9.exe"
-#define MyAppAssocName MyAppName + " Code"
+#define MyAppAssocName MyAppName + " Script"
 #define MyAppAssocExt ".g9"
 #define MyAppAssocKey StringChange(MyAppAssocName, " ", "") + MyAppAssocExt
 
