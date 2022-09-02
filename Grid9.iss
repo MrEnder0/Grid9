@@ -1,7 +1,7 @@
 #include "environment.iss"
 
 #define MyAppName "Grid9"
-#define MyAppVersion "2022-009"
+#define MyAppVersion "2022-010"
 #define MyAppPublisher "MrEnder"
 #define MyAppURL "https://github.com/MrEnder0/Grid9"
 #define MyAppExeName "Grid9.exe"
@@ -33,6 +33,7 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Tasks]
 Name: envPath; Description: "Add to PATH variable"; GroupDescription: "Registry:"
+Name: "startmenuicon"; Description: "Create a startmenu shortcut"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
@@ -48,7 +49,7 @@ Root: HKA; Subkey: "Software\Classes\{#MyAppAssocKey}\shell\open\command"; Value
 Root: HKA; Subkey: "Software\Classes\Applications\{#MyAppExeName}\SupportedTypes"; ValueType: string; ValueName: ".myp"; ValueData: ""
 
 [Icons]
-Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
+Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: startmenuicon
 Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 
 [Code]
