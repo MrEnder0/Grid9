@@ -34,10 +34,17 @@ Name: envPath; Description: "Add to PATH variable"; GroupDescription: "Registry:
 Name: "startmenuicon"; Description: "Create a startmenu shortcut"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
+[Types]
+Name: "custom"; Description: "Custom installation"; Flags: iscustom
+
+[Components]
+Name: "baseinstall"; Description: "Includes necessary base files."; Flags: exclusive
+Name: "baseinstall\examples"; Description: "Includes example files."
+
 [Files]
-Source: "C:\Users\Ender\Desktop\Grid9\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Ender\Desktop\Grid9\examples\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "C:\Users\Ender\Desktop\Grid9\icon.ico"; DestDir: "{app}"; Flags: ignoreversion
+Source: "Grid9\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion; Components: baseinstall
+Source: "Grid9\icon.ico"; DestDir: "{app}"; Flags: ignoreversion; Components: baseinstall
+Source: "Grid9\examples\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: baseinstall\examples
 
 [Registry]
 Root: HKA; Subkey: "Software\Classes\{#MyAppAssocExt}\OpenWithProgids"; ValueType: string; ValueName: "{#MyAppAssocKey}"; ValueData: ""; Flags: uninsdeletevalue
