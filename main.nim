@@ -44,13 +44,22 @@ proc help(command: string) =
         echo "\nThe 't' command is used to terminate the current script and not interpret any code past this point unless it gets ignored by a non true if statment or by a break command in a while if its before it.\n"
     of "example1":
         echo "\n**This example shows how to use basic language features such as the memory grid, queue and  printing.**\n"
-        echo readFile("examples/example1.g9")
+        try:
+            echo readFile("examples/example1.g9")
+        except:
+            echo "Error: example1.g9 not found, maybe you did not install the optional component."
     of "example2":
         echo "\n**This example shows how to use if statements and while statements.**\n"
-        echo readFile("examples/example2.g9")
+        try:
+            echo readFile("examples/example2.g9")
+        except:
+            echo "Error: example2.g9 not found, maybe you did not install the optional component."
     of "example3":
         echo "\n**This example shows how to use the break and goto commands.**\n"
-        echo readFile("examples/example3.g9")
+        try:
+            echo readFile("examples/example3.g9")
+        except:
+            echo "Error: example3.g9 not found, maybe you did not install the optional component."
     else:
         echo "\nNo help found your input try any of the following 'f', 's', 'a', 'q', 'p', 'i', 'w', 'x', 'b', 't' or 'example1', 'example2', 'example3'.\n"
         
