@@ -12,6 +12,7 @@ Note in between updates there may be other smaller changes.
 
 ### High priority
  - Add more options to the installer
+ - Make windows not false positive the installer
  - Allow while nesting
  - Make a update command for the cli tool
 
