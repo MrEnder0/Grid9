@@ -11,14 +11,13 @@ A esoteric interpreted language made in Nim based on a 3x3 grid of zeros and one
 Note in between updates there may be other smaller changes.
 
 ### High priority
- - Add more options to the installer
  - Make windows not false positive the installer
  - Allow while nesting
  - Make a update command for the cli tool
 
 ### Low priority
+ - Clean up bad code and comment on more complex parts for readability.
  - Use booleans instead of strings for the grid array for better memory ussage and performance.
- - Add ability to use q (queue) in any command that accepts input as a input
  - Add logging system for debugging errors and script information.
 
 ## Syntax Example:
