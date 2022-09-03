@@ -12,13 +12,14 @@ Note in between updates there may be other smaller changes.
 
 ### High priority
  - Make windows not false positive the installer
+ - Add logging system for debugging errors and script information.
  - Allow while nesting
- - Make a update command for the cli tool
 
 ### Low priority
- - Clean up bad code and comment on more complex parts for readability.
+ - Make a update command for the cli tool
  - Use booleans instead of strings for the grid array for better memory ussage and performance.
  - Add logging system for debugging errors and script information.
+ - Clean up bad code and comment on more complex parts for readability.
 
 ## Syntax Example:
 Here is a example of a conditional statement.
