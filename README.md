@@ -1,6 +1,6 @@
 <img src="docs/banner.png">
 
-# Grid9
+# <p align="center">centered text</p>
 A esoteric interpreted language made in Nim based on a 3x3 grid of zeros and ones.
 
 ![](https://img.shields.io/github/languages/code-size/MrEnder0/Grid9?style=for-the-badge)
