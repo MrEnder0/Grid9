@@ -16,7 +16,7 @@ Note in between updates there may be other smaller changes. Also none of these a
  - Allow while nesting
 
 ### Low priority
- - Create a cmhtl for local documentation
+ - Create a compiled html for local documentation
  - Make a update command for the cli tool
  - Add logging system for debugging errors and script information.
  - Clean up bad code and comment on more complex parts for readability.
