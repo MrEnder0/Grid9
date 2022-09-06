@@ -12,6 +12,7 @@ Usage:
     Grid9 (clean | -c) <folder>
     Grid9 (interpret | -i) <path>
     Grid9 glyth_value_get <glyth>
+    
 """
 
 proc about() =
@@ -111,10 +112,10 @@ proc main() =
         glyth_value_get($args["<glyth>"])
 
 proc non_terminal() =
-    echo "\nThis program is meant to be ran in a terminal with arguments. \n If you are in your terminal run arguments with the exe like \"Grid9 interpret C:/script.g9\" \n"
+    echo "No arguments passed\n" & doc
 
 when isMainModule:
-    try:
-        if os.fileExists(os.commandLineParams()[0]): interpret(os.commandLineParams()[0])
+    if len(os.commandLineParams()) > 1:
+        if os.fileExists(os.commandLineParams()[0]) and len(os.commandLineParams()) == 1: interpret(os.commandLineParams()[0])
         else: main()
-    except: non_terminal()
+    else: non_terminal()
