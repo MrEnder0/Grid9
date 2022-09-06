@@ -113,6 +113,9 @@ proc main() =
 proc non_terminal() =
     echo "No arguments passed\n" & doc
 
+    while 1 == 1:
+        discard
+
 when isMainModule:
     if len(os.commandLineParams()) > 0:
         if os.fileExists(os.commandLineParams()[0]) and len(os.commandLineParams()) == 1: interpret(os.commandLineParams()[0])
