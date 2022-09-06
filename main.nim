@@ -6,11 +6,16 @@ import os
 
 const doc = """
 Usage:
-    Grid9 (about | -a)
-    Grid9 (version | -v)
-    Grid9 (help | -h) <command>
-    Grid9 (clean | -c) <folder>
-    Grid9 (interpret | -i) <path>
+    Grid9 about
+    Grid9 a
+    Grid9 version
+    Grid9 v
+    Grid9 help <command>
+    Grid9 h <command>
+    Grid9 clean <folder>
+    Grid9 c <folder>
+    Grid9 interpret <path>
+    Grid9 i <path>
     Grid9 glyth_value_get <glyth>
     
 """
