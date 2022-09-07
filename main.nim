@@ -117,7 +117,9 @@ proc main() =
 
 proc non_terminal() =
     echo "No arguments passed\n" & doc
-    sleep(10000)
+
+    let exit = readLine(stdin)
+    discard exit
 
 when isMainModule:
     if len(os.commandLineParams()) > 0:
