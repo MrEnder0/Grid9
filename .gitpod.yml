@@ -7,3 +7,4 @@ tasks:
 vscode:
   extensions:
     - nimsaem.nimvscode
+    - chouzz.vscode-innosetup
