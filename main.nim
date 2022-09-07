@@ -112,9 +112,7 @@ proc main() =
 
 proc non_terminal() =
     echo "No arguments passed\n" & doc
-
-    while 1 == 1:
-        discard
+    sleep(10000)
 
 when isMainModule:
     if len(os.commandLineParams()) > 0:
