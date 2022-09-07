@@ -64,17 +64,22 @@ proc help(command: string) =
         echo "\nNo help found your input try any of the following 'f', 's', 'a', 'q', 'p', 'i', 'w', 'x', 'b', 't' or 'example1', 'example2', 'example3'.\n"
         
 proc clean(folder: string) =
+    when defined windows:
+        let main_dir = r"C:\ProgramData\Grid9\"
+    else:
+        let main_dir = "/usr/share/Grid9/"
+
     case $folder
     of "parser_cache":
-        if os.dirExists(r"C:\ProgramData\Grid9\parser_cache"):
+        if os.dirExists(main_dir):
             echo "\nCleaning parser cache folder\n"
-            os.removeDir(r"C:\ProgramData\Grid9\parser_cache")
-            os.createDir(r"C:\ProgramData\Grid9\parser_cache")
+            os.removeDir(main_dir & "parser_cache")
+            os.createDir(main_dir & "parser_cache")
     of "logs":
-        if os.dirExists(r"C:\ProgramData\Grid9\logs"):
+        if os.dirExists(main_dir):
             echo "\nCleaning logs folder\n"
-            os.removeDir(r"C:\ProgramData\Grid9\logs")
-            os.createDir(r"C:\ProgramData\Grid9\logs")
+            os.removeDir(main_dir & "logs")
+            os.createDir(main_dir & "logs")
     else:
         echo "\nFolder not found try 'parser_cache' or 'logs'.\n"
 

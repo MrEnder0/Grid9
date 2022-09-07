@@ -5,21 +5,30 @@ import os
 proc parse*(path: string) : string =
     let code = open(path)
 
+    when defined windows:
+        let main_dir = r"C:\ProgramData\Grid9\"
+        let parser_cache_dir = r"C:\ProgramData\Grid9\parser_cache\"
+        let log_dir = r"C:\ProgramData\Grid9\logs\"
+    else:
+        let main_dir = "/usr/share/Grid9/"
+        let parser_cache_dir = "/usr/share/Grid9/parser_cache/"
+        let log_dir = "/usr/share/Grid9/logs/"
+
     #Create the file structure for info if it doesn't exist
-    if not dirExists(r"C:\ProgramData\Grid9"):
-        createDir(r"C:\ProgramData\Grid9")
-        if not dirExists(r"C:\ProgramData\Grid9\parser_cache"):
-            createDir(r"C:\ProgramData\Grid9\parser_cache")
-        if not dirExists(r"C:\ProgramData\Grid9\logs"):
-            createDir(r"C:\ProgramData\Grid9\logs")
+    if not dirExists(main_dir):
+        createDir(main_dir)
+        if not dirExists(parser_cache_dir):
+            createDir(parser_cache_dir)
+        if not dirExists(log_dir):
+            createDir(log_dir)
 
     let file_hash = hash(path)
     var parsed_code: string
     var line: string
 
-    if os.fileExists(r"C:\ProgramData\Grid9\parser_cache\" & $file_hash & ".g9") and readFile(path) & "\n" ==  readFile(r"C:\ProgramData\Grid9\parser_cache\" & $file_hash & "_pre.g9"):
-        echo "Using Cached Code\n"
-        parsed_code = open(r"C:\ProgramData\Grid9\parser_cache\" & $file_hash & ".g9").read_line()
+    if os.fileExists(parser_cache_dir & $file_hash & ".g9") and readFile(path) & "\n" ==  readFile(parser_cache_dir & $file_hash & "_pre.g9"):
+        echo "Using Cached Code"
+        parsed_code = open(parser_cache_dir & $file_hash & ".g9").read_line()
         return parsed_code
     else:
         while code.read_line(line):
@@ -59,8 +68,8 @@ proc parse*(path: string) : string =
             parsed_code = parsed_code.replace("*", "")
             parsed_code = parsed_code.replace("-", "")
 
-        let parsed_code_file = open(r"C:\ProgramData\Grid9\parser_cache\" & $file_hash & ".g9", fmWrite)
-        let unparsed_code_file = open(r"C:\ProgramData\Grid9\parser_cache\" & $file_hash & "_pre.g9", fmWrite)
+        let parsed_code_file = open(parser_cache_dir & $file_hash & ".g9", fmWrite)
+        let unparsed_code_file = open(parser_cache_dir & $file_hash & "_pre.g9", fmWrite)
         parsed_code_file.writeLine(parsed_code)
         unparsed_code_file.writeLine(readFile(path))
         return parsed_code
