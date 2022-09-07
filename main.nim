@@ -88,8 +88,7 @@ proc interpret*(path: string) =
     code_interpreter.interpret(parsed_code)
     echo "\nCode finished successfully!"
 
-    while 1 == 1:
-        discard
+    let exit = readLine(stdin)
 
 proc glyth_value_get(glyth: string) =
     echo glyths.get_glyth(glyth)
