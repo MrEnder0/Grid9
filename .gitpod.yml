@@ -6,4 +6,4 @@ tasks:
 
 vscode:
   extensions:
-    - nim
+    - nimsaem.nimvscode
