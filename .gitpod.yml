@@ -1,0 +1,9 @@
+image: gitpod/workspace-full
+
+tasks:
+  - before: sudo apt-get update && sudo apt-get install nim
+    command: nim c main
+
+vscode:
+  extensions:
+    - nim

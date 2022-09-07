@@ -6,6 +6,7 @@ A esoteric interpreted language made in Nim based on a 3x3 grid of zeros and one
 ![](https://img.shields.io/github/issues-raw/MrEnder0/Grid9?style=for-the-badge "Bugs")
 ![](https://img.shields.io/github/issues-pr-raw/MrEnder0/Grid9?style=for-the-badge "PRs")
 
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/MrEnder0/Grid9)
 ## Future plans:
 Note in between updates there may be other smaller changes. Also none of these are in any particular order.
 
@@ -15,7 +16,6 @@ Note in between updates there may be other smaller changes. Also none of these a
  - Allow while nesting
 
 ### Low priority
- - Create a .gitpod.yml for easy remote development
  - Create a compiled html for local documentation
  - Add logging system for debugging errors and script information.
  - Clean up bad code and comment on more complex parts for readability.
