@@ -89,6 +89,7 @@ proc interpret*(path: string) =
     echo "\nCode finished successfully!"
 
     let exit = readLine(stdin)
+    discard exit
 
 proc glyth_value_get(glyth: string) =
     echo glyths.get_glyth(glyth)
