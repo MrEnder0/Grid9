@@ -16,7 +16,7 @@ Note in between updates there may be other smaller changes. Also none of these a
  - Allow while nesting
 
 ### Low priority
- - Create a compiled html for local documentation
+ - Create local documentation
  - Add logging system for debugging errors and script information.
  - Clean up bad code and comment on more complex parts for readability.
 
