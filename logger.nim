@@ -8,8 +8,5 @@ proc log_this*(mode: string, message: string) : string =
         let log_dir = "/usr/share/Grid9/logs/"
 
     let time = now().format("yyyy-MM-dd HH:mm:ss")
-
-    let log_file = open(log_dir & now().format("yyy-MM-dd") & ".log", fmWrite)
+    let log_file = open(log_dir & now().format("yyyy-MM-dd") & ".log", fmAppend)
     log_file.writeLine(fmt"{time} - {mode} - {message}")
-    
-    return
