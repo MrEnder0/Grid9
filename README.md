@@ -13,11 +13,10 @@ Note in between updates there may be other smaller changes. Also none of these a
 
 ### High priority
  - Add logging system for debugging errors and script information.
- - Use booleans instead of strings for the grid array for better memory ussage and performance.
  - Allow while nesting
 
 ### Low priority
- - Create a compiled html for local documentation
+ - Create local documentation
  - Add logging system for debugging errors and script information.
  - Clean up bad code and comment on more complex parts for readability.
 

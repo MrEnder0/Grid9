@@ -9,7 +9,7 @@ iterator `...`*[T](a: T, b: T): T =
         inc res
 
 proc interpret*(parsed_code: string) : string {.discardable.} =
-    var mem_grid: Table[string, string]
+    var mem_grid: Table[string, int]
     var mem_queue: string = ""
 
     var if_nest_depth: int = 0
@@ -21,32 +21,32 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
 
     #generates a 3x3 memory grid
     for i in 0...8:
-        mem_grid[$i] = "0"
+        mem_grid[$i] = 0
 
     while c_index < len(parsed_code):
         case $parsed_code[c_index]
         of $'f':
             if len(parsed_code) > c_index + 1:
-                if parseint(mem_grid[$parsed_code[c_index + 1]]) == 0:
-                    mem_grid[$parsed_code[c_index + 1]] = "1"
+                if mem_grid[$parsed_code[c_index + 1]] == 0:
+                    mem_grid[$parsed_code[c_index + 1]] = 1
                 else:
-                    mem_grid[$parsed_code[c_index + 1]] = "0"
+                    mem_grid[$parsed_code[c_index + 1]] = 0
         #set command
         of $'s':
             if len(parsed_code) > c_index + 2:
-                mem_grid[$parsed_code[c_index + 1]] = $parsed_code[c_index + 2]
+                mem_grid[$parsed_code[c_index + 1]] = parseint($parsed_code[c_index + 2])
 
         #set all command
         of $'a':
             if len(parsed_code) > c_index + 1:
                 for i in 0...8:
-                    mem_grid[$i] = $parsed_code[c_index + 1]
+                    mem_grid[$i] = parseint($parsed_code[c_index + 1])
 
         #queue command
         of $'q':
             if len(parsed_code) > c_index + 1:
                 if parsed_code[c_index + 1] == 's':
-                    mem_queue = mem_queue & glyths.get_glyth(mem_grid["0"]&mem_grid["1"]&mem_grid["2"]&mem_grid["3"]&mem_grid["4"]&mem_grid["5"]&mem_grid["6"]&mem_grid["7"]&mem_grid["8"])
+                    mem_queue = mem_queue & glyths.get_glyth($mem_grid["0"] & $mem_grid["1"] & $mem_grid["2"] & $mem_grid["3"] & $mem_grid["4"] & $mem_grid["5"] & $mem_grid["6"] & $mem_grid["7"] & $mem_grid["8"])
                 elif parsed_code[c_index + 1] == 'c':
                     mem_queue = ""
 
@@ -56,7 +56,7 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
                 echo mem_queue
                 mem_queue = ""
             else:
-                echo glyths.get_glyth(mem_grid["0"]&mem_grid["1"]&mem_grid["2"]&mem_grid["3"]&mem_grid["4"]&mem_grid["5"]&mem_grid["6"]&mem_grid["7"]&mem_grid["8"])
+                echo glyths.get_glyth($mem_grid["0"] & $mem_grid["1"] & $mem_grid["2"] & $mem_grid["3"] & $mem_grid["4"] & $mem_grid["5"] & $mem_grid["6"] & $mem_grid["7"] & $mem_grid["8"])
 
         #if command
         of $'i':
@@ -64,7 +64,7 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
                 if parsed_code[c_index + 2] == '=':
 
                     if parsed_code[c_index + 3] == '0':
-                        if parseint(mem_grid[$parsed_code[c_index + 1]]) == 0:
+                        if mem_grid[$parsed_code[c_index + 1]] == 0:
                             discard
                         else:
                             #skip to end of if
@@ -81,7 +81,7 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
                             c_index = if_pos_end
 
                     if parsed_code[c_index + 3] == '1':
-                        if parseint(mem_grid[$parsed_code[c_index + 1]]) == 1:
+                        if mem_grid[$parsed_code[c_index + 1]] == 1:
                             discard
                         else:
                             #skip to end of if
@@ -98,7 +98,7 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
                             c_index = if_pos_end
 
                 elif parsed_code[c_index + 2] == '!':
-                    if parseint(mem_grid[$parsed_code[c_index + 1]]) != parseint(mem_grid[$parsed_code[c_index + 3]]):
+                    if mem_grid[$parsed_code[c_index + 1]] != mem_grid[$parsed_code[c_index + 3]]:
                         discard
                     else:
                         #skip to end of if
@@ -119,17 +119,17 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
             if len(parsed_code) > c_index + 3:
                 if parsed_code[c_index + 2] == '=':
                     if parsed_code[c_index + 3] == '0':
-                        if parseint(mem_grid[$parsed_code[c_index + 1]]) == 0:
+                        if mem_grid[$parsed_code[c_index + 1]] == 0:
                             while_pos = c_index + 1
                         else:
                             return
                     if parsed_code[c_index + 3] == '1':
-                        if parseint(mem_grid[$parsed_code[c_index + 1]]) == 1:
+                        if mem_grid[$parsed_code[c_index + 1]] == 1:
                             while_pos = c_index + 1
                         else:
                             return
                 elif parsed_code[c_index + 2] == '!':
-                    if parseint(mem_grid[$parsed_code[c_index + 1]]) != parseint(mem_grid[$parsed_code[c_index + 3]]):
+                    if mem_grid[$parsed_code[c_index + 1]] != mem_grid[$parsed_code[c_index + 3]]:
                         while_pos = c_index + 1
                     else:
                         return
