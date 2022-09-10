@@ -14,12 +14,14 @@ body {
     font-family: Quantify;
     font-size: 38px;
     color: #EBEBEB;
-    line-height: 10%;
+    line-height: 0%;
+    padding: 3px;
 }
 
 .sidebar_nav_link {
     font-family: Quantify;
     font-size: 20px;
     color: #b3b3b3;;
-    line-height: 10%;
+    line-height: 0%;
+    padding: 5px;
 }
