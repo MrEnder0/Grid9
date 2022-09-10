@@ -16,7 +16,7 @@ Note in between updates there may be other smaller changes. Also none of these a
 
 ### Low priority
  - Create local documentation
- - Add logging system for debugging errors and script information.
+ - Create install script for Linux
  - Clean up bad code and comment on more complex parts for readability.
 
 ## Syntax Example:
