@@ -1,4 +1,4 @@
-<img src="docs/banner.png">
+<img src=".github/assets/banner.png">
 
 A esoteric interpreted language made in Nim based on a 3x3 grid of zeros and ones.
 
@@ -12,7 +12,6 @@ A esoteric interpreted language made in Nim based on a 3x3 grid of zeros and one
 Note in between updates there may be other smaller changes. Also none of these are in any particular order.
 
 ### High priority
- - Add logging system for debugging errors and script information.
  - Allow while nesting
 
 ### Low priority
