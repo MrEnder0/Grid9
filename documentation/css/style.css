@@ -25,3 +25,19 @@ body {
     line-height: 0%;
     padding: 5px;
 }
+
+h1 {
+    font-family: Quantify;
+    font-size: 38px;
+    color: #120F25;
+    line-height: 50%;
+    padding: 3px;
+}
+
+p {
+    font-family: Quantify;
+    font-size: 26px;
+    color: #120F25;
+    line-height: 100%;
+    padding: 5px;
+}
