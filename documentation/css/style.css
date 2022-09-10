@@ -1,0 +1,25 @@
+body {
+    background-color: #EBEBEB;
+}
+
+.sidebar_nav {
+    background-color: #120F25;
+    height: 100%;
+    margin: 15px;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.sidebar_nav_title {
+    font-family: Quantify;
+    font-size: 38px;
+    color: #EBEBEB;
+    line-height: 10%;
+}
+
+.sidebar_nav_link {
+    font-family: Quantify;
+    font-size: 20px;
+    color: #b3b3b3;;
+    line-height: 10%;
+}
