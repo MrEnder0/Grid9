@@ -34,18 +34,19 @@
 
         <!-- Page Content -->
         <div class="docs">
-            <h1>Grid9 Documentation</h1>
+            <h1>IO > Print</h1>
             <p class="docs-data">
-                To explain Grid9 in one sentence it is an esoteric interpreted language made in Nim based on a 3x3 grid of zeros and ones.
+                The print command is used to print the grid glyth character to the console.
             </p>
             <p class="docs-data">
-                The whole language is based around this 3x3 grid for a total of 9 cells in the grid. In any of the cells its value can be 0 or 1.
-                You can interact with these cells by setting them (s) flipping them (f) or setting all the cells to a value (a).
-                With all of these ways you can interact with the cells you may wonder what you can do with them and the answer to that is that every outputable character in this language has its own unique combination of cells.
+                Now this command needs a little explanation to understand it, but every outputable character has it own combination on the grid and those are called "glyths".
+                The print command converts these "glyths" into the single character that they represent.
+                Also the print command will print the current queue instead of the current glyth if the queue contains anything.
+                The syntax for this command is "p".
             </p>
-
             <p class="docs-data">
-                This language doesnt stop at just being able to change a few numbers, there is statements, controll of flow operators, and more.
+                For example the character "a" is represented by the cells 000000010. If you were to set cell 7 (the cell ids start at 0) with the command "f7" and then do print (p) it would print "a".
+                All that code together would look like this: "f7p".
             </p>
         </div>
     </div>

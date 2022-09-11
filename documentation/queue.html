@@ -34,18 +34,16 @@
 
         <!-- Page Content -->
         <div class="docs">
-            <h1>Grid9 Documentation</h1>
+            <h1>IO > Queue</h1>
             <p class="docs-data">
-                To explain Grid9 in one sentence it is an esoteric interpreted language made in Nim based on a 3x3 grid of zeros and ones.
+                The queue command is used to print multiple "glyhs" or characters together.
             </p>
             <p class="docs-data">
-                The whole language is based around this 3x3 grid for a total of 9 cells in the grid. In any of the cells its value can be 0 or 1.
-                You can interact with these cells by setting them (s) flipping them (f) or setting all the cells to a value (a).
-                With all of these ways you can interact with the cells you may wonder what you can do with them and the answer to that is that every outputable character in this language has its own unique combination of cells.
+                The syntax for this command is "qs" to add a glyph to the queue and "qc" to completly clear the queue.
             </p>
-
             <p class="docs-data">
-                This language doesnt stop at just being able to change a few numbers, there is statements, controll of flow operators, and more.
+                For example say you have the letter "r" on the current glyth (which is 000010011) and you want to print two of them next to each other.
+                To do this you would do "f4f7f8qs" and then "f4f7f8qs" again then "p" to print the two "r"s next to each other on the same line.
             </p>
         </div>
     </div>
