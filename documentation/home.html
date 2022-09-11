@@ -6,37 +6,45 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-    <!-- Sidebar -->
-    <div class="sidebar_nav">
-        <h3 class="sidebar_nav_title">Menu</h3>
-        <nav>
-            <ul>
-              <a href="home.html" class="sidebar_nav_link">Home</a>
-              <a href="#" class="sidebar_nav_link">Cell Modificationꜜ</a>
-                <ul id="list">
-                  <a href="set.html" class="sidebar_nav_link">Set</a>
-                  <a href="flip.html" class="sidebar_nav_link">Flip</a>
-                  <a href="set-all.html" class="sidebar_nav_link">Set-all</a>
+    <div style="display: inline">
+        
+        <!-- Sidebar -->
+        <div class="sidebar_nav">
+            <h3 class="sidebar_nav_title">Menu</h3>
+            <nav>
+                <ul>
+                    <a href="home.html" class="sidebar_nav_link">Home</a>
+                    <br><br>
+                    <a href="#" class="sidebar_nav_link">Cell Modificationꜜ</a>
+                        <ul id="list">
+                            <a href="set.html" class="sidebar_nav_link">Set</a>
+                            <a href="flip.html" class="sidebar_nav_link">Flip</a>
+                            <a href="set-all.html" class="sidebar_nav_link">Set-all</a>
+                        </ul>
+                    <br>
+                    <a href="#" class="sidebar_nav_link">IOꜜ</a>
+                        <ul id="list">
+                            <a href="set.html" class="sidebar_nav_link">Print</a>
+                            <a href="flip.html" class="sidebar_nav_link">Queue</a>
+                        </ul>
+                    <br>
                 </ul>
-            </ul>
-          </nav>
-    </div>
+            </nav>
+        </div>
 
-    <!-- Page Content -->
-    <div style="margin-left:15%; margin-right:15%">
-    <div class="docs">
-        <h1>Grid9 Documentation</h1>
-        <p class="docs-data">
-            To explain Grid9 in one sentence it is an esoteric interpreted language made in Nim based on a 3x3 grid of zeros and ones.
-        </p>
-        <p class="docs-data">
-            The whole language is based around this 3x3 grid for a total of 9 cells in the grid. In any of the cells its value can be 0 or 1.
-            You can interact with these cells by setting them (s) flipping them (f) or setting all the cells to a value (a).
-            With all of these ways you can interact with the cells you may wonder what you can do with them and the answer to that is that every outputable character in this language has its own unique combination of cells.
-            For example the character "a" is represented by the cells 000000010. If you were to set cell 7 (the cell ids start at 0) and then do print (p) it would print "a".
-        </p>
+        <!-- Page Content -->
+        <div class="docs">
+            <h1>Grid9 Documentation</h1>
+            <p class="docs-data">
+                To explain Grid9 in one sentence it is an esoteric interpreted language made in Nim based on a 3x3 grid of zeros and ones.
+            </p>
+            <p class="docs-data">
+                The whole language is based around this 3x3 grid for a total of 9 cells in the grid. In any of the cells its value can be 0 or 1.
+                You can interact with these cells by setting them (s) flipping them (f) or setting all the cells to a value (a).
+                With all of these ways you can interact with the cells you may wonder what you can do with them and the answer to that is that every outputable character in this language has its own unique combination of cells.
+                For example the character "a" is represented by the cells 000000010. If you were to set cell 7 (the cell ids start at 0) and then do print (p) it would print "a".
+            </p>
+        </div>
     </div>
-
 </body>
 </html>
