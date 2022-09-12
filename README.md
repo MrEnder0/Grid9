@@ -2,24 +2,28 @@
 
 A esoteric interpreted language made in Nim based on a 3x3 grid of zeros and ones.
 
-![](https://img.shields.io/github/languages/code-size/MrEnder0/Grid9?style=for-the-badge)
-![](https://img.shields.io/github/issues-raw/MrEnder0/Grid9?style=for-the-badge "Bugs")
-![](https://img.shields.io/github/issues-pr-raw/MrEnder0/Grid9?style=for-the-badge "PRs")
+[![Code Size](https://img.shields.io/github/languages/code-size/MrEnder0/Grid9?style=for-the-badge)
+[![Bugs](https://img.shields.io/github/issues-raw/MrEnder0/Grid9?style=for-the-badge)
+[![PRs](https://img.shields.io/github/issues-pr-raw/MrEnder0/Grid9?style=for-the-badge)
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/MrEnder0/Grid9)
 
-## Future plans:
+## Future plans
+
 Note in between updates there may be other smaller changes. Also none of these are in any particular order.
 
 ### High priority
- - Allow while nesting
+
+- Allow while nesting
 
 ### Low priority
- - Create local documentation
- - Create install script for Linux
- - Clean up bad code and comment on more complex parts for readability.
 
-## Syntax Example:
+- Create local documentation
+- Create install script for Linux
+- Clean up bad code and comment on more complex parts for readability.
+
+## Syntax Example
+
 Here is a example of a conditional statement.
 
 ```grid9
