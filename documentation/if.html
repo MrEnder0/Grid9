@@ -40,19 +40,16 @@
 
         <!-- Page Content -->
         <div class="docs">
-            <h1>IO > Print</h1>
+            <h1>Logic > If</h1>
             <p class="docs-data">
-                The print command is used to print the grid glyth character to the console.
+                The if command is used to check if a cell is a zero or a one.
             </p>
             <p class="docs-data">
-                Now this command needs a little explanation to understand it, but every outputable character has it own combination on the grid and those are called "glyths".
-                The print command converts these "glyths" into the single character that they represent.
-                Also the print command will print the current queue instead of the current glyth if the queue contains anything.
-                The syntax for this command is "p".
+                The syntax for this command is "i" followed by the cell id and then a "=" or a "!" for a not equal then the value of the cell you are testing for.
+                Remember to also to close a if statement, to do this you have to use a "}"
             </p>
             <p class="docs-data">
-                For example the character "a" is represented by the cells 000000010. If you were to set cell 7 (the cell ids start at 0) with the command "f7" and then do print (p) it would print "a".
-                All that code together would look like this: "f7p".
+                For example if you wanted to test cell 2 for a zero you would do "i2=0 SOME CODE }". If you wanted to test cell 7 for not a one you would do "i7!1 SOME CODE }".
             </p>
         </div>
     </div>
