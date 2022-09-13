@@ -1,7 +1,4 @@
-import std/strutils
-import std/hashes
-import os
-import re
+import std/hashes, os, re
 
 proc parse*(path: string) : string =
     let code = open(path)

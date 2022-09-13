@@ -1,8 +1,6 @@
 from glyths import nil
-import strformat
-import strutils
-import tables
-import times
+
+import strformat, strutils, tables, times
 
 iterator `...`*[T](a: T, b: T): T =
     var res: T = T(a)
