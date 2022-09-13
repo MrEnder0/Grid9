@@ -5,13 +5,13 @@ tasks:
     init: |
       sudo apt-get update
       sudo apt-get install nim
-      nimble install docopt
+      y | nimble install docopt
       
     command: nim c main
 
 vscode:
   extensions:
-    - nimsaem.nimvscod
+    - nimsaem.nimvscode
     - chouzz.vscode-innosetup
     - yzhang.markdown-all-in-one
     - DavidAnson.vscode-markdownlint
