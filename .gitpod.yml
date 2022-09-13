@@ -5,7 +5,7 @@ tasks:
     init: |
       sudo apt-get update
       sudo apt-get install nim
-      y | nimble install docopt
+      nimble install docopt -y
       
     command: nim c main
 
