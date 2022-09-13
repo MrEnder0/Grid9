@@ -10,8 +10,8 @@ tasks:
     command: nim c main
 
 vscode:
-  extensions: |
-    nimsaem.nimvscode
-    chouzz.vscode-innosetup
-    yzhang.markdown-all-in-one
-    DavidAnson.vscode-markdownlint
+  extensions:
+    - nimsaem.nimvscod
+    - chouzz.vscode-innosetup
+    - yzhang.markdown-all-in-one
+    - DavidAnson.vscode-markdownlint
