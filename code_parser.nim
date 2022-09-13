@@ -13,7 +13,7 @@ proc parse*(path: string) : string =
     var line: string
 
     if os.fileExists(parser_cache_dir & $file_hash & ".g9") and readFile(path) & "\n" ==  readFile(parser_cache_dir & $file_hash & "_pre.g9"):
-        echo "Using Cached Code"
+        echo "Using Cached Code\n"
         parsed_code = open(parser_cache_dir & $file_hash & ".g9").read_line()
         return parsed_code
     else:
