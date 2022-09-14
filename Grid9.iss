@@ -17,14 +17,19 @@ AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
 DefaultDirName={autopf}\{#MyAppName}
+
 ChangesAssociations=yes
 DisableProgramGroupPage=yes
-LicenseFile=C:\Users\Ender\Desktop\LICENSE.txt
-OutputBaseFilename=mysetup
+LicenseFile=LICENSE.txt
+OutputBaseFilename=Grid9 Setup {#MyAppVersion}
 ChangesEnvironment=true
+
 Compression=lzma
 SolidCompression=yes
+
 WizardStyle=modern
+SetupIconFile=Grid9\innosetup\icon.ico
+WizardImageFile=Grid9\innosetup\installer_banner.bmp
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
