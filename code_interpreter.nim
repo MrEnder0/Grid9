@@ -101,7 +101,7 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
                     for i in 0...8:
                         mem_grid[$i] = parseint($gived_input[i])
                 else:
-                    log_this("ERROR", "Input was not 9 numbers long")
+                    log_this("ERROR", "Input for give command was not 9 numbers long")
 
             #if command
             of $'i':
