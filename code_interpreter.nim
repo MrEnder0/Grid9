@@ -47,16 +47,23 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
                         mem_grid[$parsed_code[c_index + 1]] = 1
                     else:
                         mem_grid[$parsed_code[c_index + 1]] = 0
+                else:
+                    log_this("ERROR", "Invalid syntax for flip command")
+
             #set command
             of $'s':
                 if len(parsed_code) > c_index + 2:
                     mem_grid[$parsed_code[c_index + 1]] = parseint($parsed_code[c_index + 2])
+                else:
+                    log_this("ERROR", "Invalid syntax for set command")
 
             #set all command
             of $'a':
                 if len(parsed_code) > c_index + 1:
                     for i in 0...8:
                         mem_grid[$i] = parseint($parsed_code[c_index + 1])
+                else:
+                    log_this("ERROR", "Invalid syntax for set all command")
 
             #queue command
             of $'q':
@@ -65,6 +72,8 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
                         mem_queue = mem_queue & glyths.get_glyth($mem_grid["0"] & $mem_grid["1"] & $mem_grid["2"] & $mem_grid["3"] & $mem_grid["4"] & $mem_grid["5"] & $mem_grid["6"] & $mem_grid["7"] & $mem_grid["8"])
                     elif parsed_code[c_index + 1] == 'c':
                         mem_queue = ""
+                else:
+                    log_file("ERROR", "Invalid queue command")
 
             #print command
             of $'p':
@@ -73,6 +82,15 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
                     mem_queue = ""
                 else:
                     echo glyths.get_glyth($mem_grid["0"] & $mem_grid["1"] & $mem_grid["2"] & $mem_grid["3"] & $mem_grid["4"] & $mem_grid["5"] & $mem_grid["6"] & $mem_grid["7"] & $mem_grid["8"])
+
+            #give command
+            of $'g':
+                let input = readLine(stdin)
+                if len(input) == 9:
+                    for i in 0...8:
+                        mem_grid[$i] = parseint($input[i])
+                else:
+                    log_this("ERROR", "Input was not 9 numbers long")
 
             #if command
             of $'i':
@@ -129,6 +147,8 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
                                         c_index = if_pos_end
                                 if_pos_end += 1
                             c_index = if_pos_end
+                else:
+                    log_this("ERROR", "Invalid if statement")
 
             #while command
             of $'w':
@@ -149,6 +169,8 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
                             while_pos = c_index + 1
                         else:
                             return
+                else:
+                    log_this("ERROR", "Invalid while statement")
 
             #exit command
             of $'x':
@@ -161,6 +183,8 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
             of $'b':
                 if len(parsed_code) > c_index + 1:
                     c_index -= parseint($parsed_code[c_index + 1])
+                else:
+                    log_this("ERROR", "Invalid back command")
 
             #terminate command
             of $'t':
@@ -178,5 +202,5 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
             c_index += 1
         
     except:
-        log_this("WARNING", "Error in script on line" & $c_index)
+        log_this("ERROR", "Unknown error in script on line" & $c_index)
         return
