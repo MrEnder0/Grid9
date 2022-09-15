@@ -4,11 +4,12 @@ body {
 
 .sidebar_nav {
     background-color: #120F25;
-    height: 905px;
+    height: 900px;
     margin: 8px;
     padding: 8px;
     border-radius: 8px;
     float: left;
+    position:fixed;
 }
 
 .sidebar_nav_title {
@@ -53,10 +54,18 @@ h1 {
     line-height: 50%;
     padding: 3px;
 }
+h2 {
+    font-family: Quantify;
+    font-size: 28px;
+    color: #120F25;
+    line-height: 50%;
+    padding: 3px;
+}
 
 .docs {
-    display: inline-block;
+    position:relative;
     width: 79%;
+    left:15%;
 }
 .docs-data {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
