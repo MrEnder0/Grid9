@@ -46,8 +46,14 @@ proc example(number: string) =
             echo readFile("examples/give_example.g9") & "\n"
         except:
             echo "Error: give_example.g9 not found, maybe you did not install the optional component."
+    of "random_char_example":
+        echo "\n**This example shows how to use the random argument for cell modification.**\n"
+        try:
+            echo readFile("examples/random_char_example.g9") & "\n"
+        except:
+            echo "Error: random_char_example.g9 not found, maybe you did not install the optional component."
     else:
-        echo "\nNo example found for your input try any of the flollowing, 'example1', 'example2', 'example3', 'give_example'.\n"
+        echo "\nNo example found for your input try any of the flollowing, 'example1', 'example2', 'example3', 'give_example', 'random_char_example'.\n"
         
 proc clean(folder: string) =
     when defined windows:

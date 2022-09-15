@@ -1,6 +1,6 @@
 from glyths import nil
 
-import strformat, strutils, tables, times
+import strformat, strutils, tables, random, times
 
 iterator `...`*[T](a: T, b: T): T =
     var res: T = T(a)
@@ -24,6 +24,7 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
 
     log_this("INFO", "Interpreting script")
 
+    #initate all the varibles
     var mem_grid: Table[string, int]
     var mem_queue: string = ""
 
@@ -37,6 +38,9 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
     #generates a 3x3 memory grid
     for i in 0...8:
         mem_grid[$i] = 0
+
+    #initate the random module
+    randomize()
 
     try:
         while c_index < len(parsed_code):
@@ -53,15 +57,22 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
             #set command
             of $'s':
                 if len(parsed_code) > c_index + 2:
-                    mem_grid[$parsed_code[c_index + 1]] = parseint($parsed_code[c_index + 2])
+                    if $parsed_code[c_index + 2] == $'r':
+                        mem_grid[$parsed_code[c_index + 1]] = rand(1)
+                    else:
+                        mem_grid[$parsed_code[c_index + 1]] = parseint($parsed_code[c_index + 2])
                 else:
                     log_this("ERROR", "Invalid syntax for set command")
 
             #set all command
             of $'a':
                 if len(parsed_code) > c_index + 1:
-                    for i in 0...8:
-                        mem_grid[$i] = parseint($parsed_code[c_index + 1])
+                    if $parsed_code[c_index + 1] == $'r':
+                        for i in 0...8:
+                            mem_grid[$i] = rand(1)
+                    else:
+                        for i in 0...8:
+                            mem_grid[$i] = parseint($parsed_code[c_index + 1])
                 else:
                     log_this("ERROR", "Invalid syntax for set all command")
 
@@ -200,7 +211,6 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
                     c_index = while_pos
 
             c_index += 1
-        
     except:
         log_this("ERROR", "Unknown error in script on line" & $c_index)
         return
