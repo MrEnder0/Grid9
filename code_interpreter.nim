@@ -73,7 +73,7 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
                     elif parsed_code[c_index + 1] == 'c':
                         mem_queue = ""
                 else:
-                    log_file("ERROR", "Invalid queue command")
+                    log_this("ERROR", "Invalid queue command")
 
             #print command
             of $'p':
@@ -85,10 +85,10 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
 
             #give command
             of $'g':
-                let input = readLine(stdin)
-                if len(input) == 9:
+                let gived_input = readLine(stdin)
+                if len(gived_input) == 9:
                     for i in 0...8:
-                        mem_grid[$i] = parseint($input[i])
+                        mem_grid[$i] = parseint($gived_input[i])
                 else:
                     log_this("ERROR", "Input was not 9 numbers long")
 

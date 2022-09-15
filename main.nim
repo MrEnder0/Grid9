@@ -25,23 +25,29 @@ proc example(number: string) =
     of "example1":
         echo "\n**This example shows how to use basic language features such as the memory grid, queue and  printing.**\n"
         try:
-            echo readFile("examples/example1.g9")
+            echo readFile("examples/example1.g9") & "\n"
         except:
             echo "Error: example1.g9 not found, maybe you did not install the optional component."
     of "example2":
         echo "\n**This example shows how to use if statements and while statements.**\n"
         try:
-            echo readFile("examples/example2.g9")
+            echo readFile("examples/example2.g9") & "\n"
         except:
             echo "Error: example2.g9 not found, maybe you did not install the optional component."
     of "example3":
         echo "\n**This example shows how to use the break and goto commands.**\n"
         try:
-            echo readFile("examples/example3.g9")
+            echo readFile("examples/example3.g9") & "\n"
         except:
             echo "Error: example3.g9 not found, maybe you did not install the optional component."
+    of "give_example":
+        echo "\n**This example shows how to use the give command.**\n"
+        try:
+            echo readFile("examples/give_example.g9") & "\n"
+        except:
+            echo "Error: give_example.g9 not found, maybe you did not install the optional component."
     else:
-        echo "\nNo example found for your input try any of the flollowing, 'example1', 'example2', 'example3'.\n"
+        echo "\nNo example found for your input try any of the flollowing, 'example1', 'example2', 'example3', 'give_example'.\n"
         
 proc clean(folder: string) =
     when defined windows:
@@ -83,7 +89,7 @@ proc main() =
     if args["version"] or args["v"]:
         version()
     
-    if args["help"] or args["h"]:
+    if args["example"] or args["e"]:
         example($args["<number>"])
 
     if args["clean"] or args["c"]:
