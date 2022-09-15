@@ -14,14 +14,12 @@ Note in between updates there may be other smaller changes. Also none of these a
 
 ### High priority
 
-- Allow input from the user
 - Allow while nesting
 
 ### Low priority
 
 - Add code blocks to the documentation.
 - Create install script for Linux.
-- Clean up bad code and comment on more complex parts for readability.
 
 ## Syntax Example
 
