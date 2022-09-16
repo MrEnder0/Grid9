@@ -42,14 +42,11 @@ proc parse*(path: string, advancedParse: string) : string =
             var whileDepth = 0
             while c_index < len(parsed_code):
                 case $parsed_code[c_index]
-                of $'i':
-                    ifDepth+=1
-                of $'w':
-                    whileDepth+=1
-                of $'}':
-                    ifDepth-=1
-                of $']':
-                    whileDepth-=1
+                of $'i':ifDepth+=1
+                of $'w':whileDepth+=1
+                of $'}':ifDepth-=1
+                of $']':whileDepth-=1
+                
                 if ifDepth < 0:
                     log_this("ERROR", "If depth is less than 0")
                     echo "ERROR: If depth is less than 0"
