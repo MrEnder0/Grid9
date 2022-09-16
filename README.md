@@ -20,6 +20,7 @@ Note in between updates there may be other smaller changes. Also none of these a
 
 - Add code blocks to the documentation.
 - Create install script for Linux.
+- Add update command to the CLI.
 
 ## Syntax Example
 
