@@ -20,7 +20,8 @@ Note in between updates there may be other smaller changes. Also none of these a
 
 - Add code blocks to the documentation.
 - Create install script for Linux.
-- Add update command to the CLI.
+- Create github action to test code on push.
+- Create github action to create nightly builds.
 
 ## Syntax Example
 
