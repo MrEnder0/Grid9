@@ -15,6 +15,7 @@ Note in between updates there may be other smaller changes. Also none of these a
 ### High priority
 
 - Allow while nesting
+- Add flag parameters to commands
 - Add more checks to the advanced parse option
 
 ### Low priority
