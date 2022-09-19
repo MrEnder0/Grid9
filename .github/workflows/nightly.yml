@@ -1,8 +1,8 @@
 name: Update nightly release
 on:
-  issues:
-    schedule:
-    - cron: '* * 1 * *'
+  schedule:
+  - cron: '* * 1 * *'
+
 jobs:
   auto-assign:
     runs-on: ubuntu-latest
