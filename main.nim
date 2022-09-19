@@ -15,6 +15,7 @@ Usage:
 
 Options:
     --advancedParse     Takes longer but can help fix bugs
+    --dontCache         Makes parser not cache the parsed code
 """
 
 proc about() =
@@ -78,8 +79,8 @@ proc clean(folder: string) =
     else:
         echo "\nFolder not found try 'parser_cache' or 'logs'.\n"
 
-proc interpret*(path: string, advancedParse: bool) =
-    var parsed_code = code_parser.parse(path, advancedParse)
+proc interpret*(path: string, advancedParse: bool, dontCache: bool) =
+    var parsed_code = code_parser.parse(path, advancedParse, dontCache)
     code_interpreter.interpret(parsed_code)
     echo "\nCode finished successfully!"
 
@@ -105,10 +106,7 @@ proc main() =
         clean($args["<folder>"])
 
     if args["interpret"] or args["i"]:
-        if args["--advancedParse"]:
-            interpret($args["<path>"], true)
-        else:
-            interpret($args["<path>"], false)
+        interpret($args["<path>"], args["--advancedParse"], args["--dontCache"])
 
     if args["glyth_value_get"]:
         glyth_value_get($args["<glyth>"])
@@ -139,6 +137,6 @@ when isMainModule:
             createDir(log_dir)
 
     if len(os.commandLineParams()) > 0:
-        if os.fileExists(os.commandLineParams()[0]) and len(os.commandLineParams()) == 1: interpret(os.commandLineParams()[0], false)
+        if os.fileExists(os.commandLineParams()[0]) and len(os.commandLineParams()) == 1: interpret(os.commandLineParams()[0], false, false)
         else: main()
     else: non_terminal()

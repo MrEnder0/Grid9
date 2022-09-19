@@ -12,7 +12,7 @@ proc log_this(mode: string, message: string) : string {.discardable.} =
 
     log_file.close()
 
-proc parse*(path: string, advancedParse: bool) : string =
+proc parse*(path: string, advancedParse: bool, dontCache: bool) : string =
     let code = open(path)
 
     when defined windows:
@@ -24,7 +24,7 @@ proc parse*(path: string, advancedParse: bool) : string =
     var parsed_code: string
     var line: string
 
-    if advancedParse != true and os.fileExists(parser_cache_dir & $file_hash & ".g9") and readFile(path) & "\n" == readFile(parser_cache_dir & $file_hash & "_pre.g9"):
+    if advancedParse != true and dontCache != true and os.fileExists(parser_cache_dir & $file_hash & ".g9") and readFile(path) & "\n" == readFile(parser_cache_dir & $file_hash & "_pre.g9"):
         echo "Using Cached Code\n"
         parsed_code = open(parser_cache_dir & $file_hash & ".g9").read_line()
         return parsed_code
