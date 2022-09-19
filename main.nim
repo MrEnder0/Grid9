@@ -10,11 +10,11 @@ Usage:
     Grid9 (version | v)
     Grid9 (example | e) <number>
     Grid9 (clean | c) <folder>
-    Grid9 (interpret | i) <path> [--advancedParse=<ap>]
+    Grid9 (interpret | i) <path> [options]
     Grid9 glyth_value_get <glyth>
 
 Options:
-  --advancedParse=<ap> Takes longer but can help fix bugs [default: False].
+    --advancedParse     Takes longer but can help fix bugs
 """
 
 proc about() =
@@ -78,7 +78,7 @@ proc clean(folder: string) =
     else:
         echo "\nFolder not found try 'parser_cache' or 'logs'.\n"
 
-proc interpret*(path: string, advancedParse: string) =
+proc interpret*(path: string, advancedParse: bool) =
     var parsed_code = code_parser.parse(path, advancedParse)
     code_interpreter.interpret(parsed_code)
     echo "\nCode finished successfully!"
@@ -105,7 +105,10 @@ proc main() =
         clean($args["<folder>"])
 
     if args["interpret"] or args["i"]:
-        interpret($args["<path>"], $args["--advancedParse"])
+        if args["--advancedParse"]:
+            interpret($args["<path>"], true)
+        else:
+            interpret($args["<path>"], false)
 
     if args["glyth_value_get"]:
         glyth_value_get($args["<glyth>"])
@@ -136,6 +139,6 @@ when isMainModule:
             createDir(log_dir)
 
     if len(os.commandLineParams()) > 0:
-        if os.fileExists(os.commandLineParams()[0]) and len(os.commandLineParams()) == 1: interpret(os.commandLineParams()[0], os.commandLineParams()[1])
+        if os.fileExists(os.commandLineParams()[0]) and len(os.commandLineParams()) == 1: interpret(os.commandLineParams()[0], false)
         else: main()
     else: non_terminal()
