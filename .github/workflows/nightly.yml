@@ -11,7 +11,7 @@ jobs:
         sudo apt-get install nim
         nimble install docopt -y
         cd ${{ github.workspace }}
-        echo ls
+        echo */
         nim c main
 
     - name: Upload Build
