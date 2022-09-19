@@ -1,0 +1,24 @@
+name: Update nightly release
+on:
+  issues:
+    schedule:
+    - cron: '* * 1 * *'
+jobs:
+  auto-assign:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Build
+      run: |
+        sudo apt-get update
+        sudo apt-get install nim
+        nimble install docopt -y
+        git clone https://github.com/MrEnder0/Grid9.git
+        nim c main
+
+    - name: Upload Build
+      uses: eine/tip@master
+      with:
+        tag: nightly
+        rm: true
+        token: ${{ secrets.GITHUB_TOKEN }}
+        files: main
