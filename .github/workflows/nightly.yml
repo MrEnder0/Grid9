@@ -16,9 +16,7 @@ jobs:
         nim c main
 
     - name: Upload Build
-      uses: eine/tip@master
+      uses: actions/upload-artifact@v3
       with:
-        tag: nightly
-        rm: true
-        token: ${{ secrets.GITHUB_TOKEN }}
-        files: main
+        name: Binary build
+        path: main
