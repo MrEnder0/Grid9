@@ -1,7 +1,5 @@
 name: Update nightly release
-on:
-  schedule:
-  - cron: '* * 1 * *'
+on: [push]
 
 jobs:
   auto-assign:
