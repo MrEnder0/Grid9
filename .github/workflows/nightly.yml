@@ -1,4 +1,4 @@
-name: Update nightly release
+name: Create Nightly Release
 on: [push]
 
 jobs:
@@ -15,7 +15,6 @@ jobs:
         git clone https://github.com/MrEnder0/Grid9.git
         cd Grid9
         nim c main
-        readlink -f .
 
     - name: Upload Build
       uses: actions/upload-artifact@v3
