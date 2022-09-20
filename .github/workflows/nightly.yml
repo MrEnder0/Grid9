@@ -1,7 +1,7 @@
 name: Create Nightly Release
 on:
   schedule:
-  - cron: '* * 1 * *'
+  - cron: '59 23 * * *'
 
 jobs:
   NightlyRelease:
