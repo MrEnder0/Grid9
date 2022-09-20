@@ -15,7 +15,6 @@ Note in between updates there may be other smaller changes. Also none of these a
 ### High priority
 
 - Allow while nesting
-- Add flag parameters to commands
 - Add more checks to the advanced parse option
 
 ### Low priority
@@ -23,7 +22,6 @@ Note in between updates there may be other smaller changes. Also none of these a
 - Add code blocks to the documentation.
 - Create install script for Linux.
 - Create github action to test code on push.
-- Create github action to create nightly builds.
 
 ## Syntax Example
 
