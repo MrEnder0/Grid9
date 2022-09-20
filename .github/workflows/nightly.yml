@@ -5,6 +5,7 @@ jobs:
   NightlyRelease:
     runs-on: ubuntu-latest
     steps:
+    
     - name: Build
       run: |
         sudo apt-get update
@@ -18,5 +19,5 @@ jobs:
     - name: Upload Build
       uses: actions/upload-artifact@v3
       with:
-        name: Binary build
+        name: ${{ github.workspace }}/Grid9/Binary build
         path: main
