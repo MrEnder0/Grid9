@@ -17,6 +17,9 @@ jobs:
 
     - name: Upload Build
       uses: actions/upload-artifact@v3
+      run: |
+        cd ${{ github.workspace }}
+        cd Grid9
       with:
         name: Binary build
         path: main
