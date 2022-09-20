@@ -19,5 +19,5 @@ jobs:
     - name: Upload Build
       uses: actions/upload-artifact@v3
       with:
-        name: ${{ github.workspace }}/Grid9/Binary build
+        name: main
         path: main
