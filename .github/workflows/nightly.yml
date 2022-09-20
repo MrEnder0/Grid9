@@ -1,20 +1,24 @@
 name: Create Nightly Release
-on: [push]
+on:
+  schedule:
+  - cron: '59 23 * * *'
 
 jobs:
   NightlyRelease:
     runs-on: ubuntu-latest
     steps:
     
-    - name: Build
+    - name: Install Nim
       run: |
         sudo apt-get update
         sudo apt-get install nim
         nimble install docopt -y
+    - name: build
+      run: |
         cd ${{ github.workspace }}
         git clone https://github.com/MrEnder0/Grid9.git
         cd Grid9
-        nim c --cpu:amd64 --os:windows main
+        nim c -d:release main
 
     - name: Upload Build
       uses: actions/upload-artifact@v3
