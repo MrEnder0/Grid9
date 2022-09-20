@@ -14,7 +14,7 @@ jobs:
         sudo apt-get install nim
         nimble install docopt -y
         
-    - name: build
+    - name: Build
       run: |
         cd ${{ github.workspace }}
         git clone https://github.com/MrEnder0/Grid9.git
