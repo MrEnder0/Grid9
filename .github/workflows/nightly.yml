@@ -15,9 +15,10 @@ jobs:
         git clone https://github.com/MrEnder0/Grid9.git
         cd Grid9
         nim c main
+        readlink -f .
 
     - name: Upload Build
       uses: actions/upload-artifact@v3
       with:
         name: main
-        path: main
+        path: Grid9/main
