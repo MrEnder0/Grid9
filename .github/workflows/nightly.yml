@@ -5,6 +5,7 @@ jobs:
   NightlyRelease:
     runs-on: ubuntu-latest
     steps:
+    
     - name: Build
       run: |
         sudo apt-get update
