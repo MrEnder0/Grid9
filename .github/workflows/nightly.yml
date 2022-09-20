@@ -1,5 +1,5 @@
 name: Create Nightly Release
-on:[push]
+on: [push]
 
 jobs:
   NightlyRelease:
