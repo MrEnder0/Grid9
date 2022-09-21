@@ -1,2 +1,6 @@
+nimcache/
+nimblecache/
+htmldocs/
+
 *.exe
 main
