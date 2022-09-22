@@ -17,25 +17,18 @@ Note: Seems that currently any version 2022-012 or newer will require nim to be 
 
 #### Windows
 
-Make sure nim and git are installed then run the following commands.
+Make sure nim and git are installed then run this command.
 
 ```cmd
-nimble install docopt -y
-git clone https://github.com/MrEnder0/Grid9.git
-cd Grid9
-nim c -d:release main.nim
+powershell.exe $code = Invoke-RestMethod "https://raw.githubusercontent.com/MrEnder0/Grid9/main/installscripts/windows.cmd"; 
 ```
 
 #### Linux
 
+Make sure curl is installed then run this command.
+
 ```bash
-sudo apt-get update
-sudo apt-get install git
-sudo apt-get install nim
-nimble install docopt -y
-git clone https://github.com/MrEnder0/Grid9.git
-cd Grid9
-nim c -d:release main
+curl -s https://raw.githubusercontent.com/MrEnder0/Grid9/main/installscripts/linux.sh | bash
 ```
 
 ## Future plans
