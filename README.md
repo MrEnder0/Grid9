@@ -2,8 +2,6 @@
 
 A esoteric interpreted language made in Nim based on a 3x3 grid of zeros and ones.
 
-![Code Size](https://img.shields.io/github/languages/code-size/MrEnder0/Grid9?style=for-the-badge)
-
 [![Nightly Release](https://github.com/MrEnder0/Grid9/actions/workflows/nightly.yml/badge.svg)](https://github.com/MrEnder0/Grid9/actions/workflows/nightly.yml)
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/MrEnder0/Grid9)
