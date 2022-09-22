@@ -1,4 +1,4 @@
-name: Create Nightly Release
+name: Nightly Release
 on:
   schedule:
   - cron: '59 23 * * *'
