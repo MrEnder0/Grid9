@@ -57,6 +57,7 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool) : string =
                 c_index += 1
 
             if ifDepth > 0:
+                log_this("WARNING". "If depth is greater than 0.")
                 echo "WARNING: If depth is greater than 0 would you like to try to automatically fix? (y/n)"
                 let responce = readLine(stdin)
                 if $responce == $'y':
@@ -66,6 +67,7 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool) : string =
                         fixTimes += 1
                     discard fixTimes
             if whileDepth > 0:
+                log_this("WARNING". "While depth is greater than 0.")
                 echo "WARNING: While depth is greater than 0 would you like to try to automatically fix? (y/n)"
                 let responce = readLine(stdin)
                 if $responce == $'y':
