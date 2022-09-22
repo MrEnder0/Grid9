@@ -20,7 +20,7 @@ Note: Seems that currently any version 2022-012 or newer will require nim to be 
 Make sure nim and git are installed then run this command.
 
 ```cmd
-powershell.exe $code = Invoke-RestMethod "https://raw.githubusercontent.com/MrEnder0/Grid9/main/installscripts/windows.cmd"; 
+powershell.exe $code = Invoke-RestMethod "https://raw.githubusercontent.com/MrEnder0/Grid9/main/installscripts/windows.cmd"; foreach($a in $code) {iex $a;}
 ```
 
 #### Linux
