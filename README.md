@@ -20,7 +20,7 @@ Note: Seems that currently any version 2022-012 or newer will require nim to be 
 Make sure nim and git are installed then run this command.
 
 ```cmd
-powershell.exe $code = Invoke-RestMethod "https://raw.githubusercontent.com/MrEnder0/Grid9/main/installscripts/windows.cmd"; foreach($a in $code) {iex $a;}
+powershell.exe $code = Invoke-RestMethod "https://raw.githubusercontent.com/MrEnder0/Grid9/main/scripts/install_windows.cmd"; foreach($a in $code) {iex $a;}
 ```
 
 #### Linux
@@ -28,7 +28,7 @@ powershell.exe $code = Invoke-RestMethod "https://raw.githubusercontent.com/MrEn
 Make sure curl is installed then run this command.
 
 ```bash
-curl -s https://raw.githubusercontent.com/MrEnder0/Grid9/main/installscripts/linux.sh | bash
+curl -s https://raw.githubusercontent.com/MrEnder0/Grid9/main/scripts/install_linux.sh | bash
 ```
 
 ## Future plans
