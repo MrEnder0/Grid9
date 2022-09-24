@@ -33,7 +33,7 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool) : string =
             parsed_code = parsed_code & line
         
             #Strips whitespace and all capital letters for comments
-            parsed_code = replace(parsed_code, re("[A-Z!?*()\n ]+"), "")  
+            parsed_code = replace(parsed_code, re("[A-Z!?*()\n\t ]+"), "")  
 
         if advancedParse == true:
             echo "Doing advanced parse\n"
