@@ -80,6 +80,13 @@ proc clean(folder: string) =
         echo "\nFolder not found try 'parser_cache' or 'logs'.\n"
 
 proc interpret*(path: string, advancedParse: bool, dontCache: bool) =
+
+    #Check if file exists and allows for file extension to not be defined
+    var path = path
+    if os.fileExists(path):discard
+    elif os.fileExists(path & ".g9"):path = path & ".g9"
+    else:echo "\nError: File not found, maybe check your path.\n"
+
     var parsed_code = code_parser.parse(path, advancedParse, dontCache)
     code_interpreter.interpret(parsed_code)
     echo "\nCode finished successfully!"
