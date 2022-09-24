@@ -43,4 +43,3 @@ Note in between updates there may be other smaller changes. Also none of these a
 ### Low priority
 
 - Add code blocks to the documentation.
-- Create github action to test code on push.
