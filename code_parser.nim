@@ -77,6 +77,8 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool) : string =
                         fixTimes += 1
                     discard fixTimes
 
+        code.close()
+        
         let parsed_code_file = open(parser_cache_dir & $file_hash & ".g9", fmWrite)
         let unparsed_code_file = open(parser_cache_dir & $file_hash & "_pre.g9", fmWrite)
         parsed_code_file.writeLine(parsed_code)
