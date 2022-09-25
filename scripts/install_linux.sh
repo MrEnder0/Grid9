@@ -4,6 +4,10 @@ if [[ $LINUX_VERSION_NAME == *"Ubuntu"* ]];
 then
     echo "System identified as Ubuntu. Enter sudo password to continue."
     PACKAGE_MANAGER="apt"
+elif [[ $LINUX_VERSION_NAME == *"Debian"* ]];
+then
+    echo "System identified as Debian. Enter sudo password to continue."
+    PACKAGE_MANAGER="apt"
 elif [[ $LINUX_VERSION_NAME == *"Manjaro"* ]];
 then
     echo "System identified as Manjaro. Enter sudo password to continue."
