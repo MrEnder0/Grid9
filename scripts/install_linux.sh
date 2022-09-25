@@ -2,11 +2,11 @@ LINUX_VERSION_NAME=`lsb_release -a`
 
 if [[ $LINUX_VERSION_NAME == *"Ubuntu"* ]];
 then
-    echo "System identified as Ubuntu."
+    echo "System identified as Ubuntu. Enter sudo password to continue."
     PACKAGE_MANAGER="apt"
 elif [[ $LINUX_VERSION_NAME == *"Manjaro"* ]];
 then
-    echo "System identified as Manjaro."
+    echo "System identified as Manjaro. Enter sudo password to continue."
     PACKAGE_MANAGER="pacman"
 else
     echo "We cant identify your linux version, we currently support apt and pacman package managers if your system does one of these just enter apt or pacman."
