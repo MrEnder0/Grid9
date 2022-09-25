@@ -23,7 +23,8 @@ if [[ $PACKAGE_MANAGER == "apt" ]]; then
     export PATH=$PATH:~$PWD/main
 elif [[ $PACKAGE_MANAGER == "pacman" ]]; then
     sudo pacman -Syyu
-    sudo pacman -Sy git, nim
+    sudo pacman -S git
+    sudo pacman -S nim
     nimble install docopt -y
     git clone https://github.com/MrEnder0/Grid9.git
     cd Grid9
