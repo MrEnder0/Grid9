@@ -24,20 +24,24 @@ if [[ $PACKAGE_MANAGER == "apt" ]]; then
     sudo apt update
     sudo apt install git
     sudo apt install nim
+    sudo apt install rename
     nimble install docopt -y
     git clone https://github.com/MrEnder0/Grid9.git
     cd Grid9/src
-    nim c -d:release main
-    export PATH=$PATH:~$PWD/main
+    rename -v 's/main/grid9/' *.nim
+    nim c -d:release grid9
+    path+=$PWD/main
 elif [[ $PACKAGE_MANAGER == "pacman" ]]; then
     sudo pacman -Syyu
     sudo pacman -S git
     sudo pacman -S nim
+    sudo pacman -S rename
     nimble install docopt -y
     git clone https://github.com/MrEnder0/Grid9.git
     cd Grid9/src
-    nim c -d:release main
-    export PATH=$PATH:~$PWD/main
+    rename -v 's/main/grid9/' *.nim
+    nim c -d:release grid9
+    path+=$PWD/main
 else
     echo "Unsuported package manager only apt and pacman are curently suported."
 fi
