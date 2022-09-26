@@ -8,7 +8,7 @@ const doc = """
 Usage:
     Grid9 (about | a)
     Grid9 (version | v)
-    Grid9 (example | e) <number>
+    Grid9 (example | e) <name>
     Grid9 (clean | c) <folder>
     Grid9 (interpret | i) <path> [options]
     Grid9 glyth_value_get <glyth>
@@ -24,7 +24,7 @@ proc about() =
 proc version() =
     echo "\n2022-014\n"
 
-proc example(number: string) =
+proc example(name: string) =
     case $number
     of "example1":
         echo "\n**This example shows how to use basic language features such as the memory grid, queue and  printing.**\n"
@@ -56,8 +56,14 @@ proc example(number: string) =
             echo readFile("examples/random_char_example.g9") & "\n"
         except:
             echo "Error: random_char_example.g9 not found, maybe you did not install the optional component."
+    of "while_nesting":
+        echo "\n**This example shows how to use while loops inside of while loops.**\n"
+        try:
+            echo readFile("examples/while_nesting.g9") & "\n"
+        except:
+            echo "Error: while_nesting.g9 not found, maybe you did not install the optional component."
     else:
-        echo "\nNo example found for your input try any of the flollowing, 'example1', 'example2', 'example3', 'give_example', 'random_char_example'.\n"
+        echo "\nNo example found for your input try any of the flollowing, 'example1', 'example2', 'example3', 'give_example', 'random_char_example', 'while_nesting'.\n"
         
 proc clean(folder: string) =
     when defined windows:
@@ -114,7 +120,7 @@ proc main() =
         version()
     
     if args["example"] or args["e"]:
-        example($args["<number>"])
+        example($args["<name>"])
 
     if args["clean"] or args["c"]:
         clean($args["<folder>"])
