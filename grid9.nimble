@@ -16,5 +16,5 @@ requires "regex >= 0.19.0"
 
 # Tasks
 
-task build, "Build the project":
+task build, "Build project":
   exec "nimble c --d:release src/main.nim"
