@@ -6,6 +6,7 @@ tasks:
       sudo apt-get update
       sudo apt-get install nim
       nimble install docopt -y
+      cd src
       
     command: nim c main
 

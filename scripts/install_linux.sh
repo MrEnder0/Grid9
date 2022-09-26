@@ -26,7 +26,7 @@ if [[ $PACKAGE_MANAGER == "apt" ]]; then
     sudo apt install nim
     nimble install docopt -y
     git clone https://github.com/MrEnder0/Grid9.git
-    cd Grid9
+    cd Grid9/src
     nim c -d:release main
     export PATH=$PATH:~$PWD/main
 elif [[ $PACKAGE_MANAGER == "pacman" ]]; then
@@ -35,7 +35,7 @@ elif [[ $PACKAGE_MANAGER == "pacman" ]]; then
     sudo pacman -S nim
     nimble install docopt -y
     git clone https://github.com/MrEnder0/Grid9.git
-    cd Grid9
+    cd Grid9/src
     nim c -d:release main
     export PATH=$PATH:~$PWD/main
 else
