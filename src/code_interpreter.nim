@@ -29,8 +29,8 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
     var mem_queue: string = ""
 
     var if_nest_depth: int = 0
-    var while_pos: int = -1
-    var while_pos_end: int
+    var while_pos = newSeq[int]()
+    var while_pos_end = newSeq[int]()
     var if_pos_end: int
 
     var c_index: int = 0
@@ -167,27 +167,27 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
                     if parsed_code[c_index + 2] == '=':
                         if parsed_code[c_index + 3] == '0':
                             if mem_grid[$parsed_code[c_index + 1]] == 0:
-                                while_pos = c_index + 1
+                                while_pos.add(c_index + 1)
                             else:
-                                return
+                                while_pos.delete(0)
                         if parsed_code[c_index + 3] == '1':
                             if mem_grid[$parsed_code[c_index + 1]] == 1:
-                                while_pos = c_index + 1
+                                while_pos.add(c_index + 1)
                             else:
-                                return
+                                while_pos.delete(0)
                     elif parsed_code[c_index + 2] == '!':
                         if mem_grid[$parsed_code[c_index + 1]] != mem_grid[$parsed_code[c_index + 3]]:
-                            while_pos = c_index + 1
+                            while_pos.add(c_index + 1)
                         else:
-                            return
+                            while_pos.delete(0)
                 else:
                     log_this("ERROR", "Invalid while statement")
 
             #exit command
             of $'x':
-                while_pos_end = c_index + 1
-                while parsed_code[while_pos_end] != ']':
-                    while_pos_end += 1
+                while_pos_end.add(c_index + 1)
+                while parsed_code[while_pos_end[0]] != ']':
+                    while_pos_end.add(c_index + 1)
                 c_index = if_pos_end
 
             #back command
@@ -205,12 +205,14 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
 
             #Go to start of while loop
             if c_index == len(parsed_code)-1 or parsed_code[c_index] == ']':
-                if while_pos == -1:
+                if while_pos == @[]:
                     return
                 else:
-                    c_index = while_pos
+                    c_index = while_pos[0]
 
             c_index += 1
+            echo while_pos
+
     except:
         log_this("ERROR", "Unknown error in script on line" & $c_index)
         return
