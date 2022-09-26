@@ -163,25 +163,29 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
 
             #while command
             of $'w':
-                if len(parsed_code) > c_index + 3:
-                    if parsed_code[c_index + 2] == '=':
-                        if parsed_code[c_index + 3] == '0':
-                            if mem_grid[$parsed_code[c_index + 1]] == 0:
-                                while_pos.add(c_index + 1)
-                            else:
-                                while_pos.delete(0)
-                        if parsed_code[c_index + 3] == '1':
-                            if mem_grid[$parsed_code[c_index + 1]] == 1:
-                                while_pos.add(c_index + 1)
-                            else:
-                                while_pos.delete(0)
-                    elif parsed_code[c_index + 2] == '!':
-                        if mem_grid[$parsed_code[c_index + 1]] != mem_grid[$parsed_code[c_index + 3]]:
-                            while_pos.add(c_index + 1)
-                        else:
-                            while_pos.delete(0)
+                #if the current c_index is in while_pos alreay skip
+                if c_index+1 in while_pos:
+                    discard
                 else:
-                    log_this("ERROR", "Invalid while statement")
+                    if len(parsed_code) > c_index + 3:
+                        if parsed_code[c_index + 2] == '=':
+                            if parsed_code[c_index + 3] == '0':
+                                if mem_grid[$parsed_code[c_index + 1]] == 0:
+                                    while_pos.add(c_index + 1)
+                                else:
+                                    while_pos.delete(0)
+                            if parsed_code[c_index + 3] == '1':
+                                if mem_grid[$parsed_code[c_index + 1]] == 1:
+                                    while_pos.add(c_index + 1)
+                                else:
+                                    while_pos.delete(0)
+                        elif parsed_code[c_index + 2] == '!':
+                            if mem_grid[$parsed_code[c_index + 1]] != mem_grid[$parsed_code[c_index + 3]]:
+                                while_pos.add(c_index + 1)
+                            else:
+                                while_pos.delete(0)
+                    else:
+                        log_this("ERROR", "Invalid while statement")
 
             #exit command
             of $'x':
@@ -211,7 +215,6 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
                     c_index = while_pos[0]
 
             c_index += 1
-            echo while_pos
 
     except:
         log_this("ERROR", "Unknown error in script on line" & $c_index)
