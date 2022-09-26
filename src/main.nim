@@ -76,8 +76,15 @@ proc clean(folder: string) =
             echo "\nCleaning logs folder\n"
             os.removeDir(main_dir & "logs")
             os.createDir(main_dir & "logs")
+    of "all":
+        if os.dirExists(main_dir):
+            echo "\nCleaning all folders\n"
+            os.removeDir(main_dir & "parser_cache")
+            os.createDir(main_dir & "parser_cache")
+            os.removeDir(main_dir & "logs")
+            os.createDir(main_dir & "logs")
     else:
-        echo "\nFolder not found try 'parser_cache' or 'logs'.\n"
+        echo "\nNo folder found matching your input try any of the flollowing 'parser_cache', 'logs', or 'all'.\n"
 
 proc interpret*(path: string, advancedParse: bool, dontCache: bool) =
 
