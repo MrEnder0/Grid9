@@ -25,7 +25,7 @@ proc version() =
     echo "\n2022-014\n"
 
 proc example(name: string) =
-    case $number
+    case $name
     of "example1":
         echo "\n**This example shows how to use basic language features such as the memory grid, queue and  printing.**\n"
         try:
