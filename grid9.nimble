@@ -1,6 +1,6 @@
 # Package
 
-version       = "2022.013"
+version       = "2022.014"
 author        = "Mr.Ender"
 description   = "A esoteric interpreted language made in Nim based on a 3x3 grid of zeros and ones. "
 license       = "Apache License 2.0"

@@ -22,7 +22,7 @@ proc about() =
     echo "\nGrid9 is a esoteric programming language that is based on a 3x3 grid of memory cells where you make patterns glyths.\nThis language created by Mr.Ender in the Nim programming language.\n"
 
 proc version() =
-    echo "\n2022-013\n"
+    echo "\n2022-014\n"
 
 proc example(number: string) =
     case $number
@@ -105,7 +105,7 @@ proc glyth_value_get(glyth: string) =
     echo glyths.get_glyth(glyth)
 
 proc main() =
-    let args = docopt(doc, version = "2022-013")
+    let args = docopt(doc, version = "2022-014")
 
     if args["about"] or args["a"]:
         about()
