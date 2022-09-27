@@ -62,8 +62,14 @@ proc example(name: string) =
             echo readFile("examples/while_nesting.g9") & "\n"
         except:
             echo "Error: while_nesting.g9 not found, maybe you did not install the optional component."
+    of "if_ladder":
+        echo "\n**This example shows how to use a chain of ladders to climb a if chain.**\n"
+        try:
+            echo readFile("examples/if_ladder.g9") & "\n"
+        except:
+            echo "Error: if_ladder.g9 not found, maybe you did not install the optional component."
     else:
-        echo "\nNo example found for your input try any of the flollowing, 'example1', 'example2', 'example3', 'give_example', 'random_char_example', 'while_nesting'.\n"
+        echo "\nNo example found for your input try any of the flollowing, 'example1', 'example2', 'example3', 'give_example', 'random_char_example', 'while_nesting', 'if_ladder'.\n"
         
 proc clean(folder: string) =
     when defined windows:
