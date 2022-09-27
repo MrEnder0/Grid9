@@ -18,7 +18,7 @@ jobs:
       run: |
         cd ${{ github.workspace }}
         git clone https://github.com/MrEnder0/Grid9.git
-        cd Grid9
+        cd Grid9/src
         nim c -d:release main
 
     - name: Upload Build
