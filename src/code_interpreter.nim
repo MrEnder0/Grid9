@@ -217,5 +217,5 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
             c_index += 1
 
     except:
-        log_this("ERROR", "Unknown error in script on line" & $c_index)
+        log_this("ERROR", "Unknown error in script on line " & $c_index)
         return

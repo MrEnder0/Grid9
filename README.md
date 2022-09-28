@@ -38,6 +38,7 @@ Note in between updates there may be other smaller changes. Also none of these a
 ### High priority
 
 - Add more checks to the advanced parse option
+- Allow certain commands to not have set character lengths.
 
 ### Low priority
 
