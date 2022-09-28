@@ -43,6 +43,14 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool) : string =
             var is_exited = false
             while c_index < len(parsed_code):
                 case $parsed_code[c_index]
+                of $'q':
+                    if parsed_code[c_index + 1] == 's':
+                        discard
+                    elif parsed_code[c_index + 1] == 'c':
+                        discard
+                    else:
+                        log_this("ERROR", "Invalid operation for queue command.")
+                        echo "ERROR: Invalid operation for queue command."
                 of $'i':ifDepth+=1
                 of $'w':whileDepth+=1
                 of $'}':ifDepth-=1

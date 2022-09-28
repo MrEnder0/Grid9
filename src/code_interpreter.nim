@@ -112,7 +112,7 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
                             if mem_grid[$parsed_code[c_index + 1]] == 0:
                                 discard
                             else:
-                                #skip to end of if
+                                #skips to end of if
                                 if_nest_depth = 1
                                 if_pos_end = c_index + 1
                                 while parsed_code[if_pos_end] != '}':
@@ -129,7 +129,7 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
                             if mem_grid[$parsed_code[c_index + 1]] == 1:
                                 discard
                             else:
-                                #skip to end of if
+                                #skips to end of if
                                 if_nest_depth = 1
                                 if_pos_end = c_index + 1
                                 while parsed_code[if_pos_end] != '}':
@@ -146,7 +146,7 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
                         if mem_grid[$parsed_code[c_index + 1]] != mem_grid[$parsed_code[c_index + 3]]:
                             discard
                         else:
-                            #skip to end of if
+                            #skips to end of if
                             if_nest_depth = 1
                             if_pos_end = c_index + 1
                             while parsed_code[if_pos_end] != '}':
@@ -163,7 +163,7 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
 
             #while command
             of $'w':
-                #if the current c_index is in while_pos alreay skip
+                #checks if the current c_index is in while_pos already skip it
                 if c_index+1 in while_pos:
                     discard
                 else:
