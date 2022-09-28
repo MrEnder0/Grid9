@@ -46,6 +46,10 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool) : string =
                 of $'w':whileDepth+=1
                 of $'}':ifDepth-=1
                 of $']':whileDepth-=1
+                of $'b':
+                    if not match($parsed_code[c_index + 1], re"0-9",):
+                        log_this("ERROR", "Invalid number")
+                        echo "ERROR: Invalid number"
                 
                 if ifDepth < 0:
                     log_this("ERROR", "If depth is less than 0")
