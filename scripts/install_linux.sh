@@ -41,10 +41,8 @@ elif [[ $PACKAGE_MANAGER == "pacman" ]]; then
     sudo pacman -S rename
     nimble install docopt -y
     git clone https://github.com/MrEnder0/Grid9.git
-    echo $PWD
 
     cd Grid9/src
-    echo $PWD
     rename -v 's/main/grid9/' *.nim
     nim c -d:release grid9
 
@@ -53,3 +51,9 @@ elif [[ $PACKAGE_MANAGER == "pacman" ]]; then
 else
     echo "Unsuported package manager only apt and pacman are curently suported."
 fi
+echo "Installation complete. If you got any errors try running the commands below manually."
+echo "cd Grid9/src"
+echo "rename -v 's/main/grid9/' *.nim"
+echo "nim c -d:release grid9"
+echo "sudo chmod 755 grid9"
+echo "sudo mv grid9 /usr/bin/"
