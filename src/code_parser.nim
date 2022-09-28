@@ -43,14 +43,26 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool) : string =
             var is_exited = false
             while c_index < len(parsed_code):
                 case $parsed_code[c_index]
+                of $'f':
+                    if not match($parsed_code[c_index + 1], re"0-9",):
+                        log_this("ERROR", "Invalid flip value for grid")
+                        echo "ERROR: Invalid flip value for grid"
+                of $'s':
+                    if not match($parsed_code[c_index + 1], re"0-9",) or not match($parsed_code[c_index + 2], re"01r",):
+                        log_this("ERROR", "Invalid set value for grid")
+                        echo "ERROR: Invalid set value for grid"
+                of $'a':
+                    if not match($parsed_code[c_index + 1], re"01r",):
+                        log_this("ERROR", "Invalid set all value for grid")
+                        echo "ERROR: Invalid value for grid"
                 of $'q':
                     if parsed_code[c_index + 1] == 's':
                         discard
                     elif parsed_code[c_index + 1] == 'c':
                         discard
                     else:
-                        log_this("ERROR", "Invalid operation for queue command.")
-                        echo "ERROR: Invalid operation for queue command."
+                        log_this("ERROR", "Invalid operation for queue command")
+                        echo "ERROR: Invalid operation for queue command"
                 of $'i':ifDepth+=1
                 of $'w':whileDepth+=1
                 of $'}':ifDepth-=1
@@ -60,8 +72,8 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool) : string =
                         is_exited = false
                 of $'b':
                     if not match($parsed_code[c_index + 1], re"0-9",):
-                        log_this("ERROR", "Invalid number")
-                        echo "ERROR: Invalid number"
+                        log_this("ERROR", "Invalid number for back command")
+                        echo "ERROR: Invalid number for back command"
                 of $'x':
                     is_exited = true
                 
@@ -75,7 +87,7 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool) : string =
                 c_index += 1
 
             if ifDepth > 0:
-                log_this("WARNING", "If depth is greater than 0.")
+                log_this("WARNING", "If depth is greater than 0")
                 echo "WARNING: If depth is greater than 0 would you like to try to automatically fix? (y/n)"
                 let responce = readLine(stdin)
                 if $responce == $'y':
@@ -86,7 +98,7 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool) : string =
                     discard fixTimes
                 discard responce
             if whileDepth > 0:
-                log_this("WARNING", "While depth is greater than 0.")
+                log_this("WARNING", "While depth is greater than 0")
                 echo "WARNING: While depth is greater than 0 would you like to try to automatically fix? (y/n)"
                 let responce = readLine(stdin)
                 if $responce == $'y':
@@ -97,7 +109,7 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool) : string =
                     discard fixTimes
                 discard responce
             if is_exited == true:
-                log_this("WARNING", "Attemped to exit a while loop while not currently being in one.")
+                log_this("WARNING", "Attemped to exit a while loop while not currently being in one")
                 echo "WARNING: Exited while loop without a while loop would you like to try to automatically fix? (y/n)"
                 let responce = readLine(stdin)
                 if $responce == $'y':
