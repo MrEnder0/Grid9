@@ -16,7 +16,7 @@ elif [[ $LINUX_VERSION_NAME == *"Manjaro"* ]]; then
     echo "System identified as Manjaro. You may have to enter sudo password to continue."
     PACKAGE_MANAGER="pacman"
 else
-    echo "We cant identify your linux version, we currently support apt and pacman package managers if your system does one of these just enter apt or pacman."
+    echo "We cant identify your linux version, we currently support apt and pacman package managers, if your system does one of these just enter apt or pacman below."
     read PACKAGE_MANAGER
 fi
 
@@ -27,10 +27,13 @@ if [[ $PACKAGE_MANAGER == "apt" ]]; then
     sudo apt install rename
     nimble install docopt -y
     git clone https://github.com/MrEnder0/Grid9.git
+
     cd Grid9/src
     rename -v 's/main/grid9/' *.nim
     nim c -d:release grid9
-    path+=$PWD/main
+
+    sudo chmod 755 grid9
+    sudo mv grid9 /usr/bin/
 elif [[ $PACKAGE_MANAGER == "pacman" ]]; then
     sudo pacman -Syyu
     sudo pacman -S git
@@ -38,10 +41,13 @@ elif [[ $PACKAGE_MANAGER == "pacman" ]]; then
     sudo pacman -S rename
     nimble install docopt -y
     git clone https://github.com/MrEnder0/Grid9.git
+
     cd Grid9/src
     rename -v 's/main/grid9/' *.nim
     nim c -d:release grid9
-    path+=$PWD/main
+
+    sudo chmod 755 grid9
+    sudo mv grid9 /usr/bin/
 else
     echo "Unsuported package manager only apt and pacman are curently suported."
 fi
