@@ -11,13 +11,13 @@
 AppId={{0C1D1885-945C-4EBD-9F2D-F9ECCCBEFD9D}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
-;AppVerName={#MyAppName} {#MyAppVersion}
+AppVerName={#MyAppName} {#MyAppVersion}
 AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
 DefaultDirName={autopf}\{#MyAppName}
-
+MinVersion=10.0.18362
 ChangesAssociations=yes
 DisableProgramGroupPage=yes
 LicenseFile=LICENSE.txt
@@ -30,6 +30,7 @@ SolidCompression=yes
 WizardStyle=modern
 SetupIconFile=Grid9\innosetup\icon.ico
 WizardImageFile=Grid9\innosetup\installer_banner.bmp
+UninstallDisplayIcon={app}\{#MyAppExeName}
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
