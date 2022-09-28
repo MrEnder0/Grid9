@@ -41,8 +41,10 @@ elif [[ $PACKAGE_MANAGER == "pacman" ]]; then
     sudo pacman -S rename
     nimble install docopt -y
     git clone https://github.com/MrEnder0/Grid9.git
+    echo $PWD
 
     cd Grid9/src
+    echo $PWD
     rename -v 's/main/grid9/' *.nim
     nim c -d:release grid9
 
