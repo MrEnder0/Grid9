@@ -40,16 +40,22 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool) : string =
             var c_index = 0
             var ifDepth = 0
             var whileDepth = 0
+            var is_exited = false
             while c_index < len(parsed_code):
                 case $parsed_code[c_index]
                 of $'i':ifDepth+=1
                 of $'w':whileDepth+=1
                 of $'}':ifDepth-=1
-                of $']':whileDepth-=1
+                of $']':
+                    whileDepth-=1
+                    if is_exited == true:
+                        is_exited = false
                 of $'b':
                     if not match($parsed_code[c_index + 1], re"0-9",):
                         log_this("ERROR", "Invalid number")
                         echo "ERROR: Invalid number"
+                of $'x':
+                    is_exited = true
                 
                 if ifDepth < 0:
                     log_this("ERROR", "If depth is less than 0")
@@ -70,6 +76,7 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool) : string =
                         parsed_code = parsed_code & $'}'
                         fixTimes += 1
                     discard fixTimes
+                discard responce
             if whileDepth > 0:
                 log_this("WARNING", "While depth is greater than 0.")
                 echo "WARNING: While depth is greater than 0 would you like to try to automatically fix? (y/n)"
@@ -80,6 +87,14 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool) : string =
                         parsed_code = parsed_code & $']'
                         fixTimes += 1
                     discard fixTimes
+                discard responce
+            if is_exited == true:
+                log_this("WARNING", "Attemped to exit a while loop while not currently being in one.")
+                echo "WARNING: Exited while loop without a while loop would you like to try to automatically fix? (y/n)"
+                let responce = readLine(stdin)
+                if $responce == $'y':
+                    parsed_code = parsed_code & $']'
+                discard responce
 
         code.close()
         
