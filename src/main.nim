@@ -72,7 +72,7 @@ proc example(name: string) =
         else:
             echo "\nNo example found for your input try any of the flollowing, 'example1', 'example2', 'example3', 'give_example', 'random_char_example', 'while_nesting', 'if_ladder'.\n"
     else:
-        echo "\nExample files are currently only implimented on Windows will add Linux support soon."
+        echo "\nExample files are currently only implimented on Windows will add Linux support soon.\n"
 
 proc clean(folder: string) =
     when defined windows:
