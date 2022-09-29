@@ -26,13 +26,13 @@ if [[ $PACKAGE_MANAGER == "apt" ]]; then
     sudo apt install nim
     sudo apt install rename
     nimble install docopt -y
-    git clone https://github.com/MrEnder0/Grid9.git
+    git clone https://github.com/MrEnder0/Grid9
 
     cd Grid9/src
     rename -v 's/main/grid9/' *.nim
     nim c -d:release grid9
 
-    sudo chmod 755 grid9
+    sudo chmod 777 grid9
     sudo mv grid9 /usr/bin/
 elif [[ $PACKAGE_MANAGER == "pacman" ]]; then
     sudo pacman -Syyu
@@ -40,20 +40,15 @@ elif [[ $PACKAGE_MANAGER == "pacman" ]]; then
     sudo pacman -S nim
     sudo pacman -S rename
     nimble install docopt -y
-    git clone https://github.com/MrEnder0/Grid9.git
+    git clone https://github.com/MrEnder0/Grid9
 
     cd Grid9/src
     rename -v 's/main/grid9/' *.nim
     nim c -d:release grid9
 
-    sudo chmod 755 grid9
+    sudo chmod 777 grid9
     sudo mv grid9 /usr/bin/
 else
     echo "Unsuported package manager only apt and pacman are curently suported."
 fi
-echo "Installation complete. If you got any errors try running the commands below manually."
-echo "cd Grid9/src"
-echo "rename -v 's/main/grid9/' *.nim"
-echo "nim c -d:release grid9"
-echo "sudo chmod 755 grid9"
-echo "sudo mv grid9 /usr/bin/"
+echo "Installation complete. If you get any errors about permissions when running Grid9 try running the Grid9 with sudo."
