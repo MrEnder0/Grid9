@@ -3,12 +3,14 @@ image: gitpod/workspace-full
 tasks:
   - name: Startup
     init: |
-      sudo apt-get update
-      sudo apt-get install nim
+      sudo apt update
+      sudo apt install nim
+      sudo apt install rename
       nimble install docopt -y
       cd src
+      rename -v 's/main/grid9/' *.nim
       
-    command: nim c main
+    command: nim c grid9
 
 vscode:
   extensions:
