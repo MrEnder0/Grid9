@@ -17,7 +17,7 @@ Note: Seems that currently any version 2022-012 or newer will require nim to be 
 
 #### Windows
 
-Make sure nim and git are installed then run this command.
+Make sure git is installed then run this command.
 
 ```powershell
 powershell.exe $code = Invoke-RestMethod "https://raw.githubusercontent.com/MrEnder0/Grid9/main/scripts/install_windows.ps1"; foreach($a in $code) {iex $a;}
