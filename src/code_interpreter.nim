@@ -27,20 +27,16 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
     #initate all the varibles
     var mem_grid: Table[string, int]
     var mem_queue: string = ""
-
     var if_nest_depth: int = 0
     var while_pos = newSeq[int]()
     var while_pos_end = newSeq[int]()
     var if_pos_end: int
-
     var c_index: int = 0
+    randomize()
 
-    #generates a 3x3 memory grid
+    #generate a 3x3 memory grid
     for i in 0...8:
         mem_grid[$i] = 0
-
-    #initate the random module
-    randomize()
 
     try:
         while c_index < len(parsed_code):

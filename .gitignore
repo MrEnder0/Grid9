@@ -3,5 +3,7 @@ nimblecache/
 htmldocs/
 
 *.exe
+*.dll
+
 main
 grid9
