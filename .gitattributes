@@ -1,2 +1,2 @@
-documentation/* linguist-documentation=false
-documentation/css/* linguist-documentation=false
+src/documentation/* linguist-documentation=false
+src/documentation/css/* linguist-documentation=false
