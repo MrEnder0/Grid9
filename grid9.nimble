@@ -9,7 +9,7 @@ srcDir        = "src"
 
 # Dependencies
 
-requires "nim >= 1.4.8"
+requires "nim >= 1.0.6"
 requires "docopt >= 0.6.8"
 requires "regex >= 0.19.0"
 
