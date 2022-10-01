@@ -43,7 +43,6 @@ Note in between updates there may be other smaller changes. Also none of these a
 
 - Allow certain commands to not have set character lengths.
 - Make night release action create windows builds
-- Make self build script download and install nim for you
 
 ### Low priority
 
