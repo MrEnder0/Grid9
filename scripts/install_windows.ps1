@@ -1,8 +1,8 @@
 $url = "https://github.com/dom96/choosenim/releases/download/v0.8.4/choosenim-0.8.4_windows_amd64.exe"
 
 Write-Output "Installing Nim... (0/3)"
-Invoke-WebRequest -Uri $url -OutFile "choosenim-0.8.4_windows_amd64.exe"
-./choosenim-0.8.4_windows_amd64 --firstInstall stable
+Invoke-WebRequest -Uri $url -OutFile "choosenim.exe"
+./choosenim --firstInstall stable
 
 Write-Output "Installing dependencies... (1/3)"
 nimble install docopt -y
