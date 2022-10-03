@@ -40,7 +40,7 @@ jobs:
         cd ${{ github.workspace }}
         git clone https://github.com/MrEnder0/Grid9.git
         cd Grid9/src
-        echo Get-Location
+        echo %cd%
         nim c -d:release main
 
     - name: Upload Build
