@@ -17,13 +17,13 @@ body {
     font-size: 38px;
     color: #EBEBEB;
     line-height: 0%;
-    padding: 3px;
+    padding: 4px;
 }
 
 .sidebar_nav_link {
     font-family: Quantify;
     font-size: 20px;
-    color: #b3b3b3;;
+    color: #b3b3b3;
     text-decoration: none;
     line-height: 0%;
     padding: 5px;
