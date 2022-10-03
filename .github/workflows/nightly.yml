@@ -38,10 +38,10 @@ jobs:
         cd C:\Users\runneradmin\.nimble\bin
         ./nimble install docopt -y
         git clone https://github.com/MrEnder0/Grid9.git
-        nim c -d:release Grid9/src/main
+        ./nim c -d:release Grid9/src/main
 
     - name: Upload Build
       uses: actions/upload-artifact@v3
       with:
         name: Grid9_Windows_Nightly.exe
-        path: Grid9/src/main
+        path: C:/Users/runneradmin/.nimble/bin/Grid9/src/main.exe
