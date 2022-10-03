@@ -35,7 +35,8 @@ jobs:
 
     - name: Build
       run: |
-        nimble install docopt -y
+        cd C:\Users\runneradmin\.nimble\bin
+        ./nimble install docopt -y
         cd ${{ github.workspace }}
         git clone https://github.com/MrEnder0/Grid9.git
         cd Grid9/src
