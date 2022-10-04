@@ -23,7 +23,7 @@ jobs:
     - name: Upload Build
       uses: actions/upload-artifact@v3
       with:
-        name: Grid9_Linux_Nightly
+        name: Grid9_Nightly_Linux
         path: Grid9/src/main
 
   NightlyReleaseWindows:
@@ -45,5 +45,5 @@ jobs:
     - name: Upload Build
       uses: actions/upload-artifact@v3
       with:
-        name: Grid9_Windows_Nightly.exe
+        name: Grid9_Nightly_Windows
         path: C:/Users/runneradmin/.nimble/bin/Grid9/src/main.exe
