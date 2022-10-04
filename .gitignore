@@ -1,9 +1,12 @@
+#Nim folders
 nimcache/
 nimblecache/
 htmldocs/
 
+#Windows binaries
 *.exe
 *.dll
 
+#Linux binaries
 main
 grid9
