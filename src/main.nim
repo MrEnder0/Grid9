@@ -70,7 +70,7 @@ proc example(name: string) =
             except:
                 echo "Error: if_ladder.g9 not found, maybe you did not install the optional component."
         else:
-            echo "\nNo example found for your input try any of the flollowing, 'example1', 'example2', 'example3', 'give_example', 'random_char_example', 'while_nesting', 'if_ladder'.\n"
+            echo "\nNo example found for your input try any of the following, 'example1', 'example2', 'example3', 'give_example', 'random_char_example', 'while_nesting', 'if_ladder'.\n"
     else:
         echo "\nExample files are currently only implimented on Windows will add Linux support soon.\n"
 
