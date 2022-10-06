@@ -4,10 +4,9 @@ on:
   - cron: '59 4 * * *'
 
 jobs:
-  NightlyRelease:
+  NightlyReleaseLinux:
     runs-on: ubuntu-latest
     steps:
-    
     - name: Install Nim
       run: |
         sudo apt-get update
@@ -24,5 +23,27 @@ jobs:
     - name: Upload Build
       uses: actions/upload-artifact@v3
       with:
-        name: main
+        name: Grid9_Nightly_Linux
         path: Grid9/src/main
+
+  NightlyReleaseWindows:
+    runs-on: windows-latest
+    steps:
+    - name: Install Nim
+      run: |
+        $url = "https://github.com/dom96/choosenim/releases/download/v0.8.4/choosenim-0.8.4_windows_amd64.exe"
+        Invoke-WebRequest -Uri $url -OutFile "choosenim.exe"
+        ./choosenim stable --firstInstall -y
+
+    - name: Build
+      run: |
+        cd C:\Users\runneradmin\.nimble\bin
+        ./nimble install docopt -y
+        git clone https://github.com/MrEnder0/Grid9.git
+        ./nim c -d:release Grid9/src/main
+
+    - name: Upload Build
+      uses: actions/upload-artifact@v3
+      with:
+        name: Grid9_Nightly_Windows
+        path: C:/Users/runneradmin/.nimble/bin/Grid9/src/main.exe

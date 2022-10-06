@@ -5,12 +5,10 @@ tasks:
     init: |
       sudo apt update
       sudo apt install nim
-      sudo apt install rename
       nimble install docopt -y
       cd src
-      rename -v 's/main/grid9/' *.nim
       
-    command: nim c grid9
+    command: nim c main
 
 vscode:
   extensions:
