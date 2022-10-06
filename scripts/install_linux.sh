@@ -51,4 +51,4 @@ elif [[ $PACKAGE_MANAGER == "pacman" ]]; then
 else
     echo "Unsuported package manager only apt and pacman are curently suported."
 fi
-echo "Installation complete. If you get any errors about permissions when running Grid9 try running the Grid9 with sudo."
+echo "Installation complete. If you get any errors about permissions when running Grid9 try running the Grid9 with sudo command before."
