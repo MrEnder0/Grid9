@@ -28,7 +28,7 @@ proc example(name: string) =
     when defined windows:
         case $name
         of "example1":
-            echo "\n**This example shows how to use basic language features such as the memory grid, queue and  printing.**\n"
+            echo "\n**This example shows how to use basic language features such as the memory grid, queue and printing.**\n"
             try:
                 echo readFile("examples/example1.g9") & "\n"
             except:
