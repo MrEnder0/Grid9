@@ -32,8 +32,8 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool) : string =
         while code.read_line(line):
             parsed_code = parsed_code & line
         
-            #Strips whitespace and all capital letters for comments
-            parsed_code = replace(parsed_code, re("[A-Z!?*()\n\t ]+"), "")  
+            #Strips whitespace, capital letters, parenthesis, and asterisks as comments
+            parsed_code = replace(parsed_code, re("[A-Z*()\n\t ]+"), "")  
 
         if advancedParse == true:
             echo "Doing advanced parse\n"
