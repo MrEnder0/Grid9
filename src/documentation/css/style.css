@@ -30,7 +30,7 @@ body {
 }
 
 .sidebar_nav_link:focus {
-    font-weight: bold;
+    font-weight: 600;
 }
 
 
