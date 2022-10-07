@@ -16,6 +16,7 @@ Usage:
 Options:
     --advancedParse     Takes longer but can help fix bugs
     --dontCache         Makes parser not cache the parsed code
+    --echoGridMod       Makes interpreter echo the grid every time it is modified
 """
 
 proc about() =
@@ -101,7 +102,7 @@ proc clean(folder: string) =
     else:
         echo "\nNo folder found matching your input try any of the following 'parser_cache', 'logs', or 'all'.\n"
 
-proc interpret*(path: string, advancedParse: bool, dontCache: bool) =
+proc interpret*(path: string, advancedParse: bool, dontCache: bool, echoGridMod: bool) =
 
     #Check if file exists and allows for file extension to not be defined
     var path = path
@@ -110,7 +111,7 @@ proc interpret*(path: string, advancedParse: bool, dontCache: bool) =
     else:echo "\nError: File not found, maybe check your path.\n"
 
     var parsed_code = code_parser.parse(path, advancedParse, dontCache)
-    code_interpreter.interpret(parsed_code)
+    code_interpreter.interpret(parsed_code, echoGridMod)
     echo "\nCode finished successfully!"
 
     let exit = readLine(stdin)
@@ -135,7 +136,7 @@ proc main() =
         clean($args["<folder>"])
 
     if args["interpret"] or args["i"]:
-        interpret($args["<path>"], args["--advancedParse"], args["--dontCache"])
+        interpret($args["<path>"], args["--advancedParse"], args["--dontCache"], args["--echoGridMod"])
 
     if args["glyth_value_get"]:
         glyth_value_get($args["<glyth>"])
@@ -166,6 +167,6 @@ when isMainModule:
             createDir(log_dir)
 
     if len(os.commandLineParams()) > 0:
-        if os.fileExists(os.commandLineParams()[0]) and len(os.commandLineParams()) == 1: interpret(os.commandLineParams()[0], false, false)
+        if os.fileExists(os.commandLineParams()[0]) and len(os.commandLineParams()) == 1: interpret(os.commandLineParams()[0], false, false, false)
         else: main()
     else: non_terminal()
