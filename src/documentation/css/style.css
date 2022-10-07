@@ -29,6 +29,11 @@ body {
     padding: 5px;
 }
 
+.sidebar_nav_link:focus {
+    font-weight: bold;
+}
+
+
 #list {
     font-family: Quantify;
     font-size: 20px;
@@ -36,16 +41,16 @@ body {
     padding: 5px;
     max-height: 0;
     overflow: hidden;
-    transition: 0.75s linear;
-  }
+    transition: 0.8s linear;
+}
   
-  a:focus+#list {
+a:focus+#list {
     max-height: 20em;
-  }
-  /* only select that link , here using the href attribute */
-  a[href="nowhere"]:focus {
+}
+
+a[href="nowhere"]:focus {
     pointer-events: none;
-  }
+}
 
 h1 {
     font-family: Quantify;
