@@ -73,9 +73,34 @@ h2 {
     left:15%;
 }
 .docs-data {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI';
+    font-weight: 600;
     font-size: 26px;
     color: #120F25;
     line-height: 105%;
     padding: 5px;
+}
+
+.cm {
+    color: #9d3131;
+}
+
+.io {
+    color: #388a3b;
+}
+
+.log {
+    color: #5195b5;
+}
+
+.msk {
+    color: #e4e75b;
+}
+
+.num {
+    color: #1e1e1e;
+}
+
+.com {
+    color: #b3b3b3;
 }
