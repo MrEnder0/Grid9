@@ -46,6 +46,7 @@ Note in between updates there may be other smaller changes. Also none of these a
 
 - Allow certain commands to not have set character lengths.
 - Allow and conditions in if and while statements.
+- Add a grid printer argument to print the grid values at at a specified position in the script.
 
 ### Low priority
 
