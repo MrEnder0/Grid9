@@ -84,10 +84,9 @@
             </p>
             <br>
 
-            <div style=width:8%; class="code-block">
+            <div style=width:4%; class="code-block">
                 <p class="docs-data">
-                    <span class="cm">s</span>
-                    <span class="num">01</span>
+                    <span class="cm">s01</span>
                 </p>
             </div>
             <br>
@@ -105,10 +104,9 @@
             </p>
             <br>
 
-            <div style=width:6%; class="code-block">
+            <div style=width:4%; class="code-block">
                 <p class="docs-data">
-                    <span class="cm">f</span>
-                    <span class="num">2</span>
+                    <span class="cm">f2</span>
                 </p>
             </div>
             <br>
@@ -126,10 +124,9 @@
             </p>
             <br>
 
-            <div style=width:6%; class="code-block">
+            <div style=width:4%; class="code-block">
                 <p class="docs-data">
-                    <span class="cm">a</span>
-                    <span class="num">1</span>
+                    <span class="cm">a1</span>
                 </p>
             </div>
             <br>
@@ -152,10 +149,9 @@
             </p>
             <br>
 
-            <div style=width:8%; class="code-block">
+            <div style=width:5%; class="code-block">
                 <p class="docs-data">
-                    <span class="cm">f</span>
-                    <span class="num">7</span>
+                    <span class="cm">f7</span>
                     <span class="io">p</span>
                 </p>
             </div>
@@ -174,23 +170,16 @@
             </p>
             <br>
 
-            <div style=width:25%; class="code-block">
+            <div style=width:22%; class="code-block">
                 <p class="docs-data">
-                    <span class="cm">f</span>
-                    <span class="num">4</span>
-                    <span class="cm">f</span>
-                    <span class="num">7</span>
-                    <span class="cm">f</span>
-                    <span class="num">8</span>
+                    <span class="cm">f4</span>
+                    <span class="cm">f7</span>
+                    <span class="cm">f8</span>
                     <span class="io">qs</span>
-                    <span class="cm">a</span>
-                    <span class="num">0</span>
-                    <span class="cm">f</span>
-                    <span class="num">4</span>
-                    <span class="cm">f</span>
-                    <span class="num">7</span>
-                    <span class="cm">f</span>
-                    <span class="num">8</span>
+                    <span class="cm">a0</span>
+                    <span class="cm">f4</span>
+                    <span class="cm">f7</span>
+                    <span class="cm">f8</span>
                     <span class="io">qs</span>
                     <span class="io">p</span>
                 </p>
@@ -208,7 +197,7 @@
             </p>
             <br>
 
-            <div style=width:8%; class="code-block">
+            <div style=width:4%; class="code-block">
                 <p class="docs-data">
                     <span class="io">g</span>
                     <span class="io">p</span>
@@ -228,8 +217,18 @@
                 Remember to also to close a if statement, to do this you have to use a "}"
             </p>
             <p class="docs-data">
-                For example if you wanted to test cell 2 for a zero you would do "i2=0 <i>some code</i> }". If you wanted to test cell 7 for not a one you would do "i7!1 <i>some code</i> }".
+                For example if you wanted to test cell 2 for a zero and if true print the letter c you would run the code below.
             </p>
+            <br>
+
+            <div style=width:10%; class="code-block">
+                <p class="docs-data">
+                    <span class="log">i2=0</span>
+                    <span class="cm">f6</span>
+                    <span class="io">p</span>
+                    <span class="log">}</span>
+                </p>
+            </div>
             <br>
 
             <h2 id="while">While</h2>
@@ -241,8 +240,18 @@
                 Remember to also to close a while statement, to do this you have to use a "]"
             </p>
             <p class="docs-data">
-                For example if you wanted to loop until a cell had the value 1 you would do "w1=1 <i>some code</i> ]". If you wanted to loop until a cell had the value 0 you would do "w1!1 <i>some code</i> ]".
+                For example if you wanted to loop while cell 2 is a zero that prints the letter c infinitely you would run the code below.
             </p>
+            <br>
+
+            <div style=width:11%; class="code-block">
+                <p class="docs-data">
+                    <span class="log">w2=0</span>
+                    <span class="cm">f6</span>
+                    <span class="io">p</span>
+                    <span class="log">]</span>
+                </p>
+            </div>
             <br>
 
             <h2 id="exit">Exit</h2>
@@ -253,8 +262,19 @@
                 The syntax for this command is just "e".
             </p>
             <p class="docs-data">
-                For example if you wanted to loop while cell 3 has the value 0 you would do "w3=0 <i>some code</i> ]", but if you would want to exit it you would do "w3=0 <i>some code</i> e ]" This will only run once because there is no conditial statements preventing the exit command from being ran.
+                For example if you wanted to loop while cell 5 is a zero that prints the letter c but then breaks out of the loop you would run the code below.
             </p>
+            <br>
+
+            <div style=width:12%; class="code-block">
+                <p class="docs-data">
+                    <span class="log">w5=0</span>
+                    <span class="cm">f6</span>
+                    <span class="io">p</span>
+                    <span class="log">e</span>
+                    <span class="log">]</span>
+                </p>
+            </div>
             <br>
 
             <h1 id="misk">Misk</h1>
@@ -268,8 +288,15 @@
                 The syntax for this command is "b" followed by the number of instructions you want to go back.
             </p>
             <p class="docs-data">
-                For example if you wanted to go back 3 instructions you would do "b3".
+                For example if you wanted to go back 3 instructions you would run the code below "b3".
             </p>
+            <br>
+
+            <div style=width:4%; class="code-block">
+                <p class="docs-data">
+                    <span class="msk">b3</span>
+                </p>
+            </div>
             <br>
 
             <h2 id="terminate">Terminate</h2>
@@ -280,8 +307,19 @@
                 The syntax for this command is just "t".
             </p>
             <p class="docs-data">
-                For example if you wanted to terminate the program if a condition is met you would do "i0=0t}f7p". As you can see the code "f7p" will never get ran because on default all cells are 0 and that condition is true so it terminates the program.
+                For example if you wanted to terminate the program if a condition is met you would do in the code below. As you can see the code "f7p" will never get ran because on default all cells are 0 and that condition is true so it terminates the program.
             </p>
+            <br>
+
+            <div style=width:10%; class="code-block">
+                <p class="docs-data">
+                    <span class="log">i0=0</span>
+                    <span class="msk">t</span>
+                    <span class="log">}</span>
+                    <span class="cm">f7</span>
+                    <span class="io">p</span>
+                </p>
+            </div>
             <br>
         </div>
     </div>
