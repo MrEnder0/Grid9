@@ -43,18 +43,6 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool) : string =
             var is_exited = false
             while c_index < len(parsed_code):
                 case $parsed_code[c_index]
-                of $'f':
-                    if not match($parsed_code[c_index + 1], re"0-9",):
-                        log_this("ERROR", "Invalid flip value for grid")
-                        echo "ERROR: Invalid flip value for grid"
-                of $'s':
-                    if not match($parsed_code[c_index + 1], re"0-9",) or not match($parsed_code[c_index + 2], re"01r",):
-                        log_this("ERROR", "Invalid set value for grid")
-                        echo "ERROR: Invalid set value for grid"
-                of $'a':
-                    if not match($parsed_code[c_index + 1], re"01r",):
-                        log_this("ERROR", "Invalid set all value for grid")
-                        echo "ERROR: Invalid value for grid"
                 of $'q':
                     if parsed_code[c_index + 1] == 's':
                         discard

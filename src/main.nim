@@ -1,8 +1,9 @@
 from code_interpreter import nil
+from yaml_manager import nil
 from code_parser import nil
 from glyths import nil
 
-import docopt, os
+import docopt, os, re
 
 const doc = """
 Usage:
@@ -110,8 +111,46 @@ proc interpret*(path: string, advancedParse: bool, dontCache: bool, echoGridMod:
     elif os.fileExists(path & ".g9"):path = path & ".g9"
     else:echo "\nError: File not found, maybe check your path.\n"
 
-    var parsed_code = code_parser.parse(path, advancedParse, dontCache)
-    code_interpreter.interpret(parsed_code, echoGridMod)
+    #Read yaml file and parse it
+    var advancedParse_y = advancedParse
+    var dontCache_y = dontCache
+    var echoGridMod_y = echoGridMod
+
+    if os.fileExists(replace(path, re".g9", ".yaml")):
+        let yaml_path = replace(path, re".g9", ".yaml")
+        let config_options = yaml_manager.get_config(yaml_path)
+        if config_options[18] == 't':
+            advancedParse_y = true
+        else:
+            advancedParse_y = false
+        if config_options[35] == 't':
+            dontCache_y = true
+        else:
+            dontCache_y = false
+        if config_options[55] == 't':
+            echoGridMod_y = true
+        else:
+            echoGridMod_y = false
+        
+    elif os.fileExists(replace(path, re".g9", ".yml")):
+        let yaml_path = replace(path, re".g9", ".yml")
+        let config_options = yaml_manager.get_config(yaml_path)
+        if config_options[18] == 't':
+            advancedParse_y = true
+        else:
+            advancedParse_y = false
+        if config_options[35] == 't':
+            dontCache_y = true
+        else:
+            dontCache_y = false
+        if config_options[55] == 't':
+            echoGridMod_y = true
+        else:
+            echoGridMod_y = false
+
+    #Parse and interpret the code
+    let parsed_code = code_parser.parse(path, advancedParse_y, dontCache_y)
+    code_interpreter.interpret(parsed_code, echoGridMod_y)
     echo "\nCode finished successfully!"
 
     let exit = readLine(stdin)

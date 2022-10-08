@@ -12,6 +12,7 @@ srcDir        = "src"
 requires "nim >= 1.0.6"
 requires "docopt >= 0.6.8"
 requires "regex >= 0.19.0"
+requires "yaml >= 1.0.0"
 
 
 # Tasks
