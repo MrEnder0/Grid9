@@ -20,7 +20,7 @@ proc log_this(mode: string, message: string) : string {.discardable.} =
 
     log_file.close()
 
-proc interpret*(parsed_code: string) : string {.discardable.} =
+proc interpret*(parsed_code: string, echoGridMod: bool) : string {.discardable.} =
 
     log_this("INFO", "Interpreting script")
 
@@ -45,8 +45,10 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
                 if len(parsed_code) > c_index + 1:
                     if mem_grid[$parsed_code[c_index + 1]] == 0:
                         mem_grid[$parsed_code[c_index + 1]] = 1
+                        if echoGridMod == true:echo $mem_grid
                     else:
                         mem_grid[$parsed_code[c_index + 1]] = 0
+                        if echoGridMod == true:echo $mem_grid
                 else:
                     log_this("ERROR", "Invalid syntax for flip command")
 
@@ -55,8 +57,10 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
                 if len(parsed_code) > c_index + 2:
                     if $parsed_code[c_index + 2] == $'r':
                         mem_grid[$parsed_code[c_index + 1]] = rand(1)
+                        if echoGridMod == true:echo $mem_grid
                     else:
                         mem_grid[$parsed_code[c_index + 1]] = parseint($parsed_code[c_index + 2])
+                        if echoGridMod == true:echo $mem_grid
                 else:
                     log_this("ERROR", "Invalid syntax for set command")
 
@@ -66,9 +70,11 @@ proc interpret*(parsed_code: string) : string {.discardable.} =
                     if $parsed_code[c_index + 1] == $'r':
                         for i in 0...8:
                             mem_grid[$i] = rand(1)
+                        if echoGridMod == true:echo $mem_grid
                     else:
                         for i in 0...8:
                             mem_grid[$i] = parseint($parsed_code[c_index + 1])
+                        if echoGridMod == true:echo $mem_grid
                 else:
                     log_this("ERROR", "Invalid syntax for set all command")
 
