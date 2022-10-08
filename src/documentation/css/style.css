@@ -2,6 +2,7 @@ body {
     background-color: #EBEBEB;
 }
 
+/* Sidebar */
 .sidebar_nav {
     background-color: #120F25;
     height: 900px;
@@ -52,6 +53,7 @@ a[href="nowhere"]:focus {
     pointer-events: none;
 }
 
+/* Docs */
 h1 {
     font-family: Quantify;
     font-size: 38px;
@@ -81,16 +83,25 @@ h2 {
     padding: 5px;
 }
 
+/* Code Blocks */
+.code-block {
+    background-color: #f8f8f8;
+    letter-spacing: 50%;
+    border-radius: 8px;
+    line-height: 80%;
+    padding: 8px;
+}
+
 .cm {
-    color: #9d3131;
+    color: #bc4444;
 }
 
 .io {
-    color: #388a3b;
+    color: #5592a7;
 }
 
 .log {
-    color: #5195b5;
+    color: #51b572;
 }
 
 .msk {
@@ -98,9 +109,20 @@ h2 {
 }
 
 .num {
-    color: #1e1e1e;
+    color: #e1773a;
 }
 
 .com {
     color: #b3b3b3;
+}
+
+/* Mobile */
+@media only screen and (max-width: 750px) {
+    .sidebar_nav {
+        display: none;
+    }
+
+    .docs {
+        left: 0%;
+    }
 }
