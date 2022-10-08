@@ -49,4 +49,18 @@ Note in between updates there may be other smaller changes. Also none of these a
 
 ### Low priority
 
-- Add code blocks to the documentation.
+- Add a way to run code from a URL.
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+## License
+
+[gpl-3.0](https://choosealicense.com/licenses/lgpl-3.0/)
+
+## Credits
+
+This project was inspired by the [BrainFuck](https://esolangs.org/wiki/Brainfuck) project on esolangs.org.
