@@ -1,5 +1,5 @@
 from code_interpreter import nil
-from yaml_manager import nil
+from yml_manager import nil
 from code_parser import nil
 from glyths import nil
 
@@ -117,8 +117,8 @@ proc interpret*(path: string, advancedParse: bool, dontCache: bool, echoGridMod:
     var echoGridMod_y = echoGridMod
 
     if os.fileExists(replace(path, re".g9", ".yaml")):
-        let yaml_path = replace(path, re".g9", ".yaml")
-        let config_options = yaml_manager.get_config(yaml_path)
+        let yml_path = replace(path, re".g9", ".yaml")
+        let config_options = yml_manager.get_config(yml_path)
         if config_options[18] == 't':
             advancedParse_y = true
         else:
@@ -133,8 +133,8 @@ proc interpret*(path: string, advancedParse: bool, dontCache: bool, echoGridMod:
             echoGridMod_y = false
         
     elif os.fileExists(replace(path, re".g9", ".yml")):
-        let yaml_path = replace(path, re".g9", ".yml")
-        let config_options = yaml_manager.get_config(yaml_path)
+        let yml_path = replace(path, re".g9", ".yml")
+        let config_options = yml_manager.get_config(yml_path)
         if config_options[18] == 't':
             advancedParse_y = true
         else:
