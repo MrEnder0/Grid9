@@ -48,7 +48,7 @@ Note in between updates there may be other smaller changes. Also none of these a
 
 ### Low priority
 
-- Add a way to run code from a URL.
+- Add grid9 url handler for running grid9 files by clicking a link.
 
 ## Contributing
 
