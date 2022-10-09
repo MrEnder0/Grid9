@@ -26,6 +26,7 @@ if [[ $PACKAGE_MANAGER == "apt" ]]; then
     sudo apt install nim
     sudo apt install rename
     nimble install docopt -y
+    nimble install yaml -y
     git clone https://github.com/MrEnder0/Grid9
 
     cd Grid9/src
@@ -40,6 +41,7 @@ elif [[ $PACKAGE_MANAGER == "pacman" ]]; then
     sudo pacman -S nim
     sudo pacman -S rename
     nimble install docopt -y
+    nimble install yaml -y
     git clone https://github.com/MrEnder0/Grid9
 
     cd Grid9/src
