@@ -10,7 +10,6 @@ Usage:
     Grid9 (about | a)
     Grid9 (version | v)
     Grid9 (example | e) <name>
-    Grid9 (clean | c) <folder>
     Grid9 (interpret | i) <path> [options]
     Grid9 glyth_value_get <glyth>
 
@@ -75,33 +74,6 @@ proc example(name: string) =
             echo "\nNo example found for your input try any of the following, 'example1', 'example2', 'example3', 'give_example', 'random_char_example', 'while_nesting', 'if_ladder'.\n"
     else:
         echo "\nExample files are currently only implimented on Windows will add Linux support soon.\n"
-
-proc clean(folder: string) =
-    when defined windows:
-        let main_dir = r"C:\ProgramData\Grid9\"
-    else:
-        let main_dir = "/usr/share/Grid9/"
-
-    case $folder
-    of "parser_cache":
-        if os.dirExists(main_dir):
-            echo "\nCleaning parser cache folder\n"
-            os.removeDir(main_dir & "parser_cache")
-            os.createDir(main_dir & "parser_cache")
-    of "logs":
-        if os.dirExists(main_dir):
-            echo "\nCleaning logs folder\n"
-            os.removeDir(main_dir & "logs")
-            os.createDir(main_dir & "logs")
-    of "all":
-        if os.dirExists(main_dir):
-            echo "\nCleaning all folders\n"
-            os.removeDir(main_dir & "parser_cache")
-            os.createDir(main_dir & "parser_cache")
-            os.removeDir(main_dir & "logs")
-            os.createDir(main_dir & "logs")
-    else:
-        echo "\nNo folder found matching your input try any of the following 'parser_cache', 'logs', or 'all'.\n"
 
 proc interpret*(path: string, advancedParse: bool, dontCache: bool, echoGridMod: bool) =
 
@@ -170,9 +142,6 @@ proc main() =
     
     if args["example"] or args["e"]:
         example($args["<name>"])
-
-    if args["clean"] or args["c"]:
-        clean($args["<folder>"])
 
     if args["interpret"] or args["i"]:
         interpret($args["<path>"], args["--advancedParse"], args["--dontCache"], args["--echoGridMod"])

@@ -23,7 +23,6 @@ DisableProgramGroupPage=yes
 LicenseFile=LICENSE.txt
 OutputBaseFilename=Grid9 Setup {#MyAppVersion}
 ChangesEnvironment=true
-PrivilegesRequired=admin
 
 Compression=lzma
 SolidCompression=yes
@@ -48,6 +47,11 @@ Name: "custom"; Description: "Custom installation"; Flags: iscustom
 Name: "baseinstall"; Description: "Includes necessary base files."; Flags: exclusive
 Name: "baseinstall\documentation"; Description: "Includes html documentation."
 Name: "baseinstall\examples"; Description: "Includes example scripts."
+
+[Dirs]
+Name: "C:\ProgramData\Grid9"
+Name: "C:\ProgramData\Grid9\logs"
+Name: "C:\ProgramData\Grid9\parser_cache"
 
 [Files]
 Source: "Grid9\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion; Components: baseinstall
