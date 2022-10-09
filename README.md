@@ -44,7 +44,6 @@ Note in between updates there may be other smaller changes. Also none of these a
 
 ### High priority
 
-- Allow certain commands to not have set character lengths.
 - Allow and conditions in if and while statements.
 
 ### Low priority
