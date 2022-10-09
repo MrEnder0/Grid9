@@ -14,7 +14,7 @@ proc get_config*(path: string) : string =
         load(yaml_file, yaml_config)
         yaml_file.close()
     except:
-        echo "Error withen Yaml config file, using default settings."
+        echo "Error withen Yaml config file, using default settings"
         return "@[(advancedParse: false, dontCache: false, echoGridMod: false)]"
 
     return $yaml_config
