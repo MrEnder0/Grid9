@@ -10,7 +10,7 @@ proc get_config*(path: string) : string =
 
     echo "Using found Yaml config file"
     try:
-        var yaml_file = newFileStream(path, fmRead)
+        var yaml_file = newFileStream(path)
         load(yaml_file, yaml_config)
         yaml_file.close()
     except:
