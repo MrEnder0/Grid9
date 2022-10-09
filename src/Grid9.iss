@@ -23,6 +23,7 @@ DisableProgramGroupPage=yes
 LicenseFile=LICENSE.txt
 OutputBaseFilename=Grid9 Setup {#MyAppVersion}
 ChangesEnvironment=true
+PrivilegesRequired=admin
 
 Compression=lzma
 SolidCompression=yes
@@ -51,8 +52,8 @@ Name: "baseinstall\examples"; Description: "Includes example scripts."
 [Files]
 Source: "Grid9\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion; Components: baseinstall
 Source: "Grid9\icon.ico"; DestDir: "{app}"; Flags: ignoreversion; Components: baseinstall
-Source: "Grid9\documentation\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: baseinstall\documentation
-Source: "Grid9\examples\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: baseinstall\examples
+Source: "Grid9\documentation\*"; DestDir: "C:\ProgramData\Grid9"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: baseinstall\documentation
+Source: "Grid9\examples\*"; DestDir: "C:\ProgramData\Grid9"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: baseinstall\examples
 
 [Registry]
 Root: HKA; Subkey: "Software\Classes\{#MyAppAssocExt}\OpenWithProgids"; ValueType: string; ValueName: "{#MyAppAssocKey}"; ValueData: ""; Flags: uninsdeletevalue

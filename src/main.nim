@@ -32,43 +32,43 @@ proc example(name: string) =
         of "example1":
             echo "\n**This example shows how to use basic language features such as the memory grid, queue and printing.**\n"
             try:
-                echo readFile("examples/example1.g9") & "\n"
+                echo readFile(r"C:\ProgramData\Grid9\examples\example1.g9") & "\n"
             except:
                 echo "Error: example1.g9 not found, maybe you did not install the optional component."
         of "example2":
             echo "\n**This example shows how to use if statements and while statements.**\n"
             try:
-                echo readFile("examples/example2.g9") & "\n"
+                echo readFile(r"C:\ProgramData\Grid9\examples\example2.g9") & "\n"
             except:
                 echo "Error: example2.g9 not found, maybe you did not install the optional component."
         of "example3":
             echo "\n**This example shows how to use the break and goto commands.**\n"
             try:
-                echo readFile("examples/example3.g9") & "\n"
+                echo readFile(r"C:\ProgramData\Grid9\examples\example3.g9") & "\n"
             except:
                 echo "Error: example3.g9 not found, maybe you did not install the optional component."
         of "give_example":
             echo "\n**This example shows how to use the give command.**\n"
             try:
-                echo readFile("examples/give_example.g9") & "\n"
+                echo readFile(r"C:\ProgramData\Grid9\examples\give_example.g9") & "\n"
             except:
                 echo "Error: give_example.g9 not found, maybe you did not install the optional component."
         of "random_char_example":
             echo "\n**This example shows how to use the random argument for cell modification.**\n"
             try:
-                echo readFile("examples/random_char_example.g9") & "\n"
+                echo readFile(r"C:\ProgramData\Grid9\examples\random_char_example.g9") & "\n"
             except:
                 echo "Error: random_char_example.g9 not found, maybe you did not install the optional component."
         of "while_nesting":
             echo "\n**This example shows how to use while loops inside of while loops.**\n"
             try:
-                echo readFile("examples/while_nesting.g9") & "\n"
+                echo readFile(r"C:\ProgramData\Grid9\examples\while_nesting.g9") & "\n"
             except:
                 echo "Error: while_nesting.g9 not found, maybe you did not install the optional component."
         of "if_ladder":
             echo "\n**This example shows how to use a chain of ladders to climb a if chain.**\n"
             try:
-                echo readFile("examples/if_ladder.g9") & "\n"
+                echo readFile(r"C:\ProgramData\Grid9\examples\if_ladder.g9") & "\n"
             except:
                 echo "Error: if_ladder.g9 not found, maybe you did not install the optional component."
         else:
