@@ -6,6 +6,7 @@ tasks:
       sudo apt update
       sudo apt install nim
       nimble install docopt -y
+      nimble install yaml -y
       cd src
       
     command: nim c main
