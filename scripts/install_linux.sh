@@ -1,26 +1,15 @@
-LINUX_VERSION_NAME=`lsb_release -a`
-
-if [[ $LINUX_VERSION_NAME == *"Ubuntu"* ]]; then
-    echo "System identified as Ubuntu. You may have to enter sudo password or enter su mode to continue."
-    PACKAGE_MANAGER="apt"
-elif [[ $LINUX_VERSION_NAME == *"Debian"* ]]; then
-    echo "System identified as Debian. You may have to enter sudo password or enter su mode to continue."
-    PACKAGE_MANAGER="apt"
-elif [[ $LINUX_VERSION_NAME == *"Kali"* ]]; then
-    echo "System identified as Kali. You may have to enter sudo password or enter su mode to continue."
-    PACKAGE_MANAGER="apt"
-elif [[ $LINUX_VERSION_NAME == *"Arch"* ]]; then
-    echo "System identified as Arch. You may have to enter sudo password or enter su mode to continue."
+if [ -x "$(command -v apt-get)" ]; then
+    echo "Package manager identified as apt-get. You may have to enter sudo password or enter su mode to continue."
+    PACKAGE_MANAGER="apt-get"
+elif [ -x "$(command -v pacman)" ]; then
+    echo "Package manager identified as pacman. You may have to enter sudo password or enter su mode to continue."
     PACKAGE_MANAGER="pacman"
-elif [[ $LINUX_VERSION_NAME == *"Manjaro"* ]]; then
-    echo "System identified as Manjaro. You may have to enter sudo password or enter su mode to continue."
-    PACKAGE_MANAGER="pacman"
-elif [[ $LINUX_VERSION_NAME == *"Alpine"* ]]; then
-    echo "System identified as Alpine. You may have to enter sudo password or enter su mode to continue."
-    PACKAGE_MANAGER="pacman"
+elif [ -x "$(command -v apk)" ]; then
+    echo "Package manager identified as apk. You may have to enter sudo password or enter su mode to continue."
+    PACKAGE_MANAGER="apk"
 else
-    echo "We cant identify your linux distro, we currently support apt and pacman package managers, if your system does one of these just enter apt, pacman, or apk below."
-    read PACKAGE_MANAGER
+    echo "We cant identify your package manager, we currently support apt and pacman package managers, if your system does use one of these please report this bug."
+    exit 1
 fi
 
 if [[ $PACKAGE_MANAGER == "apt" ]]; then
@@ -67,7 +56,5 @@ elif [[ $PACKAGE_MANAGER == "apk" ]]; then
 
     chmod 777 grid9
     mv grid9 /usr/bin/
-else
-    echo "Unsuported package manager only apt, pacman, and apk are curently suported."
 fi
 echo "Installation complete. If you get any errors about permissions when running Grid9 try running the Grid9 with sudo command before."
