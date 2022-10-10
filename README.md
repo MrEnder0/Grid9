@@ -48,6 +48,7 @@ Note in between updates there may be other smaller changes. Also none of these a
 
 ### Low priority
 
+- Add documentation for the the Yaml config file.
 - Add grid9 url handler for running grid9 files by clicking a link.
 
 ## Contributing
