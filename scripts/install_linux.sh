@@ -46,6 +46,7 @@ elif [[ $PACKAGE_MANAGER == "apk" ]]; then
     apk update
     apk add git
     apk add nim
+    apk add nimble
     nimble install docopt -y
     nimble install yaml -y
     git clone https://github.com/MrEnder0/Grid9
