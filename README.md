@@ -45,9 +45,11 @@ Note in between updates there may be other smaller changes. Also none of these a
 ### High priority
 
 - Allow and conditions in if and while statements.
+- Add support for examples and documentation on Linux.
 
 ### Low priority
 
+- Add no log option.
 - Add documentation for the the Yaml config file.
 - Add grid9 url handler for running grid9 files by clicking a link.
 
