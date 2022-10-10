@@ -8,11 +8,11 @@ proc get_config*(path: string) : string =
 
     var yaml_config {.global.} : seq[yaml_object]
 
-    echo "Using found Yaml config file"
     try:
         var yaml_file = newFileStream(path)
         load(yaml_file, yaml_config)
         yaml_file.close()
+        echo "Using found Yaml config file"
     except:
         echo "Error withen Yaml config file, using default settings"
         return "@[(advancedParse: false, dontCache: false, echoGridMod: false)]"
