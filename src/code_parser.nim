@@ -12,7 +12,7 @@ proc log_this(mode: string, message: string) : string {.discardable.} =
 
     log_file.close()
 
-proc parse*(path: string, advancedParse: bool, dontCache: bool) : string =
+proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool) : string =
     let code = open(path)
 
     when defined windows:
@@ -49,7 +49,7 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool) : string =
                     elif parsed_code[c_index + 1] == 'c':
                         discard
                     else:
-                        log_this("ERROR", "Invalid operation for queue command")
+                        if noLog: log_this("ERROR", "Invalid operation for queue command")
                         echo "ERROR: Invalid operation for queue command"
                 of $'i':ifDepth+=1
                 of $'w':whileDepth+=1
@@ -60,22 +60,22 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool) : string =
                         is_exited = false
                 of $'b':
                     if not match($parsed_code[c_index + 1], re"0-9",):
-                        log_this("ERROR", "Invalid number for back command")
+                        if noLog: log_this("ERROR", "Invalid number for back command")
                         echo "ERROR: Invalid number for back command"
                 of $'x':
                     is_exited = true
                 
                 if ifDepth < 0:
-                    log_this("ERROR", "If depth is less than 0")
+                    if noLog: log_this("ERROR", "If depth is less than 0")
                     echo "ERROR: If depth is less than 0"
                 if whileDepth < 0:
-                    log_this("ERROR", "While depth is less than 0")
+                    if noLog: log_this("ERROR", "While depth is less than 0")
                     echo "ERROR: While depth is less than 0"
 
                 c_index += 1
 
             if ifDepth > 0:
-                log_this("WARNING", "If depth is greater than 0")
+                if noLog: log_this("WARNING", "If depth is greater than 0")
                 echo "WARNING: If depth is greater than 0 would you like to try to automatically fix? (y/n)"
                 let responce = readLine(stdin)
                 if $responce == $'y':
@@ -86,7 +86,7 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool) : string =
                     discard fixTimes
                 discard responce
             if whileDepth > 0:
-                log_this("WARNING", "While depth is greater than 0")
+                if noLog: log_this("WARNING", "While depth is greater than 0")
                 echo "WARNING: While depth is greater than 0 would you like to try to automatically fix? (y/n)"
                 let responce = readLine(stdin)
                 if $responce == $'y':
@@ -97,7 +97,7 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool) : string =
                     discard fixTimes
                 discard responce
             if is_exited == true:
-                log_this("WARNING", "Attemped to exit a while loop while not currently being in one")
+                if noLog: log_this("WARNING", "Attemped to exit a while loop while not currently being in one")
                 echo "WARNING: Exited while loop without a while loop would you like to try to automatically fix? (y/n)"
                 let responce = readLine(stdin)
                 if $responce == $'y':

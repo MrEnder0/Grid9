@@ -20,9 +20,9 @@ proc log_this(mode: string, message: string) : string {.discardable.} =
 
     log_file.close()
 
-proc interpret*(parsed_code: string, echoGridMod: bool) : string {.discardable.} =
+proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool) : string {.discardable.} =
 
-    log_this("INFO", "Interpreting script")
+    if noLog: log_this("INFO", "Interpreting script")
 
     #initate all the varibles
     var mem_grid: Table[string, int]
@@ -50,7 +50,7 @@ proc interpret*(parsed_code: string, echoGridMod: bool) : string {.discardable.}
                         mem_grid[$parsed_code[c_index + 1]] = 0
                         if echoGridMod == true:echo $mem_grid
                 else:
-                    log_this("ERROR", "Invalid syntax for flip command")
+                    if noLog: log_this("ERROR", "Invalid syntax for flip command")
 
             #set command
             of $'s':
@@ -62,7 +62,7 @@ proc interpret*(parsed_code: string, echoGridMod: bool) : string {.discardable.}
                         mem_grid[$parsed_code[c_index + 1]] = parseint($parsed_code[c_index + 2])
                         if echoGridMod == true:echo $mem_grid
                 else:
-                    log_this("ERROR", "Invalid syntax for set command")
+                    if noLog: log_this("ERROR", "Invalid syntax for set command")
 
             #set all command
             of $'a':
@@ -76,7 +76,7 @@ proc interpret*(parsed_code: string, echoGridMod: bool) : string {.discardable.}
                             mem_grid[$i] = parseint($parsed_code[c_index + 1])
                         if echoGridMod == true:echo $mem_grid
                 else:
-                    log_this("ERROR", "Invalid syntax for set all command")
+                    if noLog: log_this("ERROR", "Invalid syntax for set all command")
 
             #queue command
             of $'q':
@@ -86,7 +86,7 @@ proc interpret*(parsed_code: string, echoGridMod: bool) : string {.discardable.}
                     elif parsed_code[c_index + 1] == 'c':
                         mem_queue = ""
                 else:
-                    log_this("ERROR", "Invalid queue command")
+                    if noLog: log_this("ERROR", "Invalid queue command")
 
             #print command
             of $'p':
@@ -103,7 +103,7 @@ proc interpret*(parsed_code: string, echoGridMod: bool) : string {.discardable.}
                     for i in 0...8:
                         mem_grid[$i] = parseint($gived_input[i])
                 else:
-                    log_this("ERROR", "Input for give command was not 9 numbers long")
+                    if noLog: log_this("ERROR", "Input for give command was not 9 numbers long")
 
             #if command
             of $'i':
@@ -161,7 +161,7 @@ proc interpret*(parsed_code: string, echoGridMod: bool) : string {.discardable.}
                                 if_pos_end += 1
                             c_index = if_pos_end
                 else:
-                    log_this("ERROR", "Invalid if statement")
+                    if noLog: log_this("ERROR", "Invalid if statement")
 
             #while command
             of $'w':
@@ -187,7 +187,7 @@ proc interpret*(parsed_code: string, echoGridMod: bool) : string {.discardable.}
                             else:
                                 while_pos.delete(0)
                     else:
-                        log_this("ERROR", "Invalid while statement")
+                        if noLog: log_this("ERROR", "Invalid while statement")
 
             #exit command
             of $'x':
@@ -201,12 +201,12 @@ proc interpret*(parsed_code: string, echoGridMod: bool) : string {.discardable.}
                 if len(parsed_code) > c_index + 1:
                     c_index -= parseint($parsed_code[c_index + 1])
                 else:
-                    log_this("ERROR", "Invalid back command")
+                    if noLog: log_this("ERROR", "Invalid back command")
 
             #terminate command
             of $'t':
                 {.linearScanEnd.}
-                log_this("INFO", "Script terminated by user")
+                if noLog: log_this("INFO", "Script terminated by user")
                 break
 
             #Go to start of while loop
@@ -219,5 +219,5 @@ proc interpret*(parsed_code: string, echoGridMod: bool) : string {.discardable.}
             c_index += 1
 
     except:
-        log_this("ERROR", "Unknown error in script on line " & $c_index)
+        if noLog: log_this("ERROR", "Unknown error in script on line " & $c_index)
         return

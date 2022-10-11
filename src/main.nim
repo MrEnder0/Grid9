@@ -17,6 +17,7 @@ Options:
     --advancedParse     Takes longer but can help fix bugs
     --dontCache         Makes parser not cache the parsed code
     --echoGridMod       Makes interpreter echo the grid every time it is modified
+    --noLog             Makes interpreter not log errors, warnings, and info
 """
 
 proc about() =
@@ -75,7 +76,7 @@ proc example(name: string) =
     else:
         echo "\nExample files are currently only implimented on Windows will add Linux support soon.\n"
 
-proc interpret*(path: string, advancedParse: bool, dontCache: bool, echoGridMod: bool) =
+proc interpret*(path: string, advancedParse: bool, dontCache: bool, echoGridMod: bool, noLog: bool) =
 
     #Check if file exists and allows for file extension to not be defined
     var path = path
@@ -87,6 +88,7 @@ proc interpret*(path: string, advancedParse: bool, dontCache: bool, echoGridMod:
     var advancedParse_y = advancedParse
     var dontCache_y = dontCache
     var echoGridMod_y = echoGridMod
+    var noLog_y = noLog
 
     if os.fileExists(replace(path, re".g9", ".yaml")):
         let yml_path = replace(path, re".g9", ".yaml")
@@ -95,14 +97,18 @@ proc interpret*(path: string, advancedParse: bool, dontCache: bool, echoGridMod:
             advancedParse_y = true
         else:
             advancedParse_y = false
-        if config_options[35] == 't':
+        if config_options[32] == 't':
             dontCache_y = true
         else:
             dontCache_y = false
-        if config_options[55] == 't':
+        if config_options[48] == 't':
             echoGridMod_y = true
         else:
             echoGridMod_y = false
+        if config_options[58] == 't':
+            noLog_y = true
+        else:
+            noLog_y = false
         
     elif os.fileExists(replace(path, re".g9", ".yml")):
         let yml_path = replace(path, re".g9", ".yml")
@@ -111,18 +117,22 @@ proc interpret*(path: string, advancedParse: bool, dontCache: bool, echoGridMod:
             advancedParse_y = true
         else:
             advancedParse_y = false
-        if config_options[35] == 't':
+        if config_options[32] == 't':
             dontCache_y = true
         else:
             dontCache_y = false
-        if config_options[55] == 't':
+        if config_options[48] == 't':
             echoGridMod_y = true
         else:
             echoGridMod_y = false
+        if config_options[58] == 't':
+            noLog_y = true
+        else:
+            noLog_y = false
 
     #Parse and interpret the code
-    let parsed_code = code_parser.parse(path, advancedParse_y, dontCache_y)
-    code_interpreter.interpret(parsed_code, echoGridMod_y)
+    let parsed_code = code_parser.parse(path, advancedParse_y, dontCache_y , noLog_y)
+    code_interpreter.interpret(parsed_code, echoGridMod_y, noLog_y)
     echo "\nCode finished successfully!"
 
     let exit = readLine(stdin)
@@ -144,7 +154,7 @@ proc main() =
         example($args["<name>"])
 
     if args["interpret"] or args["i"]:
-        interpret($args["<path>"], args["--advancedParse"], args["--dontCache"], args["--echoGridMod"])
+        interpret($args["<path>"], args["--advancedParse"], args["--dontCache"], args["--echoGridMod"], args["--noLog"])
 
     if args["glyth_value_get"]:
         glyth_value_get($args["<glyth>"])
@@ -175,6 +185,6 @@ when isMainModule:
             createDir(log_dir)
 
     if len(os.commandLineParams()) > 0:
-        if os.fileExists(os.commandLineParams()[0]) and len(os.commandLineParams()) == 1: interpret(os.commandLineParams()[0], false, false, false)
+        if os.fileExists(os.commandLineParams()[0]) and len(os.commandLineParams()) == 1: interpret(os.commandLineParams()[0], false, false, false, false)
         else: main()
     else: non_terminal()

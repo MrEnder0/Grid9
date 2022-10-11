@@ -4,6 +4,7 @@
   {
     advancedParse: true,
     dontCache: false,
-    echoGridMod: false
+    echoGridMod: false,
+    noLog: false
   }
 ]
