@@ -43,6 +43,11 @@
                             <a href="#terminate" class="sidebar_nav_link">Terminate</a>
                         </ul>
                     <br>
+                    <a href="#0" class="sidebar_nav_link">Configꜜ</a>
+                        <ul id="list">
+                            <a href="#yaml" class="sidebar_nav_link">Yaml</a>
+                        </ul>
+                    <br>
                 </ul>
             </nav>
         </div>
@@ -321,6 +326,57 @@
                 </p>
             </div>
             <br>
+
+            <h1>Config</h1>
+            <br>
+
+            <h2 id="yaml">Yaml</h2>
+            <p class="docs-data">
+                The yaml command is used to change the config of the program.
+            </p>
+            <p class="docs-data">
+                The recomended layout for the yaml config is shown below. It can be structured in any way you want but this is the recomended way.
+            </p>
+            <br>
+
+            <div style=width:100%; class="code-block">
+                <p class="docs-data">
+                    <span class="io">%YAML</span>
+                    <span class="log"> 1.2</span>
+                    <br>
+                    <span class="com">---</span>
+                    <br>
+                    <span class="io">[{</span>
+                    <br>
+                    <span class="cm">advancedParse</span>
+                    <span class="io">: </span>
+                    <span class="log">true</span>
+                    <span class="io">,</span>
+                    <br>
+                    <span class="cm">dontCache</span>
+                    <span class="io">: </span>
+                    <span class="log">false</span>
+                    <span class="io">,</span>
+                    <br>
+                    <span class="cm">echoGridMod</span>
+                    <span class="io">: </span>
+                    <span class="log">false</span>
+                    <span class="io">,</span>
+                    <br>
+                    <span class="cm">noLog</span>
+                    <span class="io">: </span>
+                    <span class="log">false</span>
+                    <br>
+                    <span class="io">}]</span>
+                </p>
+            </div>
+            <br>
+
+            <p class="docs-data">
+                These config options are used to change the way Grid9 interacts with your code.
+                For example you can run a advancedParse which will make the program start slower but can fix issues in your code.
+                The options can also allow you to see more tecnicall information about the program. For example turning on echoGridMod will print you the grid after every instruction that modifies the cells in some way.
+            </p>
         </div>
     </div>
 

@@ -1,10 +1,8 @@
 %YAML 1.2
 ---
-[
-  {
-    advancedParse: true,
-    dontCache: false,
-    echoGridMod: true,
-    noLog: false
-  }
-]
+[{
+  advancedParse: true,
+  dontCache: false,
+  echoGridMod: true,
+  noLog: false
+}]
