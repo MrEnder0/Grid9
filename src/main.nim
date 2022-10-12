@@ -71,6 +71,12 @@ proc example(name: string) =
                 echo readFile(r"C:\ProgramData\Grid9\examples\if_ladder.g9") & "\n"
             except:
                 echo "Error: if_ladder.g9 not found, maybe you did not install the optional component."
+        of "inf_skyscraper":
+            echo "\n**This example shows how to use the inf command to make a skyscraper.**\n"
+            try:
+                echo readFile(r"C:\ProgramData\Grid9\examples\inf_skyscraper.g9") & "\n"
+            except:
+                echo "Error: inf_skyscraper.g9 not found, maybe you did not install the optional component."
         else:
             echo "\nNo example found for your input try any of the following, 'example1', 'example2', 'example3', 'give_example', 'random_char_example', 'while_nesting', 'if_ladder'.\n"
     else:
