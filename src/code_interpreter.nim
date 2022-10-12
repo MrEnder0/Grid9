@@ -85,6 +85,7 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool) : string {.
                         mem_queue = mem_queue & glyths.get_glyth($mem_grid["0"] & $mem_grid["1"] & $mem_grid["2"] & $mem_grid["3"] & $mem_grid["4"] & $mem_grid["5"] & $mem_grid["6"] & $mem_grid["7"] & $mem_grid["8"])
                     elif parsed_code[c_index + 1] == 'c':
                         mem_queue = ""
+                    c_index += 1
                 else:
                     if noLog: log_this("ERROR", "Invalid queue command")
 
