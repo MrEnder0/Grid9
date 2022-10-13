@@ -177,10 +177,14 @@ when isMainModule:
         let main_dir = r"C:\ProgramData\Grid9\"
         let parser_cache_dir = r"C:\ProgramData\Grid9\parser_cache\"
         let log_dir = r"C:\ProgramData\Grid9\logs\"
+        let example_dir = r"C:\ProgramData\Grid9\examples\"
+        let docs_dir = r"C:\ProgramData\Grid9\documentation\"
     else:
         let main_dir = "/usr/share/Grid9/"
         let parser_cache_dir = "/usr/share/Grid9/parser_cache/"
         let log_dir = "/usr/share/Grid9/logs/"
+        let example_dir = "/usr/share/Grid9/examples/"
+        let docs_dir = "/usr/share/Grid9/documentation/"
     
     #Create the file structure for info if it doesn't exist
     if not dirExists(main_dir):
@@ -189,6 +193,10 @@ when isMainModule:
             createDir(parser_cache_dir)
         if not dirExists(log_dir):
             createDir(log_dir)
+        if not dirExists(example_dir):
+            createDir(example_dir)
+        if not dirExists(docs_dir):
+            createDir(docs_dir)
 
     if len(os.commandLineParams()) > 0:
         if os.fileExists(os.commandLineParams()[0]) and len(os.commandLineParams()) == 1: interpret(os.commandLineParams()[0], false, false, false, false)
