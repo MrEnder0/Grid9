@@ -45,7 +45,6 @@ Note in between updates there may be other smaller changes. Also none of these a
 ### High priority
 
 - Allow and conditions in if and while statements.
-- Add documentation launcher to the CLI.
 
 ### Low priority
 
