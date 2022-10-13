@@ -4,11 +4,13 @@ from code_parser import nil
 from glyths import nil
 
 import docopt, os, re
+import std/browsers
 
 const doc = """
 Usage:
     Grid9 (about | a)
     Grid9 (version | v)
+    Grid9 (documentation | d)
     Grid9 (example | e) <name>
     Grid9 (interpret | i) <path> [options]
     Grid9 glyth_value_get <glyth>
@@ -25,6 +27,16 @@ proc about() =
 
 proc version() =
     echo "\n2022-016\n"
+
+proc documentation() =
+    when defined windows:
+        let docsDir = r"C:\ProgramData\Grid9\documentation\index.html"
+    else:
+        let docsDir = "/usr/share/Grid9/documentation/index.html"
+    try:
+        browsers.openDefaultBrowser(docsDir)
+    except:
+        echo "Error: Documentation not found, maybe you did not install the optional component."
 
 proc example(name: string) =
     let errorMessage = "\nNo example found for your input try any of the following, 'example1', 'example2', 'example3', 'give_example', 'random_char_example', 'while_nesting', 'if_ladder'.\n"
@@ -208,6 +220,9 @@ proc main() =
 
     if args["version"] or args["v"]:
         version()
+
+    if args["documentation"] or args["d"]:
+        documentation()
     
     if args["example"] or args["e"]:
         example($args["<name>"])
