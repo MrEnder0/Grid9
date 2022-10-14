@@ -9,9 +9,8 @@ jobs:
       uses: jiro4989/setup-nim-action@v1
       with:
         nim-version: '1.6.6'
-      run: |
-        nimble install docopt -Y
-        nimble install yaml -Y
+    - run: nimble install docopt -Y
+    - run: nimble install yaml -Y
         
     - name: Build
       uses: jiro4989/setup-nim-action@v1
