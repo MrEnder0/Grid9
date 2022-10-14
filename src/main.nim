@@ -165,54 +165,57 @@ proc interpret*(path: string, advancedParse: bool, dontCache: bool, echoGridMod:
     else:echo "\nError: File not found, maybe check your path.\n"
 
     #Read yaml file and parse it
-    var advancedParse_y = advancedParse
-    var dontCache_y = dontCache
-    var echoGridMod_y = echoGridMod
-    var noLog_y = noLog
+    var
+        advancedParseY = advancedParse
+        dontCacheY = dontCache
+        echoGridModY = echoGridMod
+        noLogY = noLog
 
     if os.fileExists(replace(path, re".g9", ".yaml")):
-        let yml_path = replace(path, re".g9", ".yaml")
-        let config_options = yml_manager.get_config(yml_path)
-        if config_options[18] == 't':
-            advancedParse_y = true
+        let
+            ymlPath = replace(path, re".g9", ".yaml")
+            configOptions = yml_manager.get_config(ymlPath)
+        if configOptions[18] == 't':
+            advancedParseY = true
         else:
-            advancedParse_y = false
-        if config_options[32] == 't':
-            dontCache_y = true
+            advancedParseY = false
+        if configOptions[32] == 't':
+            dontCacheY = true
         else:
-            dontCache_y = false
-        if config_options[48] == 't':
-            echoGridMod_y = true
+            dontCacheY = false
+        if configOptions[48] == 't':
+            echoGridModY = true
         else:
-            echoGridMod_y = false
-        if config_options[58] == 't':
-            noLog_y = true
+            echoGridModY = false
+        if configOptions[58] == 't':
+            noLogY = true
         else:
-            noLog_y = false
+            noLogY = false
         
     elif os.fileExists(replace(path, re".g9", ".yml")):
-        let yml_path = replace(path, re".g9", ".yml")
-        let config_options = yml_manager.get_config(yml_path)
-        if config_options[18] == 't':
-            advancedParse_y = true
+        let
+            ymlPath = replace(path, re".g9", ".yml")
+            configOptions = yml_manager.get_config(ymlPath)
+        if configOptions[18] == 't':
+            advancedParseY = true
         else:
-            advancedParse_y = false
-        if config_options[32] == 't':
-            dontCache_y = true
+            advancedParseY = false
+        if configOptions[32] == 't':
+            dontCacheY = true
         else:
-            dontCache_y = false
-        if config_options[48] == 't':
-            echoGridMod_y = true
+            dontCacheY = false
+        if configOptions[48] == 't':
+            echoGridModY = true
         else:
-            echoGridMod_y = false
-        if config_options[58] == 't':
-            noLog_y = true
+            echoGridModY = false
+        if configOptions[58] == 't':
+            noLogY = true
         else:
-            noLog_y = false
+            noLogY = false
 
     #Parse and interpret the code
-    let parsed_code = code_parser.parse(path, advancedParse_y, dontCache_y , noLog_y)
-    code_interpreter.interpret(parsed_code, echoGridMod_y, noLog_y)
+    let parsed_code = code_parser.parse(path, advancedParseY, dontCacheY , noLogY)
+    code_interpreter.interpret(parsed_code, echoGridModY, noLogY)
     echo "\nCode finished successfully!"
 
     let exit = readLine(stdin)
@@ -251,16 +254,16 @@ proc non_terminal() =
 when isMainModule:
     
     #Create the file structure for info if it doesn't exist
-    if not dirExists(main_dir):
-        createDir(main_dir)
-        if not dirExists(parser_cache_dir):
-            createDir(parser_cache_dir)
-        if not dirExists(log_dir):
-            createDir(log_dir)
-        if not dirExists(example_dir):
-            createDir(example_dir)
-        if not dirExists(docs_dir):
-            createDir(docs_dir)
+    if not dirExists(mainDir):
+        createDir(mainDir)
+        if not dirExists(parserCacheDir):
+            createDir(parserCacheDir)
+        if not dirExists(logDir):
+            createDir(logDir)
+        if not dirExists(exampleDir):
+            createDir(exampleDir)
+        if not dirExists(docsDir):
+            createDir(docsDir)
 
     if len(os.commandLineParams()) > 0:
         if os.fileExists(os.commandLineParams()[0]) and len(os.commandLineParams()) == 1: interpret(os.commandLineParams()[0], false, false, false, false)
