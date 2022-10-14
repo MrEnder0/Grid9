@@ -25,13 +25,15 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool) : string {.
     if noLog: log_this("INFO", "Interpreting script")
 
     #initate all the varibles
-    var mem_grid: Table[string, int]
-    var mem_queue: string = ""
-    var if_nest_depth: int = 0
-    var while_pos = newSeq[int]()
-    var while_pos_end = newSeq[int]()
-    var if_pos_end: int
-    var c_index: int = 0
+    var
+        mem_grid: Table[string, int]
+        mem_queue: string = ""
+        if_nest_depth: int = 0
+        while_pos = newSeq[int]()
+        while_pos_end = newSeq[int]()
+        if_pos_end: int
+        c_index: int = 0
+        
     randomize()
 
     #generate a 3x3 memory grid
