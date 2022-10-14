@@ -4,14 +4,16 @@ on: push
 jobs:
   NightlyReleaseLinux:
     runs-on: ubuntu-latest
-    uses: actions/checkout@v3
-    uses: jiro4989/setup-nim-action@v1
-    steps:
-    - name: Install Nim
+    - uses: actions/checkout@v3
+      uses: jiro4989/setup-nim-action@v1
       with:
-        nim-version: '1.6.x' # default is 'stable'
-    - run: nimble install docopt -Y
-    - run: nimble install yaml -Y
+        nim-version: '1.6.x'
+    
+    steps:
+    - name: Install Dependencies
+    run: |
+      run: nimble install docopt -Y
+      run: nimble install yaml -Y
         
     - name: Build
     - uses: actions/checkout@v3
