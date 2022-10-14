@@ -20,8 +20,9 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool) : s
         let parser_cache_dir = "/usr/share/Grid9/parser_cache/"
 
     let file_hash = hash(path)
-    var parsed_code: string
-    var line: string
+    var
+        parsed_code: string
+        line: string
 
     if advancedParse != true and dontCache != true and os.fileExists(parser_cache_dir & $file_hash & ".g9") and readFile(path) & "\n" == readFile(parser_cache_dir & $file_hash & "_pre.g9"):
         echo "Using Cached Code\n"
@@ -36,10 +37,11 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool) : s
 
         if advancedParse == true:
             echo "Doing advanced parse\n"
-            var c_index = 0
-            var ifDepth = 0
-            var whileDepth = 0
-            var is_exited = false
+            var
+                c_index = 0
+                ifDepth = 0
+                whileDepth = 0
+                is_exited = false
             while c_index < len(parsed_code):
                 case $parsed_code[c_index]
                 of $'q':
@@ -105,8 +107,9 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool) : s
 
         code.close()
         
-        let parsed_code_file = open(parser_cache_dir & $file_hash & ".g9", fmWrite)
-        let unparsed_code_file = open(parser_cache_dir & $file_hash & "_pre.g9", fmWrite)
+        let
+            parsed_code_file = open(parser_cache_dir & $file_hash & ".g9", fmWrite)
+            unparsed_code_file = open(parser_cache_dir & $file_hash & "_pre.g9", fmWrite)
         parsed_code_file.writeLine(parsed_code)
         unparsed_code_file.writeLine(readFile(path))
         return parsed_code
