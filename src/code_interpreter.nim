@@ -8,21 +8,20 @@ iterator `...`*[T](a: T, b: T): T =
         yield res
         inc res
 
-proc log_this(mode: string, message: string) : string {.discardable.} =
+proc logThis(mode: string, message: string) : string {.discardable.} =
     when defined windows:
-        let log_dir = r"C:\ProgramData\Grid9\logs\"
+        const logDir = r"C:\ProgramData\Grid9\logs\"
     else:
-        let log_dir = "/usr/share/Grid9/logs/"
-
-    let time = now().format("yyyy-MM-dd HH:mm:ss")
-    let log_file = open(log_dir & now().format("yyyy-MM-dd") & ".log", fmAppend)
-    log_file.writeLine(fmt"{time} - {mode} - {message}")
-
+        const logDir = "/usr/share/Grid9/logs/"
+    let
+        time = now().format("yyyy-MM-dd HH:mm:ss")
+        logFile = open(logDir & now().format("yyyy-MM-dd") & ".log", fmAppend)
+    logFile.writeLine(fmt"{time} - {mode} - {message}")
     log_file.close()
 
 proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool) : string {.discardable.} =
 
-    if noLog: log_this("INFO", "Interpreting script")
+    if noLog: logThis("INFO", "Interpreting script")
 
     #initate all the varibles
     var
@@ -52,7 +51,7 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool) : string {.
                         mem_grid[$parsed_code[c_index + 1]] = 0
                         if echoGridMod == true:echo $mem_grid
                 else:
-                    if noLog: log_this("ERROR", "Invalid syntax for flip command")
+                    if noLog: logThis("ERROR", "Invalid syntax for flip command")
 
             #set command
             of $'s':
@@ -64,7 +63,7 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool) : string {.
                         mem_grid[$parsed_code[c_index + 1]] = parseint($parsed_code[c_index + 2])
                         if echoGridMod == true:echo $mem_grid
                 else:
-                    if noLog: log_this("ERROR", "Invalid syntax for set command")
+                    if noLog: logThis("ERROR", "Invalid syntax for set command")
 
             #set all command
             of $'a':
@@ -78,7 +77,7 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool) : string {.
                             mem_grid[$i] = parseint($parsed_code[c_index + 1])
                         if echoGridMod == true:echo $mem_grid
                 else:
-                    if noLog: log_this("ERROR", "Invalid syntax for set all command")
+                    if noLog: logThis("ERROR", "Invalid syntax for set all command")
 
             #queue command
             of $'q':
@@ -89,7 +88,7 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool) : string {.
                         mem_queue = ""
                     c_index += 1
                 else:
-                    if noLog: log_this("ERROR", "Invalid queue command")
+                    if noLog: logThis("ERROR", "Invalid queue command")
 
             #print command
             of $'p':
@@ -106,7 +105,7 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool) : string {.
                     for i in 0...8:
                         mem_grid[$i] = parseint($gived_input[i])
                 else:
-                    if noLog: log_this("ERROR", "Input for give command was not 9 numbers long")
+                    if noLog: logThis("ERROR", "Input for give command was not 9 numbers long")
 
             #if command
             of $'i':
@@ -164,7 +163,7 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool) : string {.
                                 if_pos_end += 1
                             c_index = if_pos_end
                 else:
-                    if noLog: log_this("ERROR", "Invalid if statement")
+                    if noLog: logThis("ERROR", "Invalid if statement")
 
             #while command
             of $'w':
@@ -190,7 +189,7 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool) : string {.
                             else:
                                 while_pos.delete(0)
                     else:
-                        if noLog: log_this("ERROR", "Invalid while statement")
+                        if noLog: logThis("ERROR", "Invalid while statement")
 
             #exit command
             of $'x':
@@ -204,12 +203,12 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool) : string {.
                 if len(parsed_code) > c_index + 1:
                     c_index -= parseint($parsed_code[c_index + 1])
                 else:
-                    if noLog: log_this("ERROR", "Invalid back command")
+                    if noLog: logThis("ERROR", "Invalid back command")
 
             #terminate command
             of $'t':
                 {.linearScanEnd.}
-                if noLog: log_this("INFO", "Script terminated by user")
+                if noLog: logThis("INFO", "Script terminated by user")
                 break
 
             #Go to start of while loop
@@ -222,5 +221,5 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool) : string {.
             c_index += 1
 
     except:
-        if noLog: log_this("ERROR", "Unknown error in script on line " & $c_index)
+        if noLog: logThis("ERROR", "Unknown error in script on line " & $c_index)
         return

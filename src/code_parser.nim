@@ -1,15 +1,14 @@
 import std/hashes, strformat, times, os, re
 
-proc log_this(mode: string, message: string) : string {.discardable.} =
+proc logThis(mode: string, message: string) : string {.discardable.} =
     when defined windows:
-        let log_dir = r"C:\ProgramData\Grid9\logs\"
+        const logDir = r"C:\ProgramData\Grid9\logs\"
     else:
-        let log_dir = "/usr/share/Grid9/logs/"
-
-    let time = now().format("yyyy-MM-dd HH:mm:ss")
-    let log_file = open(log_dir & now().format("yyyy-MM-dd") & ".log", fmAppend)
-    log_file.writeLine(fmt"{time} - {mode} - {message}")
-
+        const logDir = "/usr/share/Grid9/logs/"
+    let
+        time = now().format("yyyy-MM-dd HH:mm:ss")
+        logFile = open(logDir & now().format("yyyy-MM-dd") & ".log", fmAppend)
+    logFile.writeLine(fmt"{time} - {mode} - {message}")
     log_file.close()
 
 proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool) : string =
@@ -49,7 +48,7 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool) : s
                     elif parsed_code[c_index + 1] == 'c':
                         discard
                     else:
-                        if noLog: log_this("ERROR", "Invalid operation for queue command")
+                        if noLog: logThis("ERROR", "Invalid operation for queue command")
                         echo "ERROR: Invalid operation for queue command"
                 of $'i':ifDepth+=1
                 of $'w':whileDepth+=1
@@ -60,22 +59,22 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool) : s
                         is_exited = false
                 of $'b':
                     if not match($parsed_code[c_index + 1], re"0-9",):
-                        if noLog: log_this("ERROR", "Invalid number for back command")
+                        if noLog: logThis("ERROR", "Invalid number for back command")
                         echo "ERROR: Invalid number for back command"
                 of $'x':
                     is_exited = true
                 
                 if ifDepth < 0:
-                    if noLog: log_this("ERROR", "If depth is less than 0")
+                    if noLog: logThis("ERROR", "If depth is less than 0")
                     echo "ERROR: If depth is less than 0"
                 if whileDepth < 0:
-                    if noLog: log_this("ERROR", "While depth is less than 0")
+                    if noLog: logThis("ERROR", "While depth is less than 0")
                     echo "ERROR: While depth is less than 0"
 
                 c_index += 1
 
             if ifDepth > 0:
-                if noLog: log_this("WARNING", "If depth is greater than 0")
+                if noLog: logThis("WARNING", "If depth is greater than 0")
                 echo "WARNING: If depth is greater than 0 would you like to try to automatically fix? (y/n)"
                 let responce = readLine(stdin)
                 if $responce == $'y':
@@ -86,7 +85,7 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool) : s
                     discard fixTimes
                 discard responce
             if whileDepth > 0:
-                if noLog: log_this("WARNING", "While depth is greater than 0")
+                if noLog: logThis("WARNING", "While depth is greater than 0")
                 echo "WARNING: While depth is greater than 0 would you like to try to automatically fix? (y/n)"
                 let responce = readLine(stdin)
                 if $responce == $'y':
@@ -97,7 +96,7 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool) : s
                     discard fixTimes
                 discard responce
             if is_exited == true:
-                if noLog: log_this("WARNING", "Attemped to exit a while loop while not currently being in one")
+                if noLog: logThis("WARNING", "Attemped to exit a while loop while not currently being in one")
                 echo "WARNING: Exited while loop without a while loop would you like to try to automatically fix? (y/n)"
                 let responce = readLine(stdin)
                 if $responce == $'y':
