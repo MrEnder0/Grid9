@@ -1,5 +1,5 @@
 name: Nightly Release
-on:push
+on: push
 
 jobs:
   NightlyReleaseLinux:
