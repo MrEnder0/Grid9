@@ -5,20 +5,17 @@ jobs:
   NightlyReleaseLinux:
     runs-on: ubuntu-latest
     steps:
-    - name: Install Nim
+    - name: Install Dependencies
       uses: actions/checkout@v3
       uses: jiro4989/setup-nim-action@v1
       with:
         nim-version: '1.6.x'
-    
-    - name: Install Dependencies
+      
       run: |
         nimble install docopt -Y
         nimble install yaml -Y
         
     - name: Build
-    - uses: actions/checkout@v3
-    - uses: jiro4989/setup-nim-action@v1
       run: |
         cd ${{ github.workspace }}
         git clone https://github.com/MrEnder0/Grid9.git
