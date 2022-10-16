@@ -3,8 +3,10 @@ image: gitpod/workspace-full
 tasks:
   - name: Startup
     init: |
-      sudo apt update
-      sudo apt install nim
+      curl https://nim-lang.org/choosenim/init.sh -o choosenim
+      chmod +x choosenim
+      ./choosenim
+      export PATH=/home/$USER/.nimble/bin:$PATH
       nimble install docopt -y
       nimble install yaml -y
       cd src

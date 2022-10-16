@@ -15,8 +15,11 @@ fi
 if [[ $PACKAGE_MANAGER == "apt" ]]; then
     sudo apt update
     sudo apt install git
-    sudo apt install nim
     sudo apt install rename
+    curl https://nim-lang.org/choosenim/init.sh -o choosenim
+    chmod +x choosenim
+    ./choosenim
+    export PATH=/home/$USER/.nimble/bin:$PATH
     nimble install docopt -y
     nimble install yaml -y
     git clone https://github.com/MrEnder0/Grid9

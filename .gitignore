@@ -1,7 +1,8 @@
-#Nim folders
+#Nim
 nimcache/
 nimblecache/
 htmldocs/
+choosenim
 
 #Windows binaries
 *.exe
