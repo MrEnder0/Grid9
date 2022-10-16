@@ -1,11 +1,11 @@
 if [ -x "$(command -v apt-get)" ]; then
-    echo "Package manager identified as apt-get. You may have to enter sudo password or enter su mode to continue."
+    echo "Package manager identified as apt-get. You may have to enter sudo password or enter su mode to continue. Also you may be prompted with a message from choosenim put either y or n."
     PACKAGE_MANAGER="apt-get"
 elif [ -x "$(command -v pacman)" ]; then
-    echo "Package manager identified as pacman. You may have to enter sudo password or enter su mode to continue."
+    echo "Package manager identified as pacman. You may have to enter sudo password or enter su mode to continue. Also you may be prompted with a message from choosenim put either y or n."
     PACKAGE_MANAGER="pacman"
 elif [ -x "$(command -v apk)" ]; then
-    echo "Package manager identified as apk. You may have to enter sudo password or enter su mode to continue."
+    echo "Package manager identified as apk. You may have to enter sudo password or enter su mode to continue. Also you may be prompted with a message from choosenim put either y or n."
     PACKAGE_MANAGER="apk"
 else
     echo "We cant identify your package manager, we currently support apt and pacman package managers, if your system does use one of these please report this bug."
@@ -16,14 +16,15 @@ if [[ $PACKAGE_MANAGER == "apt" ]]; then
     sudo apt update
     sudo apt install git
     sudo apt install rename
+
     curl https://nim-lang.org/choosenim/init.sh -o choosenim
     chmod +x choosenim
     ./choosenim
     export PATH=/home/$USER/.nimble/bin:$PATH
     nimble install docopt -y
     nimble install yaml -y
-    git clone https://github.com/MrEnder0/Grid9
 
+    git clone https://github.com/MrEnder0/Grid9
     cd Grid9/src
     rename -v 's/main/grid9/' *.nim
     nim c -d:release grid9
@@ -33,12 +34,16 @@ if [[ $PACKAGE_MANAGER == "apt" ]]; then
 elif [[ $PACKAGE_MANAGER == "pacman" ]]; then
     sudo pacman -Syyu
     sudo pacman -S git
-    sudo pacman -S nim
     sudo pacman -S rename
+
+    curl https://nim-lang.org/choosenim/init.sh -o choosenim
+    chmod +x choosenim
+    ./choosenim
+    export PATH=/home/$USER/.nimble/bin:$PATH
     nimble install docopt -y
     nimble install yaml -y
-    git clone https://github.com/MrEnder0/Grid9
 
+    git clone https://github.com/MrEnder0/Grid9
     cd Grid9/src
     rename -v 's/main/grid9/' *.nim
     nim c -d:release grid9
