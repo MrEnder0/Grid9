@@ -15,7 +15,6 @@ fi
 if [[ $PACKAGE_MANAGER == "apt" ]]; then
     sudo apt update
     sudo apt install git
-    sudo apt install rename
 
     curl https://nim-lang.org/choosenim/init.sh -o choosenim
     chmod +x choosenim
@@ -26,7 +25,7 @@ if [[ $PACKAGE_MANAGER == "apt" ]]; then
 
     git clone https://github.com/MrEnder0/Grid9
     cd Grid9/src
-    rename -v 's/main/grid9/' *.nim
+    mv main.nim grid9.nim
     nim c -d:release grid9
 
     sudo chmod 777 grid9
@@ -34,7 +33,6 @@ if [[ $PACKAGE_MANAGER == "apt" ]]; then
 elif [[ $PACKAGE_MANAGER == "pacman" ]]; then
     sudo pacman -Syyu
     sudo pacman -S git
-    sudo pacman -S rename
 
     curl https://nim-lang.org/choosenim/init.sh -o choosenim
     chmod +x choosenim
@@ -45,7 +43,7 @@ elif [[ $PACKAGE_MANAGER == "pacman" ]]; then
 
     git clone https://github.com/MrEnder0/Grid9
     cd Grid9/src
-    rename -v 's/main/grid9/' *.nim
+    mv main.nim grid9.nim
     nim c -d:release grid9
 
     sudo chmod 777 grid9
