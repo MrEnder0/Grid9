@@ -66,4 +66,4 @@ elif [[ $PACKAGE_MANAGER == "apk" ]]; then
     chmod 777 grid9
     mv grid9 /usr/bin/
 fi
-echo "Installation complete. If you get any errors about permissions when running Grid9 try running the Grid9 with sudo command before."
+echo "Installation complete!"
