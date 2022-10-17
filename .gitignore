@@ -9,5 +9,6 @@ choosenim
 *.dll
 
 #Linux binaries
+*.bin
 main
 grid9
