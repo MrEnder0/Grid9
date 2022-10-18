@@ -5,6 +5,7 @@ from glyths import nil
 
 import docopt, os, re
 import std/browsers
+import std/strutils
 
 when defined windows:
     const
@@ -159,10 +160,13 @@ proc example(name: string) =
 proc interpret*(path: string, advancedParse: bool, dontCache: bool, echoGridMod: bool, noLog: bool) =
 
     #Check if file exists and allows for file extension to not be defined
-    var path = path
-    if os.fileExists(path):discard
-    elif os.fileExists(path & ".g9"):path = path & ".g9"
-    else:echo "\nError: File not found, maybe check your path.\n"
+    var path = path.replace(":examples:", exampleDir)
+    if os.fileExists(path):
+        discard
+    elif os.fileExists(path & ".g9"):
+        path = path & ".g9"
+    else:
+        echo "\nError: File not found, maybe check your path.\n"
 
     #Read yaml file and parse it
     var
