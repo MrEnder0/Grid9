@@ -34,9 +34,9 @@ Make sure curl is installed then run this command.
 curl -s https://raw.githubusercontent.com/MrEnder0/Grid9/main/scripts/install_linux.sh | bash
 ```
 
-### Test it out
+### Online
 
-You can open this project in gitpod if you dont want to run it locally.
+You can run this project in [gitpod](https://gitpod.io/#https://github.com/MrEnder0/Grid9) if you dont want to run it locally.
 
 ## Future plans
 
