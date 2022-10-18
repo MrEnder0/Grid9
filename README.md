@@ -45,7 +45,6 @@ Note in between updates there may be other smaller changes. Also none of these a
 ### High priority
 
 - Overhaul self build scripts to optionally put examples and documentation into their respective folders.
-- Add example folder constant that can be used in cli for easy paths.
 - Allow and conditions in if and while statements.
 
 ### Low priority
