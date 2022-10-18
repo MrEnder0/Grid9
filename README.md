@@ -40,7 +40,7 @@ You can run this project in [gitpod](https://gitpod.io/#https://github.com/MrEnd
 
 ## Future plans
 
-Note in between updates there may be other smaller changes. Also none of these are in any particular order.
+Note none of these plans are guaranteed and also their may be additions that are not stated below. 
 
 ### High priority
 
@@ -49,6 +49,7 @@ Note in between updates there may be other smaller changes. Also none of these a
 
 ### Low priority
 
+- Create a javascript build that can go in the documentation so you can run it in the browser with the docs.
 - Add grid9 url handler for running grid9 files by clicking a link.
 - Add intergration with other open source apps.
 
