@@ -40,7 +40,7 @@ You can run this project in [gitpod](https://gitpod.io/#https://github.com/MrEnd
 
 ## Future plans
 
-Note none of these plans are guaranteed and also their may be additions that are not stated below. 
+Note none of these plans are guaranteed and also their may be additions that are not stated below.
 
 ### High priority
 
