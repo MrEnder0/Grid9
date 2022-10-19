@@ -260,14 +260,10 @@ when isMainModule:
     #Create the file structure for info if it doesn't exist
     if not dirExists(mainDir):
         createDir(mainDir)
-        if not dirExists(parserCacheDir):
-            createDir(parserCacheDir)
-        if not dirExists(logDir):
-            createDir(logDir)
-        if not dirExists(exampleDir):
-            createDir(exampleDir)
-        if not dirExists(docsDir):
-            createDir(docsDir)
+    if not dirExists(parserCacheDir):
+        createDir(parserCacheDir)
+    if not dirExists(logDir):
+        createDir(logDir)
 
     if len(os.commandLineParams()) > 0:
         if os.fileExists(os.commandLineParams()[0]) and len(os.commandLineParams()) == 1: interpret(os.commandLineParams()[0], false, false, false, false)
