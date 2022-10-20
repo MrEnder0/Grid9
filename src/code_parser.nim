@@ -9,45 +9,45 @@ proc logThis(mode: string, message: string) : string {.discardable.} =
         time = now().format("yyyy-MM-dd HH:mm:ss")
         logFile = open(logDir & now().format("yyyy-MM-dd") & ".log", fmAppend)
     logFile.writeLine(fmt"{time} - {mode} - {message}")
-    log_file.close()
+    logFile.close()
 
 proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool) : string =
     let code = open(path)
 
     when defined windows:
-        let parser_cache_dir = r"C:\ProgramData\Grid9\parser_cache\"
+        let parserCacheDir = r"C:\ProgramData\Grid9\parser_cache\"
     else:
-        let parser_cache_dir = "/usr/share/Grid9/parser_cache/"
+        let parserCacheDir = "/usr/share/Grid9/parser_cache/"
 
-    let file_hash = hash(path)
+    let fileHash = hash(path)
     var
-        parsed_code: string
+        parsedCode: string
         line: string
 
-    if advancedParse != true and dontCache != true and os.fileExists(parser_cache_dir & $file_hash & ".g9") and readFile(path) & "\n" == readFile(parser_cache_dir & $file_hash & "_pre.g9"):
+    if advancedParse != true and dontCache != true and os.fileExists(parserCacheDir & $fileHash & ".g9") and readFile(path) & "\n" == readFile(parserCacheDir & $fileHash & "_pre.g9"):
         echo "Using Cached Code\n"
-        parsed_code = open(parser_cache_dir & $file_hash & ".g9").read_line()
-        return parsed_code
+        parsedCode = open(parserCacheDir & $fileHash & ".g9").read_line()
+        return parsedCode
     else:
         while code.read_line(line):
-            parsed_code = parsed_code & line
+            parsedCode = parsedCode & line
         
             #Strips whitespace, capital letters, parenthesis, and asterisks as comments
-            parsed_code = replace(parsed_code, re("[A-Z*()\n\t ]+"), "")  
+            parsedCode = replace(parsedCode, re("[A-Z*()\n\t ]+"), "")  
 
         if advancedParse == true:
             echo "Doing advanced parse\n"
             var
-                c_index = 0
+                cIndex = 0
                 ifDepth = 0
                 whileDepth = 0
-                is_exited = false
-            while c_index < len(parsed_code):
-                case $parsed_code[c_index]
+                isExited = false
+            while cIndex < len(parsedCode):
+                case $parsedCode[cIndex]
                 of $'q':
-                    if parsed_code[c_index + 1] == 's':
+                    if parsedCode[cIndex + 1] == 's':
                         discard
-                    elif parsed_code[c_index + 1] == 'c':
+                    elif parsedCode[cIndex + 1] == 'c':
                         discard
                     else:
                         if noLog: logThis("ERROR", "Invalid operation for queue command")
@@ -57,14 +57,14 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool) : s
                 of $'}':ifDepth-=1
                 of $']':
                     whileDepth-=1
-                    if is_exited == true:
-                        is_exited = false
+                    if isExited == true:
+                        isExited = false
                 of $'b':
-                    if not match($parsed_code[c_index + 1], re"0-9",):
+                    if not match($parsedCode[cIndex + 1], re"0-9",):
                         if noLog: logThis("ERROR", "Invalid number for back command")
                         echo "ERROR: Invalid number for back command"
                 of $'x':
-                    is_exited = true
+                    isExited = true
                 
                 if ifDepth < 0:
                     if noLog: logThis("ERROR", "If depth is less than 0")
@@ -73,7 +73,7 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool) : s
                     if noLog: logThis("ERROR", "While depth is less than 0")
                     echo "ERROR: While depth is less than 0"
 
-                c_index += 1
+                cIndex += 1
 
             if ifDepth > 0:
                 if noLog: logThis("WARNING", "If depth is greater than 0")
@@ -82,7 +82,7 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool) : s
                 if $responce == $'y':
                     var fixTimes = 0
                     while fixTimes < ifDepth:
-                        parsed_code = parsed_code & $'}'
+                        parsedCode = parsedCode & $'}'
                         fixTimes += 1
                     discard fixTimes
                 discard responce
@@ -93,23 +93,25 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool) : s
                 if $responce == $'y':
                     var fixTimes = 0
                     while fixTimes < whileDepth:
-                        parsed_code = parsed_code & $']'
+                        parsedCode = parsedCode & $']'
                         fixTimes += 1
                     discard fixTimes
                 discard responce
-            if is_exited == true:
+            if isExited == true:
                 if noLog: logThis("WARNING", "Attemped to exit a while loop while not currently being in one")
                 echo "WARNING: Exited while loop without a while loop would you like to try to automatically fix? (y/n)"
                 let responce = readLine(stdin)
                 if $responce == $'y':
-                    parsed_code = parsed_code & $']'
+                    parsedCode = parsedCode & $']'
                 discard responce
 
         code.close()
         
         let
-            parsed_code_file = open(parser_cache_dir & $file_hash & ".g9", fmWrite)
-            unparsed_code_file = open(parser_cache_dir & $file_hash & "_pre.g9", fmWrite)
-        parsed_code_file.writeLine(parsed_code)
-        unparsed_code_file.writeLine(readFile(path))
-        return parsed_code
+            parsedCodeFile = open(parserCacheDir & $fileHash & ".g9", fmWrite)
+            unparsedCodeFile = open(parserCacheDir & $fileHash & "_pre.g9", fmWrite)
+        parsedCodeFile.writeLine(parsedCode)
+        unparsedCodeFile.writeLine(readFile(path))
+        parsedCodeFile.close()
+        unparsedCodeFile.close()
+        return parsedCode
