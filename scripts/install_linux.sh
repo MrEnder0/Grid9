@@ -42,6 +42,17 @@ if [[ $PACKAGE_MANAGER == "apt" ]]; then
         sudo mkdir /usr/share/Grid9/examples
         cd examples
         sudo mv * /usr/share/Grid9/examples
+        cd ..
+    fi
+
+    echo "Would you like to install the documentation (y/n)"
+    read -r INSTALL_DOCS
+    if [[ $INSTALL_DOCS == "y" ]]; then
+        echo "Installing documentation."
+        sudo mkdir /usr/share/Grid9/documentation
+        cd documentation
+        sudo mv * /usr/share/Grid9/documentation
+        cd ..
     fi
 elif [[ $PACKAGE_MANAGER == "pacman" ]]; then
     sudo pacman -Syyu
@@ -73,6 +84,17 @@ elif [[ $PACKAGE_MANAGER == "pacman" ]]; then
         sudo mkdir /usr/share/Grid9/examples
         cd examples
         sudo mv * /usr/share/Grid9/examples
+        cd ..
+    fi
+
+    echo "Would you like to install the documentation (y/n)"
+    read -r INSTALL_DOCS
+    if [[ $INSTALL_DOCS == "y" ]]; then
+        echo "Installing documentation."
+        sudo mkdir /usr/share/Grid9/documentation
+        cd documentation
+        sudo mv * /usr/share/Grid9/documentation
+        cd ..
     fi
 elif [[ $PACKAGE_MANAGER == "apk" ]]; then
     apk update
@@ -102,6 +124,17 @@ elif [[ $PACKAGE_MANAGER == "apk" ]]; then
         mkdir /usr/share/Grid9/examples
         cd examples
         mv * /usr/share/Grid9/examples
+        cd ..
+    fi
+
+    echo "Would you like to install the documentation (y/n)"
+    read -r INSTALL_DOCS
+    if [[ $INSTALL_DOCS == "y" ]]; then
+        echo "Installing documentation."
+        mkdir /usr/share/Grid9/documentation
+        cd documentation
+        mv * /usr/share/Grid9/documentation
+        cd ..
     fi
 fi
 echo "Installation complete!"
