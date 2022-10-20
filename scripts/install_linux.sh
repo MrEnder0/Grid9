@@ -35,25 +35,18 @@ if [[ $PACKAGE_MANAGER == "apt" ]]; then
     sudo mv grid9 /usr/bin/
     sudo mkdir /usr/share/Grid9/
 
-    echo "Would you like to install the example scripts (y/n)"
-    read -r INSTALL_EXAMPLES
-    if [[ $INSTALL_EXAMPLES == "y" ]]; then
-        echo "Installing example scripts."
-        sudo mkdir /usr/share/Grid9/examples
-        cd examples
-        sudo mv * /usr/share/Grid9/examples
-        cd ..
-    fi
+    echo "Installing example scripts."
+    sudo mkdir /usr/share/Grid9/examples
+    cd examples
+    sudo mv * /usr/share/Grid9/examples
+    cd ..
 
-    echo "Would you like to install the documentation (y/n)"
-    read -r INSTALL_DOCS
-    if [[ $INSTALL_DOCS == "y" ]]; then
-        echo "Installing documentation."
-        sudo mkdir /usr/share/Grid9/documentation
-        cd documentation
-        sudo mv * /usr/share/Grid9/documentation
-        cd ..
-    fi
+    echo "Installing documentation."
+    sudo mkdir /usr/share/Grid9/documentation
+    cd documentation
+    sudo mv * /usr/share/Grid9/documentation
+    cd ..
+
 elif [[ $PACKAGE_MANAGER == "pacman" ]]; then
     sudo pacman -Syyu
     sudo pacman -S git
@@ -77,25 +70,18 @@ elif [[ $PACKAGE_MANAGER == "pacman" ]]; then
     sudo mv grid9 /usr/bin/
     sudo mkdir /usr/share/Grid9/
 
-    echo "Would you like to install the example scripts (y/n)"
-    read -r INSTALL_EXAMPLES
-    if [[ $INSTALL_EXAMPLES == "y" ]]; then
-        echo "Installing example scripts."
-        sudo mkdir /usr/share/Grid9/examples
-        cd examples
-        sudo mv * /usr/share/Grid9/examples
-        cd ..
-    fi
+    echo "Installing example scripts."
+    sudo mkdir /usr/share/Grid9/examples
+    cd examples
+    sudo mv * /usr/share/Grid9/examples
+    cd ..
 
-    echo "Would you like to install the documentation (y/n)"
-    read -r INSTALL_DOCS
-    if [[ $INSTALL_DOCS == "y" ]]; then
-        echo "Installing documentation."
-        sudo mkdir /usr/share/Grid9/documentation
-        cd documentation
-        sudo mv * /usr/share/Grid9/documentation
-        cd ..
-    fi
+    echo "Installing documentation."
+    sudo mkdir /usr/share/Grid9/documentation
+    cd documentation
+    sudo mv * /usr/share/Grid9/documentation
+    cd ..
+
 elif [[ $PACKAGE_MANAGER == "apk" ]]; then
     apk update
     apk add git
@@ -117,24 +103,16 @@ elif [[ $PACKAGE_MANAGER == "apk" ]]; then
     mv grid9 /usr/bin/
     mkdir /usr/share/Grid9/
 
-    echo "Would you like to install the example scripts (y/n)"
-    read -r INSTALL_EXAMPLES
-    if [[ $INSTALL_EXAMPLES == "y" ]]; then
-        echo "Installing example scripts."
-        mkdir /usr/share/Grid9/examples
-        cd examples
-        mv * /usr/share/Grid9/examples
-        cd ..
-    fi
+    echo "Installing example scripts."
+    mkdir /usr/share/Grid9/examples
+    cd examples
+    mv * /usr/share/Grid9/examples
+    cd ..
 
-    echo "Would you like to install the documentation (y/n)"
-    read -r INSTALL_DOCS
-    if [[ $INSTALL_DOCS == "y" ]]; then
-        echo "Installing documentation."
-        mkdir /usr/share/Grid9/documentation
-        cd documentation
-        mv * /usr/share/Grid9/documentation
-        cd ..
-    fi
+    echo "Installing documentation."
+    mkdir /usr/share/Grid9/documentation
+    cd documentation
+    mv * /usr/share/Grid9/documentation
+    cd ..
 fi
 echo "Installation complete!"
