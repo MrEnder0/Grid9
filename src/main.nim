@@ -17,7 +17,7 @@ when defined windows:
 else:
     const
         mainDir = "/usr/share/Grid9/"
-        parser_cacheDir = "/usr/share/Grid9/parser_cache/"
+        parserCacheDir = "/usr/share/Grid9/parser_cache/"
         logDir = "/usr/share/Grid9/logs/"
         exampleDir = "/usr/share/Grid9/examples/"
         docsDir = "/usr/share/Grid9/documentation/"
