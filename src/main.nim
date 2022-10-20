@@ -178,7 +178,7 @@ proc interpret*(path: string, advancedParse: bool, dontCache: bool, echoGridMod:
     if os.fileExists(replace(path, re".g9", ".yaml")):
         let
             ymlPath = replace(path, re".g9", ".yaml")
-            configOptions = yml_manager.get_config(ymlPath)
+            configOptions = yml_manager.getConfig(ymlPath)
         if configOptions[18] == 't':
             advancedParseY = true
         else:
@@ -199,7 +199,7 @@ proc interpret*(path: string, advancedParse: bool, dontCache: bool, echoGridMod:
     elif os.fileExists(replace(path, re".g9", ".yml")):
         let
             ymlPath = replace(path, re".g9", ".yml")
-            configOptions = yml_manager.get_config(ymlPath)
+            configOptions = yml_manager.getConfig(ymlPath)
         if configOptions[18] == 't':
             advancedParseY = true
         else:
@@ -218,14 +218,14 @@ proc interpret*(path: string, advancedParse: bool, dontCache: bool, echoGridMod:
             noLogY = false
 
     #Parse and interpret the code
-    let parsed_code = code_parser.parse(path, advancedParseY, dontCacheY , noLogY)
-    code_interpreter.interpret(parsed_code, echoGridModY, noLogY)
+    let parsedCode = code_parser.parse(path, advancedParseY, dontCacheY , noLogY)
+    code_interpreter.interpret(parsedCode, echoGridModY, noLogY)
     echo "\nCode finished successfully!"
 
     let exit = readLine(stdin)
     discard exit
 
-proc glyth_value_get(glyth: string) =
+proc glythValueGet(glyth: string) =
     echo glyths.get_glyth(glyth)
 
 proc main() =
@@ -247,9 +247,9 @@ proc main() =
         interpret($args["<path>"], args["--advancedParse"], args["--dontCache"], args["--echoGridMod"], args["--noLog"])
 
     if args["glyth_value_get"]:
-        glyth_value_get($args["<glyth>"])
+        glythValueGet($args["<glyth>"])
 
-proc non_terminal() =
+proc nonTerminal() =
     echo "No arguments passed\n" & doc
 
     let exit = readLine(stdin)
@@ -268,4 +268,4 @@ when isMainModule:
     if len(os.commandLineParams()) > 0:
         if os.fileExists(os.commandLineParams()[0]) and len(os.commandLineParams()) == 1: interpret(os.commandLineParams()[0], false, false, false, false)
         else: main()
-    else: non_terminal()
+    else: nonTerminal()

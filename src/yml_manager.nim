@@ -1,7 +1,7 @@
 import yaml/serialization, streams
 import std/strutils
 
-proc get_config*(path: string) : string =
+proc getConfig*(path: string) : string =
     type yamlObject = object
         advancedParse: bool
         dontCache: bool
