@@ -16,6 +16,7 @@ if [[ $PACKAGE_MANAGER == "apt" ]]; then
     sudo apt update
     sudo apt install git
 
+    echo "Installing nim and project dependencies."
     curl https://nim-lang.org/choosenim/init.sh -o choosenim
     chmod +x choosenim
     ./choosenim
@@ -23,17 +24,30 @@ if [[ $PACKAGE_MANAGER == "apt" ]]; then
     nimble install docopt -y
     nimble install yaml -y
 
+    echo "Compiling grid9."
     git clone https://github.com/MrEnder0/Grid9
     cd Grid9/src
     mv main.nim grid9.nim
     nim c -d:release grid9
 
+    echo "Installing grid9."
     sudo chmod 777 grid9
     sudo mv grid9 /usr/bin/
+    sudo mkdir /usr/share/Grid9/
+
+    echo "Would you like to install the example scripts (y/n)"
+    read -r INSTALL_EXAMPLES
+    if [[ $INSTALL_EXAMPLES == "y" ]]; then
+        echo "Installing example scripts."
+        sudo mkdir /usr/share/Grid9/examples
+        cd examples
+        sudo mv * /usr/share/Grid9/examples
+    fi
 elif [[ $PACKAGE_MANAGER == "pacman" ]]; then
     sudo pacman -Syyu
     sudo pacman -S git
 
+    echo "Installing nim and project dependencies."
     curl https://nim-lang.org/choosenim/init.sh -o choosenim
     chmod +x choosenim
     ./choosenim
@@ -41,27 +55,53 @@ elif [[ $PACKAGE_MANAGER == "pacman" ]]; then
     nimble install docopt -y
     nimble install yaml -y
 
+    echo "Compiling grid9."
     git clone https://github.com/MrEnder0/Grid9
     cd Grid9/src
     mv main.nim grid9.nim
     nim c -d:release grid9
 
+    echo "Installing grid9."
     sudo chmod 777 grid9
     sudo mv grid9 /usr/bin/
+    sudo mkdir /usr/share/Grid9/
+
+    echo "Would you like to install the example scripts (y/n)"
+    read -r INSTALL_EXAMPLES
+    if [[ $INSTALL_EXAMPLES == "y" ]]; then
+        echo "Installing example scripts."
+        sudo mkdir /usr/share/Grid9/examples
+        cd examples
+        sudo mv * /usr/share/Grid9/examples
+    fi
 elif [[ $PACKAGE_MANAGER == "apk" ]]; then
     apk update
     apk add git
+
+    echo "Installing nim and project dependencies."
     apk add nim
     apk add nimble
     nimble install docopt -y
     nimble install yaml -y
-    git clone https://github.com/MrEnder0/Grid9
 
+    echo "Compiling grid9."
+    git clone https://github.com/MrEnder0/Grid9
     cd Grid9/src
     mv main.nim grid9.nim
     nim c -d:release grid9
 
+    echo "Installing grid9."
     chmod 777 grid9
     mv grid9 /usr/bin/
+    mkdir /usr/share/Grid9/
+
+    echo "Would you like to install the example scripts (y/n)"
+    read -r INSTALL_EXAMPLES
+    if [[ $INSTALL_EXAMPLES == "y" ]]; then
+        echo "Installing example scripts."
+        mkdir /usr/share/Grid9/examples
+        cd examples
+        mv * /usr/share/Grid9/examples
+    fi
 fi
 echo "Installation complete!"
