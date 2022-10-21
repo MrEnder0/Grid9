@@ -49,7 +49,6 @@ Note none of these plans are guaranteed and also their may be additions that are
 
 ### Low priority
 
-- Create a javascript build that can go in the documentation so you can run it in the browser with the docs.
 - Add grid9 url handler for running grid9 files by clicking a link.
 - Add intergration with other open source apps.
 
