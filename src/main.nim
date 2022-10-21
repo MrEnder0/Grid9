@@ -27,6 +27,7 @@ Usage:
     Grid9 (about | a)
     Grid9 (version | v)
     Grid9 (documentation | d)
+    Grid9 (clean | c) <folder>
     Grid9 (example | e) <name>
     Grid9 (interpret | i) <path> [options]
     Grid9 glyth_value_get <glyth>
@@ -43,6 +44,19 @@ proc about() =
 
 proc version() =
     echo "\n2022-017\n"
+
+proc clean(folder: string) =
+    case folder
+    of "parser_cache":
+        os.removeDir(parserCacheDir)
+        os.createDir(parserCacheDir)
+        echo "Cleaned parser cache"
+    of "logs":
+        os.removeDir(logDir)
+        os.createDir(logDir)
+        echo "Cleaned logs"
+    else:
+        echo "Error: Invalid folder name."
 
 proc documentation() =
     try:
@@ -236,6 +250,9 @@ proc main() =
 
     if args["version"] or args["v"]:
         version()
+
+    if args["clean"] or args["c"]:
+        clean($args["<folder>"])
 
     if args["documentation"] or args["d"]:
         documentation()
