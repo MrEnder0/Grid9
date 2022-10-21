@@ -55,8 +55,14 @@ proc clean(folder: string) =
         os.removeDir(logDir)
         os.createDir(logDir)
         echo "Cleaned logs"
+    of "all":
+        os.removeDir(parserCacheDir)
+        os.createDir(parserCacheDir)
+        os.removeDir(logDir)
+        os.createDir(logDir)
+        echo "Cleaned all folders"
     else:
-        echo "Error: Invalid folder name."
+        echo "Error: Invalid folder name try any of the following 'parser_cache', 'logs', and 'all'."
 
 proc documentation() =
     try:
