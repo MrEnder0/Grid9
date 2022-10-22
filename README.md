@@ -44,7 +44,6 @@ Note none of these plans are guaranteed and also their may be additions that are
 
 ### High priority
 
-- Overhaul the yml system to be actualy good and not require to be set of ways.
 - Allow and conditions in if and while statements.
 
 ### Low priority

@@ -198,44 +198,30 @@ proc interpret*(path: string, advancedParse: bool, dontCache: bool, echoGridMod:
     if os.fileExists(replace(path, re".g9", ".yaml")):
         let
             ymlPath = replace(path, re".g9", ".yaml")
-            configOptions = yml_manager.getConfig(ymlPath)
-        if configOptions[18] == 't':
-            advancedParseY = true
-        else:
-            advancedParseY = false
-        if configOptions[32] == 't':
-            dontCacheY = true
-        else:
-            dontCacheY = false
-        if configOptions[48] == 't':
-            echoGridModY = true
-        else:
-            echoGridModY = false
-        if configOptions[58] == 't':
-            noLogY = true
-        else:
-            noLogY = false
+            config = yml_manager.getConfig(ymlPath)
+
+        if config[0] == 't':advancedParseY = true
+        else:advancedParseY = false
+        if config[1] == 't':dontCacheY = true
+        else:dontCacheY = false
+        if config[2] == 't':echoGridModY = true
+        else:echoGridModY = false
+        if config[3] == 't':noLogY = true
+        else:noLogY = false
         
     elif os.fileExists(replace(path, re".g9", ".yml")):
         let
             ymlPath = replace(path, re".g9", ".yml")
-            configOptions = yml_manager.getConfig(ymlPath)
-        if configOptions[18] == 't':
-            advancedParseY = true
-        else:
-            advancedParseY = false
-        if configOptions[32] == 't':
-            dontCacheY = true
-        else:
-            dontCacheY = false
-        if configOptions[48] == 't':
-            echoGridModY = true
-        else:
-            echoGridModY = false
-        if configOptions[58] == 't':
-            noLogY = true
-        else:
-            noLogY = false
+            config = yml_manager.getConfig(ymlPath)
+
+        if config[0] == 't':advancedParseY = true
+        else:advancedParseY = false
+        if config[1] == 't':dontCacheY = true
+        else:dontCacheY = false
+        if config[2] == 't':echoGridModY = true
+        else:echoGridModY = false
+        if config[3] == 't':noLogY = true
+        else:noLogY = false
 
     #Parse and interpret the code
     let parsedCode = code_parser.parse(path, advancedParseY, dontCacheY , noLogY)

@@ -14,12 +14,18 @@ proc getConfig*(path: string) : string =
         let yamlFile = newFileStream(path)
         load(yamlFile, yamlConfig)
         yamlFile.close()
+        #set yamlConfig values to global variables
+        for i in 0 ..< yamlConfig.len:
+            let advancedParse = yamlConfig[i].advancedParse
+            let dontCache = yamlConfig[i].dontCache
+            let echoGridMod = yamlConfig[i].echoGridMod
+            let noLog = yamlConfig[i].noLog
+
+            var configOptions =  $advancedParse & $dontCache & $echoGridMod & $noLog
+            configOptions = configOptions.replace("true", "t")
+            configOptions = configOptions.replace("false", "f")
+            return configOptions
         echo "Using found Yaml config file"
     except:
         echo "Error withen Yaml config file, using default settings"
-        return "@[(advancedParse: false, dontCache: false, echoGridMod: false)]"
-
-    var yamlData = $yaml_config
-    yamlData = yamlData.replace("true", "t")
-    yamlData = yamlData.replace("false", "f")
-    return yamlData
+        return "ffff"
