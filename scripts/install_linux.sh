@@ -16,32 +16,34 @@ if [[ $PACKAGE_MANAGER == "apt" ]]; then
     sudo apt update
     sudo apt install git
 
-    echo "Installing nim and project dependencies."
+    echo "Installing Nim... (0/5)"
     curl https://nim-lang.org/choosenim/init.sh -o choosenim
     chmod +x choosenim
     ./choosenim
     export PATH=/home/$USER/.nimble/bin:$PATH
+
+    echo "Installing dependencies... (1/5)"
     nimble install docopt -y
     nimble install yaml -y
 
-    echo "Compiling grid9."
+    echo "Compiling Grid9... (2/5)"
     git clone https://github.com/MrEnder0/Grid9
     cd Grid9/src
     mv main.nim grid9.nim
     nim c -d:release grid9
 
-    echo "Installing grid9."
+    echo "Installing Grid9... (3/5)"
     sudo chmod 777 grid9
     sudo mv grid9 /usr/bin/
     sudo mkdir /usr/share/Grid9/
 
-    echo "Installing example scripts."
+    echo "Installing Examples... (4/5)"
     sudo mkdir /usr/share/Grid9/examples
     cd examples
     sudo mv * /usr/share/Grid9/examples
     cd ..
 
-    echo "Installing documentation."
+    echo "Installing documentation... (5/5)"
     sudo mkdir /usr/share/Grid9/documentation
     cd documentation
     sudo mv * /usr/share/Grid9/documentation
@@ -51,32 +53,34 @@ elif [[ $PACKAGE_MANAGER == "pacman" ]]; then
     sudo pacman -Syyu
     sudo pacman -S git
 
-    echo "Installing nim and project dependencies."
+    echo "Installing Nim... (0/5)"
     curl https://nim-lang.org/choosenim/init.sh -o choosenim
     chmod +x choosenim
     ./choosenim
     export PATH=/home/$USER/.nimble/bin:$PATH
+
+    echo "Installing dependencies... (1/5)"
     nimble install docopt -y
     nimble install yaml -y
 
-    echo "Compiling grid9."
+    echo "Compiling Grid9... (2/5)"
     git clone https://github.com/MrEnder0/Grid9
     cd Grid9/src
     mv main.nim grid9.nim
     nim c -d:release grid9
 
-    echo "Installing grid9."
+    echo "Installing Grid9... (3/5)"
     sudo chmod 777 grid9
     sudo mv grid9 /usr/bin/
     sudo mkdir /usr/share/Grid9/
 
-    echo "Installing example scripts."
+    echo "Installing Examples... (4/5)"
     sudo mkdir /usr/share/Grid9/examples
     cd examples
     sudo mv * /usr/share/Grid9/examples
     cd ..
 
-    echo "Installing documentation."
+    echo "Installing documentation... (5/5)"
     sudo mkdir /usr/share/Grid9/documentation
     cd documentation
     sudo mv * /usr/share/Grid9/documentation
@@ -86,30 +90,32 @@ elif [[ $PACKAGE_MANAGER == "apk" ]]; then
     apk update
     apk add git
 
-    echo "Installing nim and project dependencies."
+    echo "Installing Nim... (0/5)"
     apk add nim
     apk add nimble
+
+    echo "Installing dependencies... (1/5)"
     nimble install docopt -y
     nimble install yaml -y
 
-    echo "Compiling grid9."
+    echo "Compiling Grid9... (2/5)"
     git clone https://github.com/MrEnder0/Grid9
     cd Grid9/src
     mv main.nim grid9.nim
     nim c -d:release grid9
 
-    echo "Installing grid9."
+    echo "Installing Grid9... (3/5)"
     chmod 777 grid9
     mv grid9 /usr/bin/
     mkdir /usr/share/Grid9/
 
-    echo "Installing example scripts."
+    echo "Installing Examples... (4/5)"
     mkdir /usr/share/Grid9/examples
     cd examples
     mv * /usr/share/Grid9/examples
     cd ..
 
-    echo "Installing documentation."
+    echo "Installing documentation... (5/5)"
     mkdir /usr/share/Grid9/documentation
     cd documentation
     mv * /usr/share/Grid9/documentation
