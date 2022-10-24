@@ -10,9 +10,9 @@ A esoteric interpreted language made in Nim based on a 3x3 grid of zeros and one
 
 ### Binaries
 
-Download the latest release from the releases page and run the installer.
+Download the latest release for your platform from the releases page.
 
-#### Note
+#### Windows Note
 
 Seems that currently any version 2022-012 or newer may require nim to be installed on the system for Windows, if your getting an error about a missing DLL you may need to install Nim.
 
