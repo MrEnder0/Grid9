@@ -45,11 +45,12 @@ Note none of these plans are guaranteed and also their may be additions that are
 ### High priority
 
 - Allow and conditions in if and while statements.
+- Add intergration with other open source apps.
 
 ### Low priority
 
 - Add grid9 url handler for running grid9 files by clicking a link.
-- Add intergration with other open source apps.
+- Add a update command to cli.
 
 ## Contributing
 
