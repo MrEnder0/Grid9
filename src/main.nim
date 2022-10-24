@@ -71,111 +71,58 @@ proc documentation() =
         echo "Error: Documentation not found, maybe you did not install the optional component."
 
 proc example(name: string) =
-    const errorMessage = "\nNo example found for your input try any of the following, 'example1', 'example2', 'example3', 'give_example', 'random_char_example', 'while_nesting', 'if_ladder'.\n"
-    when defined windows:
-        case $name
-        of "example1":
-            echo "\n**This example shows how to use basic language features such as the memory grid, queue and printing.**\n"
-            try:
-                echo readFile(exampleDir & "example1.g9") & "\n"
-            except:
-                echo "Error: example1.g9 not found, maybe you did not install the optional component."
-        of "example2":
-            echo "\n**This example shows how to use if statements and while statements.**\n"
-            try:
-                echo readFile(exampleDir & "example2.g9") & "\n"
-            except:
-                echo "Error: example2.g9 not found, maybe you did not install the optional component."
-        of "example3":
-            echo "\n**This example shows how to use the break and goto commands.**\n"
-            try:
-                echo readFile(exampleDir & "example3.g9") & "\n"
-            except:
-                echo "Error: example3.g9 not found, maybe you did not install the optional component."
-        of "give_example":
-            echo "\n**This example shows how to use the give command.**\n"
-            try:
-                echo readFile(exampleDir & "give_example.g9") & "\n"
-            except:
-                echo "Error: give_example.g9 not found, maybe you did not install the optional component."
-        of "random_char_example":
-            echo "\n**This example shows how to use the random argument for cell modification.**\n"
-            try:
-                echo readFile(exampleDir & "random_char_example.g9") & "\n"
-            except:
-                echo "Error: random_char_example.g9 not found, maybe you did not install the optional component."
-        of "while_nesting":
-            echo "\n**This example shows how to use while loops inside of while loops.**\n"
-            try:
-                echo readFile(exampleDir & "while_nesting.g9") & "\n"
-            except:
-                echo "Error: while_nesting.g9 not found, maybe you did not install the optional component."
-        of "if_ladder":
-            echo "\n**This example shows how to use a chain of ladders to climb a if chain.**\n"
-            try:
-                echo readFile(exampleDir & "if_ladder.g9") & "\n"
-            except:
-                echo "Error: if_ladder.g9 not found, maybe you did not install the optional component."
-        of "inf_skyscraper":
-            echo "\n**This example shows how to use the inf command to make a skyscraper.**\n"
-            try:
-                echo readFile(exampleDir & "inf_skyscraper.g9") & "\n"
-            except:
-                echo "Error: inf_skyscraper.g9 not found, maybe you did not install the optional component."
-        else:
-            echo errorMessage
+    const errorMessage = "\nNo example found for your input try any of the following, 'example1', 'example2', 'example3', 'give_example', 'random_char_example', 'while_nesting', 'if_ladder', 'inf_skyscraper'.\n"
+    case $name
+    of "example1":
+        echo "\n**This example shows how to use basic language features such as the memory grid, queue and printing.**\n"
+        try:
+            echo readFile(exampleDir & "example1.g9") & "\n"
+        except:
+            echo "Error: " & name & ".g9 not found, maybe you did not install the optional component."
+    of "example2":
+        echo "\n**This example shows how to use if statements and while statements.**\n"
+        try:
+            echo readFile(exampleDir & "example2.g9") & "\n"
+        except:
+            echo "Error: " & name & ".g9 not found, maybe you did not install the optional component."
+    of "example3":
+        echo "\n**This example shows how to use the break and goto commands.**\n"
+        try:
+            echo readFile(exampleDir & "example3.g9") & "\n"
+        except:
+            echo "Error: " & name & ".g9 not found, maybe you did not install the optional component."
+    of "give_example":
+        echo "\n**This example shows how to use the give command.**\n"
+        try:
+            echo readFile(exampleDir & "give_example.g9") & "\n"
+        except:
+            echo "Error: " & name & ".g9 not found, maybe you did not install the optional component."
+    of "random_char_example":
+        echo "\n**This example shows how to use the random argument for cell modification.**\n"
+        try:
+            echo readFile(exampleDir & "random_char_example.g9") & "\n"
+        except:
+            echo "Error: " & name & ".g9 not found, maybe you did not install the optional component."
+    of "while_nesting":
+        echo "\n**This example shows how to use while loops inside of while loops.**\n"
+        try:
+            echo readFile(exampleDir & "while_nesting.g9") & "\n"
+        except:
+            echo "Error: " & name & ".g9 not found, maybe you did not install the optional component."
+    of "if_ladder":
+        echo "\n**This example shows how to use a chain of ladders to climb a if chain.**\n"
+        try:
+            echo readFile(exampleDir & "if_ladder.g9") & "\n"
+        except:
+            echo "Error: " & name & ".g9 not found, maybe you did not install the optional component."
+    of "inf_skyscraper":
+        echo "\n**This example shows how to use the inf command to make a skyscraper.**\n"
+        try:
+            echo readFile(exampleDir & "inf_skyscraper.g9") & "\n"
+        except:
+            echo "Error: " & name & ".g9 not found, maybe you did not install the optional component."
     else:
-        case $name
-        of "example1":
-            echo "\n**This example shows how to use basic language features such as the memory grid, queue and printing.**\n"
-            try:
-                echo readFile(exampleDir & "example1.g9") & "\n"
-            except:
-                echo "Error: example1.g9 not found, maybe you did not install the optional component."
-        of "example2":
-            echo "\n**This example shows how to use if statements and while statements.**\n"
-            try:
-                echo readFile(exampleDir & "example2.g9") & "\n"
-            except:
-                echo "Error: example2.g9 not found, maybe you did not install the optional component."
-        of "example3":
-            echo "\n**This example shows how to use the break and goto commands.**\n"
-            try:
-                echo readFile(exampleDir & "example3.g9") & "\n"
-            except:
-                echo "Error: example3.g9 not found, maybe you did not install the optional component."
-        of "give_example":
-            echo "\n**This example shows how to use the give command.**\n"
-            try:
-                echo readFile(exampleDir & "give_example.g9") & "\n"
-            except:
-                echo "Error: give_example.g9 not found, maybe you did not install the optional component."
-        of "random_char_example":
-            echo "\n**This example shows how to use the random argument for cell modification.**\n"
-            try:
-                echo readFile(exampleDir & "random_char_example.g9") & "\n"
-            except:
-                echo "Error: random_char_example.g9 not found, maybe you did not install the optional component."
-        of "while_nesting":
-            echo "\n**This example shows how to use while loops inside of while loops.**\n"
-            try:
-                echo readFile(exampleDir & "while_nesting.g9") & "\n"
-            except:
-                echo "Error: while_nesting.g9 not found, maybe you did not install the optional component."
-        of "if_ladder":
-            echo "\n**This example shows how to use a chain of ladders to climb a if chain.**\n"
-            try:
-                echo readFile(exampleDir & "if_ladder.g9") & "\n"
-            except:
-                echo "Error: if_ladder.g9 not found, maybe you did not install the optional component."
-        of "inf_skyscraper":
-            echo "\n**This example shows how to use the inf command to make a skyscraper.**\n"
-            try:
-                echo readFile(exampleDir & "inf_skyscraper.g9") & "\n"
-            except:
-                echo "Error: inf_skyscraper.g9 not found, maybe you did not install the optional component."
-        else:
-            echo errorMessage
+        echo errorMessage
 
 proc interpret*(path: string, advancedParse: bool, dontCache: bool, echoGridMod: bool, noLog: bool) =
 
