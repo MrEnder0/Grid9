@@ -51,7 +51,7 @@ Note none of these plans are guaranteed and also their may be additions that are
 
 - Add grid9 url handler for running grid9 files by clicking a link.
 - Add a update command to cli.
-- Add a contribution guide. 
+- Add a contribution guide.
 
 ## Contributing
 
