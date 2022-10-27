@@ -133,7 +133,7 @@ proc interpret*(path: string, advancedParse: bool, dontCache: bool, echoGridMod:
     elif os.fileExists(path & ".g9"):
         path = path & ".g9"
     else:
-        echo "\nError: File not found, maybe check your path.\n"
+        echo "\nError: File not found at " & path & "maybe check your path.\n"
 
     #Read yaml file and parse it
     var
