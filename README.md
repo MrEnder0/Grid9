@@ -36,7 +36,7 @@ curl -s https://raw.githubusercontent.com/MrEnder0/Grid9/main/scripts/install_li
 
 ### Online
 
-You can run this project in [gitpod](https://gitpod.io/#https://github.com/MrEnder0/Grid9) if you dont want to run it locally.
+You can [run this project in gitpod](https://gitpod.io/#https://github.com/MrEnder0/Grid9) if you dont want to run it locally.
 
 ## Future plans
 
