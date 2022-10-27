@@ -44,13 +44,15 @@ Note none of these plans are guaranteed and also their may be additions that are
 
 ### High priority
 
+- Overhaul the give command to be more useful by allowing it to set, load, and give.
 - Allow and conditions in if and while statements.
 - Add intergration with other open source apps.
+- Add verbosity config option.
 
 ### Low priority
 
 - Add grid9 url handler for running grid9 files by clicking a link.
-- Add a update command to cli.
+- Create a grid9 extension for vscode.
 - Add a contribution guide.
 
 ## Contributing
