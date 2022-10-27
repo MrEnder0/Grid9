@@ -15,9 +15,9 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool) : s
     let code = open(path)
 
     when defined windows:
-        let parserCacheDir = r"C:\ProgramData\Grid9\parser_cache\"
+        const parserCacheDir = r"C:\ProgramData\Grid9\parser_cache\"
     else:
-        let parserCacheDir = "/usr/share/Grid9/parser_cache/"
+        const parserCacheDir = "/usr/share/Grid9/parser_cache/"
 
     let fileHash = hash(path)
     var
