@@ -19,3 +19,4 @@ vscode:
     - chouzz.vscode-innosetup
     - yzhang.markdown-all-in-one
     - DavidAnson.vscode-markdownlint
+    - ecmel.vscode-html-css
