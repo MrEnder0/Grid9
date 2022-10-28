@@ -1,15 +1,15 @@
-## Contributing to Grid9
+# Contributing to Grid9
 
-### Notes:
+## Notes
 
 * Anyone can submit a pull request to this repository for changes.
 * For security issues please message Mr.Ender#0001 directly on Discord instead of making pull request.
 
-#### Please Do:
+### Please Do
 
 * Provide great description for what you change and why.
 * Try to make code consistant with other code style guide.
 
-#### Please Do Not:
+### Please Do Not
 
 * Spam commits, issues, and or pull-requests.
