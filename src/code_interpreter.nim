@@ -27,6 +27,7 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool) : string {.
     var
         mem_grid: Table[string, int]
         mem_queue: string = ""
+        saved_grid : Table[string, int]
         if_nest_depth: int = 0
         while_pos = newSeq[int]()
         while_pos_end = newSeq[int]()
@@ -38,6 +39,10 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool) : string {.
     #generate a 3x3 memory grid
     for i in 0...8:
         mem_grid[$i] = 0
+
+    #generate 9 epty grid saves
+    for i in 0...8:
+        saved_grid[$i] = 000000000
 
     try:
         while c_index < len(parsed_code):
