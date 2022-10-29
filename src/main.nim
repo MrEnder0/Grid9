@@ -71,7 +71,7 @@ proc documentation() =
         echo "Error: Documentation not found, maybe you did not install the optional component."
 
 proc example(name: string) =
-    const errorMessage = "\nNo example found for your input try any of the following, 'example1', 'example2', 'example3', 'give_example', 'random_char_example', 'while_nesting', 'if_ladder', 'inf_skyscraper'.\n"
+    const errorMessage = "\nNo example found for your input try any of the following, 'example1', 'example2', 'example3', 'give_example', 'random_char_example', 'while_nesting', 'if_ladder', 'inf_skyscraper', 'save_load_example'.\n"
     case $name
     of "example1":
         echo "\n**This example shows how to use basic language features such as the memory grid, queue and printing.**\n"
@@ -119,6 +119,12 @@ proc example(name: string) =
         echo "\n**This example shows how to use the inf command to make a skyscraper.**\n"
         try:
             echo readFile(exampleDir & "inf_skyscraper.g9") & "\n"
+        except:
+            echo "Error: " & name & ".g9 not found, maybe you did not install the optional component."
+    of "save_load_example":
+        echo "\n**This example shows how to use the save and load commands.**\n"
+        try:
+            echo readFile(exampleDir & "save_load_example.g9") & "\n"
         except:
             echo "Error: " & name & ".g9 not found, maybe you did not install the optional component."
     else:
