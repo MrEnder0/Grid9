@@ -43,31 +43,31 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool) : string {.
         while c_index < len(parsed_code):
             case $parsed_code[c_index]
             of $'f':
-                if len(parsed_code) > c_index + 1:
+                try:
                     if mem_grid[$parsed_code[c_index + 1]] == 0:
                         mem_grid[$parsed_code[c_index + 1]] = 1
                         if echoGridMod == true:echo $mem_grid
                     else:
                         mem_grid[$parsed_code[c_index + 1]] = 0
                         if echoGridMod == true:echo $mem_grid
-                else:
+                except:
                     if noLog: logThis("ERROR", "Invalid syntax for flip command")
 
             #set command
             of $'s':
-                if len(parsed_code) > c_index + 2:
+                try:
                     if $parsed_code[c_index + 2] == $'r':
                         mem_grid[$parsed_code[c_index + 1]] = rand(1)
                         if echoGridMod == true:echo $mem_grid
                     else:
                         mem_grid[$parsed_code[c_index + 1]] = parseint($parsed_code[c_index + 2])
                         if echoGridMod == true:echo $mem_grid
-                else:
+                except:
                     if noLog: logThis("ERROR", "Invalid syntax for set command")
 
             #set all command
             of $'a':
-                if len(parsed_code) > c_index + 1:
+                try:
                     if $parsed_code[c_index + 1] == $'r':
                         for i in 0...8:
                             mem_grid[$i] = rand(1)
@@ -76,18 +76,18 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool) : string {.
                         for i in 0...8:
                             mem_grid[$i] = parseint($parsed_code[c_index + 1])
                         if echoGridMod == true:echo $mem_grid
-                else:
+                except:
                     if noLog: logThis("ERROR", "Invalid syntax for set all command")
 
             #queue command
             of $'q':
-                if len(parsed_code) > c_index + 1:
+                try:
                     if parsed_code[c_index + 1] == 's':
                         mem_queue = mem_queue & glyths.get_glyth($mem_grid["0"] & $mem_grid["1"] & $mem_grid["2"] & $mem_grid["3"] & $mem_grid["4"] & $mem_grid["5"] & $mem_grid["6"] & $mem_grid["7"] & $mem_grid["8"])
                     elif parsed_code[c_index + 1] == 'c':
                         mem_queue = ""
                     c_index += 1
-                else:
+                except:
                     if noLog: logThis("ERROR", "Invalid queue command")
 
             #print command
@@ -109,7 +109,7 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool) : string {.
 
             #if command
             of $'i':
-                if len(parsed_code) > c_index + 3:
+                try:
                     if parsed_code[c_index + 2] == '=':
 
                         if parsed_code[c_index + 3] == '0':
@@ -162,7 +162,7 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool) : string {.
                                         c_index = if_pos_end
                                 if_pos_end += 1
                             c_index = if_pos_end
-                else:
+                except:
                     if noLog: logThis("ERROR", "Invalid if statement")
 
             #while command
@@ -171,7 +171,7 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool) : string {.
                 if c_index+1 in while_pos:
                     discard
                 else:
-                    if len(parsed_code) > c_index + 3:
+                    try:
                         if parsed_code[c_index + 2] == '=':
                             if parsed_code[c_index + 3] == '0':
                                 if mem_grid[$parsed_code[c_index + 1]] == 0:
@@ -188,7 +188,7 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool) : string {.
                                 while_pos.add(c_index + 1)
                             else:
                                 while_pos.delete(0)
-                    else:
+                    except:
                         if noLog: logThis("ERROR", "Invalid while statement")
 
             #exit command
@@ -200,9 +200,9 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool) : string {.
 
             #back command
             of $'b':
-                if len(parsed_code) > c_index + 1:
+                try:
                     c_index -= parseint($parsed_code[c_index + 1])
-                else:
+                except:
                     if noLog: logThis("ERROR", "Invalid back command")
 
             #terminate command
