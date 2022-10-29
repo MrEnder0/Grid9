@@ -98,20 +98,23 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool) : string {.
                 else:
                     echo glyths.get_glyth($mem_grid["0"] & $mem_grid["1"] & $mem_grid["2"] & $mem_grid["3"] & $mem_grid["4"] & $mem_grid["5"] & $mem_grid["6"] & $mem_grid["7"] & $mem_grid["8"])
 
-            #give command
+            #grid command
             of $'g':
-                let gived_input = readLine(stdin)
-                if len(gived_input) == 9:
-                    for i in 0...8:
-                        mem_grid[$i] = parseint($gived_input[i])
+                case parsed_code[c_index + 1]
+                of 'g':
+                    let gived_input = readLine(stdin)
+                    if len(gived_input) == 9:
+                        for i in 0...8:
+                            mem_grid[$i] = parseint($gived_input[i])
+                    else:
+                        if noLog: logThis("ERROR", "Input for grid give command was not 9 numbers long")
                 else:
-                    if noLog: logThis("ERROR", "Input for give command was not 9 numbers long")
+                    if noLog: logThis("ERROR", "Invalid syntax for grid command")
 
             #if command
             of $'i':
                 try:
                     if parsed_code[c_index + 2] == '=':
-
                         if parsed_code[c_index + 3] == '0':
                             if mem_grid[$parsed_code[c_index + 1]] == 0:
                                 discard
