@@ -40,7 +40,7 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool) : string {.
     for i in 0...8:
         mem_grid[$i] = 0
 
-    #generate 9 epty grid saves
+    #generate 9 empty grid saves
     for i in 0...8:
         saved_grid[$i] = 000000000
 
@@ -107,12 +107,32 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool) : string {.
             of $'g':
                 case parsed_code[c_index + 1]
                 of 'g':
-                    let gived_input = readLine(stdin)
-                    if len(gived_input) == 9:
+                    try:
+                        let gived_input = readLine(stdin)
+                        if len(gived_input) == 9:
+                            for i in 0...8:
+                                mem_grid[$i] = parseint($gived_input[i])
+                        else:
+                            if noLog: logThis("ERROR", "Input for grid give command was not 9 numbers long")
+                    except:
+                        if noLog: logThis("ERROR", "Invalid syntax for grid give command")
+                of 's':
+                    try:
+                        let save = $mem_grid["0"] & $mem_grid["1"] & $mem_grid["2"] & $mem_grid["3"] & $mem_grid["4"] & $mem_grid["5"] & $mem_grid["6"] & $mem_grid["7"] & $mem_grid["8"]
+                        saved_grid[$parsed_code[c_index + 2]] = parseint(save)
+                        discard save
+                        echo "Saved grid " & $parsed_code[c_index + 2]
+                    except:
+                        if noLog: logThis("ERROR", "Invalid syntax for grid save command")
+                of 'l':
+                    try:
+                        let load = $saved_grid[$parsed_code[c_index + 2]]
                         for i in 0...8:
-                            mem_grid[$i] = parseint($gived_input[i])
-                    else:
-                        if noLog: logThis("ERROR", "Input for grid give command was not 9 numbers long")
+                            mem_grid[$i] = parseint($load[i])
+                        discard load
+                        echo "Loaded grid " & $parsed_code[c_index + 2]
+                    except:
+                        if noLog: logThis("ERROR", "Invalid syntax for grid load command")
                 else:
                     if noLog: logThis("ERROR", "Invalid syntax for grid command")
 
