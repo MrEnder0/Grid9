@@ -36,9 +36,9 @@ UninstallDisplayIcon={app}\{#MyAppExeName}
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Tasks]
-Name: envPath; Description: "Add to PATH variable"; GroupDescription: "Registry:"
-Name: "startmenuicon"; Description: "Create a startmenu shortcut"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
-Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
+Name: envPath; Description: "Add to PATH variable"; GroupDescription: "Registry:"; Components: baseinstall
+Name: "startmenuicon"; Description: "Create a startmenu shortcut"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked; Components: baseinstall
+Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked; Components: baseinstall
 
 [Types]
 Name: "custom"; Description: "Custom installation"; Flags: iscustom
@@ -47,6 +47,7 @@ Name: "custom"; Description: "Custom installation"; Flags: iscustom
 Name: "baseinstall"; Description: "Includes necessary base files."; Flags: exclusive
 Name: "baseinstall\documentation"; Description: "Includes html documentation."
 Name: "baseinstall\examples"; Description: "Includes example scripts."
+Name: "componentRepair"; Description: "Repair and update components"; Flags: exclusive
 
 [Dirs]
 Name: "C:\ProgramData\Grid9"
@@ -56,8 +57,8 @@ Name: "C:\ProgramData\Grid9\parser_cache"
 [Files]
 Source: "Grid9\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion; Components: baseinstall
 Source: "Grid9\icon.ico"; DestDir: "{app}"; Flags: ignoreversion; Components: baseinstall
-Source: "Grid9\documentation\*"; DestDir: "C:\ProgramData\Grid9"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: baseinstall\documentation
-Source: "Grid9\examples\*"; DestDir: "C:\ProgramData\Grid9"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: baseinstall\examples
+Source: "Grid9\documentation\*"; DestDir: "C:\ProgramData\Grid9"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: baseinstall\documentation componentRepair
+Source: "Grid9\examples\*"; DestDir: "C:\ProgramData\Grid9"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: baseinstall\examples componentRepair
 
 [Registry]
 Root: HKA; Subkey: "Software\Classes\{#MyAppAssocExt}\OpenWithProgids"; ValueType: string; ValueName: "{#MyAppAssocKey}"; ValueData: ""; Flags: uninsdeletevalue
