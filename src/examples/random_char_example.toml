@@ -1,3 +1,9 @@
+[metadata]
+author = "MrEnder"
+description = "Prints out a random character"
+version = "1.0.1"
+showmetadata = true
+
 [config]
 advancedParse = true
 dontCache = false

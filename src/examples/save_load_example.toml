@@ -1,3 +1,9 @@
+[metadata]
+author = "MrEnder"
+description = "Shows how to save and load grids"
+version = "1.0.0"
+showmetadata = true
+
 [config]
 advancedParse = true
 dontCache = false

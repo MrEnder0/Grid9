@@ -143,6 +143,10 @@ proc interpret*(path: string, advancedParse: bool, dontCache: bool, echoGridMod:
 
     #Read yaml file and parse it
     var
+        author = "unknown"
+        description = "unknown"
+        version = "1.0.0"
+        showmetadata = "false"
         advancedParseY = advancedParse
         dontCacheY = dontCache
         echoGridModY = echoGridMod
@@ -152,15 +156,25 @@ proc interpret*(path: string, advancedParse: bool, dontCache: bool, echoGridMod:
         let
             tomlPath = replace(path, re".g9", ".toml")
             config = toml_manager.getConfig(tomlPath)
-
-        if config[0] == 't':advancedParseY = true
+            
+        author = config[1]
+        description = config[2]
+        version = config[3]
+        showmetadata = config[4]
+        if config[0][0] == 't':advancedParseY = true
         else:advancedParseY = false
-        if config[1] == 't':dontCacheY = true
+        if config[0][1] == 't':dontCacheY = true
         else:dontCacheY = false
-        if config[2] == 't':echoGridModY = true
+        if config[0][2] == 't':echoGridModY = true
         else:echoGridModY = false
-        if config[3] == 't':noLogY = true
+        if config[0][3] == 't':noLogY = true
         else:noLogY = false
+
+    #Show metadata if enabled
+    if showmetadata == "true":
+        echo "Author: " & author
+        echo "Description: " & description
+        echo "Version: " & version & "\n"
 
     #Parse and interpret the code
     let parsedCode = code_parser.parse(path, advancedParseY, dontCacheY , noLogY)

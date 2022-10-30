@@ -1,7 +1,7 @@
 import parsetoml
 import std/strutils
 
-proc getConfig*(path: string) : string =
+proc getConfig*(path: string) : seq[string] =
     try:
         let configFile = parsetoml.parseFile(path)
         
@@ -27,13 +27,37 @@ proc getConfig*(path: string) : string =
             except KeyError:
                 false
 
+        #Define metadata values
+        let author =
+            try:
+                $configFile["metadata"]["author"]
+            except KeyError:
+                "unknown"
+        let description =
+            try:
+                $configFile["metadata"]["description"]
+            except KeyError:
+                "unknown"
+        
+        let version =
+            try:
+                $configFile["metadata"]["version"]
+            except KeyError:
+                "1.0.0"
+        
+        let showmetadata =
+            try:
+                configFile["metadata"]["showmetadata"].getBool()
+            except KeyError:
+                false
+
         #Parse config values
         var configOptions =  $advancedParse & $dontCache & $echoGridMod & $noLog
         configOptions = configOptions.replace("true", "t")
         configOptions = configOptions.replace("false", "f")
 
         echo "Using found Toml config file"
-        return configOptions
+        return @[configOptions, author, description, version, $showmetadata]
     except:
         echo "Error withen Toml config file, using default settings"
-        return "ffff"
+        return @["ffff", "unknown", "unknown", "1.0.0", "false"]

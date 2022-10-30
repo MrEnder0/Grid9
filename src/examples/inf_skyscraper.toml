@@ -1,3 +1,10 @@
+[metadata]
+author = "MrEnder"
+description = "Prints out a infinite acii skyscraper"
+version = "1.0.2"
+showmetadata = true
+
+
 [config]
 advancedParse = true
 dontCache = false
