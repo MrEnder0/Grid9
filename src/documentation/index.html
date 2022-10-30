@@ -21,13 +21,13 @@
                             <a href="#set" class="sidebar_nav_link">Set</a>
                             <a href="#flip" class="sidebar_nav_link">Flip</a>
                             <a href="#set-all" class="sidebar_nav_link">Set-all</a>
+                            <a href="#grid" class="sidebar_nav_link">Grid</a>
                         </ul>
                     <br>
                     <a href="#0" class="sidebar_nav_link">IOꜜ</a>
                         <ul id="list">
                             <a href="#print" class="sidebar_nav_link">Print</a>
                             <a href="#queue" class="sidebar_nav_link">Queue</a>
-                            <a href="#give" class="sidebar_nav_link">Give</a>
                         </ul>
                     <br>
                     <a href="#0" class="sidebar_nav_link">Logicꜜ</a>
@@ -45,7 +45,7 @@
                     <br>
                     <a href="#0" class="sidebar_nav_link">Configꜜ</a>
                         <ul id="list">
-                            <a href="#yaml" class="sidebar_nav_link">Yaml</a>
+                            <a href="#toml" class="sidebar_nav_link">Toml</a>
                         </ul>
                     <br>
                 </ul>
@@ -136,6 +136,26 @@
             </div>
             <br>
 
+            <h2 id="grid">Grid</h2>
+            <p class="docs-data">
+                The grid command is for users to give a glyth pattern as a input to the script. It is used to save and load grids.
+            </p>
+            <p class="docs-data">
+                The syntax for this command is "g" and then "g" (give), "s" (save), "l" (load).
+            </p>
+            <p class="docs-data">
+                For example if you wanted to make a simple glyth to character converter you would that would do is it would take input and print out the character as output. The code for this is shown below.
+            </p>
+            <br>
+
+            <div style=width:4%;min-width:40px; class="code-block">
+                <p class="docs-data">
+                    <span class="io">gg</span>
+                    <span class="io">p</span>
+                </p>
+            </div>
+            <br>
+
             <h1>IO</h1>
             <br>
 
@@ -186,25 +206,6 @@
                     <span class="cm">f7</span>
                     <span class="cm">f8</span>
                     <span class="io">qs</span>
-                    <span class="io">p</span>
-                </p>
-            </div>
-
-            <h2 id="give">Give</h2>
-            <p class="docs-data">
-                The give command is for users to give a glyth pattern as a input to the script.
-            </p>
-            <p class="docs-data">
-                The syntax for this command is just "g".
-            </p>
-            <p class="docs-data">
-                For example if you wanted to make a simple glyth to character converter you would that would do is it would take input and print out the character as output. The code for this is shown below.
-            </p>
-            <br>
-
-            <div style=width:4%;min-width:40px; class="code-block">
-                <p class="docs-data">
-                    <span class="io">g</span>
                     <span class="io">p</span>
                 </p>
             </div>
@@ -335,39 +336,32 @@
                 In Grid9 version 2022-016 you can now use yaml files to configure the way code is ran. This is a new feature and is still not perfect so it may not work as expected.
             </p>
             <p class="docs-data">
-                The recomended layout for the yaml config is shown below. It can be structured in any way you want but this is the recomended way.
+                The structure for a config is shown below. If you do not define a config value that value will be set to its default value. While the rest are set to the values you defined.
             </p>
             <br>
 
             <div style=width:20%;min-width:300px; class="code-block">
                 <p class="docs-data">
-                    <span class="io">%YAML</span>
-                    <span class="log"> 1.2</span>
-                    <br>
-                    <span class="com">---</span>
-                    <br>
-                    <span class="io">[{</span>
+                    <span class="io">[</span>
+                    <span class="log">config</span>
+                    <span class="io">]</span>
                     <br>
                     <span class="cm">advancedParse</span>
-                    <span class="io">: </span>
+                    <span class="io"> = </span>
                     <span class="log">true</span>
-                    <span class="io">,</span>
                     <br>
                     <span class="cm">dontCache</span>
-                    <span class="io">: </span>
+                    <span class="io"> = </span>
                     <span class="log">false</span>
-                    <span class="io">,</span>
                     <br>
                     <span class="cm">echoGridMod</span>
-                    <span class="io">: </span>
+                    <span class="io"> = </span>
                     <span class="log">false</span>
-                    <span class="io">,</span>
                     <br>
                     <span class="cm">noLog</span>
-                    <span class="io">: </span>
+                    <span class="io"> = </span>
                     <span class="log">false</span>
                     <br>
-                    <span class="io">}]</span>
                 </p>
             </div>
             <br>
