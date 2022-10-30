@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: #EBEBEB;
 }
@@ -31,7 +35,7 @@ body {
 }
 
 .sidebar_nav_link:focus {
-    font-weight: 600;
+    font-weight: 620;
 }
 
 
