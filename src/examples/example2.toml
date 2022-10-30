@@ -1,0 +1,5 @@
+[config]
+advancedParse = true
+dontCache = false
+echoGridMod = false
+noLog = false

@@ -1,5 +1,5 @@
 from code_interpreter import nil
-from yml_manager import nil
+from toml_manager import nil
 from code_parser import nil
 from glyths import nil
 
@@ -148,24 +148,10 @@ proc interpret*(path: string, advancedParse: bool, dontCache: bool, echoGridMod:
         echoGridModY = echoGridMod
         noLogY = noLog
 
-    if os.fileExists(replace(path, re".g9", ".yaml")):
+    if os.fileExists(replace(path, re".g9", ".toml")):
         let
-            ymlPath = replace(path, re".g9", ".yaml")
-            config = yml_manager.getConfig(ymlPath)
-
-        if config[0] == 't':advancedParseY = true
-        else:advancedParseY = false
-        if config[1] == 't':dontCacheY = true
-        else:dontCacheY = false
-        if config[2] == 't':echoGridModY = true
-        else:echoGridModY = false
-        if config[3] == 't':noLogY = true
-        else:noLogY = false
-        
-    elif os.fileExists(replace(path, re".g9", ".yml")):
-        let
-            ymlPath = replace(path, re".g9", ".yml")
-            config = yml_manager.getConfig(ymlPath)
+            tomlPath = replace(path, re".g9", ".toml")
+            config = toml_manager.getConfig(tomlPath)
 
         if config[0] == 't':advancedParseY = true
         else:advancedParseY = false
