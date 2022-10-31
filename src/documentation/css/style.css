@@ -96,11 +96,14 @@ h2 {
     transition: 0.8s linear;
     border-radius: 1.5rem;
     letter-spacing: 50%;
+    display: flex;
     overflow-x: scroll;
     overflow-y: scroll;
     line-height: 80%;
     padding: 8px;
-    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 8px;
 }
 
 .code-block:hover {
