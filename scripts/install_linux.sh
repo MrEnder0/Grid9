@@ -24,7 +24,7 @@ if [[ $PACKAGE_MANAGER == "apt" ]]; then
 
     echo "Installing dependencies... (1/5)"
     nimble install docopt -y
-    nimble install yaml -y
+    nimble install parsetoml -y
 
     echo "Compiling Grid9... (2/5)"
     git clone https://github.com/MrEnder0/Grid9
@@ -61,7 +61,7 @@ elif [[ $PACKAGE_MANAGER == "pacman" ]]; then
 
     echo "Installing dependencies... (1/5)"
     nimble install docopt -y
-    nimble install yaml -y
+    nimble install parsetoml -y
 
     echo "Compiling Grid9... (2/5)"
     git clone https://github.com/MrEnder0/Grid9
@@ -96,7 +96,7 @@ elif [[ $PACKAGE_MANAGER == "apk" ]]; then
 
     echo "Installing dependencies... (1/5)"
     nimble install docopt -y
-    nimble install yaml -y
+    nimble install parsetoml -y
 
     echo "Compiling Grid9... (2/5)"
     git clone https://github.com/MrEnder0/Grid9

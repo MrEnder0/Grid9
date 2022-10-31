@@ -6,7 +6,7 @@ Invoke-WebRequest -Uri $url -OutFile "choosenim.exe"
 
 Write-Output "Installing dependencies... (1/5)"
 nimble install docopt -y
-nimble install yaml -y
+nimble install parsetoml -y
 
 Write-Output "Compiling Grid9... (2/5)"
 git clone https://github.com/MrEnder0/Grid9.git
