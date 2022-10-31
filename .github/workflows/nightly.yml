@@ -15,7 +15,7 @@ jobs:
     - name: Install Dependencies
       run: |
         nimble install docopt -Y
-        nimble install yaml -Y
+        nimble install parsetoml -Y
 
     - name: Build
       run: |
@@ -43,7 +43,7 @@ jobs:
       run: |
         cd C:\Users\runneradmin\.nimble\bin
         ./nimble install docopt -y
-        ./nimble install yaml -y
+        ./nimble install parsetoml -y
         git clone https://github.com/MrEnder0/Grid9.git
         ./nim c -d:release Grid9/src/main
 
