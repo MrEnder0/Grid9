@@ -1,0 +1,11 @@
+[metadata]
+author = "MrEnder"
+description = "Prints A and B"
+version = "1.0.0"
+showmetadata = true
+
+[config]
+advancedParse = true
+dontCache = false
+echoGridMod = false
+noLog = false

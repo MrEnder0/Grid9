@@ -50,7 +50,7 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool) : s
                     elif parsedCode[cIndex + 1] == 'c':
                         discard
                     else:
-                        if noLog: logThis("ERROR", "Invalid operation for queue command")
+                        if not noLog: logThis("ERROR", "Invalid operation for queue command")
                         echo "ERROR: Invalid operation for queue command"
                 of $'i':ifDepth+=1
                 of $'w':whileDepth+=1
@@ -61,22 +61,22 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool) : s
                         isExited = false
                 of $'b':
                     if not match($parsedCode[cIndex + 1], re"0-9",):
-                        if noLog: logThis("ERROR", "Invalid number for back command")
+                        if not noLog: logThis("ERROR", "Invalid number for back command")
                         echo "ERROR: Invalid number for back command"
                 of $'x':
                     isExited = true
                 
                 if ifDepth < 0:
-                    if noLog: logThis("ERROR", "If depth is less than 0")
+                    if not noLog: logThis("ERROR", "If depth is less than 0")
                     echo "ERROR: If depth is less than 0"
                 if whileDepth < 0:
-                    if noLog: logThis("ERROR", "While depth is less than 0")
+                    if not noLog: logThis("ERROR", "While depth is less than 0")
                     echo "ERROR: While depth is less than 0"
 
                 cIndex += 1
 
             if ifDepth > 0:
-                if noLog: logThis("WARNING", "If depth is greater than 0")
+                if not noLog: logThis("WARNING", "If depth is greater than 0")
                 echo "WARNING: If depth is greater than 0 would you like to try to automatically fix? (y/n)"
                 let responce = readLine(stdin)
                 if $responce == $'y':
@@ -87,7 +87,7 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool) : s
                     discard fixTimes
                 discard responce
             if whileDepth > 0:
-                if noLog: logThis("WARNING", "While depth is greater than 0")
+                if not noLog: logThis("WARNING", "While depth is greater than 0")
                 echo "WARNING: While depth is greater than 0 would you like to try to automatically fix? (y/n)"
                 let responce = readLine(stdin)
                 if $responce == $'y':
@@ -98,7 +98,7 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool) : s
                     discard fixTimes
                 discard responce
             if isExited == true:
-                if noLog: logThis("WARNING", "Attemped to exit a while loop while not currently being in one")
+                if not noLog: logThis("WARNING", "Attemped to exit a while loop while not currently being in one")
                 echo "WARNING: Exited while loop without a while loop would you like to try to automatically fix? (y/n)"
                 let responce = readLine(stdin)
                 if $responce == $'y':

@@ -21,13 +21,13 @@
                             <a href="#set" class="sidebar_nav_link">Set</a>
                             <a href="#flip" class="sidebar_nav_link">Flip</a>
                             <a href="#set-all" class="sidebar_nav_link">Set-all</a>
+                            <a href="#grid" class="sidebar_nav_link">Grid</a>
                         </ul>
                     <br>
                     <a href="#0" class="sidebar_nav_link">IOꜜ</a>
                         <ul id="list">
                             <a href="#print" class="sidebar_nav_link">Print</a>
                             <a href="#queue" class="sidebar_nav_link">Queue</a>
-                            <a href="#give" class="sidebar_nav_link">Give</a>
                         </ul>
                     <br>
                     <a href="#0" class="sidebar_nav_link">Logicꜜ</a>
@@ -45,339 +45,335 @@
                     <br>
                     <a href="#0" class="sidebar_nav_link">Configꜜ</a>
                         <ul id="list">
-                            <a href="#yaml" class="sidebar_nav_link">Yaml</a>
+                            <a href="#toml" class="sidebar_nav_link">Toml</a>
                         </ul>
                     <br>
                 </ul>
             </nav>
         </div>
 
-        <!-- Page Content -->
-        <div class="docs">
-            <h1 id="home">Grid9 Documentation</h1>
+        <main>
+            <!-- Page Content -->
+            <div class="docs">
+                <h1 id="home">Grid9 Documentation</h1>
 
-            <br>
-            <h2>Basic Description</h2>
+                <br>
+                <h2>Basic Description</h2>
 
-            <p class="docs-data">
-                To explain Grid9 in one sentence it is an esoteric interpreted language made in Nim based on a 3x3 grid of cells for a total of 9 cells in the grid where the cells values consist of zeros and ones.
-            </p>
-            <p class="docs-data">
-                You can interact with these cells by setting them (s) flipping them (f) or setting all the cells to a value (a).
-                With all of these ways you can interact with the cells you may wonder what you can do with them and the answer to that is that every outputable character in this language has its own unique combination of cells.
-                Now you may wonder why 9 cells why not 8 like the size of a byte. Well the answer to that is well there is non, but some useful things you can do with that 9th cell is use it for your own varible storage so you can store a zero or one that may be used to sway logic.
-            </p>
-
-            <p class="docs-data">
-                This language doesnt stop at just being able to change a few numbers; there is statements, controll of flow operators, and more.
-            </p>
-            <br>
-            
-            <h1>Cell Modification</h1>
-            <br>
-
-            <h2 id="set">Set</h2>
-            <p class="docs-data">
-                The set command is used to set a cell to a value.
-            </p>
-            <p class="docs-data">
-                The syntax for this command is "s" followed by the cell id and then the value you want to set it to.
-                This unlike the flip command sets the value for certainy of a cells value.
-            </p>
-            <p class="docs-data">
-                For example if you wanted to set cell 0 to 1 you would run the code below.
-            </p>
-            <br>
-
-            <div style=width:5%;min-width:50px; class="code-block">
                 <p class="docs-data">
-                    <span class="cm">s01</span>
+                    To explain Grid9 in one sentence it is an esoteric interpreted language made in Nim based on a 3x3 grid of cells for a total of 9 cells in the grid where the cells values consist of zeros and ones.
+                </p>
+                <p class="docs-data">
+                    You can interact with these cells by setting them (s) flipping them (f) or setting all the cells to a value (a).
+                    With all of these ways you can interact with the cells you may wonder what you can do with them and the answer to that is that every outputable character in this language has its own unique combination of cells.
+                    Now you may wonder why 9 cells why not 8 like the size of a byte. Well the answer to that is well there is non, but some useful things you can do with that 9th cell is use it for your own varible storage so you can store a zero or one that may be used to sway logic.
+                </p>
+
+                <p class="docs-data">
+                    This language doesnt stop at just being able to change a few numbers; there is statements, controll of flow operators, and more.
+                </p>
+                <br>
+
+                <h1>Cell Modification</h1>
+                <br>
+
+                <h2 id="set">Set</h2>
+                <p class="docs-data">
+                    The set command is used to set a cell to a value.
+                </p>
+                <p class="docs-data">
+                    The syntax for this command is "s" followed by the cell id and then the value you want to set it to.
+                    This unlike the flip command sets the value for certainy of a cells value.
+                </p>
+                <p class="docs-data">
+                    For example if you wanted to set cell 0 to 1 you would run the code below.
+                </p>
+                <br>
+
+                <div style=width:5%;min-width:50px; class="code-block">
+                    <p class="docs-data">
+                        <span class="cm">s01</span>
+                    </p>
+                </div>
+                <br>
+
+                <h2 id="flip">Flip</h1>
+                <p class="docs-data">
+                    The flip command is used to flip a cell to a value.
+                </p>
+                <p class="docs-data">
+                    The syntax for this command is "f" followed by the cell id that you would like to flip (0-8).
+                    This unlike the set command flips the value with uncertainy of a cells value.
+                </p>
+                <p class="docs-data">
+                    For example if you wanted to flip cell 2 you would run the code below.
+                </p>
+                <br>
+
+                <div style=width:4%;min-width:40px; class="code-block">
+                    <p class="docs-data">
+                        <span class="cm">f2</span>
+                    </p>
+                </div>
+                <br>
+
+                <h2 id="set-all">Set-all</h2>
+                <p class="docs-data">
+                    The set-all command is used to set a cell to a value.
+                </p>
+                <p class="docs-data">
+                    The syntax for this command is "s" followed by the cell id and then the value you want to set it to.
+                    This flips all cells with certainy of a cells value.
+                </p>
+                <p class="docs-data">
+                    For example if you wanted all the cells to have the value 1 you would run the code below.
+                </p>
+                <br>
+
+                <div style=width:4%;min-width:40px; class="code-block">
+                    <p class="docs-data">
+                        <span class="cm">a1</span>
+                    </p>
+                </div>
+                <br>
+
+                <h2 id="grid">Grid</h2>
+                <p class="docs-data">
+                    The grid command is for users to give a glyth pattern as a input to the script. It is used to save and load grids.
+                </p>
+                <p class="docs-data">
+                    The syntax for this command is "g" and then "g" (give), "s" (save), "l" (load).
+                </p>
+                <p class="docs-data">
+                    For example if you wanted to make a simple glyth to character converter you would that would do is it would take input and print out the character as output. The code for this is shown below.
+                </p>
+                <br>
+
+                <div style=width:4%;min-width:40px; class="code-block">
+                    <p class="docs-data">
+                        <span class="io">gg</span>
+                        <span class="io">p</span>
+                    </p>
+                </div>
+                <br>
+
+                <h1>IO</h1>
+                <br>
+
+                <h2 id="print">Print</h2>
+                <p class="docs-data">
+                    The print command is used to print the grid glyth character to the console.
+                </p>
+                <p class="docs-data">
+                    Now this command needs a little explanation to understand it, but every outputable character has it own combination on the grid and those are called "glyths".
+                    The print command converts these "glyths" into the single character that they represent.
+                    Also the print command will print the current queue instead of the current glyth if the queue contains anything.
+                    The syntax for this command is "p".
+                </p>
+                <p class="docs-data">
+                    For example the character "a" is represented by the cells 000000010. If you were to flip cell 7 (the cell ids start at 0) and then you it would print "a" like in the code shown below.
+                </p>
+                <br>
+
+                <div style=width:5%;min-width:50px; class="code-block">
+                    <p class="docs-data">
+                        <span class="cm">f7</span>
+                        <span class="io">p</span>
+                    </p>
+                </div>
+                <br>
+
+                <h2 id="queue">Queue</h2>
+                <p class="docs-data">
+                    The queue command is used to print multiple "glyhs" or characters together.
+                </p>
+                <p class="docs-data">
+                    The syntax for this command is "qs" to add a glyph to the queue and "qc" to completly clear the queue.
+                </p>
+                <p class="docs-data">
+                    For example say you want to print two "r" letters next to each other.
+                    To do this you would want to make the glyth for "r" save it in queu and then again and save it them print it to get the output "rr" like in the code shown below.
+                </p>
+                <br>
+
+                <div style=width:22%;min-width:220px; class="code-block">
+                    <p class="docs-data">
+                        <span class="cm">f4</span>
+                        <span class="cm">f7</span>
+                        <span class="cm">f8</span>
+                        <span class="io">qs</span>
+                        <span class="cm">a0</span>
+                        <span class="cm">f4</span>
+                        <span class="cm">f7</span>
+                        <span class="cm">f8</span>
+                        <span class="io">qs</span>
+                        <span class="io">p</span>
+                    </p>
+                </div>
+                <br>
+
+                <h1>Logic</h1>
+                <br>
+
+                <h2 id="if">If</h2>
+                <p class="docs-data">
+                    The if command is used to check if a cell is a zero or a one.
+                </p>
+                <p class="docs-data">
+                    The syntax for this command is "i" followed by the cell id and then a "=" or a "!" for a not equal then the value of the cell you are testing for.
+                    Remember to also to close a if statement, to do this you have to use a "}"
+                </p>
+                <p class="docs-data">
+                    For example if you wanted to test cell 2 for a zero and if true print the letter c you would run the code below.
+                </p>
+                <br>
+
+                <div style=width:10%;min-width:100px; class="code-block">
+                    <p class="docs-data">
+                        <span class="log">i2=0</span>
+                        <span class="cm">f6</span>
+                        <span class="io">p</span>
+                        <span class="log">}</span>
+                    </p>
+                </div>
+                <br>
+
+                <h2 id="while">While</h2>
+                <p class="docs-data">
+                    The while command is used to loop in your code as long as its conditions are met.
+                </p>
+                <p class="docs-data">
+                    The syntax for this command is similar to the if command, the syntax for it is a "w" followed by the cell id and then a "=" or a "!" for a not equal then the value of the cell you are testing for.
+                    Remember to also to close a while statement, to do this you have to use a "]"
+                </p>
+                <p class="docs-data">
+                    For example if you wanted to loop while cell 2 is a zero that prints the letter c infinitely you would run the code below.
+                </p>
+                <br>
+
+                <div style=width:11%;min-width:110px; class="code-block">
+                    <p class="docs-data">
+                        <span class="log">w2=0</span>
+                        <span class="cm">f6</span>
+                        <span class="io">p</span>
+                        <span class="log">]</span>
+                    </p>
+                </div>
+                <br>
+
+                <h2 id="exit">Exit</h2>
+                <p class="docs-data">
+                    The exit command is used to exit the current while loop.
+                </p>
+                <p class="docs-data">
+                    The syntax for this command is just "e".
+                </p>
+                <p class="docs-data">
+                    For example if you wanted to loop while cell 5 is a zero that prints the letter c but then breaks out of the loop you would run the code below.
+                </p>
+                <br>
+
+                <div style=width:12%;min-width:120px; class="code-block">
+                    <p class="docs-data">
+                        <span class="log">w5=0</span>
+                        <span class="cm">f6</span>
+                        <span class="io">p</span>
+                        <span class="log">e</span>
+                        <span class="log">]</span>
+                    </p>
+                </div>
+                <br>
+
+                <h1 id="misk">Misk</h1>
+                <br>
+
+                <h2 id="back">Back</h2>
+                <p class="docs-data">
+                    The back command is used to go back to previous instructions in the code.
+                </p>
+                <p class="docs-data">
+                    The syntax for this command is "b" followed by the number of instructions you want to go back.
+                </p>
+                <p class="docs-data">
+                    For example if you wanted to go back 3 instructions you would run the code below "b3".
+                </p>
+                <br>
+
+                <div style=width:4%;min-width:40px; class="code-block">
+                    <p class="docs-data">
+                        <span class="msk">b3</span>
+                    </p>
+                </div>
+                <br>
+
+                <h2 id="terminate">Terminate</h2>
+                <p class="docs-data">
+                    The terminate command is used to terminate the program.
+                </p>
+                <p class="docs-data">
+                    The syntax for this command is just "t".
+                </p>
+                <p class="docs-data">
+                    For example if you wanted to terminate the program if a condition is met you would do in the code below. As you can see the code "f7p" will never get ran because on default all cells are 0 and that condition is true so it terminates the program.
+                </p>
+                <br>
+
+                <div style=width:10%;min-width:100px; class="code-block">
+                    <p class="docs-data">
+                        <span class="log">i0=0</span>
+                        <span class="msk">t</span>
+                        <span class="log">}</span>
+                        <span class="cm">f7</span>
+                        <span class="io">p</span>
+                    </p>
+                </div>
+                <br>
+
+                <h1>Config</h1>
+                <br>
+
+                <h2 id="toml">Toml</h2>
+                <p class="docs-data">
+                    In Grid9 version 2022-020 you can now use toml files to configure the way code is ran. This is a new feature and is still not perfect so it may not work as expected.
+                </p>
+                <p class="docs-data">
+                    The structure for a config is shown below. If you do not define a config value that value will be set to its default value. While the rest are set to the values you defined.
+                </p>
+                <br>
+
+                <div style=width:20%;min-width:300px; class="code-block">
+                    <p class="docs-data">
+                        <span class="io">[</span>
+                        <span class="log">config</span>
+                        <span class="io">]</span>
+                        <br>
+                        <span class="cm">advancedParse</span>
+                        <span class="io"> = </span>
+                        <span class="log">true</span>
+                        <br>
+                        <span class="cm">dontCache</span>
+                        <span class="io"> = </span>
+                        <span class="log">false</span>
+                        <br>
+                        <span class="cm">echoGridMod</span>
+                        <span class="io"> = </span>
+                        <span class="log">false</span>
+                        <br>
+                        <span class="cm">noLog</span>
+                        <span class="io"> = </span>
+                        <span class="log">false</span>
+                        <br>
+                    </p>
+                </div>
+                <br>
+
+                <p class="docs-data">
+                    These config options are used to change the way Grid9 interacts with your code.
+                    For example you can run a advancedParse which will make the program start slower but can fix issues in your code.
+                    The options can also allow you to see more tecnicall information about the program. For example turning on echoGridMod will print you the grid after every instruction that modifies the cells in some way.
                 </p>
             </div>
-            <br>
-
-            <h2 id="flip">Flip</h1>
-            <p class="docs-data">
-                The flip command is used to flip a cell to a value.
-            </p>
-            <p class="docs-data">
-                The syntax for this command is "f" followed by the cell id that you would like to flip (0-8).
-                This unlike the set command flips the value with uncertainy of a cells value.
-            </p>
-            <p class="docs-data">
-                For example if you wanted to flip cell 2 you would run the code below.
-            </p>
-            <br>
-
-            <div style=width:4%;min-width:40px; class="code-block">
-                <p class="docs-data">
-                    <span class="cm">f2</span>
-                </p>
-            </div>
-            <br>
-
-            <h2 id="set-all">Set-all</h2>
-            <p class="docs-data">
-                The set-all command is used to set a cell to a value.
-            </p>
-            <p class="docs-data">
-                The syntax for this command is "s" followed by the cell id and then the value you want to set it to.
-                This flips all cells with certainy of a cells value.
-            </p>
-            <p class="docs-data">
-                For example if you wanted all the cells to have the value 1 you would run the code below.
-            </p>
-            <br>
-
-            <div style=width:4%;min-width:40px; class="code-block">
-                <p class="docs-data">
-                    <span class="cm">a1</span>
-                </p>
-            </div>
-            <br>
-
-            <h1>IO</h1>
-            <br>
-
-            <h2 id="print">Print</h2>
-            <p class="docs-data">
-                The print command is used to print the grid glyth character to the console.
-            </p>
-            <p class="docs-data">
-                Now this command needs a little explanation to understand it, but every outputable character has it own combination on the grid and those are called "glyths".
-                The print command converts these "glyths" into the single character that they represent.
-                Also the print command will print the current queue instead of the current glyth if the queue contains anything.
-                The syntax for this command is "p".
-            </p>
-            <p class="docs-data">
-                For example the character "a" is represented by the cells 000000010. If you were to flip cell 7 (the cell ids start at 0) and then you it would print "a" like in the code shown below.
-            </p>
-            <br>
-
-            <div style=width:5%;min-width:50px; class="code-block">
-                <p class="docs-data">
-                    <span class="cm">f7</span>
-                    <span class="io">p</span>
-                </p>
-            </div>
-            <br>
-
-            <h2 id="queue">Queue</h2>
-            <p class="docs-data">
-                The queue command is used to print multiple "glyhs" or characters together.
-            </p>
-            <p class="docs-data">
-                The syntax for this command is "qs" to add a glyph to the queue and "qc" to completly clear the queue.
-            </p>
-            <p class="docs-data">
-                For example say you want to print two "r" letters next to each other.
-                To do this you would want to make the glyth for "r" save it in queu and then again and save it them print it to get the output "rr" like in the code shown below.
-            </p>
-            <br>
-
-            <div style=width:22%;min-width:220px; class="code-block">
-                <p class="docs-data">
-                    <span class="cm">f4</span>
-                    <span class="cm">f7</span>
-                    <span class="cm">f8</span>
-                    <span class="io">qs</span>
-                    <span class="cm">a0</span>
-                    <span class="cm">f4</span>
-                    <span class="cm">f7</span>
-                    <span class="cm">f8</span>
-                    <span class="io">qs</span>
-                    <span class="io">p</span>
-                </p>
-            </div>
-
-            <h2 id="give">Give</h2>
-            <p class="docs-data">
-                The give command is for users to give a glyth pattern as a input to the script.
-            </p>
-            <p class="docs-data">
-                The syntax for this command is just "g".
-            </p>
-            <p class="docs-data">
-                For example if you wanted to make a simple glyth to character converter you would that would do is it would take input and print out the character as output. The code for this is shown below.
-            </p>
-            <br>
-
-            <div style=width:4%;min-width:40px; class="code-block">
-                <p class="docs-data">
-                    <span class="io">g</span>
-                    <span class="io">p</span>
-                </p>
-            </div>
-            <br>
-
-            <h1>Logic</h1>
-            <br>
-
-            <h2 id="if">If</h2>
-            <p class="docs-data">
-                The if command is used to check if a cell is a zero or a one.
-            </p>
-            <p class="docs-data">
-                The syntax for this command is "i" followed by the cell id and then a "=" or a "!" for a not equal then the value of the cell you are testing for.
-                Remember to also to close a if statement, to do this you have to use a "}"
-            </p>
-            <p class="docs-data">
-                For example if you wanted to test cell 2 for a zero and if true print the letter c you would run the code below.
-            </p>
-            <br>
-
-            <div style=width:10%;min-width:100px; class="code-block">
-                <p class="docs-data">
-                    <span class="log">i2=0</span>
-                    <span class="cm">f6</span>
-                    <span class="io">p</span>
-                    <span class="log">}</span>
-                </p>
-            </div>
-            <br>
-
-            <h2 id="while">While</h2>
-            <p class="docs-data">
-                The while command is used to loop in your code as long as its conditions are met.
-            </p>
-            <p class="docs-data">
-                The syntax for this command is similar to the if command, the syntax for it is a "w" followed by the cell id and then a "=" or a "!" for a not equal then the value of the cell you are testing for.
-                Remember to also to close a while statement, to do this you have to use a "]"
-            </p>
-            <p class="docs-data">
-                For example if you wanted to loop while cell 2 is a zero that prints the letter c infinitely you would run the code below.
-            </p>
-            <br>
-
-            <div style=width:11%;min-width:110px; class="code-block">
-                <p class="docs-data">
-                    <span class="log">w2=0</span>
-                    <span class="cm">f6</span>
-                    <span class="io">p</span>
-                    <span class="log">]</span>
-                </p>
-            </div>
-            <br>
-
-            <h2 id="exit">Exit</h2>
-            <p class="docs-data">
-                The exit command is used to exit the current while loop.
-            </p>
-            <p class="docs-data">
-                The syntax for this command is just "e".
-            </p>
-            <p class="docs-data">
-                For example if you wanted to loop while cell 5 is a zero that prints the letter c but then breaks out of the loop you would run the code below.
-            </p>
-            <br>
-
-            <div style=width:12%;min-width:120px; class="code-block">
-                <p class="docs-data">
-                    <span class="log">w5=0</span>
-                    <span class="cm">f6</span>
-                    <span class="io">p</span>
-                    <span class="log">e</span>
-                    <span class="log">]</span>
-                </p>
-            </div>
-            <br>
-
-            <h1 id="misk">Misk</h1>
-            <br>
-
-            <h2 id="back">Back</h2>
-            <p class="docs-data">
-                The back command is used to go back to previous instructions in the code.
-            </p>
-            <p class="docs-data">
-                The syntax for this command is "b" followed by the number of instructions you want to go back.
-            </p>
-            <p class="docs-data">
-                For example if you wanted to go back 3 instructions you would run the code below "b3".
-            </p>
-            <br>
-
-            <div style=width:4%;min-width:40px; class="code-block">
-                <p class="docs-data">
-                    <span class="msk">b3</span>
-                </p>
-            </div>
-            <br>
-
-            <h2 id="terminate">Terminate</h2>
-            <p class="docs-data">
-                The terminate command is used to terminate the program.
-            </p>
-            <p class="docs-data">
-                The syntax for this command is just "t".
-            </p>
-            <p class="docs-data">
-                For example if you wanted to terminate the program if a condition is met you would do in the code below. As you can see the code "f7p" will never get ran because on default all cells are 0 and that condition is true so it terminates the program.
-            </p>
-            <br>
-
-            <div style=width:10%;min-width:100px; class="code-block">
-                <p class="docs-data">
-                    <span class="log">i0=0</span>
-                    <span class="msk">t</span>
-                    <span class="log">}</span>
-                    <span class="cm">f7</span>
-                    <span class="io">p</span>
-                </p>
-            </div>
-            <br>
-
-            <h1>Config</h1>
-            <br>
-
-            <h2 id="yaml">Yaml</h2>
-            <p class="docs-data">
-                In Grid9 version 2022-016 you can now use yaml files to configure the way code is ran. This is a new feature and is still not perfect so it may not work as expected.
-            </p>
-            <p class="docs-data">
-                The recomended layout for the yaml config is shown below. It can be structured in any way you want but this is the recomended way.
-            </p>
-            <br>
-
-            <div style=width:20%;min-width:300px; class="code-block">
-                <p class="docs-data">
-                    <span class="io">%YAML</span>
-                    <span class="log"> 1.2</span>
-                    <br>
-                    <span class="com">---</span>
-                    <br>
-                    <span class="io">[{</span>
-                    <br>
-                    <span class="cm">advancedParse</span>
-                    <span class="io">: </span>
-                    <span class="log">true</span>
-                    <span class="io">,</span>
-                    <br>
-                    <span class="cm">dontCache</span>
-                    <span class="io">: </span>
-                    <span class="log">false</span>
-                    <span class="io">,</span>
-                    <br>
-                    <span class="cm">echoGridMod</span>
-                    <span class="io">: </span>
-                    <span class="log">false</span>
-                    <span class="io">,</span>
-                    <br>
-                    <span class="cm">noLog</span>
-                    <span class="io">: </span>
-                    <span class="log">false</span>
-                    <br>
-                    <span class="io">}]</span>
-                </p>
-            </div>
-            <br>
-
-            <p class="docs-data">
-                These config options are used to change the way Grid9 interacts with your code.
-                For example you can run a advancedParse which will make the program start slower but can fix issues in your code.
-                The options can also allow you to see more tecnicall information about the program. For example turning on echoGridMod will print you the grid after every instruction that modifies the cells in some way.
-            </p>
-        </div>
+        </main>
     </div>
 
     <script>

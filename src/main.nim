@@ -1,5 +1,5 @@
 from code_interpreter import nil
-from yml_manager import nil
+from toml_manager import nil
 from code_parser import nil
 from glyths import nil
 
@@ -43,7 +43,7 @@ proc about() =
     echo "\nGrid9 is a esoteric programming language that is based on a 3x3 grid of memory cells where you make patterns glyths.\nThis language created by Mr.Ender in the Nim programming language.\n"
 
 proc version() =
-    echo "\n2022-018\n"
+    echo "\n2022-019\n"
 
 proc clean(folder: string) =
     case folder
@@ -71,7 +71,7 @@ proc documentation() =
         echo "Error: Documentation not found, maybe you did not install the optional component."
 
 proc example(name: string) =
-    const errorMessage = "\nNo example found for your input try any of the following, 'example1', 'example2', 'example3', 'give_example', 'random_char_example', 'while_nesting', 'if_ladder', 'inf_skyscraper'.\n"
+    const errorMessage = "\nNo example found for your input try any of the following, 'example1', 'example2', 'example3', 'give_example', 'random_char_example', 'while_nesting', 'if_ladder', 'inf_skyscraper', 'save_load_example'.\n"
     case $name
     of "example1":
         echo "\n**This example shows how to use basic language features such as the memory grid, queue and printing.**\n"
@@ -121,6 +121,12 @@ proc example(name: string) =
             echo readFile(exampleDir & "inf_skyscraper.g9") & "\n"
         except:
             echo "Error: " & name & ".g9 not found, maybe you did not install the optional component."
+    of "save_load_example":
+        echo "\n**This example shows how to use the save and load commands.**\n"
+        try:
+            echo readFile(exampleDir & "save_load_example.g9") & "\n"
+        except:
+            echo "Error: " & name & ".g9 not found, maybe you did not install the optional component."
     else:
         echo errorMessage
 
@@ -137,38 +143,38 @@ proc interpret*(path: string, advancedParse: bool, dontCache: bool, echoGridMod:
 
     #Read yaml file and parse it
     var
+        author = "unknown"
+        description = "unknown"
+        version = "1.0.0"
+        showmetadata = "false"
         advancedParseY = advancedParse
         dontCacheY = dontCache
         echoGridModY = echoGridMod
         noLogY = noLog
 
-    if os.fileExists(replace(path, re".g9", ".yaml")):
+    if os.fileExists(replace(path, re".g9", ".toml")):
         let
-            ymlPath = replace(path, re".g9", ".yaml")
-            config = yml_manager.getConfig(ymlPath)
-
-        if config[0] == 't':advancedParseY = true
+            tomlPath = replace(path, re".g9", ".toml")
+            config = toml_manager.getConfig(tomlPath)
+            
+        author = config[1]
+        description = config[2]
+        version = config[3]
+        showmetadata = config[4]
+        if config[0][0] == 't':advancedParseY = true
         else:advancedParseY = false
-        if config[1] == 't':dontCacheY = true
+        if config[0][1] == 't':dontCacheY = true
         else:dontCacheY = false
-        if config[2] == 't':echoGridModY = true
+        if config[0][2] == 't':echoGridModY = true
         else:echoGridModY = false
-        if config[3] == 't':noLogY = true
+        if config[0][3] == 't':noLogY = true
         else:noLogY = false
-        
-    elif os.fileExists(replace(path, re".g9", ".yml")):
-        let
-            ymlPath = replace(path, re".g9", ".yml")
-            config = yml_manager.getConfig(ymlPath)
 
-        if config[0] == 't':advancedParseY = true
-        else:advancedParseY = false
-        if config[1] == 't':dontCacheY = true
-        else:dontCacheY = false
-        if config[2] == 't':echoGridModY = true
-        else:echoGridModY = false
-        if config[3] == 't':noLogY = true
-        else:noLogY = false
+    #Show metadata if enabled
+    if showmetadata == "true":
+        echo "Author: " & author
+        echo "Description: " & description
+        echo "Version: " & version & "\n"
 
     #Parse and interpret the code
     let parsedCode = code_parser.parse(path, advancedParseY, dontCacheY , noLogY)
@@ -182,7 +188,7 @@ proc glythValueGet(glyth: string) =
     echo glyths.get_glyth(glyth)
 
 proc main() =
-    let args = docopt(doc, version = "2022-018")
+    let args = docopt(doc, version = "2022-019")
 
     if args["about"] or args["a"]:
         about()
