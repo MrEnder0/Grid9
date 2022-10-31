@@ -1,0 +1,3 @@
+[bandit]
+exclude = .gitpod.yml
+skips = SC2103
