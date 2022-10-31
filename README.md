@@ -14,7 +14,7 @@ Download the latest release for your platform from the releases page.
 
 #### Windows Note
 
-Seems that currently any version 2022-012 or newer may require nim to be installed on the system for Windows, if your getting an error about a missing DLL you may need to install Nim.
+Seems that currently any version 2022-012 or newer may require nim to be installed on the system for Windows, if your getting an error about a missing DLL you may need to install Nim. This is a known issue and will be fixed soon.
 
 ### Self Build
 
@@ -46,6 +46,7 @@ Note none of these plans are guaranteed and also their may be additions that are
 
 - Allow and conditions in if and while statements.
 - Add intergration with other open source apps.
+- Fix issue with dll error on windows.
 - Add verbosity config option.
 
 ### Low priority
