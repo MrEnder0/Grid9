@@ -40,13 +40,13 @@ if [[ $PACKAGE_MANAGER == "apt" ]]; then
     echo "Installing Examples... (4/5)"
     sudo mkdir /usr/share/Grid9/examples
     cd examples
-    sudo mv * /usr/share/Grid9/examples
+    sudo mv -- * /usr/share/Grid9/examples
     cd ..
 
     echo "Installing documentation... (5/5)"
     sudo mkdir /usr/share/Grid9/documentation
     cd documentation
-    sudo mv * /usr/share/Grid9/documentation
+    sudo mv -- * /usr/share/Grid9/documentation
     cd ..
 
 elif [[ $PACKAGE_MANAGER == "pacman" ]]; then
@@ -77,13 +77,13 @@ elif [[ $PACKAGE_MANAGER == "pacman" ]]; then
     echo "Installing Examples... (4/5)"
     sudo mkdir /usr/share/Grid9/examples
     cd examples
-    sudo mv * /usr/share/Grid9/examples
+    sudo mv -- * /usr/share/Grid9/examples
     cd ..
 
     echo "Installing documentation... (5/5)"
     sudo mkdir /usr/share/Grid9/documentation
     cd documentation
-    sudo mv * /usr/share/Grid9/documentation
+    sudo mv -- * /usr/share/Grid9/documentation
     cd ..
 
 elif [[ $PACKAGE_MANAGER == "apk" ]]; then
@@ -112,13 +112,13 @@ elif [[ $PACKAGE_MANAGER == "apk" ]]; then
     echo "Installing Examples... (4/5)"
     mkdir /usr/share/Grid9/examples
     cd examples
-    mv * /usr/share/Grid9/examples
+    mv -- * /usr/share/Grid9/examples
     cd ..
 
     echo "Installing documentation... (5/5)"
     mkdir /usr/share/Grid9/documentation
     cd documentation
-    mv * /usr/share/Grid9/documentation
+    mv -- * /usr/share/Grid9/documentation
     cd ..
 fi
 echo "Installation complete!"
