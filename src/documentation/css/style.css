@@ -8,6 +8,8 @@ body {
 
 /* Sidebar */
 .sidebar_nav {
+    box-shadow: rgba(0, 0, 0, 0.55) 0px 10px 20px;
+    transition: 0.8s linear;
     background-color: #120F25;
     height: 900px;
     margin: 8px;
@@ -40,13 +42,13 @@ body {
 
 
 #list {
+    transition: 0.8s linear;
     font-family: Quantify;
     font-size: 20px;
     color: #b3b3b3;;
     padding: 5px;
     max-height: 0;
     overflow: hidden;
-    transition: 0.8s linear;
 }
   
 a:focus+#list {
@@ -89,13 +91,21 @@ h2 {
 
 /* Code Blocks */
 .code-block {
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 20px;
     background-color: #f8f8f8;
+    transition: 0.8s linear;
+    border-radius: 1.5rem;
     letter-spacing: 50%;
-    border-radius: 8px;
     overflow-x: scroll;
     overflow-y: scroll;
     line-height: 80%;
     padding: 8px;
+    display: flex;
+}
+
+.code-block:hover {
+    box-shadow: rgba(0, 0, 0, 0.65) 0px 10px 20px;
+    transition: 0.8s linear;
 }
 
 .cm {
@@ -119,16 +129,18 @@ h2 {
 }
 
 /* Mobile */
-@media only screen and (max-width: 1720px) {
+@media only screen and (max-width: 1750px) {
     h1 {
         line-height: 80%;
     }
 
     .sidebar_nav {
+        transition: 0.1s linear;
         display: none;
     }
 
     .docs {
+        transition: 0.1s linear;
         left: 0%;
     }
 
