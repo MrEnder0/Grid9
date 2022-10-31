@@ -10,7 +10,7 @@ tasks:
       nimble install docopt -y
       nimble install yaml -y
       cd src
-      
+
     command: nim c main
 
 vscode:
