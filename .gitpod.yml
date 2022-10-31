@@ -8,7 +8,7 @@ tasks:
       ./choosenim
       export PATH=/home/$USER/.nimble/bin:$PATH
       nimble install docopt -y
-      nimble install yaml -y
+      nimble install parsetoml -y
       cd src
 
     command: nim c main
