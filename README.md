@@ -38,22 +38,6 @@ curl -s https://raw.githubusercontent.com/MrEnder0/Grid9/main/scripts/install_li
 
 You can [run this project in gitpod](https://gitpod.io/#https://github.com/MrEnder0/Grid9) if you dont want to run it locally.
 
-## Future plans
-
-Note none of these plans are guaranteed and also their may be additions that are not stated below.
-
-### High priority
-
-- Allow and conditions in if and while statements.
-- Add intergration with other open source apps.
-- Fix issue with dll error on windows.
-- Add verbosity config option.
-
-### Low priority
-
-- Add grid9 url handler for running grid9 files by clicking a link.
-- Create a grid9 extension for vscode.
-
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
