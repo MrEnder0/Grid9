@@ -26,6 +26,11 @@ proc getConfig*(path: string) : seq[string] =
                 configFile["config"]["noLog"].getBool()
             except KeyError:
                 false
+        let verbosity =
+            try:
+                $configFile["config"]["verbosity"]
+            except KeyError:
+                "1"
 
         #Define metadata values
         let author =
@@ -57,7 +62,7 @@ proc getConfig*(path: string) : seq[string] =
         configOptions = configOptions.replace("false", "f")
 
         echo "Using found Toml config file"
-        return @[configOptions, author, description, version, $showmetadata]
+        return @[configOptions, author, description, version, $showmetadata, $verbosity]
     except:
         echo "Error withen Toml config file, using default settings"
-        return @["ffff", "unknown", "unknown", "1.0.0", "false"]
+        return @["ffff", "unknown", "unknown", "1.0.0", "false", "1"]

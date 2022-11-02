@@ -151,6 +151,7 @@ proc interpret*(path: string, advancedParse: bool, dontCache: bool, echoGridMod:
         dontCacheY = dontCache
         echoGridModY = echoGridMod
         noLogY = noLog
+        verbosityY = 1
 
     if os.fileExists(replace(path, re".g9", ".toml")):
         let
@@ -169,6 +170,7 @@ proc interpret*(path: string, advancedParse: bool, dontCache: bool, echoGridMod:
         else:echoGridModY = false
         if config[0][3] == 't':noLogY = true
         else:noLogY = false
+        verbosityY = parseInt(config[5])
 
     #Show metadata if enabled
     if showmetadata == "true":
