@@ -179,6 +179,7 @@ proc interpret*(path: string, advancedParse: bool, dontCache: bool, echoGridMod:
         echo "Version: " & version & "\n"
 
     #Parse and interpret the code
+    #TODO: Make the verbosity system work
     let parsedCode = code_parser.parse(path, advancedParseY, dontCacheY , noLogY)
     code_interpreter.interpret(parsedCode, echoGridModY, noLogY)
     echo "\nCode finished successfully!"
