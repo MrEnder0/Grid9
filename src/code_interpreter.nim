@@ -8,7 +8,7 @@ iterator `...`*[T](a: T, b: T): T =
         yield res
         inc res
 
-proc logThis(mode: string, message: string) : string {.discardable.} =
+proc logThis(mode: string, message: string, verbosity: int) : string {.discardable.} =
     when defined windows:
         const logDir = r"C:\ProgramData\Grid9\logs\"
     else:
@@ -17,11 +17,21 @@ proc logThis(mode: string, message: string) : string {.discardable.} =
         time = now().format("yyyy-MM-dd HH:mm:ss")
         logFile = open(logDir & now().format("yyyy-MM-dd") & ".log", fmAppend)
     logFile.writeLine(fmt"{time} - {mode} - {message}")
-    log_file.close()
+    logFile.close()
+    case mode
+    of "INFO":
+        if verbosity >= 2:
+            echo fmt"{mode} - {message}"
+    of "WARNING":
+        if verbosity >= 1:
+            echo fmt"{mode} - {message}"
+    of "ERROR":
+        if verbosity >= 0:
+            echo fmt"{mode} - {message}"
 
-proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool) : string {.discardable.} =
+proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool, verbosity: int) : string {.discardable.} =
 
-    if not noLog: logThis("INFO", "Interpreting script")
+    if not noLog: logThis("INFO", "Interpreting script", verbosity)
 
     #initate all the varibles
     var
@@ -56,7 +66,7 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool) : string {.
                         mem_grid[$parsed_code[c_index + 1]] = 0
                         if echoGridMod == true:echo $mem_grid
                 except:
-                    if not noLog: logThis("ERROR", "Invalid syntax for flip command")
+                    if not noLog: logThis("ERROR", "Invalid syntax for flip command", verbosity)
 
             #set command
             of $'s':
@@ -68,7 +78,7 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool) : string {.
                         mem_grid[$parsed_code[c_index + 1]] = parseint($parsed_code[c_index + 2])
                         if echoGridMod == true:echo $mem_grid
                 except:
-                    if not noLog: logThis("ERROR", "Invalid syntax for set command")
+                    if not noLog: logThis("ERROR", "Invalid syntax for set command", verbosity)
 
             #set all command
             of $'a':
@@ -82,7 +92,7 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool) : string {.
                             mem_grid[$i] = parseint($parsed_code[c_index + 1])
                         if echoGridMod == true:echo $mem_grid
                 except:
-                    if not noLog: logThis("ERROR", "Invalid syntax for set all command")
+                    if not noLog: logThis("ERROR", "Invalid syntax for set all command", verbosity)
 
             #queue command
             of $'q':
@@ -93,7 +103,7 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool) : string {.
                         mem_queue = ""
                     c_index += 1
                 except:
-                    if not noLog: logThis("ERROR", "Invalid queue command")
+                    if not noLog: logThis("ERROR", "Invalid queue command", verbosity)
 
             #print command
             of $'p':
@@ -113,9 +123,9 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool) : string {.
                             for i in 0...8:
                                 mem_grid[$i] = parseint($gived_input[i])
                         else:
-                            if not noLog: logThis("ERROR", "Input for grid give command was not 9 numbers long")
+                            if not noLog: logThis("ERROR", "Input for grid give command was not 9 numbers long", verbosity)
                     except:
-                        if not noLog: logThis("ERROR", "Invalid syntax for grid give command")
+                        if not noLog: logThis("ERROR", "Invalid syntax for grid give command", verbosity)
                 of 's':
                     try:
                         let save = $2 & $mem_grid["0"] & $mem_grid["1"] & $mem_grid["2"] & $mem_grid["3"] & $mem_grid["4"] & $mem_grid["5"] & $mem_grid["6"] & $mem_grid["7"] & $mem_grid["8"]
@@ -123,7 +133,7 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool) : string {.
                         c_index += 2
                         discard save
                     except:
-                        if not noLog: logThis("ERROR", "Invalid syntax for grid save command")
+                        if not noLog: logThis("ERROR", "Invalid syntax for grid save command", verbosity)
                 of 'l':
                     try:
                         let load = $saved_grid[$parsed_code[c_index + 2]]
@@ -133,9 +143,9 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool) : string {.
                         c_index += 2
                         discard load
                     except:
-                        if not noLog: logThis("ERROR", "Invalid syntax for grid load command")
+                        if not noLog: logThis("ERROR", "Invalid syntax for grid load command", verbosity)
                 else:
-                    if not noLog: logThis("ERROR", "Invalid syntax for grid command")
+                    if not noLog: logThis("ERROR", "Invalid syntax for grid command", verbosity)
 
             #if command
             of $'i':
@@ -192,7 +202,7 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool) : string {.
                                 if_pos_end += 1
                             c_index = if_pos_end
                 except:
-                    if not noLog: logThis("ERROR", "Invalid if statement")
+                    if not noLog: logThis("ERROR", "Invalid if statement", verbosity)
 
             #while command
             of $'w':
@@ -218,7 +228,7 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool) : string {.
                             else:
                                 while_pos.delete(0)
                     except:
-                        if not noLog: logThis("ERROR", "Invalid while statement")
+                        if not noLog: logThis("ERROR", "Invalid while statement", verbosity)
 
             #exit command
             of $'x':
@@ -232,12 +242,12 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool) : string {.
                 try:
                     c_index -= parseint($parsed_code[c_index + 1])
                 except:
-                    if not noLog: logThis("ERROR", "Invalid back command")
+                    if not noLog: logThis("ERROR", "Invalid back command", verbosity)
 
             #terminate command
             of $'t':
                 {.linearScanEnd.}
-                if not noLog: logThis("INFO", "Script terminated by user")
+                if not noLog: logThis("INFO", "Script terminated by user", verbosity)
                 break
 
             #Go to start of while loop
@@ -250,5 +260,5 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool) : string {.
             c_index += 1
 
     except:
-        if not noLog: logThis("ERROR", "Unknown error in script on line " & $c_index)
+        if not noLog: logThis("ERROR", "Unknown error in script on line " & $c_index, verbosity)
         return

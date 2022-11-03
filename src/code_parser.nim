@@ -1,6 +1,6 @@
 import std/hashes, strformat, times, os, re
 
-proc logThis(mode: string, message: string) : string {.discardable.} =
+proc logThis(mode: string, message: string, verbosity: int) : string {.discardable.} =
     when defined windows:
         const logDir = r"C:\ProgramData\Grid9\logs\"
     else:
@@ -10,14 +10,28 @@ proc logThis(mode: string, message: string) : string {.discardable.} =
         logFile = open(logDir & now().format("yyyy-MM-dd") & ".log", fmAppend)
     logFile.writeLine(fmt"{time} - {mode} - {message}")
     logFile.close()
+    case mode
+    of "INFO":
+        if verbosity >= 2:
+            echo fmt"{mode} - {message}"
+    of "WARNING":
+        if verbosity >= 1:
+            echo fmt"{mode} - {message}"
+    of "ERROR":
+        if verbosity >= 0:
+            echo fmt"{mode} - {message}"
 
-proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool) : string =
+proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool, verbosity: int) : string =
     let code = open(path)
 
     when defined windows:
         const parserCacheDir = r"C:\ProgramData\Grid9\parser_cache\"
+        if verbosity > 1:
+            echo "Using Windows parser cache directory"
     else:
         const parserCacheDir = "/usr/share/Grid9/parser_cache/"
+        if verbosity > 1:
+            echo "Using Linux parser cache directory"
 
     let fileHash = hash(path)
     var
@@ -25,7 +39,8 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool) : s
         line: string
 
     if advancedParse != true and dontCache != true and os.fileExists(parserCacheDir & $fileHash & ".g9") and readFile(path) & "\n" == readFile(parserCacheDir & $fileHash & "_pre.g9"):
-        echo "Using Cached Code\n"
+        if verbosity >= 1:
+            echo "Using Cached Code\n"
         parsedCode = open(parserCacheDir & $fileHash & ".g9").read_line()
         return parsedCode
     else:
@@ -36,7 +51,9 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool) : s
             parsedCode = replace(parsedCode, re("[A-Z*()\n\t ]+"), "")  
 
         if advancedParse == true:
-            echo "Doing advanced parse\n"
+            if verbosity >= 1:
+                echo "Doing advanced parse\n"
+
             var
                 cIndex = 0
                 ifDepth = 0
@@ -50,8 +67,7 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool) : s
                     elif parsedCode[cIndex + 1] == 'c':
                         discard
                     else:
-                        if not noLog: logThis("ERROR", "Invalid operation for queue command")
-                        echo "ERROR: Invalid operation for queue command"
+                        if not noLog: logThis("ERROR", "Invalid operation for queue command", verbosity)
                 of $'i':ifDepth+=1
                 of $'w':whileDepth+=1
                 of $'}':ifDepth-=1
@@ -61,23 +77,18 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool) : s
                         isExited = false
                 of $'b':
                     if not match($parsedCode[cIndex + 1], re"0-9",):
-                        if not noLog: logThis("ERROR", "Invalid number for back command")
-                        echo "ERROR: Invalid number for back command"
+                        if not noLog: logThis("ERROR", "Invalid number for back command", verbosity)
                 of $'x':
                     isExited = true
                 
                 if ifDepth < 0:
-                    if not noLog: logThis("ERROR", "If depth is less than 0")
-                    echo "ERROR: If depth is less than 0"
+                    if not noLog: logThis("ERROR", "If depth is less than 0", verbosity)
                 if whileDepth < 0:
-                    if not noLog: logThis("ERROR", "While depth is less than 0")
-                    echo "ERROR: While depth is less than 0"
-
+                    if not noLog: logThis("ERROR", "While depth is less than 0", verbosity)
                 cIndex += 1
 
             if ifDepth > 0:
-                if not noLog: logThis("WARNING", "If depth is greater than 0")
-                echo "WARNING: If depth is greater than 0 would you like to try to automatically fix? (y/n)"
+                if not noLog: logThis("WARNING", "If depth is greater than 0", verbosity)
                 let responce = readLine(stdin)
                 if $responce == $'y':
                     var fixTimes = 0
@@ -87,8 +98,7 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool) : s
                     discard fixTimes
                 discard responce
             if whileDepth > 0:
-                if not noLog: logThis("WARNING", "While depth is greater than 0")
-                echo "WARNING: While depth is greater than 0 would you like to try to automatically fix? (y/n)"
+                if not noLog: logThis("WARNING", "While depth is greater than 0", verbosity)
                 let responce = readLine(stdin)
                 if $responce == $'y':
                     var fixTimes = 0
@@ -98,8 +108,7 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool) : s
                     discard fixTimes
                 discard responce
             if isExited == true:
-                if not noLog: logThis("WARNING", "Attemped to exit a while loop while not currently being in one")
-                echo "WARNING: Exited while loop without a while loop would you like to try to automatically fix? (y/n)"
+                if not noLog: logThis("WARNING", "Attemped to exit a while loop while not currently being in one", verbosity)
                 let responce = readLine(stdin)
                 if $responce == $'y':
                     parsedCode = parsedCode & $']'
