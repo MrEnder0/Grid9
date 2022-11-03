@@ -4,9 +4,9 @@ description = "Uses a if ladder to print out diffrent characters"
 version = "1.0.5"
 showmetadata = true
 
-
 [config]
 advancedParse = true
 dontCache = false
 echoGridMod = true
 noLog = false
+verbosity = 1

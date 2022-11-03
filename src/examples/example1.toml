@@ -9,3 +9,4 @@ advancedParse = true
 dontCache = false
 echoGridMod = false
 noLog = false
+verbosity = 1
