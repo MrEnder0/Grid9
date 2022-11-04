@@ -1,6 +1,6 @@
 from glyths import nil
 
-import strformat, strutils, tables, random, times
+import std/terminal, strformat, strutils, tables, random, times
 
 iterator `...`*[T](a: T, b: T): T =
     var res: T = T(a)
@@ -21,13 +21,13 @@ proc logThis(mode: string, message: string, verbosity: int) : string {.discardab
     case mode
     of "INFO":
         if verbosity >= 2:
-            echo fmt"{mode} - {message}"
+            stdout.styledWriteLine(fgCyan, mode, fgDefault, " ", message)
     of "WARNING":
         if verbosity >= 1:
-            echo fmt"{mode} - {message}"
+            stdout.styledWriteLine(fgYellow, mode, fgDefault, " ", message)
     of "ERROR":
         if verbosity >= 0:
-            echo fmt"{mode} - {message}"
+            stdout.styledWriteLine(fgRed, mode, fgDefault, " ", message)
 
 proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool, verbosity: int) : string {.discardable.} =
 

@@ -6,6 +6,7 @@ from glyths import nil
 import docopt, os, re
 import std/browsers
 import std/strutils
+import std/terminal
 
 when defined windows:
     const
@@ -174,15 +175,16 @@ proc interpret*(path: string, advancedParse: bool, dontCache: bool, echoGridMod:
 
     #Show metadata if enabled
     if showmetadata == "true":
-        echo "Author: " & author
-        echo "Description: " & description
-        echo "Version: " & version & "\n"
+        stdout.styledWriteLine(fgGreen, "AUTHOR", fgDefault, " ", author)
+        stdout.styledWriteLine(fgGreen, "DESCRIPTION", fgDefault, " ", description)
+        stdout.styledWriteLine(fgGreen, "VERSION", fgDefault, " ", version)
 
     #Parse and interpret the code
     let parsedCode = code_parser.parse(path, advancedParseY, dontCacheY , noLogY, verbosityY)
     code_interpreter.interpret(parsedCode, echoGridModY, noLogY, verbosityY)
     if verbosityY >= 1:
-        echo "\nCode finished successfully!"
+        echo ""
+        stdout.styledWriteLine(fgCyan, "INFO", fgDefault, " Code finished successfully!")
 
     let exit = readLine(stdin)
     discard exit

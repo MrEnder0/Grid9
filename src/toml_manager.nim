@@ -1,5 +1,4 @@
-import std/strutils
-import parsetoml
+import std/strutils, std/terminal, parsetoml
 
 proc getConfig*(path: string) : seq[string] =
     try:
@@ -62,8 +61,8 @@ proc getConfig*(path: string) : seq[string] =
         configOptions = configOptions.replace("false", "f")
 
         if parseInt(verbosity) >= 1:
-            echo "Using found Toml config file"
+            stdout.styledWriteLine(fgCyan, "INFO", fgDefault, " Using found Toml config file")
         return @[configOptions, author, description, version, $showmetadata, $verbosity]
     except:
-        echo "Error withen Toml config file, using default settings"
+        stdout.styledWriteLine(fgRed, "ERROR", fgDefault, " Error withen Toml config file, using default settings")
         return @["ffff", "unknown", "unknown", "1.0.0", "false", "1"]
