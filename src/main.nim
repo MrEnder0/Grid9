@@ -142,7 +142,7 @@ proc interpret*(path: string, advancedParse: bool, dontCache: bool, echoGridMod:
     else:
         echo "\nError: File not found at '" & path & "' maybe check your path.\n"
 
-    #Read yaml file and parse it
+    #Set default config options
     var
         author = "unknown"
         description = "unknown"
@@ -154,6 +154,7 @@ proc interpret*(path: string, advancedParse: bool, dontCache: bool, echoGridMod:
         noLogY = noLog
         verbosityY = 1
 
+    #Read yaml file and overwrite default config options
     if os.fileExists(replace(path, re".g9", ".toml")):
         let
             tomlPath = replace(path, re".g9", ".toml")
@@ -217,14 +218,14 @@ proc main() =
         glythValueGet($args["<glyth>"])
 
 proc nonTerminal() =
+    #Runs if no arguments are given
     echo "No arguments passed\n" & doc
-
     let exit = readLine(stdin)
     discard exit
 
 when isMainModule:
     
-    #Create the file structure for info if it doesn't exist
+    #Creates folders if they don't exist
     if not dirExists(mainDir):
         createDir(mainDir)
     if not dirExists(parserCacheDir):
@@ -232,6 +233,7 @@ when isMainModule:
     if not dirExists(logDir):
         createDir(logDir)
 
+    #Checks if there are any arguments
     if len(os.commandLineParams()) > 0:
         if os.fileExists(os.commandLineParams()[0]) and len(os.commandLineParams()) == 1: interpret(os.commandLineParams()[0], false, false, false, false)
         else: main()
