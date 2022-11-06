@@ -8,19 +8,20 @@ proc logThis(mode: string, message: string, verbosity: int) : string {.discardab
     let
         time = now().format("yyyy-MM-dd HH:mm:ss")
         logFile = open(logDir & now().format("yyyy-MM-dd") & ".log", fmAppend)
-    logFile.writeLine(fmt"{time} - {mode} - {message}")
-    logFile.close()
     case mode
     of "INFO":
         if verbosity >= 2:
             stdout.styledWriteLine(fgCyan, mode, fgDefault, " ", message)
+            logFile.writeLine(fmt"{time} - {mode} - {message}")
     of "WARNING":
         if verbosity >= 1:
             stdout.styledWriteLine(fgYellow, mode, fgDefault, " ", message)
+            logFile.writeLine(fmt"{time} - {mode} - {message}")
     of "ERROR":
         if verbosity >= 0:
             stdout.styledWriteLine(fgRed, mode, fgDefault, message)
-            echo fmt"{mode} - {message}"
+            logFile.writeLine(fmt"{time} - {mode} - {message}")
+    logFile.close()
 
 proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool, verbosity: int) : string =
     if not noLog: logThis("INFO", "Parsing script", verbosity)

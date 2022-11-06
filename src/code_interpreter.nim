@@ -16,18 +16,20 @@ proc logThis(mode: string, message: string, verbosity: int) : string {.discardab
     let
         time = now().format("yyyy-MM-dd HH:mm:ss")
         logFile = open(logDir & now().format("yyyy-MM-dd") & ".log", fmAppend)
-    logFile.writeLine(fmt"{time} - {mode} - {message}")
-    logFile.close()
     case mode
     of "INFO":
         if verbosity >= 2:
             stdout.styledWriteLine(fgCyan, mode, fgDefault, " ", message)
+            logFile.writeLine(fmt"{time} - {mode} - {message}")
     of "WARNING":
         if verbosity >= 1:
             stdout.styledWriteLine(fgYellow, mode, fgDefault, " ", message)
+            logFile.writeLine(fmt"{time} - {mode} - {message}")
     of "ERROR":
         if verbosity >= 0:
-            stdout.styledWriteLine(fgRed, mode, fgDefault, " ", message)
+            stdout.styledWriteLine(fgRed, mode, fgDefault, message)
+            logFile.writeLine(fmt"{time} - {mode} - {message}")
+    logFile.close()
 
 proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool, verbosity: int) : string {.discardable.} =
 
