@@ -23,8 +23,9 @@ proc logThis(mode: string, message: string, verbosity: int) : string {.discardab
             echo fmt"{mode} - {message}"
 
 proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool, verbosity: int) : string =
-    let code = open(path)
+    if not noLog: logThis("INFO", "Parsing script", verbosity)
 
+    #Sets parser cache dir depending on OS
     when defined windows:
         const parserCacheDir = r"C:\ProgramData\Grid9\parser_cache\"
         if verbosity > 1:
@@ -34,6 +35,7 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool, ver
         if verbosity > 1:
             echo "Using Linux parser cache directory"
 
+    let code = open(path)
     let fileHash = hash(path)
     var
         parsedCode: string
@@ -120,6 +122,7 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool, ver
         let
             parsedCodeFile = open(parserCacheDir & $fileHash & ".g9", fmWrite)
             unparsedCodeFile = open(parserCacheDir & $fileHash & "_pre.g9", fmWrite)
+            
         parsedCodeFile.writeLine(parsedCode)
         unparsedCodeFile.writeLine(readFile(path))
         parsedCodeFile.close()
