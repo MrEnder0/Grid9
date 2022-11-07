@@ -8,7 +8,7 @@ Note none of these plans are guaranteed and also their may be additions that are
 
 # Low priority
 [ ] Add grid9 url handler for running grid9 files by clicking a link.
-[o] Add intergration with other open source apps.
+[o] Add intergration with other software.
     [x] bitbucket cleaner for grid9
-    [ ] Create a grid9 extension for vscode.
+    [ ] Create a grid9 extension for vscode
     [x] discord embed intergration for docs
