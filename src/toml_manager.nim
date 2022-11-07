@@ -65,4 +65,4 @@ proc getConfig*(path: string) : seq[string] =
         return @[configOptions, author, description, version, $showmetadata, $verbosity]
     except:
         stdout.styledWriteLine(fgRed, "ERROR", fgDefault, " Error withen Toml config file, using default settings")
-        return @["ffff", "unknown", "unknown", "1.0.0", "false", "1"]
+        return @["ffff", "unknown", "unknown", "unknown", "false", "1"]

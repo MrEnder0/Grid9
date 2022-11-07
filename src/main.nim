@@ -30,14 +30,8 @@ Usage:
     Grid9 (documentation | d)
     Grid9 (clean | c) <folder>
     Grid9 (example | e) <name>
-    Grid9 (interpret | i) <path> [options]
+    Grid9 (interpret | i) <path>
     Grid9 glyth_value_get <glyth>
-
-Options:
-    --advancedParse     Takes longer but can help fix bugs
-    --dontCache         Makes parser not cache the parsed code
-    --echoGridMod       Makes interpreter echo the grid every time it is modified
-    --noLog             Makes interpreter not log errors, warnings, and info
 """
 
 proc about() =
@@ -131,7 +125,7 @@ proc example(name: string) =
     else:
         echo errorMessage
 
-proc interpret*(path: string, advancedParse: bool, dontCache: bool, echoGridMod: bool, noLog: bool) =
+proc interpret*(path: string) =
 
     #Check if file exists and allows for file extension to not be defined
     var path = path.replace(":examples:", exampleDir)
@@ -142,17 +136,17 @@ proc interpret*(path: string, advancedParse: bool, dontCache: bool, echoGridMod:
     else:
         echo "\nError: File not found at '" & path & "' maybe check your path.\n"
 
-    #Set default config options
+    #Default config values
     var
         author = "unknown"
         description = "unknown"
-        version = "1.0.0"
-        showmetadata = "false"
-        advancedParseY = advancedParse
-        dontCacheY = dontCache
-        echoGridModY = echoGridMod
-        noLogY = noLog
-        verbosityY = 1
+        version = "unknown"
+        showmetadata = false
+        advancedParse = false
+        dontCache = false
+        echoGridMod = false
+        noLog = false
+        verbosity = 1
 
     #Read yaml file and overwrite default config options
     if os.fileExists(replace(path, re".g9", ".toml")):
@@ -163,27 +157,43 @@ proc interpret*(path: string, advancedParse: bool, dontCache: bool, echoGridMod:
         author = config[1]
         description = config[2]
         version = config[3]
-        showmetadata = config[4]
-        if config[0][0] == 't':advancedParseY = true
-        else:advancedParseY = false
-        if config[0][1] == 't':dontCacheY = true
-        else:dontCacheY = false
-        if config[0][2] == 't':echoGridModY = true
-        else:echoGridModY = false
-        if config[0][3] == 't':noLogY = true
-        else:noLogY = false
-        verbosityY = parseInt(config[5])
+        showmetadata =
+            if config[4] == "true":
+                true
+            else:
+                false
+        advancedParse =
+            if config[0][0] == 't':
+                true
+            else:
+                false
+        dontCache =
+            if config[0][1] == 't':
+                true
+            else:
+                false
+        echoGridMod =
+            if config[0][2] == 't':
+                true
+            else:
+                false
+        noLog =
+            if config[0][3] == 't':
+                true
+            else:
+                false
+        verbosity = parseInt(config[5])
 
     #Show metadata if enabled
-    if showmetadata == "true":
+    if showmetadata == true:
         stdout.styledWriteLine(fgGreen, "AUTHOR", fgDefault, " ", author)
         stdout.styledWriteLine(fgGreen, "DESCRIPTION", fgDefault, " ", description)
         stdout.styledWriteLine(fgGreen, "VERSION", fgDefault, " ", version)
 
     #Parse and interpret the code
-    let parsedCode = code_parser.parse(path, advancedParseY, dontCacheY , noLogY, verbosityY)
-    code_interpreter.interpret(parsedCode, echoGridModY, noLogY, verbosityY)
-    if verbosityY >= 1:
+    let parsedCode = code_parser.parse(path, advancedParse, dontCache, noLog, verbosity)
+    code_interpreter.interpret(parsedCode, echoGridMod, noLog, verbosity)
+    if verbosity >= 1:
         echo ""
         stdout.styledWriteLine(fgCyan, "INFO", fgDefault, " Code finished successfully!")
 
@@ -212,7 +222,7 @@ proc main() =
         example($args["<name>"])
 
     if args["interpret"] or args["i"]:
-        interpret($args["<path>"], args["--advancedParse"], args["--dontCache"], args["--echoGridMod"], args["--noLog"])
+        interpret($args["<path>"])
 
     if args["glyth_value_get"]:
         glythValueGet($args["<glyth>"])
@@ -235,6 +245,6 @@ when isMainModule:
 
     #Checks if there are any arguments
     if len(os.commandLineParams()) > 0:
-        if os.fileExists(os.commandLineParams()[0]) and len(os.commandLineParams()) == 1: interpret(os.commandLineParams()[0], false, false, false, false)
+        if os.fileExists(os.commandLineParams()[0]) and len(os.commandLineParams()) == 1: interpret(os.commandLineParams()[0])
         else: main()
     else: nonTerminal()
