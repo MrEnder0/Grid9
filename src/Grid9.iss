@@ -47,6 +47,7 @@ Name: "custom"; Description: "Custom installation"; Flags: iscustom
 Name: "baseinstall"; Description: "Includes necessary base files."; Flags: exclusive
 Name: "baseinstall\documentation"; Description: "Includes html documentation."
 Name: "baseinstall\examples"; Description: "Includes example scripts."
+Name: "baseinstall\dllfix"; Description: "Pcre dlls for if Nim is not installed. (recomended)"
 Name: "componentRepair"; Description: "Repair and update components"; Flags: exclusive
 
 [Dirs]
@@ -57,6 +58,9 @@ Name: "C:\ProgramData\Grid9\parser_cache"
 [Files]
 Source: "Grid9\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion; Components: baseinstall
 Source: "Grid9\icon.ico"; DestDir: "{app}"; Flags: ignoreversion; Components: baseinstall
+Source: "Grid9\pcre.dll"; DestDir: "{app}"; Flags: ignoreversion; Components: baseinstall\dllfix
+Source: "Grid9\pcre64.dll"; DestDir: "{app}"; Flags: ignoreversion; Components: baseinstall\dllfix
+Source: "Grid9\pcre32.dll"; DestDir: "{app}"; Flags: ignoreversion; Components: baseinstall\dllfix
 Source: "Grid9\documentation\*"; DestDir: "C:\ProgramData\Grid9"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: baseinstall\documentation componentRepair
 Source: "Grid9\examples\*"; DestDir: "C:\ProgramData\Grid9"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: baseinstall\examples componentRepair
 
