@@ -78,11 +78,10 @@ h2 {
 }
 
 .docs {
-    position: relative;
-    left: 18rem;
     padding: 8px;
     margin: 8px;
     border-radius: 8px;
+    margin-left: 300px;
 }
 
 .docs-data {
