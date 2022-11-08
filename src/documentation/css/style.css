@@ -11,12 +11,13 @@ body {
     box-shadow: rgba(0, 0, 0, 0.55) 0px 10px 20px;
     transition: 0.8s linear;
     background-color: #120F25;
-    height: 900px;
-    margin: 8px;
-    padding: 8px;
-    border-radius: 8px;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
     float: left;
     position: fixed;
+    top: 0;
+    bottom: 0;
 }
 
 .sidebar_nav_title {
@@ -67,6 +68,7 @@ h1 {
     line-height: 50%;
     padding: 3px;
 }
+
 h2 {
     font-family: Quantify;
     font-size: 28px;
@@ -76,10 +78,13 @@ h2 {
 }
 
 .docs {
-    position:relative;
-    width: 83%;
-    left:16%;
+    position: relative;
+    left: 18rem;
+    padding: 8px;
+    margin: 8px;
+    border-radius: 8px;
 }
+
 .docs-data {
     font-family: 'Segoe UI';
     font-weight: 600;
@@ -87,6 +92,7 @@ h2 {
     color: #120F25;
     line-height: 105%;
     padding: 5px;
+    margin: 5px;
 }
 
 /* Code Blocks */
@@ -132,7 +138,7 @@ h2 {
 }
 
 /* Mobile */
-@media only screen and (max-width: 1750px) {
+@media only screen and (max-width: 750px) {
     h1 {
         line-height: 80%;
     }
