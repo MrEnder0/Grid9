@@ -2,6 +2,11 @@ html {
     scroll-behavior: smooth;
 }
 
+@font-face {
+    font-family: Quantify;
+    src: url(Quantify.woff);
+}
+
 body {
     background-color: #EBEBEB;
 }
