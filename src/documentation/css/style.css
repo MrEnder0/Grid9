@@ -2,9 +2,9 @@ html {
     scroll-behavior: smooth;
 }
 
-@font-face {
-    font-family: Quantify;
-    src: url(Quantify.woff);
+@font-face{
+    font-family: 'Quantify';
+    src: url('../fonts/Quantify.woff') format('woff');
 }
 
 body {
