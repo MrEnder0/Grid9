@@ -4,7 +4,7 @@ html {
 
 @font-face{
     font-family: 'Quantify';
-    src: url('../Grid9/documentation/Quantify.woff"') format('woff');
+    src: url('../documentation/fonts/Quantify.woff"') format('woff');
 }
 
 body {
