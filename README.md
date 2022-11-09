@@ -38,6 +38,10 @@ curl -s https://raw.githubusercontent.com/MrEnder0/Grid9/main/scripts/install_li
 
 You can [run this project in gitpod](https://gitpod.io/#https://github.com/MrEnder0/Grid9) if you dont want to run it locally.
 
+## Documentation
+
+The docs are accessible by running "grid9 d" in the terminal or by going to the online documentation [here](https://mrender0.github.io/Grid9/).
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
