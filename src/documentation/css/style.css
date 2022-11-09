@@ -154,12 +154,11 @@ h2 {
 
     .docs {
         transition: 0.1s linear;
-        left: 0%;
+        margin-left: 0px;
     }
 
     .code-block {
-        padding-left: 8px;
-        padding-right: 15px;
-
+        padding-left: 10px;
+        padding-right: 10px;
     }
 }
