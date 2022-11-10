@@ -142,7 +142,28 @@ h2 {
 }
 
 /* Mobile */
-@media only screen and (max-width: 750px) or (any-pointer: coarse) {
+@media only screen and (max-width: 750px){
+    h1 {
+        line-height: 80%;
+    }
+
+    .sidebar_nav {
+        transition: 0.1s linear;
+        display: none;
+    }
+
+    .docs {
+        transition: 0.1s linear;
+        margin-left: 0px;
+    }
+
+    .code-block {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+@media (any-pointer: coarse) {
     h1 {
         line-height: 80%;
     }
