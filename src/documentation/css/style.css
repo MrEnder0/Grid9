@@ -142,7 +142,7 @@ h2 {
 }
 
 /* Mobile */
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 750px) or (any-pointer: coarse) {
     h1 {
         line-height: 80%;
     }
