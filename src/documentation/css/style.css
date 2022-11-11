@@ -145,6 +145,12 @@ h2 {
 @media only screen and (max-width: 750px){
     h1 {
         line-height: 80%;
+        letter-spacing: 120%;
+    }
+
+    h2 {
+        line-height: 80%;
+        letter-spacing: 120%;
     }
 
     .sidebar_nav {
@@ -166,6 +172,12 @@ h2 {
 @media (any-pointer: coarse) {
     h1 {
         line-height: 80%;
+        letter-spacing: 120%;
+    }
+
+    h2 {
+        line-height: 80%;
+        letter-spacing: 120%;
     }
 
     .sidebar_nav {
