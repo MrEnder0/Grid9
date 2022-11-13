@@ -107,8 +107,6 @@ h2 {
     border-radius: 1.5rem;
     letter-spacing: 50%;
     display: flex;
-    overflow-x: scroll;
-    overflow-y: scroll;
     line-height: 80%;
     padding: 8px;
     justify-content: center;
@@ -160,6 +158,7 @@ h2 {
 
     .docs {
         transition: 0.1s linear;
+        scrollbar-width: none;
         margin-left: 0px;
     }
 
