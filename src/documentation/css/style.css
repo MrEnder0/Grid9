@@ -169,6 +169,14 @@ h2 {
     }
 }
 
+::-webkit-scrollbar {
+    width: 7.5px;
+}
+::-webkit-scrollbar-thumb {
+    background: #15132D;
+    border-radius: 10px;
+}
+
 @media (any-pointer: coarse) {
     h1 {
         line-height: 80%;
