@@ -1,4 +1,4 @@
-import std/terminal, std/hashes, strformat, times, os, re
+import std/terminal, std/md5, strformat, times, os, re
 
 proc logThis(mode: string, message: string, verbosity: int) : string {.discardable.} =
     when defined windows:
@@ -37,7 +37,7 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool, ver
             echo "Using Linux parser cache directory"
 
     let code = open(path)
-    let fileHash = hash(path)
+    let fileHash = getMD5(path)
     var
         parsedCode: string
         line: string
