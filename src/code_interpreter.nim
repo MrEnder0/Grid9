@@ -146,6 +146,17 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool, verbosity: 
                         discard load
                     except:
                         if not noLog: logThis("ERROR", "Invalid syntax for grid load command", verbosity)
+                of 'm':
+                    try:
+                        let mask = $saved_grid[$parsed_code[c_index + 2]]
+                        for i in 1...8:
+                            if mask[i+1] == '1':
+                                mem_grid[$i] = 1
+                        if echoGridMod == true:echo $mem_grid
+                        c_index += 2
+                        discard mask
+                    except:
+                        if not noLog: logThis("ERROR", "Invalid syntax for grid mask command", verbosity)
                 else:
                     if not noLog: logThis("ERROR", "Invalid syntax for grid command", verbosity)
 

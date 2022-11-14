@@ -1,0 +1,12 @@
+[metadata]
+author = "MrEnder"
+description = "Shows how to mask grids with other grids."
+version = "1.0.0"
+showmetadata = true
+
+[config]
+advancedParse = true
+dontCache = false
+echoGridMod = true
+noLog = false
+verbosity = 1
