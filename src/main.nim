@@ -66,7 +66,6 @@ proc documentation() =
         echo "Error: Documentation not found, maybe you did not install the optional component."
 
 proc example(name: string) =
-    const errorMessage = "\nNo example found for your input try any of the following, 'example1', 'example2', 'example3', 'give_example', 'random_char_example', 'while_nesting', 'if_ladder', 'inf_skyscraper', 'save_load_example', 'mask_example'.\n"
     case $name
     of "example1":
         echo "\n**This example shows how to use basic language features such as the memory grid, queue and printing.**\n"
