@@ -127,8 +127,14 @@ proc example(name: string) =
             echo readFile(exampleDir & "mask_example.g9") & "\n"
         except:
             stdout.styledWriteLine(fgRed, "ERROR", fgDefault, " ", name, ".g9 not found, maybe you did not install the optional component.")
+    of "xor_example":
+        echo "\n**This example shows how to use the grid xor command.**\n"
+        try:
+            echo readFile(exampleDir & "xor_example.g9") & "\n"
+        except:
+            stdout.styledWriteLine(fgRed, "ERROR", fgDefault, " ", name, ".g9 not found, maybe you did not install the optional component.")
     else:
-        stdout.styledWriteLine(fgYellow, "WARNING", fgDefault, " ", "No example found for your input '", name, "' try any of the following, 'example1', 'example2', 'example3', 'give_example', 'random_char_example', 'while_nesting', 'if_ladder', 'inf_skyscraper', 'save_load_example', 'mask_example'.")
+        stdout.styledWriteLine(fgYellow, "WARNING", fgDefault, " ", "No example found for your input '", name, "' try any of the following, 'example1', 'example2', 'example3', 'give_example', 'random_char_example', 'while_nesting', 'if_ladder', 'inf_skyscraper', 'save_load_example', 'mask_example', 'xor_example'.")
 
 proc interpret*(path: string) =
 

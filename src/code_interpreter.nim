@@ -27,7 +27,7 @@ proc logThis(mode: string, message: string, verbosity: int) : string {.discardab
             logFile.writeLine(fmt"{time} - {mode} - {message}")
     of "ERROR":
         if verbosity >= 0:
-            stdout.styledWriteLine(fgRed, mode, fgDefault, message)
+            stdout.styledWriteLine(fgRed, mode, fgDefault, " ", message)
             logFile.writeLine(fmt"{time} - {mode} - {message}")
     logFile.close()
 
