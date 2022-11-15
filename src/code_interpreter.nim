@@ -157,6 +157,23 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool, verbosity: 
                         discard mask
                     except:
                         if not noLog: logThis("ERROR", "Invalid syntax for grid mask command", verbosity)
+                of 'x':
+                    try:
+                        let xorGrid =
+                            if $parsed_code[c_index + 2] == $'c':
+                                $mem_grid["0"] & $mem_grid["1"] & $mem_grid["2"] & $mem_grid["3"] & $mem_grid["4"] & $mem_grid["5"] & $mem_grid["6"] & $mem_grid["7"] & $mem_grid["8"]
+                            else:
+                                $saved_grid[$parsed_code[c_index + 2]]
+                        for i in 0...8:
+                            if mem_grid[$i] == 1:
+                                mem_grid[$i] = 0
+                            else:
+                                mem_grid[$i] = 1
+                        if echoGridMod == true:echo $mem_grid
+                        c_index += 2
+                        discard xorGrid
+                    except:
+                        if not noLog: logThis("ERROR", "Invalid syntax for grid xor command", verbosity)
                 else:
                     if not noLog: logThis("ERROR", "Invalid syntax for grid command", verbosity)
 
