@@ -37,7 +37,7 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Tasks]
 Name: "envPath"; Description: "Add to PATH variables"; GroupDescription: "Registry:"; Components: baseinstall
-Name: "browserprot"; Description: "Register the grid9 browser protocal"; GroupDescription: "Registry:"; Components: baseinstall
+Name: "browserprot"; Description: "Register the grid9 browser protocal"; GroupDescription: "Registry:"; Components: baseinstall\documentation
 Name: "startmenuicon"; Description: "Create a startmenu shortcut"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked; Components: baseinstall
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked; Components: baseinstall
 
