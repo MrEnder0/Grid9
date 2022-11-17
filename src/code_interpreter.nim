@@ -181,7 +181,8 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool, verbosity: 
             #if command
             of $'i':
                 try:
-                    if parsed_code[c_index + 2] == '=':
+                    case parsed_code[c_index + 2]
+                    of '=':
                         if parsed_code[c_index + 3] == '0':
                             if mem_grid[$parsed_code[c_index + 1]] == 0:
                                 discard
@@ -216,7 +217,7 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool, verbosity: 
                                     if_pos_end += 1
                                 c_index = if_pos_end
 
-                    elif parsed_code[c_index + 2] == '!':
+                    of '!':
                         if mem_grid[$parsed_code[c_index + 1]] != mem_grid[$parsed_code[c_index + 3]]:
                             discard
                         else:
@@ -232,6 +233,8 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool, verbosity: 
                                         c_index = if_pos_end
                                 if_pos_end += 1
                             c_index = if_pos_end
+                    else:
+                        if not noLog: logThis("ERROR", "Invalid operator for if statement", verbosity)
                 except:
                     if not noLog: logThis("ERROR", "Invalid if statement", verbosity)
 
