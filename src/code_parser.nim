@@ -80,14 +80,20 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool, ver
                     if isExited == true:
                         isExited = false
                 of $'b':
-                    if not match($parsedCode[cIndex + 1], re"0-9",):
-                        if not noLog: logThis("ERROR", "Invalid value for back command", verbosity)
+                    try:
+                        if not match($parsedCode[cIndex + 1], re"0-9",):
+                            if not noLog: logThis("ERROR", "Invalid value for back command", verbosity)
+                    except:
+                        if not noLog: logThis("ERROR", "No provided value for back command", verbosity)
                 of $'x':
-                    if $parsedCode[cIndex - 1] != $'g':
-                        isExited = true
-                    else:
-                        if $parsedCode[cIndex - 2] == $'g':
+                    try:
+                        if $parsedCode[cIndex - 1] != $'g':
                             isExited = true
+                        else:
+                            if $parsedCode[cIndex - 2] == $'g':
+                                isExited = true
+                    except:
+                        isExited = true
                 
                 if ifDepth < 0:
                     if not noLog: logThis("ERROR", "If depth is less than 0", verbosity)

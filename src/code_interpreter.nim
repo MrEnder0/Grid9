@@ -42,7 +42,7 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool, verbosity: 
         saved_grid : Table[string, int]
         if_nest_depth: int = 0
         while_pos = newSeq[int]()
-        while_pos_end = newSeq[int]()
+        while_pos_end: int = 0
         if_pos_end: int
         c_index: int = 0
         
@@ -262,11 +262,13 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool, verbosity: 
 
             #exit command
             of $'x':
-                while_pos_end.add(c_index + 1)
-                while parsed_code[while_pos_end[0]] != ']':
-                    while_pos_end.add(c_index + 1)
-                c_index = if_pos_end
-
+                while_pos_end = c_index
+                try:
+                    while parsed_code[while_pos_end] != ']':
+                        while_pos_end += 1
+                    c_index = while_pos_end
+                except:
+                    if not noLog: logThis("ERROR", "No end could be found for the exit statement", verbosity)
             #back command
             of $'b':
                 try:
