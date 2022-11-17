@@ -19,7 +19,7 @@ proc logThis(mode: string, message: string, verbosity: int) : string {.discardab
             logFile.writeLine(fmt"{time} - {mode} - {message}")
     of "ERROR":
         if verbosity >= 0:
-            stdout.styledWriteLine(fgRed, mode, fgDefault, message)
+            stdout.styledWriteLine(fgRed, mode, fgDefault, " ", message)
             logFile.writeLine(fmt"{time} - {mode} - {message}")
     logFile.close()
 
@@ -81,7 +81,7 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool, ver
                         isExited = false
                 of $'b':
                     if not match($parsedCode[cIndex + 1], re"0-9",):
-                        if not noLog: logThis("ERROR", "Invalid number for back command", verbosity)
+                        if not noLog: logThis("ERROR", "Invalid value for back command", verbosity)
                 of $'x':
                     if $parsedCode[cIndex - 1] != $'g':
                         isExited = true
