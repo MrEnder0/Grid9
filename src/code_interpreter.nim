@@ -120,12 +120,13 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool, verbosity: 
                 case parsed_code[c_index + 1]
                 of 'g':
                     try:
-                        let gived_input = readLine(stdin)
+                        let givedInput = readLine(stdin)
                         if len(gived_input) == 9:
                             for i in 0...8:
-                                mem_grid[$i] = parseint($gived_input[i])
+                                mem_grid[$i] = parseint($givedInput[i])
                         else:
                             if not noLog: logThis("ERROR", "Input for grid give command was not 9 numbers long", verbosity)
+                        discard givedInput
                     except:
                         if not noLog: logThis("ERROR", "Invalid syntax for grid give command", verbosity)
                 of 's':
