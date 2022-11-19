@@ -25,7 +25,6 @@
                             <a href="#set" class="sidebar_nav_link" aria-label="Read more about the set command">Set</a>
                             <a href="#flip" class="sidebar_nav_link" aria-label="Read more about the flip command">Flip</a>
                             <a href="#set-all" class="sidebar_nav_link" aria-label="Read more about the set all command">Set-all</a>
-                            <a href="#grid" class="sidebar_nav_link" aria-label="Read more about the grid command">Grid</a>
                         </ul>
                     <br>
                     <a href="#0" class="sidebar_nav_link" aria-label="Read more about I O catagory">IOꜜ</a>
@@ -39,6 +38,15 @@
                             <a href="#if" class="sidebar_nav_link" aria-label="Read more about the if statement">If</a>
                             <a href="#while" class="sidebar_nav_link" aria-label="Read more about the while statement">While</a>
                             <a href="#exit" class="sidebar_nav_link" aria-label="Read more about the exit statement">Exit</a>
+                        </ul>
+                    <br>
+                    <a href="#0" class="sidebar_nav_link" aria-label="Read more about grid catagory">Gridꜜ</a>
+                            <ul id="list">
+                            <a href="#give" class="sidebar_nav_link" aria-label="Read more about the give command">Give</a>
+                            <a href="#save&load" class="sidebar_nav_link" aria-label="Read more about grid saving and loading">Save&Load</a>
+                            <br>
+                            <a href="#mask" class="sidebar_nav_link" aria-label="Read more about the grid mask command">Mask</a>
+                            <a href="#xor" class="sidebar_nav_link" aria-label="Read more about the grid xor command">Xor</a>
                         </ul>
                     <br>
                     <a href="#0" class="sidebar_nav_link" aria-label="Read more about misk catagory">Miskꜜ</a>
@@ -137,26 +145,6 @@
                 <div style=width:4%;min-width:40px; class="code-block">
                     <p class="docs-data">
                         <span class="cm">a1</span>
-                    </p>
-                </div>
-                <br>
-
-                <h2 id="grid">Grid</h2>
-                <p class="docs-data">
-                    The grid command is for users to give a glyth pattern as a input to the script. It is used to save and load grids.
-                </p>
-                <p class="docs-data">
-                    The syntax for this command is "g" and then "g" (give), "s" (save), "l" (load).
-                </p>
-                <p class="docs-data">
-                    For example if you wanted to make a simple glyth to character converter you would that would do is it would take input and print out the character as output. The code for this is shown below.
-                </p>
-                <br>
-
-                <div style=width:5%;min-width:40px; class="code-block">
-                    <p class="docs-data">
-                        <span class="io">gg</span>
-                        <span class="io">p</span>
                     </p>
                 </div>
                 <br>
@@ -284,6 +272,88 @@
                         <span class="io">p</span>
                         <span class="log">e</span>
                         <span class="log">]</span>
+                    </p>
+                </div>
+                <br>
+
+                <h1 id="grid">Grid</h1>
+                <br>
+
+                <h2 id="give">Give</h2>
+                <p class="docs-data">
+                    The grid command is for users to give a glyth pattern as a input to the script.
+                <p class="docs-data">
+                    The syntax for this command is "gg".
+                </p>
+                <p class="docs-data">
+                    For example if you wanted to make a simple glyth to character converter you would that would do is it would take input and print out the character as output. The code for this is shown below.
+                </p>
+                <br>
+
+                <div style=width:5%;min-width:40px; class="code-block">
+                    <p class="docs-data">
+                        <span class="io">gg</span>
+                        <span class="io">p</span>
+                    </p>
+                </div>
+                <br>
+
+                <h2 id="save&load">Save and Load</h2>
+                <p class="docs-data">
+                    The save and load commands are used to save and load glyth patterns.
+                </p>
+                <p class="docs-data">
+                    The syntax for this command is "gs" and then a id from 0-8 to save; and then "gl" and id from 0-8 to load.
+                </p>
+                
+                <div style=width:10%;min-width:100px; class="code-block">
+                    <p class="docs-data">
+                        <span class="cm">ar</span>
+                        <span class="cm">s00</span>
+                        <span class="io">p</span>
+                        <span class="cm">gs0</span>
+                        <span class="cm">ar</span>
+                        <span class="cm">s00</span>
+                        <span class="io">p</span>
+                        <span class="cm">gl0</span>
+                        <span class="io">p</span>
+                    </p>
+                </div>
+                <br>
+
+                <h2 id="mask">Mask</h2>
+                <p class="docs-data">
+                    The mask command is used to mask a saved grid ontop of the current grid.
+                </p>
+                <p class="docs-data">
+                    The syntax for this command is "gm" and then a id from 0-8 to mask.
+                </p>
+
+                <div style=width:10%;min-width:100px; class="code-block">
+                    <p class="docs-data">
+                        <span class="cm">ar</span>
+                        <span class="cm">gs0</span>
+                        <span class="cm">ar</span>
+                        <span class="cm">gm0</span>
+                    </p>
+                </div>
+                <br>
+
+                <h2 id="xor">Xor</h2>
+                <p class="docs-data">
+                    The xor command is used to xor the current grid or a saved grid.
+                </p>
+                <p class="docs-data">
+                    The syntax for this command is "gx" and then a id from 0-8 or "c" if you wanted to do the current grid to xor.
+                </p>
+
+                <div style=width:10%;min-width:100px; class="code-block">
+                    <p class="docs-data">
+                        <span class="cm">f6</span>
+                        <span class="cm">f2</span>
+                        <span class="cm">f0</span>
+                        <span class="cm">f7</span>
+                        <span class="cm">gxc</span>
                     </p>
                 </div>
                 <br>
