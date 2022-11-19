@@ -206,7 +206,7 @@ proc interpret*(path: string) =
     code_interpreter.interpret(parsedCode, echoGridMod, noLog, verbosity)
     if verbosity >= 1:
         echo ""
-        stdout.styledWriteLine(fgCyan, "INFO", fgDefault, " Code finished successfully!")
+        stdout.styledWriteLine(fgCyan, "INFO", fgDefault, " Code has finished executing.")
 
     let exit = readLine(stdin)
     discard exit
