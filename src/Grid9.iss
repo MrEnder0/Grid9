@@ -49,7 +49,7 @@ Name: "baseinstall"; Description: "Includes necessary base files."; Flags: exclu
 Name: "baseinstall\documentation"; Description: "Includes html documentation."
 Name: "baseinstall\examples"; Description: "Includes example scripts."
 Name: "baseinstall\dllfix"; Description: "Pcre dlls for if Nim is not installed. (recomended)"
-Name: "componentRepair"; Description: "Repair and update components"; Flags: exclusive
+Name: "componentRepair"; Description: "Repair or install components and legacy components"; Flags: exclusive
 
 [Dirs]
 Name: "C:\ProgramData\Grid9"
