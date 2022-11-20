@@ -121,4 +121,5 @@ elif [[ $PACKAGE_MANAGER == "apk" ]]; then
     mv -- * /usr/share/Grid9/documentation
     cd ..
 fi
-echo "Installation complete!"
+echo "Installation complete."
+echo "If this has failed to install try running each line line by line and then report the issue on the github page."
