@@ -103,9 +103,11 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool, verbosity: 
                         mem_queue = mem_queue & glyths.get_glyth($mem_grid["0"] & $mem_grid["1"] & $mem_grid["2"] & $mem_grid["3"] & $mem_grid["4"] & $mem_grid["5"] & $mem_grid["6"] & $mem_grid["7"] & $mem_grid["8"])
                     elif parsed_code[c_index + 1] == 'c':
                         mem_queue = ""
+                    else:
+                        if not noLog: logThis("ERROR", "Invalid option for queue command", verbosity)
                     c_index += 1
                 except:
-                    if not noLog: logThis("ERROR", "Invalid queue command", verbosity)
+                    if not noLog: logThis("ERROR", "Issue with queue command", verbosity)
 
             #print command
             of $'p':
@@ -296,5 +298,5 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool, verbosity: 
             c_index += 1
 
     except:
-        if not noLog: logThis("ERROR", "Unknown error in script on line " & $c_index, verbosity)
+        if not noLog: logThis("ERROR", "Unknown error in script on character " & $c_index, verbosity)
         return
