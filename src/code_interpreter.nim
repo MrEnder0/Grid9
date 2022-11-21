@@ -19,15 +19,15 @@ proc logThis(mode: string, message: string, verbosity: int) : string {.discardab
     case mode
     of "INFO":
         if verbosity >= 2:
-            stdout.styledWriteLine(fgCyan, mode, fgDefault, " ", message)
+            stdout.styledWriteLine(fgCyan, mode, fgWhite, " ", message)
             logFile.writeLine(fmt"{time} - {mode} - {message}")
     of "WARNING":
         if verbosity >= 1:
-            stdout.styledWriteLine(fgYellow, mode, fgDefault, " ", message)
+            stdout.styledWriteLine(fgYellow, mode, fgWhite, " ", message)
             logFile.writeLine(fmt"{time} - {mode} - {message}")
     of "ERROR":
         if verbosity >= 0:
-            stdout.styledWriteLine(fgRed, mode, fgDefault, " ", message)
+            stdout.styledWriteLine(fgRed, mode, fgWhite, " ", message)
             logFile.writeLine(fmt"{time} - {mode} - {message}")
     logFile.close()
 

@@ -11,15 +11,15 @@ proc logThis(mode: string, message: string, verbosity: int) : string {.discardab
     case mode
     of "INFO":
         if verbosity >= 2:
-            stdout.styledWriteLine(fgCyan, mode, fgDefault, " ", message)
+            stdout.styledWriteLine(fgCyan, mode, fgWhite, " ", message)
             logFile.writeLine(fmt"{time} - {mode} - {message}")
     of "WARNING":
         if verbosity >= 1:
-            stdout.styledWriteLine(fgYellow, mode, fgDefault, " ", message)
+            stdout.styledWriteLine(fgYellow, mode, fgWhite, " ", message)
             logFile.writeLine(fmt"{time} - {mode} - {message}")
     of "ERROR":
         if verbosity >= 0:
-            stdout.styledWriteLine(fgRed, mode, fgDefault, " ", message)
+            stdout.styledWriteLine(fgRed, mode, fgWhite, " ", message)
             logFile.writeLine(fmt"{time} - {mode} - {message}")
     logFile.close()
 
@@ -44,7 +44,7 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool, ver
 
     if advancedParse != true and dontCache != true and os.fileExists(parserCacheDir & $fileHash & ".g9") and readFile(path) & "\n" == readFile(parserCacheDir & $fileHash & "_pre.g9"):
         if verbosity >= 1:
-            stdout.styledWriteLine(fgCyan, "INFO", fgDefault, " Using Cached Code\n")
+            stdout.styledWriteLine(fgCyan, "INFO", fgWhite, " Using Cached Code\n")
         parsedCode = open(parserCacheDir & $fileHash & ".g9").read_line()
         return parsedCode
     else:
@@ -56,7 +56,7 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool, ver
 
         if advancedParse == true:
             if verbosity >= 1:
-                stdout.styledWriteLine(fgCyan, "INFO", fgDefault, " Doing advanced parse\n")
+                stdout.styledWriteLine(fgCyan, "INFO", fgWhite, " Doing advanced parse\n")
 
             var
                 cIndex = 0

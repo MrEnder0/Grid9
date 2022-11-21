@@ -72,69 +72,69 @@ proc example(name: string) =
         try:
             echo readFile(exampleDir & "example1.g9") & "\n"
         except:
-            stdout.styledWriteLine(fgRed, "ERROR", fgDefault, " ", name, ".g9 not found, maybe you did not install the optional component.")
+            stdout.styledWriteLine(fgRed, "ERROR", fgWhite, " ", name, ".g9 not found, maybe you did not install the optional component.")
     of "example2":
         echo "\n**This example shows how to use if statements and while statements.**\n"
         try:
             echo readFile(exampleDir & "example2.g9") & "\n"
         except:
-            stdout.styledWriteLine(fgRed, "ERROR", fgDefault, " ", name, ".g9 not found, maybe you did not install the optional component.")
+            stdout.styledWriteLine(fgRed, "ERROR", fgWhite, " ", name, ".g9 not found, maybe you did not install the optional component.")
     of "example3":
         echo "\n**This example shows how to use the break and goto commands.**\n"
         try:
             echo readFile(exampleDir & "example3.g9") & "\n"
         except:
-            stdout.styledWriteLine(fgRed, "ERROR", fgDefault, " ", name, ".g9 not found, maybe you did not install the optional component.")
+            stdout.styledWriteLine(fgRed, "ERROR", fgWhite, " ", name, ".g9 not found, maybe you did not install the optional component.")
     of "give_example":
         echo "\n**This example shows how to use the give command.**\n"
         try:
             echo readFile(exampleDir & "give_example.g9") & "\n"
         except:
-            stdout.styledWriteLine(fgRed, "ERROR", fgDefault, " ", name, ".g9 not found, maybe you did not install the optional component.")
+            stdout.styledWriteLine(fgRed, "ERROR", fgWhite, " ", name, ".g9 not found, maybe you did not install the optional component.")
     of "random_char_example":
         echo "\n**This example shows how to use the random argument for cell modification.**\n"
         try:
             echo readFile(exampleDir & "random_char_example.g9") & "\n"
         except:
-            stdout.styledWriteLine(fgRed, "ERROR", fgDefault, " ", name, ".g9 not found, maybe you did not install the optional component.")
+            stdout.styledWriteLine(fgRed, "ERROR", fgWhite, " ", name, ".g9 not found, maybe you did not install the optional component.")
     of "while_nesting":
         echo "\n**This example shows how to use while loops inside of while loops.**\n"
         try:
             echo readFile(exampleDir & "while_nesting.g9") & "\n"
         except:
-            stdout.styledWriteLine(fgRed, "ERROR", fgDefault, " ", name, ".g9 not found, maybe you did not install the optional component.")
+            stdout.styledWriteLine(fgRed, "ERROR", fgWhite, " ", name, ".g9 not found, maybe you did not install the optional component.")
     of "if_ladder":
         echo "\n**This example shows how to use a chain of ladders to climb a if chain.**\n"
         try:
             echo readFile(exampleDir & "if_ladder.g9") & "\n"
         except:
-            stdout.styledWriteLine(fgRed, "ERROR", fgDefault, " ", name, ".g9 not found, maybe you did not install the optional component.")
+            stdout.styledWriteLine(fgRed, "ERROR", fgWhite, " ", name, ".g9 not found, maybe you did not install the optional component.")
     of "inf_skyscraper":
         echo "\n**This example shows how to use the inf command to make a skyscraper.**\n"
         try:
             echo readFile(exampleDir & "inf_skyscraper.g9") & "\n"
         except:
-            stdout.styledWriteLine(fgRed, "ERROR", fgDefault, " ", name, ".g9 not found, maybe you did not install the optional component.")
+            stdout.styledWriteLine(fgRed, "ERROR", fgWhite, " ", name, ".g9 not found, maybe you did not install the optional component.")
     of "save_load_example":
         echo "\n**This example shows how to use the save and load commands.**\n"
         try:
             echo readFile(exampleDir & "save_load_example.g9") & "\n"
         except:
-            stdout.styledWriteLine(fgRed, "ERROR", fgDefault, " ", name, ".g9 not found, maybe you did not install the optional component.")
+            stdout.styledWriteLine(fgRed, "ERROR", fgWhite, " ", name, ".g9 not found, maybe you did not install the optional component.")
     of "mask_example":
         echo "\n**This example shows how to use the grid mask command.**\n"
         try:
             echo readFile(exampleDir & "mask_example.g9") & "\n"
         except:
-            stdout.styledWriteLine(fgRed, "ERROR", fgDefault, " ", name, ".g9 not found, maybe you did not install the optional component.")
+            stdout.styledWriteLine(fgRed, "ERROR", fgWhite, " ", name, ".g9 not found, maybe you did not install the optional component.")
     of "xor_example":
         echo "\n**This example shows how to use the grid xor command.**\n"
         try:
             echo readFile(exampleDir & "xor_example.g9") & "\n"
         except:
-            stdout.styledWriteLine(fgRed, "ERROR", fgDefault, " ", name, ".g9 not found, maybe you did not install the optional component.")
+            stdout.styledWriteLine(fgRed, "ERROR", fgWhite, " ", name, ".g9 not found, maybe you did not install the optional component.")
     else:
-        stdout.styledWriteLine(fgYellow, "WARNING", fgDefault, " ", "No example found for your input '", name, "' try any of the following, 'example1', 'example2', 'example3', 'give_example', 'random_char_example', 'while_nesting', 'if_ladder', 'inf_skyscraper', 'save_load_example', 'mask_example', 'xor_example'.")
+        stdout.styledWriteLine(fgYellow, "WARNING", fgWhite, " ", "No example found for your input '", name, "' try any of the following, 'example1', 'example2', 'example3', 'give_example', 'random_char_example', 'while_nesting', 'if_ladder', 'inf_skyscraper', 'save_load_example', 'mask_example', 'xor_example'.")
 
 proc interpret*(path: string) =
 
@@ -197,16 +197,16 @@ proc interpret*(path: string) =
 
     #Show metadata if enabled
     if showmetadata == true:
-        stdout.styledWriteLine(fgGreen, "AUTHOR", fgDefault, " ", author)
-        stdout.styledWriteLine(fgGreen, "DESCRIPTION", fgDefault, " ", description)
-        stdout.styledWriteLine(fgGreen, "VERSION", fgDefault, " ", version)
+        stdout.styledWriteLine(fgGreen, "AUTHOR", fgWhite, " ", author)
+        stdout.styledWriteLine(fgGreen, "DESCRIPTION", fgWhite, " ", description)
+        stdout.styledWriteLine(fgGreen, "VERSION", fgWhite, " ", version)
 
     #Parse and interpret the code
     let parsedCode = code_parser.parse(path, advancedParse, dontCache, noLog, verbosity)
     code_interpreter.interpret(parsedCode, echoGridMod, noLog, verbosity)
     if verbosity >= 1:
         echo ""
-        stdout.styledWriteLine(fgCyan, "INFO", fgDefault, " Code has finished executing.")
+        stdout.styledWriteLine(fgCyan, "INFO", fgWhite, " Code has finished executing.")
 
     let exit = readLine(stdin)
     discard exit
