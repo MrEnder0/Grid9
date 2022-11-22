@@ -53,8 +53,6 @@ Name: "componentRepair"; Description: "Repair or install components and legacy c
 
 [Dirs]
 Name: "C:\ProgramData\Grid9"
-Name: "C:\ProgramData\Grid9\logs"
-Name: "C:\ProgramData\Grid9\parser_cache"
 
 [Files]
 Source: "Grid9\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion; Components: baseinstall
