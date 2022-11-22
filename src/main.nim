@@ -210,6 +210,9 @@ proc interpret*(path: string) =
                 false
         verbosity = parseInt(config[5])
 
+        if exampleExperiment == true:
+            logThis("INFO", "Example experiment enabled, this experiment is for showcase and has no effect on anything.")
+
     #Show metadata if enabled
     if showmetadata == true:
         stdout.styledWriteLine(fgGreen, "AUTHOR", fgWhite, " ", author)
