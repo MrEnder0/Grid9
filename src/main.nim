@@ -34,6 +34,15 @@ Usage:
     Grid9 glyth_value_get <glyth>
 """
 
+proc logThis(mode: string, message: string) : string {.discardable.} =
+    case mode
+    of "INFO":
+        stdout.styledWriteLine(fgCyan, mode, fgWhite, " ", message)
+    of "WARNING":
+        stdout.styledWriteLine(fgYellow, mode, fgWhite, " ", message)
+    of "ERROR":
+        stdout.styledWriteLine(fgRed, mode, fgWhite, " ", message)
+
 proc about() =
     echo "\nGrid9 is a esoteric programming language that is based on a 3x3 grid of memory cells where you make patterns glyths.\nThis language created by Mr.Ender in the Nim programming language.\n"
 
@@ -45,25 +54,25 @@ proc clean(folder: string) =
     of "parser_cache":
         os.removeDir(parserCacheDir)
         os.createDir(parserCacheDir)
-        echo "Cleaned parser cache"
+        logThis("INFO", "Cleaned parser cache")
     of "logs":
         os.removeDir(logDir)
         os.createDir(logDir)
-        echo "Cleaned logs"
+        logThis("INFO", "Cleaned logs")
     of "temp":
         os.removeDir(parserCacheDir)
         os.createDir(parserCacheDir)
         os.removeDir(logDir)
         os.createDir(logDir)
-        echo "Cleaned all folders"
+        logThis("INFO", "Cleaned all folders")
     else:
-        echo "Error: Invalid folder name try any of the following 'parser_cache', 'logs', or 'temp'."
+        logThis("ERROR", "Invalid folder name try any of the following 'parser_cache', 'logs', or 'temp'.")
 
 proc documentation() =
     try:
         browsers.openDefaultBrowser(docsDir & "index.html")
     except:
-        echo "Error: Documentation not found, maybe you did not install the optional component."
+        logThis("ERROR", "Documentation not found, maybe you did not install the optional component.")
 
 proc example(name: string) =
     case $name
@@ -132,9 +141,9 @@ proc example(name: string) =
         try:
             echo readFile(exampleDir & "xor_example.g9") & "\n"
         except:
-            stdout.styledWriteLine(fgRed, "ERROR", fgWhite, " ", name, ".g9 not found, maybe you did not install the optional component.")
+            logThis("ERROR", ".g9 not found, maybe you did not install the optional component.")
     else:
-        stdout.styledWriteLine(fgYellow, "WARNING", fgWhite, " ", "No example found for your input '", name, "' try any of the following, 'example1', 'example2', 'example3', 'give_example', 'random_char_example', 'while_nesting', 'if_ladder', 'inf_skyscraper', 'save_load_example', 'mask_example', 'xor_example'.")
+        logThis("WARNING", "No example found for your input '" &  name & "' try any of the following, 'example1', 'example2', 'example3', 'give_example', 'random_char_example', 'while_nesting', 'if_ladder', 'inf_skyscraper', 'save_load_example', 'mask_example', 'xor_example'.")
 
 proc interpret*(path: string) =
 
@@ -158,6 +167,7 @@ proc interpret*(path: string) =
         echoGridMod = false
         noLog = false
         verbosity = 1
+        exampleExperiment = false
 
     #Read yaml file and overwrite default config options
     if os.fileExists(replace(path, re".g9", ".toml")):
@@ -190,6 +200,11 @@ proc interpret*(path: string) =
                 false
         noLog =
             if config[0][3] == 't':
+                true
+            else:
+                false
+        exampleExperiment =
+            if config[6][0] == 't':
                 true
             else:
                 false
