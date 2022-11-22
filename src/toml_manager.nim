@@ -55,14 +55,24 @@ proc getConfig*(path: string) : seq[string] =
             except KeyError:
                 false
 
+        #Define experiment values
+        let exampleExperiment =
+            try:
+                configFile["experiments"]["exampleExperiment"].getBool()
+            except KeyError:
+                false
+
         #Parse config values
         var configOptions =  $advancedParse & $dontCache & $echoGridMod & $noLog
+        var experimentOptions = $exampleExperiment
         configOptions = configOptions.replace("true", "t")
         configOptions = configOptions.replace("false", "f")
+        experimentOptions = experimentOptions.replace("true", "t")
+        experimentOptions = experimentOptions.replace("false", "f")
 
-        if parseInt(verbosity) >= 1:
+        if parseInt(verbosity) > 0:
             stdout.styledWriteLine(fgCyan, "INFO", fgWhite, " Using found Toml config file")
-        return @[configOptions, author, description, version, $showmetadata, $verbosity]
+        return @[configOptions, author, description, version, $showmetadata, $verbosity, experimentOptions]
     except:
         stdout.styledWriteLine(fgRed, "ERROR", fgWhite, " Error withen Toml config file, using default settings")
-        return @["ffff", "unknown", "unknown", "unknown", "false", "1"]
+        return @["ffff", "unknown", "unknown", "unknown", "false", "1", "f"]
