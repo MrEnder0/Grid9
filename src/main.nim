@@ -142,8 +142,20 @@ proc example(name: string) =
             echo readFile(exampleDir & "xor_example.g9") & "\n"
         except:
             logThis("ERROR", ".g9 not found, maybe you did not install the optional component.")
+    of "two_one_two":
+        echo "\n**This is one of the examples of how to use the grid save and load commands.**\n"
+        try:
+            echo readFile(exampleDir & "two_one_two.g9") & "\n"
+        except:
+            logThis("ERROR", ".g9 not found, maybe you did not install the optional component.")
+    of "experiments_example":
+        echo "\n**This example shows how to use the toml experiments category.**\n"
+        try:
+            echo readFile(exampleDir & "experiments_example.g9") & "\n"
+        except:
+            logThis("ERROR", ".g9 not found, maybe you did not install the optional component.")
     else:
-        logThis("WARNING", "No example found for your input '" &  name & "' try any of the following, 'example1', 'example2', 'example3', 'give_example', 'random_char_example', 'while_nesting', 'if_ladder', 'inf_skyscraper', 'save_load_example', 'mask_example', 'xor_example'.")
+        logThis("WARNING", "No example found for your input '" &  name & "' try any of the following, 'example1', 'example2', 'example3', 'give_example', 'random_char_example', 'while_nesting', 'if_ladder', 'inf_skyscraper', 'save_load_example', 'mask_example', 'xor_example', 'two_one_two', 'experiments_example'.")
 
 proc interpret*(path: string) =
 
