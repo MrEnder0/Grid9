@@ -1,4 +1,4 @@
-from glyths import nil
+from glyphs import nil
 
 import std/terminal, strformat, strutils, tables, random, times
 
@@ -100,7 +100,7 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool, verbosity: 
             of $'q':
                 try:
                     if parsed_code[c_index + 1] == 's':
-                        mem_queue = mem_queue & glyths.get_glyth($mem_grid["0"] & $mem_grid["1"] & $mem_grid["2"] & $mem_grid["3"] & $mem_grid["4"] & $mem_grid["5"] & $mem_grid["6"] & $mem_grid["7"] & $mem_grid["8"])
+                        mem_queue = mem_queue & glyphs.get_glyph($mem_grid["0"] & $mem_grid["1"] & $mem_grid["2"] & $mem_grid["3"] & $mem_grid["4"] & $mem_grid["5"] & $mem_grid["6"] & $mem_grid["7"] & $mem_grid["8"])
                     elif parsed_code[c_index + 1] == 'c':
                         mem_queue = ""
                     else:
@@ -115,7 +115,7 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool, verbosity: 
                     echo mem_queue
                     mem_queue = ""
                 else:
-                    echo glyths.get_glyth($mem_grid["0"] & $mem_grid["1"] & $mem_grid["2"] & $mem_grid["3"] & $mem_grid["4"] & $mem_grid["5"] & $mem_grid["6"] & $mem_grid["7"] & $mem_grid["8"])
+                    echo glyphs.get_glyph($mem_grid["0"] & $mem_grid["1"] & $mem_grid["2"] & $mem_grid["3"] & $mem_grid["4"] & $mem_grid["5"] & $mem_grid["6"] & $mem_grid["7"] & $mem_grid["8"])
 
             #grid command
             of $'g':

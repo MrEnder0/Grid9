@@ -1,7 +1,7 @@
 from code_interpreter import nil
 from toml_manager import nil
 from code_parser import nil
-from glyths import nil
+from glyphs import nil
 
 import docopt, os, re
 import std/browsers
@@ -31,7 +31,7 @@ Usage:
     Grid9 (clean | c) <folder>
     Grid9 (example | e) <name>
     Grid9 (interpret | i) <path>
-    Grid9 glyth_value_get <glyth>
+    Grid9 glyph_value_get <glyph>
 """
 
 proc logThis(mode: string, message: string) : string {.discardable.} =
@@ -44,7 +44,7 @@ proc logThis(mode: string, message: string) : string {.discardable.} =
         stdout.styledWriteLine(fgRed, mode, fgWhite, " ", message)
 
 proc about() =
-    echo "\nGrid9 is a esoteric programming language that is based on a 3x3 grid of memory cells where you make patterns glyths.\nThis language created by Mr.Ender in the Nim programming language.\n"
+    echo "\nGrid9 is a esoteric programming language that is based on a 3x3 grid of memory cells where you make patterns glyphs.\nThis language created by Mr.Ender in the Nim programming language.\n"
 
 proc version() =
     echo "\n2022-022\n"
@@ -241,8 +241,8 @@ proc interpret*(path: string) =
     let exit = readLine(stdin)
     discard exit
 
-proc glythValueGet(glyth: string) =
-    echo glyths.get_glyth(glyth)
+proc glyphValueGet(glyph: string) =
+    echo glyphs.get_glyph(glyph)
 
 proc main() =
     let args = docopt(doc, version = "2022-022")
@@ -265,8 +265,8 @@ proc main() =
     if args["interpret"] or args["i"]:
         interpret($args["<path>"])
 
-    if args["glyth_value_get"]:
-        glythValueGet($args["<glyth>"])
+    if args["glyph_value_get"]:
+        glyphValueGet($args["<glyph>"])
 
 proc nonTerminal() =
     #Runs if no arguments are given
