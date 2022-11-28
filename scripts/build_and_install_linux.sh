@@ -12,7 +12,7 @@ else
     exit 1
 fi
 
-if [[ $PACKAGE_MANAGER == "apt" ]]; then
+if [[ $PACKAGE_MANAGER == "apt-get" ]]; then
     sudo apt update
     sudo apt install git
 
