@@ -4,7 +4,7 @@
     <title>Grid9 Documentation</title>
     <meta charset="utf-8">
     <meta content="Grid9 Documentation" property="og:title" />
-    <meta content="The offical documentation the the Grid9 programming language." property="og:description" />
+    <meta content="The official documentation the the Grid9 programming language." property="og:description" />
     <meta content="css/embedimage.png" property="og:image" />
     <meta name="theme-color" content="#15132D">
     <link rel="stylesheet" href="css/style.css">
@@ -73,16 +73,16 @@
                 <h2>Basic Description</h2>
 
                 <p class="docs-data">
-                    To explain Grid9 in one sentence it is an esoteric interpreted language made in Nim based on a 3x3 grid of cells for a total of 9 cells in the grid where the cells values consist of zeros and ones.
+                    To explain Grid9 in one sentence it is an esoteric interpreted language made in Nim based on a 3x3 grid of cells for a total of 9 cells in the grid where the values of the cells consist of zeros and ones.
                 </p>
                 <p class="docs-data">
                     You can interact with these cells by setting them (s) flipping them (f) or setting all the cells to a value (a).
-                    With all of these ways you can interact with the cells you may wonder what you can do with them and the answer to that is that every outputable character in this language has its own unique combination of cells.
-                    Now you may wonder why 9 cells why not 8 like the size of a byte. Well the answer to that is well there is non, but some useful things you can do with that 9th cell is use it for your own varible storage so you can store a zero or one that may be used to sway logic.
+                    With all of these ways you can interact with the cells you may wonder what you can do with them and the answer to that is that every output able character in this language has its unique combination of cells.
+                    Now you may wonder why 9 cells why not 8 like the size of a byte. Well, the answer to that is well it is non, but some useful things you can do with that 9th cell use it for your variable storage so you can store a zero or one that may be used to sway logic.
                 </p>
 
                 <p class="docs-data">
-                    This language doesnt stop at just being able to change a few numbers; there is statements, controll of flow operators, and more.
+                    This language doesn't stop at just being able to change a few numbers; there are statements, control of flow operators, and more.
                 </p>
                 <br>
 
@@ -95,10 +95,10 @@
                 </p>
                 <p class="docs-data">
                     The syntax for this command is "s" followed by the cell id and then the value you want to set it to.
-                    This unlike the flip command sets the value for certainy of a cells value.
+                    This unlike the flip command sets the value for certain of a cell's value.
                 </p>
                 <p class="docs-data">
-                    For example if you wanted to set cell 0 to 1 you would run the code below.
+                    For example, if you wanted to set cell 0 to 1 you would run the code below.
                 </p>
                 <br>
 
@@ -115,10 +115,10 @@
                 </p>
                 <p class="docs-data">
                     The syntax for this command is "f" followed by the cell id that you would like to flip (0-8).
-                    This unlike the set command flips the value with uncertainy of a cells value.
+                    This unlike the set command flips the value with the uncertainty of a cell's value.
                 </p>
                 <p class="docs-data">
-                    For example if you wanted to flip cell 2 you would run the code below.
+                    For example, if you wanted to flip cell 2 you would run the code below.
                 </p>
                 <br>
 
@@ -135,10 +135,10 @@
                 </p>
                 <p class="docs-data">
                     The syntax for this command is "s" followed by the cell id and then the value you want to set it to.
-                    This flips all cells with certainy of a cells value.
+                    This flips all cells with the certainty of a cell's value.
                 </p>
                 <p class="docs-data">
-                    For example if you wanted all the cells to have the value 1 you would run the code below.
+                    For example, if you wanted all the cells to have the value 1 you would run the code below.
                 </p>
                 <br>
 
@@ -154,16 +154,16 @@
 
                 <h2 id="print">Print</h2>
                 <p class="docs-data">
-                    The print command is used to print the grid glyth character to the console.
+                    The print command is used to print the grid glyph character to the console.
                 </p>
                 <p class="docs-data">
-                    Now this command needs a little explanation to understand it, but every outputable character has it own combination on the grid and those are called "glyths".
-                    The print command converts these "glyths" into the single character that they represent.
-                    Also the print command will print the current queue instead of the current glyth if the queue contains anything.
+                    Now, this command needs a little explanation to understand it, but every output-able character has its combination on the grid and those are called "glyphs".
+                    The print command converts these "glyphs" into the single character that they represent.
+                    Also, the print command will print the current queue instead of the current glyph if the queue contains anything.
                     The syntax for this command is "p".
                 </p>
                 <p class="docs-data">
-                    For example the character "a" is represented by the cells 000000010. If you were to flip cell 7 (the cell ids start at 0) and then you it would print "a" like in the code shown below.
+                    For example, the character "a" is represented by 000000010. If you were to flip cell 7 (the cell ids start at 0) and then it would print "a" like in the code shown below.
                 </p>
                 <br>
 
@@ -177,14 +177,14 @@
 
                 <h2 id="queue">Queue</h2>
                 <p class="docs-data">
-                    The queue command is used to print multiple "glyhs" or characters together.
+                    The queue command is used to print multiple "glyphs" or characters together.
                 </p>
                 <p class="docs-data">
-                    The syntax for this command is "qs" to add a glyph to the queue and "qc" to completly clear the queue.
+                    The syntax for this command is "qs" to add a glyph to the queue and "qc" to completely clear the queue.
                 </p>
                 <p class="docs-data">
                     For example say you want to print two "r" letters next to each other.
-                    To do this you would want to make the glyth for "r" save it in queu and then again and save it them print it to get the output "rr" like in the code shown below.
+                    To do this you would want to make the glyph for "r" save it in the queue and then again save it and then print it to get the output "rr" like in the code shown below.
                 </p>
                 <br>
 
@@ -212,11 +212,11 @@
                     The if command is used to check if a cell is a zero or a one.
                 </p>
                 <p class="docs-data">
-                    The syntax for this command is "i" followed by the cell id and then a "=" or a "!" for a not equal then the value of the cell you are testing for.
-                    Remember to also to close a if statement, to do this you have to use a "}"
+                    The syntax for this command is "i" followed by the cell id and then a "=" or a "!" for a not equal to the value of the cell you are testing for.
+                    Remember to also close an if statement, to do this you have to use a "}"
                 </p>
                 <p class="docs-data">
-                    For example if you wanted to test cell 2 for a zero and if true print the letter c you would run the code below.
+                    For example, if you wanted to test cell 2 for zero and if true print the letter c you would run the code below.
                 </p>
                 <br>
 
@@ -236,10 +236,10 @@
                 </p>
                 <p class="docs-data">
                     The syntax for this command is similar to the if command, the syntax for it is a "w" followed by the cell id and then a "=" or a "!" for a not equal then the value of the cell you are testing for.
-                    Remember to also to close a while statement, to do this you have to use a "]"
+                    Remember to also close a while statement, to do this you have to use a "]"
                 </p>
                 <p class="docs-data">
-                    For example if you wanted to loop while cell 2 is a zero that prints the letter c infinitely you would run the code below.
+                    For example, if you wanted to loop while cell 2 is zero that prints the letter c infinitely you would run the code below.
                 </p>
                 <br>
 
@@ -261,7 +261,7 @@
                     The syntax for this command is just "e".
                 </p>
                 <p class="docs-data">
-                    For example if you wanted to loop while cell 5 is a zero that prints the letter c but then breaks out of the loop you would run the code below.
+                    For example, if you wanted to loop while cell 5 is a zero that prints the letter c but then breaks out of the loop you would run the code below.
                 </p>
                 <br>
 
@@ -281,12 +281,12 @@
 
                 <h2 id="give">Give</h2>
                 <p class="docs-data">
-                    The grid command is for users to give a glyth pattern as a input to the script.
+                    The grid command is for users to give a glyph pattern as input to the script.
                 <p class="docs-data">
                     The syntax for this command is "gg".
                 </p>
                 <p class="docs-data">
-                    For example if you wanted to make a simple glyth to character converter you would that would do is it would take input and print out the character as output. The code for this is shown below.
+                    For example, if you wanted to make a simple glyph-to-character converter you would that would do is it would take input and print out the character as output. The code for this is shown below.
                 </p>
                 <br>
 
@@ -300,10 +300,10 @@
 
                 <h2 id="save&load">Save and Load</h2>
                 <p class="docs-data">
-                    The save and load commands are used to save and load glyth patterns.
+                    The save and load commands are used to save and load glyph patterns.
                 </p>
                 <p class="docs-data">
-                    The syntax for this command is "gs" and then a id from 0-8 to save; and then "gl" and id from 0-8 to load.
+                    The syntax for this command is "gs" and then an id from 0-8 to save; and then "gl" and an id from 0-8 to load.
                 </p>
                 
                 <div style=width:10%;min-width:100px; class="code-block">
@@ -323,10 +323,10 @@
 
                 <h2 id="mask">Mask</h2>
                 <p class="docs-data">
-                    The mask command is used to mask a saved grid ontop of the current grid.
+                    The mask command is used to mask a saved grid on top of the current grid.
                 </p>
                 <p class="docs-data">
-                    The syntax for this command is "gm" and then a id from 0-8 to mask.
+                    The syntax for this command is "gm" and then an id from 0-8 to mask.
                 </p>
 
                 <div style=width:10%;min-width:100px; class="code-block">
@@ -344,7 +344,7 @@
                     The xor command is used to xor the current grid or a saved grid.
                 </p>
                 <p class="docs-data">
-                    The syntax for this command is "gx" and then a id from 0-8 or "c" if you wanted to do the current grid to xor.
+                    The syntax for this command is "gx" and then an id from 0-8 or "c" if you wanted to do the current grid to xor.
                 </p>
 
                 <div style=width:10%;min-width:100px; class="code-block">
@@ -369,7 +369,7 @@
                     The syntax for this command is "b" followed by the number of instructions you want to go back.
                 </p>
                 <p class="docs-data">
-                    For example if you wanted to go back 3 instructions you would run the code below "b3".
+                    For example, if you wanted to go back 3 instructions you would run the code below "b3".
                 </p>
                 <br>
 
@@ -388,7 +388,7 @@
                     The syntax for this command is just "t".
                 </p>
                 <p class="docs-data">
-                    For example if you wanted to terminate the program if a condition is met you would do in the code below. As you can see the code "f7p" will never get ran because on default all cells are 0 and that condition is true so it terminates the program.
+                    For example, if you wanted to terminate the program if a condition is met you would do it in the code below. As you can see the code "f7p" will never get run because by default all cells are 0 and that condition is true so it terminates the program.
                 </p>
                 <br>
 
@@ -408,10 +408,10 @@
 
                 <h2 id="toml">Toml</h2>
                 <p class="docs-data">
-                    In Grid9 version 2022-020 and above you can now use toml files to configure the way code is ran. This is a new feature and is still not perfect so it may not work as expected.
+                    In Grid9 version 2022-020 and above you can now use toml files to configure the way code is run. This is a new feature and is still not perfect so it may not work as expected.
                 </p>
                 <p class="docs-data">
-                    The structure for a config is shown below. If you do not define a config value that value will be set to its default value. While the rest are set to the values you defined.
+                    The structure for the config is shown below. If you do not define a config value that value will be set to its default value. While the rest are set to the values you defined.
                 </p>
                 <br>
 
@@ -446,8 +446,8 @@
 
                 <p class="docs-data">
                     These config options are used to change the way Grid9 interacts with your code.
-                    For example you can run a advancedParse which will make the program start slower but can fix issues in your code.
-                    The options can also allow you to see more tecnicall information about the program. For example turning on echoGridMod will print you the grid after every instruction that modifies the cells in some way.
+                    For example, you can run advancedParse which will make the program start slower but can fix issues in your code.
+                    The options can also allow you to see more technical information about the program. For example, turning on echoGridMod will print you the grid after every instruction that modifies the cells in some way.
                 </p>
             </div>
         </main>

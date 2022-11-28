@@ -1,6 +1,6 @@
 <img src=".github/assets/banner.png">
 
-A esoteric interpreted language made in Nim based on a 3x3 grid of zeros and ones.
+Grid9 is an esoteric interpreted language made in Nim based on a 3x3 grid of zeros and ones.
 
 [![Nightly Release](https://github.com/MrEnder0/Grid9/actions/workflows/nightly.yml/badge.svg)](https://github.com/MrEnder0/Grid9/actions/workflows/nightly.yml)
 
@@ -32,7 +32,7 @@ curl -s https://raw.githubusercontent.com/MrEnder0/Grid9/main/scripts/build_and_
 
 ### Online
 
-You can [run this project in gitpod](https://gitpod.io/#https://github.com/MrEnder0/Grid9) if you dont want to run it locally.
+You can [run this project in gitpod](https://gitpod.io/#https://github.com/MrEnder0/Grid9) if you don't want to run it locally.
 
 ## Documentation
 
