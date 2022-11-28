@@ -39,15 +39,15 @@ if [[ $PACKAGE_MANAGER == "apt" ]]; then
 
     echo "Installing Examples... (4/5)"
     sudo mkdir /usr/share/Grid9/examples
-    cd examples
+    cd components/examples
     sudo mv -- * /usr/share/Grid9/examples
-    cd ..
+    cd ../..
 
     echo "Installing documentation... (5/5)"
     sudo mkdir /usr/share/Grid9/documentation
-    cd documentation
+    cd components/documentation
     sudo mv -- * /usr/share/Grid9/documentation
-    cd ..
+    cd ../..
 
 elif [[ $PACKAGE_MANAGER == "pacman" ]]; then
     sudo pacman -Syyu
@@ -76,15 +76,15 @@ elif [[ $PACKAGE_MANAGER == "pacman" ]]; then
 
     echo "Installing Examples... (4/5)"
     sudo mkdir /usr/share/Grid9/examples
-    cd examples
+    cd components/examples
     sudo mv -- * /usr/share/Grid9/examples
-    cd ..
+    cd ../..
 
     echo "Installing documentation... (5/5)"
     sudo mkdir /usr/share/Grid9/documentation
-    cd documentation
+    cd components/documentation
     sudo mv -- * /usr/share/Grid9/documentation
-    cd ..
+    cd ../..
 
 elif [[ $PACKAGE_MANAGER == "apk" ]]; then
     apk update
@@ -111,15 +111,15 @@ elif [[ $PACKAGE_MANAGER == "apk" ]]; then
 
     echo "Installing Examples... (4/5)"
     mkdir /usr/share/Grid9/examples
-    cd examples
+    cd components/examples
     mv -- * /usr/share/Grid9/examples
-    cd ..
+    cd ../..
 
     echo "Installing documentation... (5/5)"
     mkdir /usr/share/Grid9/documentation
-    cd documentation
+    cd components/documentation
     mv -- * /usr/share/Grid9/documentation
-    cd ..
+    cd ../..
 fi
 echo "Installation complete."
 echo "If this has failed to install try running each line line by line and then report the issue on the github page."

@@ -20,9 +20,9 @@ Move-Item -Path "Grid9.exe" -Destination "C:\Program Files (x86)\Grid9"
 New-Item "C:\ProgramData\Grid9" -itemType Directory
 
 Write-Output "Installing Examples... (4/5)"
-Move-Item -Path "examples" -Destination "C:\ProgramData\Grid9"
+Move-Item -Path "components\examples" -Destination "C:\ProgramData\Grid9"
 
 Write-Output "Installing documentation... (5/5)"
-Move-Item -Path "documentation" -Destination "C:\ProgramData\Grid9"
+Move-Item -Path "components\documentation" -Destination "C:\ProgramData\Grid9"
 
 Write-Output "Finished!"
