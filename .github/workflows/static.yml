@@ -5,10 +5,10 @@ on:
   # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
-    paths: ["src/documentation/**"]
+    paths: ["src/components/documentation/**"]
   pull_request:
     branches: ["main"]
-    paths: ["src/documentation/**"]
+    paths: ["src/components/documentation/**"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -40,7 +40,7 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         with:
           # Upload entire repository
-          path: './src/documentation'
+          path: './src/components/documentation'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
