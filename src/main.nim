@@ -169,6 +169,7 @@ proc interpret*(path: string) =
         let errorMessage = "File not found at '" & path & "' maybe check your path.\n"
         logThis("ERROR", errorMessage)
         discard errorMessage
+        return
 
     #Default config values
     var
