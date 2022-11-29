@@ -166,7 +166,9 @@ proc interpret*(path: string) =
     elif os.fileExists(path & ".g9"):
         path = path & ".g9"
     else:
-        echo "\nError: File not found at '" & path & "' maybe check your path.\n"
+        let errorMessage = "File not found at '" & path & "' maybe check your path.\n"
+        logThis("ERROR", errorMessage)
+        discard errorMessage
 
     #Default config values
     var
