@@ -49,6 +49,7 @@ Name: "baseinstall"; Description: "Includes necessary base files."; Flags: exclu
 Name: "baseinstall\documentation"; Description: "Includes html documentation."
 Name: "baseinstall\examples"; Description: "Includes example scripts."
 Name: "baseinstall\dllfix"; Description: "Pcre dlls for if Nim is not installed. (recomended)"
+Name: "baseinstall\bleachbit"; Description: "Install bleachbit cleaner for Grid9"
 Name: "componentRepair"; Description: "Repair or install components and legacy components"; Flags: exclusive
 
 [Dirs]
@@ -62,6 +63,7 @@ Source: "Grid9\pcre64.dll"; DestDir: "{app}"; Flags: ignoreversion; Components: 
 Source: "Grid9\pcre32.dll"; DestDir: "{app}"; Flags: ignoreversion; Components: baseinstall\dllfix
 Source: "Grid9\documentation\*"; DestDir: "C:\ProgramData\Grid9"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: baseinstall\documentation componentRepair
 Source: "Grid9\examples\*"; DestDir: "C:\ProgramData\Grid9"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: baseinstall\examples componentRepair
+Source: "Grid9\bleachbit\*"; DestDir: "C:\Program Files (x86)\BleachBit\share\cleaners"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: baseinstall\bleachbit
 
 [Registry]
 Root: HKA; Subkey: "Software\Classes\{#MyAppAssocExt}\OpenWithProgids"; ValueType: string; ValueName: "{#MyAppAssocKey}"; ValueData: ""; Flags: uninsdeletevalue
