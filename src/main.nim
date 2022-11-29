@@ -47,7 +47,7 @@ proc about() =
     echo "\nGrid9 is a esoteric programming language that is based on a 3x3 grid of memory cells where you make patterns glyphs.\nThis language created by Mr.Ender in the Nim programming language.\n"
 
 proc version() =
-    echo "\n2022-022\n"
+    echo "\n2022-023\n"
 
 proc clean(folder: string) =
     case folder
@@ -245,7 +245,7 @@ proc glyphValueGet(glyph: string) =
     echo glyphs.get_glyph(glyph)
 
 proc main() =
-    let args = docopt(doc, version = "2022-022")
+    let args = docopt(doc, version = "2022-023")
 
     if args["about"] or args["a"]:
         about()
