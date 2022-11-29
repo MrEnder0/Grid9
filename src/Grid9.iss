@@ -46,11 +46,11 @@ Name: "custom"; Description: "Custom installation"; Flags: iscustom
 
 [Components]
 Name: "baseinstall"; Description: "Includes necessary base files."; Flags: exclusive
-Name: "baseinstall\documentation"; Description: "Includes html documentation."
-Name: "baseinstall\examples"; Description: "Includes example scripts."
+Name: "baseinstall\documentation"; Description: "Html documentation about the language."
+Name: "baseinstall\examples"; Description: "Example grid9 scripts."
 Name: "baseinstall\dllfix"; Description: "Pcre dlls for if Nim is not installed. (recomended)"
-Name: "baseinstall\bleachbit"; Description: "Install bleachbit cleaner for Grid9"
-Name: "componentRepair"; Description: "Repair or install components and legacy components"; Flags: exclusive
+Name: "baseinstall\bleachbit"; Description: "Install bleachbit cleaner for Grid9."
+Name: "componentRepair"; Description: "Repair examples and/or install examples and legacy examples."; Flags: exclusive
 
 [Dirs]
 Name: "C:\ProgramData\Grid9"
@@ -61,7 +61,7 @@ Source: "Grid9\icon.ico"; DestDir: "{app}"; Flags: ignoreversion; Components: ba
 Source: "Grid9\pcre.dll"; DestDir: "{app}"; Flags: ignoreversion; Components: baseinstall\dllfix
 Source: "Grid9\pcre64.dll"; DestDir: "{app}"; Flags: ignoreversion; Components: baseinstall\dllfix
 Source: "Grid9\pcre32.dll"; DestDir: "{app}"; Flags: ignoreversion; Components: baseinstall\dllfix
-Source: "Grid9\documentation\*"; DestDir: "C:\ProgramData\Grid9"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: baseinstall\documentation componentRepair
+Source: "Grid9\documentation\*"; DestDir: "C:\ProgramData\Grid9"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: baseinstall\documentation
 Source: "Grid9\examples\*"; DestDir: "C:\ProgramData\Grid9"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: baseinstall\examples componentRepair
 Source: "Grid9\bleachbit\*"; DestDir: "C:\Program Files (x86)\BleachBit\share\cleaners"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: baseinstall\bleachbit
 
