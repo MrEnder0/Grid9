@@ -3,12 +3,14 @@ Note none of these plans are guaranteed and also their may be additions that are
 
 # High priority
 [ ] Allow and conditions in if and while statements
-[o] Create more advanced examples using grid saving and loading (like binary adder)
+[ ] Create more advanced examples using grid saving and loading (like binary adder)
 [o] Create local installer for Linux for prebuilt binaries
+[o] Port more of the language to retro gadgets
 
 # Low priority
 [o] Add intergration with other software
-    [x] Bitbucket cleaner for grid9
+    [x] Bitbucket cleaner for Grid9
     [ ] Create a grid9 extension for vscode
     [x] Discord embed intergration for docs
-    [ ] Create winget package for grid9
+    [ ] Create winget package for Grid9
+    [x] RetroGadet gadet that can run Grid9 code
