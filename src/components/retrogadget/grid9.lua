@@ -1,5 +1,5 @@
 -- Input Grid9 Code here
-Code = "f8qf9qf9f8f7qp"
+Code = "f8pf9pf9f8f7qp"
 
 -- Load Font
 
@@ -8,6 +8,7 @@ local spriteFont = gdt.ROM.System.SpriteSheets["StandardFont"]
 -- Grid9 Vars
 Grid = {0,0,0,0,0,0,0,0,0}
 Queue = ""
+ScreenContent = ""
 Glyphs = {
     ["000000000"] = " ",
     ["000000001"] = "\n",
@@ -106,11 +107,8 @@ Glyphs = {
 
 -- update function is repeated every time tick
 function update()
-	--wantedLed = "Led" .. math.random(0, 8)
 	if (gdt.LedButton1.ButtonDown) then
 		gdt.LedButton1.LedState = not gdt.LedButton1.LedState
-		--gdt[wantedLed].State = true
-			
 		local c_index = 0
 		while (c_index < #Code + 1) do
 			if (Code:sub(c_index, c_index) == "f") then
@@ -144,8 +142,12 @@ function update()
                 if (Queue == "") then
                     local glyth = table.concat(Grid)
                     log(Glyphs[tostring(glyth)])
+                    ScreenContent = ScreenContent .. "\n" .. Glyphs[tostring(glyth)]
+                    gdt.VideoChip0:DrawText(vec2(1, 1),spriteFont,ScreenContent,color.white,color.black)
                 else
                     log(Queue)
+                    ScreenContent = ScreenContent .. "\n" .. Queue
+                    gdt.VideoChip0:DrawText(vec2(1, 1),spriteFont,ScreenContent,color.white,color.black)
                     Queue = ""
                 end
                 -- TODO: Make it also display on the screen
