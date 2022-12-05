@@ -1,5 +1,5 @@
 -- Input Grid9 Code here
-Code = "f9f8f4qa0f8f7qa0f9f7f6qa0f9f7f6qa0f5qa0qa0f6f5qa0f5qa0f9f8f5qa0f9f7f6qa0f9f7qp"
+Code = "f9f8f4qsa0f8f7qsa0f9f7f6qsa0f9f7f6qsa0f5qsa0qsa0f6f5qsa0f5qsa0f9f8f5qsa0f9f7f6qsa0f9f7qsp"
 
 -- Load Font
 
@@ -136,19 +136,27 @@ function update()
                 end
             end
             if (Code:sub(c_index, c_index) == "q") then
-                local glyth = table.concat(Grid)
-                Queue = Queue .. Glyphs[tostring(glyth)]
+                if (Code:sub(c_index+1, c_index+1) == "s") then
+                    -- Save to queue
+                    local glyth = table.concat(Grid)
+                    Queue = Queue .. Glyphs[tostring(glyth)]
+                    c_index += 1
+                else
+                    -- Clear queue
+                    Queue = ""
+                    c_index += 1
+                end
             end
 			if (Code:sub(c_index, c_index) == "p") then
                 if (Queue == "") then
                     local glyth = table.concat(Grid)
                     log(Glyphs[tostring(glyth)])
                     ScreenContent = ScreenContent .. "\n" .. Glyphs[tostring(glyth)]
-                    gdt.VideoChip0:DrawText(vec2(1, 1),spriteFont,ScreenContent,color.white,color.black)
+                    --gdt.VideoChip0:DrawText(vec2(1, 1),spriteFont,ScreenContent,color.white,color.black)
                 else
                     log(Queue)
                     ScreenContent = ScreenContent .. "\n" .. Queue
-                    gdt.VideoChip0:DrawText(vec2(1, 1),spriteFont,ScreenContent,color.white,color.black)
+                    --gdt.VideoChip0:DrawText(vec2(1, 1),spriteFont,ScreenContent,color.white,color.black)
                     Queue = ""
                 end
 			end
@@ -159,4 +167,29 @@ function update()
         -- Print the grid to the console when code is finished
         -- log(table.concat(Grid))
 	end
+
+    -- Render Output
+    local scrollHeight = math.floor (gdt.Slider0.Value+0.5)
+    gdt.VideoChip0.Clear(gdt.VideoChip0, color.black)
+    local linelettersC = 0
+    local lineOutput = ""
+    local lineHeight = 0
+
+    for i = 1, #ScreenContent do
+        linelettersC += 1
+        lineOutput = lineOutput .. ScreenContent:sub(i, i)
+        -- Displays only 12 letters per line
+        if (linelettersC > 12) then
+            -- Check if the line output is too long
+            if (lineOutput:len() > 12) then
+                lineOutput = lineOutput:sub(1, 12)
+            end
+            gdt.VideoChip0:DrawText(vec2(1, lineHeight+(-scrollHeight)),spriteFont,lineOutput,color.white,color.black)
+            linelettersC = 0
+            lineHeight += 10
+            lineOutput = ""
+        end
+    end
+    gdt.VideoChip0:DrawText(vec2(1, lineHeight+(-scrollHeight)),spriteFont,lineOutput,color.white,color.black)
+    --gdt.VideoChip0:DrawText(vec2(1, -scrollHeight),spriteFont,ScreenContent,color.white,color.black)
 end
