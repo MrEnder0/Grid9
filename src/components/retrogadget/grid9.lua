@@ -1,5 +1,5 @@
 -- Input Grid9 Code here
-Code = "f8pf9pf9f8f7qp"
+Code = "f9f8f4qa0f8f7qa0f9f7f6qa0f9f7f6qa0f5qa0qa0f6f5qa0f5qa0f9f8f5qa0f9f7f6qa0f9f7qp"
 
 -- Load Font
 
@@ -131,7 +131,8 @@ function update()
                 -- All values to specific value
                 for i = 1, #Grid do
                     Grid[i] = tonumber(Code:sub(c_index+1, c_index+1))
-                    gdt["Led" .. i].State = c_index+1
+                    local NumberToBool = { [1]=true, [0]=false }
+                    gdt["Led" .. i - 1].State = NumberToBool[tonumber(Code:sub(c_index+1, c_index+1))]
                 end
             end
             if (Code:sub(c_index, c_index) == "q") then
@@ -155,5 +156,6 @@ function update()
             -- log(table.concat(Grid))
 			c_index += 1
 		end
+        log(table.concat(Grid))
 	end
 end
