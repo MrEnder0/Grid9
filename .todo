@@ -6,6 +6,7 @@ Note none of these plans are guaranteed and also their may be additions that are
 [ ] Create more advanced examples using grid saving and loading (like binary adder)
 [o] Create local installer for Linux for prebuilt binaries
 [o] Port more of the language to retro gadgets
+[ ] Make a original grid9 to RetroGadet grid9 code converter
 
 # Low priority
 [o] Add intergration with other software
