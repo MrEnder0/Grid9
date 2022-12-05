@@ -151,11 +151,12 @@ function update()
                     gdt.VideoChip0:DrawText(vec2(1, 1),spriteFont,ScreenContent,color.white,color.black)
                     Queue = ""
                 end
-                -- TODO: Make it also display on the screen
 			end
+            -- Print grid to console every frame
             -- log(table.concat(Grid))
 			c_index += 1
 		end
-        log(table.concat(Grid))
+        -- Print the grid to the console when code is finished
+        -- log(table.concat(Grid))
 	end
 end
