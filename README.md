@@ -36,7 +36,7 @@ You can [run this project in gitpod](https://gitpod.io/#https://github.com/MrEnd
 
 ## Documentation
 
-The docs are accessible by running "grid9 d" in the terminal or by going to the online documentation [here](https://mrender0.github.io/Grid9/).
+The docs are accessible by running "grid9 d" or "grid9 documentation" in the terminal or by going to the online documentation [here](https://mrender0.github.io/Grid9/).
 
 ## Contributing
 
