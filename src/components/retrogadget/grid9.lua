@@ -108,6 +108,7 @@ Glyphs = {
 -- update function is repeated every time tick
 function update()
 	if (gdt.LedButton1.ButtonDown) then
+        gdt["Led9"].State = false
 		gdt.LedButton1.LedState = not gdt.LedButton1.LedState
 		local c_index = 0
 		while (c_index < #Code + 1) do
@@ -166,6 +167,7 @@ function update()
 		end
         -- Print the grid to the console when code is finished
         -- log(table.concat(Grid))
+        gdt["Led9"].State = true
 	end
 
     -- Render Output
