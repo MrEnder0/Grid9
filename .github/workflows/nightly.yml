@@ -1,7 +1,5 @@
 name: Nightly Release
-on:
-  schedule:
-  - cron: '59 4 * * *'
+on: push
 
 jobs:
   NightlyReleaseLinux:
