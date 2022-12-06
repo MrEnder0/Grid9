@@ -105,7 +105,7 @@ Glyphs = {
     ["001011100"] = "`"
 }
 
--- update function is repeated every time tick
+-- Update function is repeated every time tick
 function update()
 	if (gdt.LedButton1.ButtonDown) then
         gdt["Led9"].State = true
