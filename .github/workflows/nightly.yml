@@ -1,5 +1,7 @@
 name: Nightly Release
-on: push
+on:
+  schedule:
+  - cron: '59 4 * * *'
 
 jobs:
   NightlyReleaseLinux:
@@ -14,13 +16,12 @@ jobs:
       run: |
         nimble install docopt -Y
         nimble install parsetoml -Y
-
     - name: Build
       run: |
         cd ${{ github.workspace }}
         git clone https://github.com/MrEnder0/Grid9.git
-        nim c -d:release Grid9/src/main
-
+        cd Grid9/src
+        nim c -d:release main
     - name: Upload Build
       uses: actions/upload-artifact@v3
       with:
@@ -35,19 +36,13 @@ jobs:
         $url = "https://github.com/dom96/choosenim/releases/download/v0.8.4/choosenim-0.8.4_windows_amd64.exe"
         Invoke-WebRequest -Uri $url -OutFile "choosenim.exe"
         ./choosenim stable --firstInstall -y
-
-    - name: Install Dependencies
-      run: |
-        cd C:\Users\runneradmin\.nimble\bin
-        ./nimble install docopt -Y
-        ./nimble install parsetoml -Y
-
     - name: Build
       run: |
+        cd C:\Users\runneradmin\.nimble\bin
+        ./nimble install docopt -y
+        ./nimble install parsetoml -y
         git clone https://github.com/MrEnder0/Grid9.git
-        cd ..
         ./nim c -d:release Grid9/src/main
-
     - name: Upload Build
       uses: actions/upload-artifact@v3
       with:
