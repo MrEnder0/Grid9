@@ -278,7 +278,6 @@ proc nonTerminal() =
     discard exit
 
 when isMainModule:
-    
     #Creates folders if they don't exist
     if not dirExists(mainDir):
         createDir(mainDir)

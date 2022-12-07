@@ -21,8 +21,7 @@ jobs:
       run: |
         cd ${{ github.workspace }}
         git clone https://github.com/MrEnder0/Grid9.git
-        cd Grid9/src
-        nim c -d:release main
+        nim c -d:release Grid9/src/main
 
     - name: Upload Build
       uses: actions/upload-artifact@v3
@@ -39,11 +38,14 @@ jobs:
         Invoke-WebRequest -Uri $url -OutFile "choosenim.exe"
         ./choosenim stable --firstInstall -y
 
-    - name: Build
+    - name: Install Dependencies
       run: |
         cd C:\Users\runneradmin\.nimble\bin
-        ./nimble install docopt -y
-        ./nimble install parsetoml -y
+        ./nimble install docopt -Y
+        ./nimble install parsetoml -Y
+
+    - name: Build
+      run: |
         git clone https://github.com/MrEnder0/Grid9.git
         ./nim c -d:release Grid9/src/main
 
