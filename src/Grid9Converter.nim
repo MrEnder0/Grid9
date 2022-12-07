@@ -42,6 +42,21 @@ proc clean() =
 
 proc convert(path: string, output: string, conversion: string) =
     echo "You want to convert " & path & " to " & output & " using " & conversion & "\n"
+    case conversion
+    of "textToGrid9":
+        logThis("INFO", "Converting text to Grid9")
+        let inputFile = open(path, fmRead)
+        let inputData = inputFile.readAll()
+        inputFile.close()
+        let outputFile = open(output, fmWrite)
+    of "grid9ToRetroGadget":
+        logThis("INFO", "Converting Grid9 to RetroGadget Grid9")
+        let inputFile = open(path, fmRead)
+        let inputData = inputFile.readAll()
+        inputFile.close()
+        let outputFile = open(output, fmWrite)
+    else:
+        logThis("ERROR", "Conversion not found; try any of the following: 'textToGrid9', 'grid9ToRetroGadget'")
     clean()
 
 proc main() =
