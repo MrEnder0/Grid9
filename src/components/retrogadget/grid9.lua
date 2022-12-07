@@ -178,16 +178,17 @@ function update()
     local linelettersC = 0
     local lineOutput = ""
     local lineHeight = 0
+    local lineLength = 12
 
     for i = 1, #ScreenContent do
         linelettersC += 1
         lineOutput = lineOutput .. ScreenContent:sub(i, i)
 
         -- Displays only 12 letters per line
-        if (linelettersC > 12) then
+        if (linelettersC > lineLength) then
             -- Check if the line output is too long
-            if (lineOutput:len() > 12) then
-                lineOutput = lineOutput:sub(1, 12)
+            if (lineOutput:len() > lineLength) then
+                lineOutput = lineOutput:sub(1, lineLength)
             end
             gdt.VideoChip0:DrawText(vec2(1, lineHeight+(-scrollHeight)),spriteFont,lineOutput,color.white,color.black)
             linelettersC = 0
