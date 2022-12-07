@@ -1,12 +1,11 @@
 # Future plans
-Note none of these plans are guaranteed and also their may be additions that are not stated below.
+Note none of these plans are guaranteed and also their may be other changes that are not stated below.
 
 # High priority
 [ ] Allow and conditions in if and while statements
-[ ] Create more advanced examples using grid saving and loading (like binary adder)
 [ ] Create local installer for Linux for prebuilt binaries
 [o] Port more of the language to retro gadgets
-[o] Make grid9 converter
+[ ] Add min version tag to the toml config
 
 # Low priority
 [o] Add intergration with other software
@@ -15,3 +14,5 @@ Note none of these plans are guaranteed and also their may be additions that are
     [x] Discord embed intergration for docs
     [ ] Create winget package for Grid9
     [x] RetroGadet gadet that can run Grid9 code
+[ ] Create more advanced examples using grid saving and loading (like binary adder)
+[o] Make grid9 converter
