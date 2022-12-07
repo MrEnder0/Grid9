@@ -17,7 +17,7 @@ const doc = """
 Usage:
     Grid9Converter (about | a)
     Grid9Converter (version | v)
-    Grid9Converter (convert | c) <path>
+    Grid9Converter (convert | c) <path> <output> <conversion>
 """
 
 proc logThis(mode: string, message: string) : string {.discardable.} =
@@ -40,8 +40,8 @@ proc clean() =
     os.createDir(tempDir)
     logThis("INFO", "Cleaned temp dir")
 
-proc convert(path: string) =
-    echo "Convert"
+proc convert(path: string, output: string, conversion: string) =
+    echo "You want to convert " & path & " to " & output & " using " & conversion & "\n"
     clean()
 
 proc main() =
@@ -54,7 +54,7 @@ proc main() =
         version()
 
     if args["convert"] or args["c"]:
-        convert($args["<path>"])
+        convert($args["<path>"], $args["<output>"], $args["<conversion>"])
 
 proc nonTerminal() =
     #Runs if no arguments are given
@@ -73,6 +73,6 @@ when isMainModule:
 
     #Checks if there are any arguments
     if len(os.commandLineParams()) > 0:
-        if os.fileExists(os.commandLineParams()[0]) and len(os.commandLineParams()) == 1: convert(os.commandLineParams()[0])
+        if os.fileExists(os.commandLineParams()[0]) and len(os.commandLineParams()) == 1: convert(os.commandLineParams()[0], os.commandLineParams()[1], os.commandLineParams()[2])
         else: main()
     else: nonTerminal()
