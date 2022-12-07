@@ -1,7 +1,5 @@
 name: Nightly Release
-on:
-  schedule:
-  - cron: '59 4 * * *'
+on: push
 
 jobs:
   NightlyReleaseLinux:
@@ -47,6 +45,7 @@ jobs:
     - name: Build
       run: |
         git clone https://github.com/MrEnder0/Grid9.git
+        cd ..
         ./nim c -d:release Grid9/src/main
 
     - name: Upload Build
