@@ -155,11 +155,9 @@ function update()
                     local glyth = table.concat(Grid)
                     --log(Glyphs[tostring(glyth)])
                     ScreenContent = ScreenContent .. "\n" .. Glyphs[tostring(glyth)]
-                    --gdt.VideoChip0:DrawText(vec2(1, 1),spriteFont,ScreenContent,color.white,color.black)
                 else
                     --log(Queue)
                     ScreenContent = ScreenContent .. "\n" .. Queue
-                    --gdt.VideoChip0:DrawText(vec2(1, 1),spriteFont,ScreenContent,color.white,color.black)
                     Queue = ""
                 end
 			end
