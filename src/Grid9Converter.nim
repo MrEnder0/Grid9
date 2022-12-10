@@ -1,8 +1,8 @@
 from toml_manager import nil
 
+import docopt, os, re
 import std/strutils
 import std/terminal
-import docopt, os
 
 when defined windows:
     const
@@ -45,16 +45,58 @@ proc clean() =
     logThis("INFO", "Cleaned temp dir")
 
 proc convert(path: string, output: string, conversion: string) =
-    echo "You want to convert " & path & " to " & output & " using " & conversion & "\n"
+    var path = path
+    if os.fileExists(path):
+        discard
+    elif os.fileExists(path & ".g9"):
+        path = path & ".g9"
+    else:
+        let errorMessage = "File not found at '" & path & "' maybe check your path.\n"
+        logThis("ERROR", errorMessage)
+        discard errorMessage
+        return
+
     case conversion
     of "textToGrid9":
         logThis("INFO", "Converting text to Grid9")
+        logThis("INFO", "Reading config file")
+
+        var minGrid9Ver = "2022.001"
+        if os.fileExists(replace(path, re".g9", ".toml")):
+            let
+                tomlPath = replace(path, re".g9", ".toml")
+                config = toml_manager.getConfig(tomlPath)
+            minGrid9Ver = config[7]
+            if minGrid9Ver > "2022.010":
+                logThis("WARNING", "This conversion method is not supported for Grid9 versions above 2022.010, the output may not work as expected, continue? (y/n)")
+                let answer = readLine(stdin)
+                if answer != "y":
+                    discard answer
+                    return
+                discard answer
+
         let inputFile = open(path, fmRead)
         let inputData = inputFile.readAll()
         inputFile.close()
         let outputFile = open(output, fmWrite)
     of "grid9ToRetroGadget":
         logThis("INFO", "Converting Grid9 to RetroGadget Grid9")
+        logThis("INFO", "Reading config file")
+        
+        var minGrid9Ver = "2022.001"
+        if os.fileExists(replace(path, re".g9", ".toml")):
+            let
+                tomlPath = replace(path, re".g9", ".toml")
+                config = toml_manager.getConfig(tomlPath)
+            minGrid9Ver = config[7]
+            if minGrid9Ver > "2022.010":
+                logThis("WARNING", "This conversion method is not supported for Grid9 versions above 2022.010, the output may not work as expected, continue? (y/n)")
+                let answer = readLine(stdin)
+                if answer != "y":
+                    discard answer
+                    return
+                discard answer
+
         let inputFile = open(path, fmRead)
         let inputData = inputFile.readAll()
         inputFile.close()

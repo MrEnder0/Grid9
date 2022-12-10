@@ -187,7 +187,7 @@ proc interpret*(path: string) =
         exampleExperiment = false
         minGrid9Ver = "2022.001"
 
-    #Read yaml file and overwrite default config options
+    #Read toml file and overwrite default config options
     if os.fileExists(replace(path, re".g9", ".toml")):
         let
             tomlPath = replace(path, re".g9", ".toml")
