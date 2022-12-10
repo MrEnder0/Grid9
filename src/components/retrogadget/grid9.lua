@@ -1,11 +1,9 @@
 -- Input Grid9 Code here
 Code = "f9f8f4qsa0f8f7qsa0f9f7f6qsa0f9f7f6qsa0f5qsa0qsa0f6f5qsa0f5qsa0f9f8f5qsa0f9f7f6qsa0f9f7qspa0"
 
--- Load Font
-
-local spriteFont = gdt.ROM.System.SpriteSheets["StandardFont"]
-
 -- Grid9 Vars
+local spriteFont = gdt.ROM.System.SpriteSheets["StandardFont"]
+NumberToBool = { [1]=true, [0]=false }
 Grid = {0,0,0,0,0,0,0,0,0}
 Queue = ""
 ScreenContent = ""
@@ -128,13 +126,12 @@ function update()
             if (Code:sub(c_index, c_index) == "s") then
                 -- Set value to specific value
                 Grid[tonumber(Code:sub(c_index+1, c_index+1))] = tonumber(Code:sub(c_index+2, c_index+2))
-                gdt["Led" .. Code:sub(c_index+1, c_index+1) - 1].State = c_index+2
+                gdt["Led" .. Code:sub(c_index+1, c_index+1) - 1].State = NumberToBool[tonumber(Code:sub(c_index+2, c_index+2))]
             end
             if (Code:sub(c_index, c_index) == "a") then
                 -- All values to specific value
                 for i = 1, #Grid do
                     Grid[i] = tonumber(Code:sub(c_index+1, c_index+1))
-                    local NumberToBool = { [1]=true, [0]=false }
                     gdt["Led" .. i - 1].State = NumberToBool[tonumber(Code:sub(c_index+1, c_index+1))]
                 end
             end
