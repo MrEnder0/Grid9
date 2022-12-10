@@ -1,6 +1,8 @@
-import docopt, os
+from toml_manager import nil
+
 import std/strutils
 import std/terminal
+import docopt, os
 
 when defined windows:
     const
@@ -20,6 +22,8 @@ Usage:
     Grid9Converter (convert | c) <path> <output> <conversion>
 """
 
+const converterversion = "2022-023"
+
 proc logThis(mode: string, message: string) : string {.discardable.} =
     case mode
     of "INFO":
@@ -33,7 +37,7 @@ proc about() =
     echo "\nGrid9Converter is tool for the Grid9 programming language that is used to convert your Grid9 projects to other things.\n"
 
 proc version() =
-    echo "\n2022-000\n"
+    echo "\n", converterversion, "\n"
 
 proc clean() =
     os.removeDir(tempDir)
@@ -60,7 +64,7 @@ proc convert(path: string, output: string, conversion: string) =
     clean()
 
 proc main() =
-    let args = docopt(doc, version = "2022-023")
+    let args = docopt(doc, version = converterversion)
 
     if args["about"] or args["a"]:
         about()
