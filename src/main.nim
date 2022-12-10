@@ -34,6 +34,8 @@ Usage:
     Grid9 glyph_value_get <glyph>
 """
 
+const grid9version = "2022-023"
+
 proc logThis(mode: string, message: string) : string {.discardable.} =
     case mode
     of "INFO":
@@ -47,7 +49,7 @@ proc about() =
     echo "\nGrid9 is a esoteric programming language that is based on a 3x3 grid of memory cells where you make patterns glyphs.\nThis language created by Mr.Ender in the Nim programming language.\n"
 
 proc version() =
-    echo "\n2022-023\n"
+    echo "\n", grid9version, "\n"
 
 proc clean(folder: string) =
     case folder
@@ -183,6 +185,7 @@ proc interpret*(path: string) =
         noLog = false
         verbosity = 1
         exampleExperiment = false
+        minGrid9Ver = "2022.001"
 
     #Read yaml file and overwrite default config options
     if os.fileExists(replace(path, re".g9", ".toml")):
@@ -224,9 +227,13 @@ proc interpret*(path: string) =
             else:
                 false
         verbosity = parseInt(config[5])
+        minGrid9Ver = config[7]
 
         if exampleExperiment == true:
             logThis("INFO", "Example experiment enabled, this experiment is for showcase and has no effect on anything.")
+
+        if minGrid9Ver < grid9version.replace("-", "."):
+            logThis("WARNING", "This script was made for a newer version of Grid9, it may not work as intended, continuing anyways...")
 
     #Show metadata if enabled
     if showmetadata == true:
@@ -248,7 +255,7 @@ proc glyphValueGet(glyph: string) =
     echo glyphs.get_glyph(glyph)
 
 proc main() =
-    let args = docopt(doc, version = "2022-023")
+    let args = docopt(doc, version = grid9version)
 
     if args["about"] or args["a"]:
         about()

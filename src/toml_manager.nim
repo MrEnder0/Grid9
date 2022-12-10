@@ -54,6 +54,11 @@ proc getConfig*(path: string) : seq[string] =
                 configFile["metadata"]["showmetadata"].getBool()
             except KeyError:
                 false
+        let minGrid9Ver =
+            try:
+                $configFile["metadata"]["minGrid9Ver"]
+            except KeyError:
+                "2022.001"
 
         #Define experiment values
         let exampleExperiment =
@@ -72,7 +77,7 @@ proc getConfig*(path: string) : seq[string] =
 
         if parseInt(verbosity) > 0:
             stdout.styledWriteLine(fgCyan, "INFO", fgWhite, " Using found Toml config file")
-        return @[configOptions, author, description, version, $showmetadata, $verbosity, experimentOptions]
+        return @[configOptions, author, description, version, $showmetadata, $verbosity, experimentOptions, minGrid9Ver]
     except:
         stdout.styledWriteLine(fgRed, "ERROR", fgWhite, " Error withen Toml config file, using default settings")
-        return @["ffff", "unknown", "unknown", "unknown", "false", "1", "f"]
+        return @["ffff", "unknown", "unknown", "unknown", "false", "1", "f", "2022.001"]
