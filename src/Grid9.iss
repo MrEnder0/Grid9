@@ -58,6 +58,7 @@ Name: "C:\ProgramData\Grid9"
 [Files]
 Source: "Grid9\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion; Components: baseinstall
 Source: "Grid9\icon.ico"; DestDir: "{app}"; Flags: ignoreversion; Components: baseinstall
+Source: "Grid9\iconBeta.ico"; DestDir: "{app}"; Flags: ignoreversion; Components: baseinstall
 Source: "Grid9\pcre.dll"; DestDir: "{app}"; Flags: ignoreversion; Components: baseinstall\dllfix
 Source: "Grid9\pcre64.dll"; DestDir: "{app}"; Flags: ignoreversion; Components: baseinstall\dllfix
 Source: "Grid9\pcre32.dll"; DestDir: "{app}"; Flags: ignoreversion; Components: baseinstall\dllfix
