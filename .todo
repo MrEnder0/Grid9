@@ -15,7 +15,7 @@ Note none of these plans are guaranteed and also their may be other changes that
     [ ] If statement
     [ ] While statement
     [ ] Exit command
-[o] Test all grid9 examples and find min version of Grid9 needed to run them
+[o] Test all non legacy Grid9 examples and find min version of Grid9 needed to run them
 
 # Low priority
 [o] Add intergration with other software
@@ -25,4 +25,6 @@ Note none of these plans are guaranteed and also their may be other changes that
     [ ] Create winget package for Grid9
     [x] RetroGadet gadet that can run Grid9 code
 [ ] Create more advanced examples using grid saving and loading (like binary adder)
-[o] Make grid9 converter
+[o] Make Grid9 converter
+    [o] Text to Grid9
+    [o] Grid9 to retro gadget
