@@ -5,6 +5,16 @@ Note none of these plans are guaranteed and also their may be other changes that
 [ ] Allow and conditions in if and while statements
 [ ] Create local installer for Linux for prebuilt binaries
 [o] Port more of the language to retro gadgets
+    [x] Set command
+    [x] Flip command
+    [x] All command
+    [x] Queue command
+    [x] Print command
+    [ ] Terminate command
+    [ ] Back command
+    [ ] If statement
+    [ ] While statement
+    [ ] Exit command
 [o] Add min version tag to the toml config
 
 # Low priority
