@@ -10,7 +10,7 @@ Note none of these plans are guaranteed and also their may be other changes that
     [x] All command
     [x] Queue command
     [x] Print command
-    [ ] Terminate command
+    [x] Terminate command
     [ ] Back command
     [ ] If statement
     [ ] While statement

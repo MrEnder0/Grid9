@@ -158,6 +158,9 @@ function update()
                     Queue = ""
                 end
 			end
+            if (Code:sub(c_index, c_index) == "t") then
+                break
+            end
             -- Print grid to console every frame
             --log(table.concat(Grid))
 			c_index += 1
