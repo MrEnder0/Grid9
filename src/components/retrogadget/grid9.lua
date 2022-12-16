@@ -106,6 +106,7 @@ Glyphs = {
 -- Update function is repeated every time tick
 function update()
 	if (gdt.LedButton1.ButtonDown) then
+        gdt.LedButton1.LedState = true
         gdt["Led9"].State = true
         ScreenContent = ""
 
@@ -152,10 +153,12 @@ function update()
                     local glyth = table.concat(Grid)
                     --log(Glyphs[tostring(glyth)])
                     ScreenContent = ScreenContent .. "\n" .. Glyphs[tostring(glyth)]
+                    RenderOutput()
                 else
                     --log(Queue)
                     ScreenContent = ScreenContent .. "\n" .. Queue
                     Queue = ""
+                    RenderOutput()
                 end
 			end
             if (Code:sub(c_index, c_index) == "b") then
@@ -170,16 +173,22 @@ function update()
 		end
         -- Print the grid to the console when code is finished
         --log(table.concat(Grid))
+        gdt.LedButton1.LedState = false
         gdt["Led9"].State = false
 	end
 
-    -- Render Output
+    RenderOutput()
+
+end
+
+function RenderOutput()
     local scrollHeight = math.floor (gdt.Slider0.Value+0.5)
-    gdt.VideoChip0.Clear(gdt.VideoChip0, color.black)
     local linelettersC = 0
     local lineOutput = ""
     local lineHeight = 0
     local lineLength = 12
+
+    gdt.VideoChip0.Clear(gdt.VideoChip0, color.black)
 
     for i = 1, #ScreenContent do
         linelettersC += 1
