@@ -158,6 +158,9 @@ function update()
                     Queue = ""
                 end
 			end
+            if (Code:sub(c_index, c_index) == "b") then
+                c_index -= Code:sub(c_index+1, c_index+1)
+            end
             if (Code:sub(c_index, c_index) == "t") then
                 break
             end

@@ -11,7 +11,7 @@ Note none of these plans are guaranteed and also their may be other changes that
     [x] Queue command
     [x] Print command
     [x] Terminate command
-    [ ] Back command
+    [x] Back command
     [ ] If statement
     [ ] While statement
     [ ] Exit command
@@ -27,4 +27,4 @@ Note none of these plans are guaranteed and also their may be other changes that
 [ ] Create more advanced examples using grid saving and loading (like binary adder)
 [o] Make Grid9 converter
     [o] Text to Grid9
-    [o] Grid9 to retro gadget
+    [o] Grid9 to retro gadgets
