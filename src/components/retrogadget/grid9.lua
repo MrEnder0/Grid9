@@ -147,7 +147,7 @@ function update()
                     Queue = ""
                     c_index += 1
                 end
-            end
+            end 
 			if (Code:sub(c_index, c_index) == "p") then
                 if (Queue == "") then
                     local glyth = table.concat(Grid)

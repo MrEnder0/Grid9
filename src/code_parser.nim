@@ -52,7 +52,7 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool, ver
             parsedCode = parsedCode & line
         
             #Strips whitespace, capital letters, parenthesis, and asterisks as comments
-            parsedCode = replace(parsedCode, re("[A-Z*()\n\t ]+"), "")  
+            parsedCode = replace(parsedCode, re("[A-Z*()\n\t ]+"), "")
 
         if advancedParse == true:
             if verbosity >= 1:

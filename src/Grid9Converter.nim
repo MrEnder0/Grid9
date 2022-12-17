@@ -19,7 +19,7 @@ const doc = """
 Usage:
     Grid9Converter (about | a)
     Grid9Converter (version | v)
-    Grid9Converter (convert | c) <path> <output> <conversion>
+    Grid9Converter (convert | c) <path> <conversion>
 """
 
 const converterversion = "2022-023"
@@ -44,7 +44,7 @@ proc clean() =
     os.createDir(tempDir)
     logThis("INFO", "Cleaned temp dir")
 
-proc convert(path: string, output: string, conversion: string) =
+proc convert(path: string, conversion: string) =
     var path = path
     if os.fileExists(path):
         discard
@@ -76,9 +76,10 @@ proc convert(path: string, output: string, conversion: string) =
                 discard answer
 
         let inputFile = open(path, fmRead)
-        let inputData = inputFile.readAll()
+        var inputData = inputFile.readAll()
         inputFile.close()
-        let outputFile = open(output, fmWrite)
+
+
     of "grid9ToRetroGadget":
         logThis("INFO", "Converting Grid9 to RetroGadget Grid9")
         logThis("INFO", "Reading config file")
@@ -98,9 +99,22 @@ proc convert(path: string, output: string, conversion: string) =
                 discard answer
 
         let inputFile = open(path, fmRead)
-        let inputData = inputFile.readAll()
+        var inputData = inputFile.readAll()
         inputFile.close()
-        let outputFile = open(output, fmWrite)
+
+        inputData = replace(inputData, re("[A-Z*()\t ]+"), "")
+        inputData = replace(inputData, "f0", "f1")
+        inputData = replace(inputData, "f1", "f2")
+        inputData = replace(inputData, "f2", "f3")
+        inputData = replace(inputData, "f3", "f4")
+        inputData = replace(inputData, "f4", "f5")
+        inputData = replace(inputData, "f5", "f6")
+        inputData = replace(inputData, "f6", "f7")
+        inputData = replace(inputData, "f7", "f8")
+        inputData = replace(inputData, "f8", "f9")
+
+        logThis("INFO", "Conversion completed...\n" & inputData)
+        
     else:
         logThis("ERROR", "Conversion not found; try any of the following: 'textToGrid9', 'grid9ToRetroGadget'")
     clean()
@@ -115,7 +129,7 @@ proc main() =
         version()
 
     if args["convert"] or args["c"]:
-        convert($args["<path>"], $args["<output>"], $args["<conversion>"])
+        convert($args["<path>"], $args["<conversion>"])
 
 proc nonTerminal() =
     #Runs if no arguments are given
@@ -134,6 +148,6 @@ when isMainModule:
 
     #Checks if there are any arguments
     if len(os.commandLineParams()) > 0:
-        if os.fileExists(os.commandLineParams()[0]) and len(os.commandLineParams()) == 1: convert(os.commandLineParams()[0], os.commandLineParams()[1], os.commandLineParams()[2])
+        if os.fileExists(os.commandLineParams()[0]) and len(os.commandLineParams()) == 1: convert(os.commandLineParams()[0], os.commandLineParams()[1])
         else: main()
     else: nonTerminal()
