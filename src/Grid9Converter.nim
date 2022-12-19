@@ -97,7 +97,6 @@ proc convert(path: string, conversion: string) =
                 let errorMessage = "The character '" & currentChar & "' was not found in the glyphs table.\n"
                 logThis("ERROR", errorMessage)
                 discard errorMessage
-                return
 
 
     of "grid9ToRetroGadget":
