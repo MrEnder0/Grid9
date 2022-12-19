@@ -139,8 +139,8 @@ function update()
             if (Code:sub(c_index, c_index) == "q") then
                 if (Code:sub(c_index+1, c_index+1) == "s") then
                     -- Save to queue
-                    local glyth = table.concat(Grid)
-                    Queue = Queue .. Glyphs[tostring(glyth)]
+                    local glyph = table.concat(Grid)
+                    Queue = Queue .. Glyphs[tostring(glyph)]
                     c_index += 1
                 else
                     -- Clear queue
@@ -150,9 +150,9 @@ function update()
             end 
 			if (Code:sub(c_index, c_index) == "p") then
                 if (Queue == "") then
-                    local glyth = table.concat(Grid)
-                    --log(Glyphs[tostring(glyth)])
-                    ScreenContent = ScreenContent .. "\n" .. Glyphs[tostring(glyth)]
+                    local glyph = table.concat(Grid)
+                    --log(Glyphs[tostring(glyph)])
+                    ScreenContent = ScreenContent .. "\n" .. Glyphs[tostring(glyph)]
                     RenderOutput()
                 else
                     --log(Queue)
