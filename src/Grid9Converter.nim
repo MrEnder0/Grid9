@@ -1,4 +1,5 @@
 from toml_manager import nil
+from glyphs import nil
 
 import docopt, os, re
 import std/strutils
@@ -78,6 +79,25 @@ proc convert(path: string, conversion: string) =
         let inputFile = open(path, fmRead)
         var inputData = inputFile.readAll()
         inputFile.close()
+        var outputData = ""
+
+        for currentChar in inputData:
+            #find current character in glyph table
+            var charFound = false
+            var currentCharNum = 0
+            while currentCharNum < 255:
+                let currentCharBin = toBin(currentCharNum, 9)
+                echo currentCharBin
+                if $currentChar == $glyphs.get_glyph($currentCharBin):
+                    echo "found " & $glyphs.get_glyph($currentCharBin)
+                    charFound = true
+                    break
+                currentCharNum += 1
+            if charFound == false:
+                let errorMessage = "The character '" & currentChar & "' was not found in the glyphs table.\n"
+                logThis("ERROR", errorMessage)
+                discard errorMessage
+                return
 
 
     of "grid9ToRetroGadget":
@@ -113,7 +133,9 @@ proc convert(path: string, conversion: string) =
         inputData = replace(inputData, "f7", "f8")
         inputData = replace(inputData, "f8", "f9")
 
-        logThis("INFO", "Conversion completed...\n" & inputData)
+        logThis("INFO", "Conversion completed...\n\n" & inputData)
+        let exit = readLine(stdin)
+        discard exit
         
     else:
         logThis("ERROR", "Conversion not found; try any of the following: 'textToGrid9', 'grid9ToRetroGadget'")
