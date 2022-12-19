@@ -25,6 +25,3 @@ Note none of these plans are guaranteed and also their may be other changes that
     [ ] Create winget package for Grid9
     [x] RetroGadet gadet that can run Grid9 code
 [ ] Create more advanced examples using grid saving and loading (like binary adder)
-[o] Make Grid9 converter
-    [o] Text to Grid9
-    [o] Grid9 to retro gadgets
