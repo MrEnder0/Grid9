@@ -99,6 +99,7 @@ proc convert(path: string, conversion: string) =
                             outputData &= "s" & $cellNum & "0"
                         elif $letter == "1":
                             outputData &= "s" & $cellNum & "1"
+                        discard letter
                         cellNum += 1
                     outputData &= "qs"
 
@@ -110,6 +111,8 @@ proc convert(path: string, conversion: string) =
                 discard errorMessage
         
         logThis("INFO", "Conversion completed...\n\n" & outputData & "p")
+        let exit = readLine(stdin)
+        discard exit
 
     of "grid9ToRetroGadget":
         logThis("INFO", "Converting Grid9 to RetroGadget Grid9")
