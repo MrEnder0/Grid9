@@ -87,17 +87,29 @@ proc convert(path: string, conversion: string) =
             var currentCharNum = 0
             while currentCharNum < 255:
                 let currentCharBin = toBin(currentCharNum, 9)
-                echo currentCharBin
                 if $currentChar == $glyphs.get_glyph($currentCharBin):
                     echo "found " & $glyphs.get_glyph($currentCharBin)
                     charFound = true
+                    
+                    #convert the bin to grid9
+                    var cellNum = 0
+                    while cellNum < 9:
+                        var letter = currentCharBin[cellNum]
+                        if $letter == "0":
+                            outputData &= "s" & $cellNum & "0"
+                        elif $letter == "1":
+                            outputData &= "s" & $cellNum & "1"
+                        cellNum += 1
+                    outputData &= "qs"
+
                     break
                 currentCharNum += 1
             if charFound == false:
                 let errorMessage = "The character '" & currentChar & "' was not found in the glyphs table.\n"
                 logThis("ERROR", errorMessage)
                 discard errorMessage
-
+        
+        logThis("INFO", "Conversion completed...\n\n" & outputData & "p")
 
     of "grid9ToRetroGadget":
         logThis("INFO", "Converting Grid9 to RetroGadget Grid9")
