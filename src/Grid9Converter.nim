@@ -68,8 +68,8 @@ proc convert(path: string, conversion: string) =
                 tomlPath = replace(path, re".g9", ".toml")
                 config = toml_manager.getConfig(tomlPath)
             minGrid9Ver = config[7]
-            if minGrid9Ver > "2022.010":
-                logThis("WARNING", "This conversion method is not supported for Grid9 versions below 2022.010, the output may not work as expected, continue? (y/n)")
+            if minGrid9Ver > "2022-013":
+                logThis("WARNING", "This conversion method is not supported for Grid9 versions below 2022-013, the output may not work as expected, continue? (y/n)")
                 let answer = readLine(stdin)
                 if answer != "y":
                     discard answer
@@ -124,8 +124,8 @@ proc convert(path: string, conversion: string) =
                 tomlPath = replace(path, re".g9", ".toml")
                 config = toml_manager.getConfig(tomlPath)
             minGrid9Ver = config[7]
-            if minGrid9Ver > "2022.010":
-                logThis("WARNING", "This conversion method is not supported for Grid9 versions below 2022.010, the output may not work as expected, continue? (y/n)")
+            if minGrid9Ver > "2022.013":
+                logThis("WARNING", "This conversion method is not supported for Grid9 versions below 2022.020, the output may not work as expected, continue? (y/n)")
                 let answer = readLine(stdin)
                 if answer != "y":
                     discard answer
