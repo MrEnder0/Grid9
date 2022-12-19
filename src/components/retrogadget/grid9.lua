@@ -1,10 +1,13 @@
+---@diagnostic disable: param-type-mismatch
+
 -- Input Grid9 Code here
-Code = "f9f8f4qsa0f8f7qsa0f9f7f6qsa0f9f7f6qsa0f5qsa0qsa0f6f5qsa0f5qsa0f9f8f5qsa0f9f7f6qsa0f9f7qspa0"
+Code = "w0=0f9f8f4qsa0f8f7qsa0f9f7f6qsa0f9f7f6qsa0f5qsa0qsa0f6f5qsa0f5qsa0f9f8f5qsa0f9f7f6qsa0f9f7qspa0]"
 
 -- Grid9 Vars
 local spriteFont = gdt.ROM.System.SpriteSheets["StandardFont"]
 NumberToBool = { [1]=true, [0]=false }
 Grid = {0,0,0,0,0,0,0,0,0}
+LoopPos = -1
 Queue = ""
 ScreenContent = ""
 Glyphs = {
@@ -163,6 +166,25 @@ function update()
 			end
             if (Code:sub(c_index, c_index) == "b") then
                 c_index -= Code:sub(c_index+1, c_index+1)
+            end
+            if (Code:sub(c_index, c_index) == "w") then
+                LoopPos = c_index
+            end
+            --FIXME:
+            if (Code:sub(c_index, c_index) == "]") then
+                if LoopPos ~= -1 then
+                    if (Code:sub(LoopPos+2, LoopPos+2) == "=") then
+                        if Grid[tonumber(Code:sub(LoopPos+1, LoopPos+1))] == tonumber(Code:sub(LoopPos+3, LoopPos+3)) then
+                            c_index = LoopPos
+                            LoopPos = -1
+                        end
+                    elseif (Code:sub(LoopPos+2, LoopPos+2) == "!") then
+                        if Grid[tonumber(Code:sub(LoopPos+1, LoopPos+1))] ~= tonumber(Code:sub(LoopPos+3, LoopPos+3)) then
+                            c_index = LoopPos
+                            LoopPos = -1
+                        end
+                    end
+                end
             end
             if (Code:sub(c_index, c_index) == "t") then
                 break
