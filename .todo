@@ -13,7 +13,7 @@ Note none of these plans are guaranteed and also their may be other changes that
     [x] Terminate command
     [x] Back command
     [ ] If statement
-    [ ] While statement
+    [o] While statement
     [ ] Exit command
 [o] Test all non legacy Grid9 examples and find min version of Grid9 needed to run them
 
