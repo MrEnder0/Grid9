@@ -46,6 +46,7 @@ Name: "custom"; Description: "Custom installation"; Flags: iscustom
 
 [Components]
 Name: "baseinstall"; Description: "Includes necessary base files."; Flags: exclusive
+Name: "baseinstall\converter"; Description: "Installs the grid9 converter."
 Name: "baseinstall\documentation"; Description: "Html documentation about the language."
 Name: "baseinstall\examples"; Description: "Example grid9 scripts."
 Name: "baseinstall\dllfix"; Description: "Pcre dlls for if Nim is not installed. (recomended)"
@@ -57,8 +58,9 @@ Name: "C:\ProgramData\Grid9"
 
 [Files]
 Source: "Grid9\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion; Components: baseinstall
-Source: "Grid9\icon.ico"; DestDir: "{app}"; Flags: ignoreversion; Components: baseinstall
-Source: "Grid9\iconBeta.ico"; DestDir: "{app}"; Flags: ignoreversion; Components: baseinstall
+Source: "Grid9\innosetup\icon.ico"; DestDir: "{app}"; Flags: ignoreversion; Components: baseinstall
+Source: "Grid9\innosetup\iconBeta.ico"; DestDir: "{app}"; Flags: ignoreversion; Components: baseinstall
+Source: "Grid9\Grid9Converter.exe"; DestDir: "{app}"; Flags: ignoreversion; Components: baseinstall\converter
 Source: "Grid9\pcre.dll"; DestDir: "{app}"; Flags: ignoreversion; Components: baseinstall\dllfix
 Source: "Grid9\pcre64.dll"; DestDir: "{app}"; Flags: ignoreversion; Components: baseinstall\dllfix
 Source: "Grid9\pcre32.dll"; DestDir: "{app}"; Flags: ignoreversion; Components: baseinstall\dllfix
@@ -80,6 +82,7 @@ Root: HKCR; Subkey: "grid9\shell\open\command"; ValueType: string; ValueName: ""
 
 [Icons]
 Name: "{autoprograms}\Grid9\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: startmenuicon
+Name: "{autoprograms}\Grid9\Grid9 Converter"; Filename: "{app}\Grid9Converter.exe"; Tasks: startmenuicon
 Name: "{autodesktop}\Grid9\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 
 [Code]
