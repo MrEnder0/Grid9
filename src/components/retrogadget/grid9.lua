@@ -175,6 +175,7 @@ function update()
                 if LoopPos ~= -1 then
                     if (Code:sub(LoopPos+2, LoopPos+2) == "=") then
                         if Grid[tonumber(Code:sub(LoopPos+1, LoopPos+1))] == tonumber(Code:sub(LoopPos+3, LoopPos+3)) then
+                            log("looped")
                             c_index = LoopPos
                             LoopPos = -1
                         end
