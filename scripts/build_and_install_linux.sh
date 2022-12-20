@@ -26,15 +26,18 @@ if [[ $PACKAGE_MANAGER == "apt-get" ]]; then
     nimble install docopt -y
     nimble install parsetoml -y
 
-    echo "Compiling Grid9... (2/5)"
+    echo "Compiling Grid9 and Grid9Converter... (2/5)"
     git clone https://github.com/MrEnder0/Grid9
     cd Grid9/src
     mv main.nim grid9.nim
     nim c -d:release grid9
+    nim c -d:release Grid9Converter
 
-    echo "Installing Grid9... (3/5)"
+    echo "Installing Grid9 and Grid9Converter... (3/5)"
     sudo chmod 777 grid9
+    sudo chmod 777 Grid9Converter
     sudo mv grid9 /usr/bin/
+    sudo mv Grid9Converter /usr/bin/
     sudo mkdir /usr/share/Grid9/
 
     echo "Installing Examples... (4/5)"
@@ -63,15 +66,18 @@ elif [[ $PACKAGE_MANAGER == "pacman" ]]; then
     nimble install docopt -y
     nimble install parsetoml -y
 
-    echo "Compiling Grid9... (2/5)"
+    echo "Compiling Grid9 and Grid9Converter... (2/5)"
     git clone https://github.com/MrEnder0/Grid9
     cd Grid9/src
     mv main.nim grid9.nim
     nim c -d:release grid9
+    nim c -d:release Grid9Converter
 
-    echo "Installing Grid9... (3/5)"
+    echo "Installing Grid9 and Grid9Converter... (3/5)"
     sudo chmod 777 grid9
+    sudo chmod 777 Grid9Converter
     sudo mv grid9 /usr/bin/
+    sudo mv Grid9Converter /usr/bin/
     sudo mkdir /usr/share/Grid9/
 
     echo "Installing Examples... (4/5)"
@@ -98,15 +104,18 @@ elif [[ $PACKAGE_MANAGER == "apk" ]]; then
     nimble install docopt -y
     nimble install parsetoml -y
 
-    echo "Compiling Grid9... (2/5)"
+    echo "Compiling Grid9 and Grid9Converter... (2/5)"
     git clone https://github.com/MrEnder0/Grid9
     cd Grid9/src
     mv main.nim grid9.nim
     nim c -d:release grid9
+    nim c -d:release Grid9Converter
 
-    echo "Installing Grid9... (3/5)"
+    echo "Installing Grid9 and Grid9Converter... (3/5)"
     chmod 777 grid9
+    chmod 777 Grid9Converter
     mv grid9 /usr/bin/
+    mv Grid9Converter /usr/bin/
     mkdir /usr/share/Grid9/
 
     echo "Installing Examples... (4/5)"
@@ -122,4 +131,4 @@ elif [[ $PACKAGE_MANAGER == "apk" ]]; then
     cd ../..
 fi
 echo "Installation complete."
-echo "If this has failed to install try running each line line by line and then report the issue on the github page."
+echo "If this has failed to install try running each line line by line and then report where the issue is on the github page."

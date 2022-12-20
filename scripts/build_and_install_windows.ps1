@@ -8,15 +8,17 @@ Write-Output "Installing dependencies... (1/5)"
 nimble install docopt -y
 nimble install parsetoml -y
 
-Write-Output "Compiling Grid9... (2/5)"
+Write-Output "Compiling Grid9 and Grid9Converter... (2/5)"
 git clone https://github.com/MrEnder0/Grid9.git
 Set-Location Grid9/src
 nim c -d:release main.nim
+nim c -d:release Grid9Converter.nim
 
-Write-Output "Installing Grid9... (3/5)"
+Write-Output "Installing Grid9 and Grid9Converter... (3/5)"
 Rename-Item -Path "main.exe" -NewName "Grid9.exe"
 New-Item "C:\Program Files (x86)\Grid9" -itemType Directory
 Move-Item -Path "Grid9.exe" -Destination "C:\Program Files (x86)\Grid9"
+Move-Item -Path "Grid9Converter.exe" -Destination "C:\Program Files (x86)\Grid9"
 New-Item "C:\ProgramData\Grid9" -itemType Directory
 
 Write-Output "Installing Examples... (4/5)"
