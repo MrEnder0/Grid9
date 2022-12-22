@@ -1,7 +1,7 @@
 ---@diagnostic disable: param-type-mismatch
 
 -- Input Grid9 Code here
-Code = "w0=0f9f8f4qsa0f8f7qsa0f9f7f6qsa0f9f7f6qsa0f5qsa0qsa0f6f5qsa0f5qsa0f9f8f5qsa0f9f7f6qsa0f9f7qspa0]"
+Code = "i1=0f9f8f4qsa0f8f7qsa0f9f7f6qsa0f9f7f6qsa0f5qsa0qsa0f6f5qsa0f5qsa0f9f8f5qsa0f9f7f6qsa0f9f7qspa0}"
 
 -- Grid9 Vars
 local spriteFont = gdt.ROM.System.SpriteSheets["StandardFont"]
@@ -170,20 +170,56 @@ function update()
             if (Code:sub(c_index, c_index) == "w") then
                 LoopPos = c_index
             end
-            --FIXME:
             if (Code:sub(c_index, c_index) == "]") then
                 if LoopPos ~= -1 then
                     if (Code:sub(LoopPos+2, LoopPos+2) == "=") then
                         if Grid[tonumber(Code:sub(LoopPos+1, LoopPos+1))] == tonumber(Code:sub(LoopPos+3, LoopPos+3)) then
-                            log("looped")
                             c_index = LoopPos
+                        else
                             LoopPos = -1
                         end
                     elseif (Code:sub(LoopPos+2, LoopPos+2) == "!") then
                         if Grid[tonumber(Code:sub(LoopPos+1, LoopPos+1))] ~= tonumber(Code:sub(LoopPos+3, LoopPos+3)) then
                             c_index = LoopPos
+                        else
                             LoopPos = -1
                         end
+                    end
+                end
+            end
+            if (Code:sub(c_index, c_index) == "i") then
+                if (Code:sub(c_index+2, c_index+2) == "=") then
+                    if Grid[tonumber(Code:sub(c_index+1, c_index+1))] == tonumber(Code:sub(c_index+3, c_index+3)) then
+                        -- do nothing
+                    else
+                        while (Code:sub(c_index, c_index) ~= "}") do
+                            c_index += 1
+                            if (c_index > #Code) then
+                                log("Error: No closing bracket found for if statement")
+                                break
+                            end
+                        end
+                    end
+                elseif (Code:sub(c_index+2, c_index+2) == "!") then
+                    if Grid[tonumber(Code:sub(c_index+1, c_index+1))] ~= tonumber(Code:sub(c_index+3, c_index+3)) then
+                        -- do nothing
+                    else
+                        while (Code:sub(c_index, c_index) ~= "}") do
+                            c_index += 1
+                            if (c_index > #Code) then
+                                log("Error: No closing bracket found for if statement")
+                                break
+                            end
+                        end
+                    end
+                end
+            end
+            if (Code:sub(c_index, c_index) == "x") then
+                while (Code:sub(c_index, c_index) ~= "}" or Code:sub(c_index, c_index) ~= "]") do
+                    c_index += 1
+                    if (c_index > #Code) then
+                        log("Error: Depth at 0 no way to climb higher")
+                        break
                     end
                 end
             end
