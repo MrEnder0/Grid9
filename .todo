@@ -4,17 +4,6 @@ Note none of these plans are guaranteed and also their may be other changes that
 # High priority
 [ ] Allow and conditions in if and while statements
 [ ] Create local installer for Linux for prebuilt binaries
-[o] Port more of the language to retro gadgets
-    [x] Set command
-    [x] Flip command
-    [x] All command
-    [x] Queue command
-    [x] Print command
-    [x] Terminate command
-    [x] Back command
-    [ ] If statement
-    [o] While statement
-    [ ] Exit command
 [o] Test all non legacy Grid9 examples and find min version of Grid9 needed to run them
 
 # Low priority
