@@ -137,6 +137,7 @@ proc convert(path: string, conversion: string) =
         inputFile.close()
 
         inputData = replace(inputData, re("[A-Z*()\t ]+"), "")
+        inputData = replace(inputData, "b0", "")
         inputData = replace(inputData, "f0", "f1")
         inputData = replace(inputData, "f1", "f2")
         inputData = replace(inputData, "f2", "f3")
