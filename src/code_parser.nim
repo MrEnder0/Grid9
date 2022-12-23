@@ -53,6 +53,17 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool, ver
         
             #Strips whitespace, capital letters, parenthesis, and asterisks as comments
             parsedCode = replace(parsedCode, re("[A-Z*()\n\t ]+"), "")
+            #Remove back 0 (b0) because it does nothing
+            parsedCode = replace(parsedCode, re"b0", "")
+            #Replaces f0-f8 in any order with fa
+            parsedCode = replace(parsedCode, re"(?:f(?!.*\1)[0-8]0){9}", "fa")
+            #Replaces s00-s80 in any order with a0
+            parsedCode = replace(parsedCode, re"(?:s(?!.*\1)[0-8]0){9}$", "a0")
+            #Replaces s01-s81 in any order with a1
+            parsedCode = replace(parsedCode, re"(?:s(?!.*\1)[0-8]1){9}$", "a1")
+            #Replaces f0-f8 in any order with fa
+            parsedCode = replace(parsedCode, re"(?:[f](?!.*\1)[0-8][f]){9}", "fa")
+            
 
         if advancedParse == true:
             if verbosity >= 1:
