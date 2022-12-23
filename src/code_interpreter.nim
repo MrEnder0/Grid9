@@ -89,6 +89,13 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool, verbosity: 
                         for i in 0...8:
                             mem_grid[$i] = rand(1)
                         if echoGridMod == true:echo $mem_grid
+                    if $parsed_code[c_index + 1] == $'f':
+                        for i in 0...8:
+                            if mem_grid[$i] == 0:
+                                mem_grid[$i] = 1
+                            else:
+                                mem_grid[$i] = 0
+                        if echoGridMod == true:echo $mem_grid
                     else:
                         for i in 0...8:
                             mem_grid[$i] = parseint($parsed_code[c_index + 1])
