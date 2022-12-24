@@ -53,7 +53,7 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool, ver
         
             #Strips whitespace, capital letters, parenthesis, and asterisks as comments
             parsedCode = replace(parsedCode, re("[A-Z*()\n\t ]+"), "")
-            #Remove back 0 (b0) because it does nothing
+            #Removes back 0 (b0) because it does nothing
             parsedCode = replace(parsedCode, re"b0", "")
             #Replaces f0-f8 in any order with fa
             parsedCode = replace(parsedCode, re"(?:f(?!.*\1)[0-8]0){9}", "fa")
