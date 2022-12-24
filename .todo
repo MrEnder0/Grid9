@@ -4,7 +4,6 @@ Note none of these plans are guaranteed and also their may be other changes that
 # High priority
 [ ] Allow and conditions in if and while statements
 [ ] Create local installer for Linux for prebuilt binaries
-[o] Test all non legacy Grid9 examples and find min version of Grid9 needed to run them
 
 # Low priority
 [o] Add intergration with other software
