@@ -142,11 +142,13 @@ h2 {
 /* Mobile */
 @media only screen and (max-width: 750px){
     h1 {
+        font-size: 76px;
         line-height: 80%;
         letter-spacing: 120%;
     }
 
     h2 {
+        font-size: 56px;
         line-height: 80%;
         letter-spacing: 120%;
     }
@@ -178,11 +180,13 @@ h2 {
 
 @media (any-pointer: coarse) {
     h1 {
+        font-size: 76px;
         line-height: 80%;
         letter-spacing: 120%;
     }
 
     h2 {
+        font-size: 56px;
         line-height: 80%;
         letter-spacing: 120%;
     }
