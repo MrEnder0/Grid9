@@ -68,7 +68,7 @@ Source: "Grid9\pcre32.dll"; DestDir: "{app}"; Flags: ignoreversion; Components: 
 Source: "Grid9\documentation\*"; DestDir: "C:\ProgramData\Grid9"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: baseinstall\documentation
 Source: "Grid9\examples\*"; DestDir: "C:\ProgramData\Grid9"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: baseinstall\examples componentRepair
 Source: "Grid9\bleachbit\*"; DestDir: "C:\Program Files (x86)\BleachBit\share\cleaners"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: baseinstall\bleachbit
-Source: "Grid9\retrogadget\*"; BestDir: "{userdocs}\My Games\Retro\Gadgets"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: baseinstall\retrogadget componentRepair
+Source: "Grid9\retrogadget\*"; DestDir: "{userdocs}\My Games\Retro\Gadgets"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: baseinstall\retrogadget componentRepair
 
 [Registry]
 Root: HKA; Subkey: "Software\Classes\{#MyAppAssocExt}\OpenWithProgids"; ValueType: string; ValueName: "{#MyAppAssocKey}"; ValueData: ""; Flags: uninsdeletevalue
