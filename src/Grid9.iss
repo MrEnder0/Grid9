@@ -1,5 +1,5 @@
 #define MyAppName "Grid9"
-#define MyAppVersion "2022-024"
+#define MyAppVersion "2023-001"
 #define MyAppPublisher "MrEnder"
 #define MyAppURL "https://github.com/MrEnder0/Grid9"
 #define MyAppExeName "Grid9.exe"
@@ -46,11 +46,12 @@ Name: "custom"; Description: "Custom installation"; Flags: iscustom
 
 [Components]
 Name: "baseinstall"; Description: "Includes necessary base files."; Flags: exclusive
-Name: "baseinstall\converter"; Description: "Installs the grid9 converter."
-Name: "baseinstall\documentation"; Description: "Html documentation about the language."
-Name: "baseinstall\examples"; Description: "Example grid9 scripts."
+Name: "baseinstall\documentation"; Description: "Html documentation about the language. (recomended)"
+Name: "baseinstall\examples"; Description: "Example grid9 scripts. (recomended)"
 Name: "baseinstall\dllfix"; Description: "Pcre dlls for if Nim is not installed. (recomended)"
 Name: "baseinstall\bleachbit"; Description: "Install bleachbit cleaner for Grid9."
+Name: "baseinstall\converter"; Description: "Installs the grid9 converter."
+Name: "baseinstall\retrogadget"; Description: "Install retro gadget port for Grid9."
 Name: "componentRepair"; Description: "Repair examples and/or install examples and legacy examples."; Flags: exclusive
 
 [Dirs]
@@ -67,6 +68,7 @@ Source: "Grid9\pcre32.dll"; DestDir: "{app}"; Flags: ignoreversion; Components: 
 Source: "Grid9\documentation\*"; DestDir: "C:\ProgramData\Grid9"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: baseinstall\documentation
 Source: "Grid9\examples\*"; DestDir: "C:\ProgramData\Grid9"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: baseinstall\examples componentRepair
 Source: "Grid9\bleachbit\*"; DestDir: "C:\Program Files (x86)\BleachBit\share\cleaners"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: baseinstall\bleachbit
+Source: "Grid9\retrogadget\*"; BestDir: "{userdocs}\My Games\Retro\Gadgets"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: baseinstall\retrogadget componentRepair
 
 [Registry]
 Root: HKA; Subkey: "Software\Classes\{#MyAppAssocExt}\OpenWithProgids"; ValueType: string; ValueName: "{#MyAppAssocKey}"; ValueData: ""; Flags: uninsdeletevalue
