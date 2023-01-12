@@ -23,7 +23,7 @@ Usage:
     Grid9Converter (convert | c) <path> <conversion>
 """
 
-const converterversion = "2023-001"
+const converterversion = "2023-002"
 
 proc logThis(mode: string, message: string) : string {.discardable.} =
     case mode
@@ -88,7 +88,7 @@ proc convert(path: string, conversion: string) =
             while currentCharNum < 255:
                 let currentCharBin = toBin(currentCharNum, 9)
                 if $currentChar == $glyphs.get_glyph($currentCharBin):
-                    echo "found " & $glyphs.get_glyph($currentCharBin)
+                    logThis("INFO", "FoundChar " & $glyphs.get_glyph($currentCharBin))
                     charFound = true
                     
                     #convert the bin to grid9
