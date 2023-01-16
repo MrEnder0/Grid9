@@ -3,7 +3,8 @@ Note none of these plans are guaranteed and also their may be other changes that
 
 # High priority
 [ ] Allow and conditions in if and while statements
-[ ] Create local installer for Linux for prebuilt binaries
+[ ] Refactor interpreter
+[ ] Request command
 
 # Low priority
 [o] Add intergration with other software
@@ -13,3 +14,4 @@ Note none of these plans are guaranteed and also their may be other changes that
     [ ] Create winget package for Grid9
     [x] RetroGadet gadet that can run Grid9 code
 [ ] Create more advanced examples using grid saving and loading (like binary adder)
+[ ] Create local installer for Linux for prebuilt binaries
