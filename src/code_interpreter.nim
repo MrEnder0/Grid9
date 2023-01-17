@@ -280,6 +280,7 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool, verbosity: 
                     while parsed_code[while_pos_end] != ']':
                         while_pos_end += 1
                     c_index = while_pos_end
+                    discard while_pos_end
                 except:
                     if not noLog: logThis("ERROR", "No end could be found for the exit statement", verbosity)
             #back command
@@ -299,11 +300,14 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool, verbosity: 
             if c_index == len(parsed_code)-1 or parsed_code[c_index] == ']':
                 if while_pos == @[]:
                     return
-                else:
+                elif while_pos.len > 0:
                     c_index = while_pos[0]
+                else:
+                    discard
 
             c_index += 1
 
     except:
-        if not noLog: logThis("ERROR", "Unknown error in script on character " & $c_index, verbosity)
+        if not noLog:
+            logThis("ERROR", "Unknown error in script with the character " & parsed_code[c_index] & " at index " & $c_index, verbosity)
         return
