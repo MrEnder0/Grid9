@@ -70,79 +70,82 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool, ver
             #Removes empty while statements
             parsedCode = replace(parsedCode, re("/w[0-8]([=!])[01]]$/"), "")
 
-        if advancedParse == true:
-            if verbosity >= 1:
-                stdout.styledWriteLine(fgCyan, "INFO", fgWhite, " Doing advanced parse\n")
+        if verbosity >= 1:
+            stdout.styledWriteLine(fgCyan, "INFO", fgWhite, " Doing advanced parse\n")
 
-            var
-                cIndex = 0
-                ifDepth = 0
-                whileDepth = 0
-                isExited = false
-            while cIndex < len(parsedCode):
-                case $parsedCode[cIndex]
-                of $'q':
-                    if parsedCode[cIndex + 1] == 's':
-                        discard
-                    elif parsedCode[cIndex + 1] == 'c':
-                        discard
-                    else:
-                        if not noLog: logThis("ERROR", "Invalid operation for queue command", verbosity)
-                of $'i':ifDepth+=1
-                of $'w':whileDepth+=1
-                of $'}':ifDepth-=1
-                of $']':
-                    whileDepth-=1
-                    if isExited == true:
-                        isExited = false
-                of $'b':
-                    try:
-                        if not match($parsedCode[cIndex + 1], re"0-9",):
-                            if not noLog: logThis("ERROR", "Invalid value for back command", verbosity)
-                    except:
-                        if not noLog: logThis("ERROR", "No provided value for back command", verbosity)
-                of $'x':
-                    try:
-                        if $parsedCode[cIndex - 1] != $'g':
-                            isExited = true
-                        else:
-                            if $parsedCode[cIndex - 2] == $'g':
-                                isExited = true
-                    except:
+        var
+            cIndex = 0
+            ifDepth = 0
+            whileDepth = 0
+            isExited = false
+
+        while cIndex < len(parsedCode):
+            case $parsedCode[cIndex]
+            of $'q':
+                if parsedCode[cIndex + 1] == 's':
+                    discard
+                elif parsedCode[cIndex + 1] == 'c':
+                    discard
+                else:
+                    if not noLog: logThis("ERROR", "Invalid operation for queue command", verbosity)
+            of $'i':ifDepth+=1
+            of $'w':whileDepth+=1
+            of $'}':ifDepth-=1
+            of $']':
+                whileDepth-=1
+                if isExited == true:
+                    isExited = false
+            of $'b':
+                try:
+                    if not match($parsedCode[cIndex + 1], re"0-9",):
+                        if not noLog: logThis("ERROR", "Invalid value for back command", verbosity)
+                except:
+                    if not noLog: logThis("ERROR", "No provided value for back command", verbosity)
+            of $'x':
+                try:
+                    if $parsedCode[cIndex - 1] != $'g':
                         isExited = true
-                
-                if ifDepth < 0:
-                    if not noLog: logThis("ERROR", "If depth is less than 0", verbosity)
-                if whileDepth < 0:
-                    if not noLog: logThis("ERROR", "While depth is less than 0", verbosity)
-                cIndex += 1
+                    else:
+                        if $parsedCode[cIndex - 2] == $'g':
+                            isExited = true
+                except:
+                    isExited = true
+            of $'t':
+                if ifDepth == 0 and whileDepth == 0:
+                    parsedCode = parsedCode[0..cIndex]
+            
+            if ifDepth < 0:
+                if not noLog: logThis("ERROR", "If depth is less than 0", verbosity)
+            if whileDepth < 0:
+                if not noLog: logThis("ERROR", "While depth is less than 0", verbosity)
+            cIndex += 1
 
-            if ifDepth > 0:
-                if not noLog: logThis("WARNING", "If depth is greater than 0 would you like to automatically fix (y,n)", verbosity)
-                let responce = readLine(stdin)
-                if $responce == $'y':
-                    var fixTimes = 0
-                    while fixTimes < ifDepth:
-                        parsedCode = parsedCode & $'}'
-                        fixTimes += 1
-                    discard fixTimes
-                discard responce
-            if whileDepth > 0:
-                if not noLog: logThis("WARNING", "While depth is greater than 0 would you like to automatically fix (y,n)", verbosity)
-                let responce = readLine(stdin)
-                if $responce == $'y':
-                    var fixTimes = 0
-                    while fixTimes < whileDepth:
-                        parsedCode = parsedCode & $']'
-                        fixTimes += 1
-                    discard fixTimes
-                discard responce
-            if isExited == true:
-                if not noLog: logThis("WARNING", "Attemped to exit a while loop while not currently being in one would you like to automatically fix (y,n)", verbosity)
-                let responce = readLine(stdin)
-                if $responce == $'y':
+        if ifDepth > 0:
+            if not noLog: logThis("WARNING", "If depth is greater than 0 would you like to automatically fix (y,n)", verbosity)
+            let responce = readLine(stdin)
+            if $responce == $'y':
+                var fixTimes = 0
+                while fixTimes < ifDepth:
+                    parsedCode = parsedCode & $'}'
+                    fixTimes += 1
+                discard fixTimes
+            discard responce
+        if whileDepth > 0:
+            if not noLog: logThis("WARNING", "While depth is greater than 0 would you like to automatically fix (y,n)", verbosity)
+            let responce = readLine(stdin)
+            if $responce == $'y':
+                var fixTimes = 0
+                while fixTimes < whileDepth:
                     parsedCode = parsedCode & $']'
-                discard responce
+                    fixTimes += 1
+                discard fixTimes
+            discard responce
+        if isExited == true:
+            if not noLog: logThis("WARNING", "Attemped to exit a while loop while not currently being in one would you like to automatically fix (y,n)", verbosity)
+            let responce = readLine(stdin)
+            if $responce == $'y':
+                parsedCode = parsedCode & $']'
+            discard responce
 
         code.close()
         
