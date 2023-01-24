@@ -1,6 +1,6 @@
 from glyphs import nil
 
-import std/terminal, strformat, strutils, tables, random, times
+import std/terminal, strformat, strutils, tables, random, times, os
 
 iterator `...`*[T](a: T, b: T): T =
     var res: T = T(a)
@@ -289,6 +289,13 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool, verbosity: 
                     c_index -= parseint($parsed_code[c_index + 1])
                 except:
                     if not noLog: logThis("ERROR", "Invalid back command", verbosity)
+
+            #delay command
+            of $'d':
+                try:
+                    sleep(parseint($parsed_code[c_index + 1])*1000)
+                except:
+                    if not noLog: logThis("ERROR", "Invalid delay command", verbosity)
 
             #terminate command
             of $'t':
