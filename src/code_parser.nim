@@ -95,13 +95,12 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool, ver
                 whileDepth-=1
                 if isExited == true:
                     isExited = false
-            #of $'b':
-            #    try:
-            #        echo $parsedCode[cIndex+1]
-            #        if not match($parsedCode[cIndex + 1], re"0-9",):
-            #            if not noLog: logThis("ERROR", "Invalid value for back command", verbosity)
-            #    except:
-            #        if not noLog: logThis("ERROR", "No provided value for back command", verbosity)
+            of $'b':
+                if not len(parsedCode) > cIndex+1:
+                    if not noLog: logThis("ERROR", "No provided value for back command", verbosity)
+            of $'d':
+                if not len(parsedCode) > cIndex+1:
+                    if not noLog: logThis("ERROR", "No provided value for delay command", verbosity)
             of $'x':
                 try:
                     if $parsedCode[cIndex - 1] != $'g':
