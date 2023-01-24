@@ -309,7 +309,16 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool, verbosity: 
             #delay command
             of $'d':
                 try:
-                    sleep(parseint($parsed_code[c_index + 1])*1000)
+                    var delayIndex = c_index
+                    var delayAmount = "0"
+
+                    while len(parsed_code) > delayIndex+1 and isNumber($parsedCode[delayIndex+1]):
+                        delayAmount &= $parsed_code[delayIndex+1]
+                        delayIndex += 1
+                    sleep(parseint($delayAmount)*1000)
+
+                    discard delayIndex
+                    discard delayAmount
                 except:
                     if not noLog: logThis("ERROR", "Invalid delay command", verbosity)
 
