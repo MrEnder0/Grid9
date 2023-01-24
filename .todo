@@ -4,7 +4,7 @@ Note none of these plans are guaranteed and also their may be other changes that
 # High priority
 [ ] Allow and conditions in if and while statements
 [ ] Refactor interpreter
-[ ] Allow back command to go back any number
+[o] Allow back command to go back any number
 
 # Low priority
 [o] Add intergration with other software

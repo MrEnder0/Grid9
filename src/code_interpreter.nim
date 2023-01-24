@@ -31,6 +31,13 @@ proc logThis(mode: string, message: string, verbosity: int) : string {.discardab
             logFile.writeLine(fmt"{time} - {mode} - {message}")
     logFile.close()
 
+proc isNumber(x: string): bool =
+    try:
+        discard parseInt(x)
+        result = true
+    except ValueError:
+        result = false
+
 proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool, verbosity: int) : string {.discardable.} =
 
     if not noLog: logThis("INFO", "Interpreting script", verbosity)
@@ -286,7 +293,16 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool, verbosity: 
             #back command
             of $'b':
                 try:
-                    c_index -= parseint($parsed_code[c_index + 1])
+                    var backIndex = c_index
+                    var backAmount = "0"
+                    
+                    while isNumber($parsedCode[backIndex+1]):
+                        backAmount &= $parsed_code[backIndex+1]
+                        backIndex += 1
+                    c_index -= parseint($backAmount)
+
+                    discard backIndex
+                    discard backAmount
                 except:
                     if not noLog: logThis("ERROR", "Invalid back command", verbosity)
 
