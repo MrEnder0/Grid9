@@ -296,7 +296,7 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool, verbosity: 
                     var backIndex = c_index
                     var backAmount = "0"
                     
-                    while isNumber($parsedCode[backIndex+1]):
+                    while len(parsed_code) > backIndex+1 and isNumber($parsedCode[backIndex+1]):
                         backAmount &= $parsed_code[backIndex+1]
                         backIndex += 1
                     c_index -= parseint($backAmount)
