@@ -156,8 +156,14 @@ proc example(name: string) =
             echo readFile(exampleDir & "experiments_example.g9") & "\n"
         except:
             logThis("ERROR", ".g9 not found, maybe you did not install the optional component.")
+    of "delay_command":
+        echo "\n**This example shows how to use the delay command.**\n"
+        try:
+            echo readFile(exampleDir & "delay_command.g9") & "\n"
+        except:
+            logThis("ERROR", ".g9 not found, maybe you did not install the optional component.")
     else:
-        logThis("WARNING", "No example found for your input '" &  name & "' try any of the following, 'example1', 'example2', 'example3', 'give_example', 'random_char_example', 'while_nesting', 'if_ladder', 'inf_skyscraper', 'save_load_example', 'mask_example', 'xor_example', 'two_one_two', 'experiments_example'.")
+        logThis("WARNING", "No example found for your input '" &  name & "' try any of the following, 'example1', 'example2', 'example3', 'give_example', 'random_char_example', 'while_nesting', 'if_ladder', 'inf_skyscraper', 'save_load_example', 'mask_example', 'xor_example', 'two_one_two', 'experiments_example', 'delay_command'.")
 
 proc interpret*(path: string) =
 
