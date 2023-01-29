@@ -52,6 +52,8 @@
                     <a href="#0" class="sidebar_nav_link" aria-label="Read more about misk catagory">Miskꜜ</a>
                         <ul id="list">
                             <a href="#back" class="sidebar_nav_link" aria-label="Read more about the back command">Back</a>
+                            <a href="#delay" class="sidebar_nav_link" aria-label="Read more about the delay command">Delay</a>
+                            <br>
                             <a href="#terminate" class="sidebar_nav_link" aria-label="Read more about the terminate command">Terminate</a>
                         </ul>
                     <br>
@@ -369,13 +371,34 @@
                     The syntax for this command is "b" followed by the number of instructions you want to go back. Note this value can be any number higher than 0.
                 </p>
                 <p class="docs-data">
-                    For example, if you wanted to go back 23 instructions you would run the code below "b23".
+                    For example, if you wanted to go back 23 instructions you would run the code below.
                 </p>
                 <br>
 
                 <div style=width:4%;min-width:40px; class="code-block">
                     <p class="docs-data">
-                        <span class="msk">b3</span>
+                        <span class="msk">b23</span>
+                    </p>
+                </div>
+                <br>
+
+                <h2 id="delay">Delay</h2>
+                <p class="docs-data">
+                    The delay command is used to wait inbetween instructions inside of your code.
+                </p>
+                <p class="docs-data">
+                    The syntax for this command is "d" followed by the number of seconds you want to wait before continuing. Note this value can be any number higher than 0.
+                </p>
+                <p class="docs-data">
+                    For example, if you wanted to flip a value on the grid, then wait for 14 whole seconds, and then finally print it out you would run the code below.
+                </p>
+                <br>
+
+                <div style=width:4%;min-width:40px; class="code-block">
+                    <p class="docs-data">
+                        <span class="cm">f6</span>
+                        <span class="msk">d14</span>
+                        <span class="io">p</span>
                     </p>
                 </div>
                 <br>
