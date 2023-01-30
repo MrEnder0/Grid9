@@ -3,15 +3,15 @@ Note none of these plans are guaranteed and also their may be other changes that
 
 # High priority
 [ ] Allow and conditions in if and while statements
-[ ] Refactor interpreter
+[ ] Create more advanced examples using grid saving and loading (like binary adder)
+[ ] Grid9 ide made in rust using tauri
+[ ] File logging to the grid9 converter.
 
-# Low priority
 [o] Add intergration with other software
     [x] Bleachbit cleaner for Grid9
     [ ] Create a Grid9 extension for vscode
     [x] Discord embed intergration for docs
     [ ] Create winget package for Grid9
     [x] RetroGadet gadet that can run Grid9 code
-[ ] Create more advanced examples using grid saving and loading (like binary adder)
 [ ] Create local installer for Linux for prebuilt binaries
 [ ] Create request command
