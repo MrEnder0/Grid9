@@ -6,6 +6,7 @@ Note none of these plans are guaranteed and also their may be other changes that
 [ ] Create more advanced examples using grid saving and loading (like binary adder)
 [ ] Grid9 ide made in rust using tauri
 [ ] File logging to the grid9 converter.
+[ ] Make text to grid9 use flip instead of set so it generates way more effecient code
 
 [o] Add intergration with other software
     [x] Bleachbit cleaner for Grid9
