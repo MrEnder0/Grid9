@@ -238,7 +238,7 @@ proc interpret*(path: string) =
         if exampleExperiment == true:
             logThis("INFO", "Example experiment enabled, this experiment is for showcase and has no effect on anything.")
 
-        if minGrid9Ver > grid9version.replace("-", "."):
+        if minGrid9Ver >= grid9version.replace("-", "."):
             logThis("WARNING", "This script was made for a newer version of Grid9, it may not work as intended, continuing anyways...")
 
     #Show metadata if enabled
