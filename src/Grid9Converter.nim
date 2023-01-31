@@ -23,7 +23,7 @@ Usage:
     Grid9Converter (convert | c) <path> <conversion>
 """
 
-const converterversion = "2023-002"
+const converterversion = "2023-003"
 
 proc logThis(mode: string, message: string) : string {.discardable.} =
     case mode
