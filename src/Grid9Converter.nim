@@ -1,7 +1,7 @@
 from toml_manager import nil
 from glyphs import nil
 
-import docopt, os, re
+import strformat, docopt, times, os, re
 import std/strutils
 import std/terminal
 
@@ -9,12 +9,12 @@ when defined windows:
     const
         subMainDir = r"C:\ProgramData\Grid9\"
         mainDir = r"C:\ProgramData\Grid9\grid9converter\"
-        tempDir = r"C:\ProgramData\Grid9\grid9converter\temp\"
+        logDir = r"C:\ProgramData\Grid9\grid9converter\logs\"
 else:
     const
         subMainDir = "/usr/share/Grid9/"
         mainDir = "/usr/share/Grid9/grid9converter/"
-        tempDir = "/usr/share/Grid9/grid9converter/temp/"
+        logDir = "/usr/share/Grid9/grid9converter/logs/"
 
 const doc = """
 Usage:
@@ -26,6 +26,9 @@ Usage:
 const converterversion = "2023-003"
 
 proc logThis(mode: string, message: string) : string {.discardable.} =
+    let
+        time = now().format("yyyy-MM-dd HH:mm:ss")
+        logFile = open(logDir & now().format("yyyy-MM-dd") & ".log", fmAppend)
     case mode
     of "INFO":
         stdout.styledWriteLine(fgCyan, mode, fgWhite, " ", message)
@@ -33,6 +36,7 @@ proc logThis(mode: string, message: string) : string {.discardable.} =
         stdout.styledWriteLine(fgYellow, mode, fgWhite, " ", message)
     of "ERROR":
         stdout.styledWriteLine(fgRed, mode, fgWhite, " ", message)
+    logFile.writeLine(fmt"{time} - {mode} - {message}")
 
 proc about() =
     echo "\nGrid9Converter is tool for the Grid9 programming language that is used to convert your Grid9 projects to other things.\n"
@@ -41,9 +45,9 @@ proc version() =
     echo "\n", converterversion, "\n"
 
 proc clean() =
-    os.removeDir(tempDir)
-    os.createDir(tempDir)
-    logThis("INFO", "Cleaned temp dir")
+    os.removeDir(logDir)
+    os.createDir(logDir)
+    logThis("INFO", "Cleaned log dir")
 
 proc convert(path: string, conversion: string) =
     var path = path
@@ -110,7 +114,7 @@ proc convert(path: string, conversion: string) =
                 logThis("ERROR", errorMessage)
                 discard errorMessage
         
-        logThis("INFO", "Conversion completed...\n\n" & outputData & "p")
+        logThis("INFO", "Conversion completed...\n\n" & outputData & "p\n")
         let exit = readLine(stdin)
         discard exit
 
@@ -172,7 +176,6 @@ proc convert(path: string, conversion: string) =
         
     else:
         logThis("ERROR", "Conversion not found; try any of the following: 'textToGrid9', 'grid9ToRetroGadget'")
-    clean()
 
 proc main() =
     let args = docopt(doc, version = converterversion)
@@ -198,8 +201,8 @@ when isMainModule:
         createDir(subMainDir)
     if not dirExists(mainDir):
         createDir(mainDir)
-    if not dirExists(tempDir):
-        createDir(tempDir)
+    if not dirExists(logDir):
+        createDir(logDir)
 
     #Checks if there are any arguments
     if len(os.commandLineParams()) > 0:
