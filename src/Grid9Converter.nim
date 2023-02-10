@@ -87,6 +87,7 @@ proc convert(path: string, conversion: string) =
 
         for currentChar in inputData:
             #find current character in glyph table
+            var grid = "000000000"
             var charFound = false
             var currentCharNum = 0
             while currentCharNum < 255:
@@ -99,13 +100,21 @@ proc convert(path: string, conversion: string) =
                     var cellNum = 0
                     while cellNum < 9:
                         var letter = currentCharBin[cellNum]
-                        if $letter == "0":
-                            outputData &= "s" & $cellNum & "0"
-                        elif $letter == "1":
-                            outputData &= "s" & $cellNum & "1"
+
+                        #if $letter == "0":
+                        #    outputData &= "s" & $cellNum & "0"
+                        #elif $letter == "1":
+                        #    outputData &= "s" & $cellNum & "1"
+
+                        if grid[cellNum] == letter:
+                            discard
+                        else:
+                            outputData &= "f" & $cellNum
+
                         discard letter
                         cellNum += 1
-                    outputData &= "qs"
+
+                    outputData &= "qsa0"
 
                     break
                 currentCharNum += 1
