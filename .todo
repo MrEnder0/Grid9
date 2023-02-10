@@ -4,7 +4,6 @@ Note none of these plans are guaranteed and also their may be other changes that
 # High priority
 [ ] Allow and conditions in if and while statements
 [ ] Create more advanced examples using grid saving and loading (like binary adder)
-[ ] Make text to grid9 use flip instead of set so it generates way more effecient code
 
 [o] Add intergration with other software
     [x] Bleachbit cleaner for Grid9
