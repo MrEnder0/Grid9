@@ -12,5 +12,3 @@ Note none of these plans are guaranteed and also their may be other changes that
     [x] Discord embed intergration for docs
     [ ] Create winget package for Grid9
     [x] RetroGadet gadet that can run Grid9 code
-[ ] Create local installer for Linux for prebuilt binaries
-[ ] Create request command
