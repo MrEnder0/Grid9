@@ -2,6 +2,8 @@
 
 Grid9 is an esoteric interpreted language made in Nim based on a 3x3 grid of zeros and ones.
 
+Note: Development on this project has slowed due to me recently moving to using Rust.
+
 [![Nightly Release](https://github.com/MrEnder0/Grid9/actions/workflows/nightly.yml/badge.svg)](https://github.com/MrEnder0/Grid9/actions/workflows/nightly.yml)
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/MrEnder0/Grid9)
