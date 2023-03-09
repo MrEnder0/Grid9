@@ -18,7 +18,7 @@ Download the latest release for your platform from the releases page.
 
 #### Windows
 
-Make sure git is installed then run this command.
+Make sure [git](https://github.com/git/git) is installed then run this command.
 
 ```powershell
 powershell.exe $code = Invoke-RestMethod "https://raw.githubusercontent.com/MrEnder0/Grid9/main/scripts/build_and_install_windows.ps1"; foreach($a in $code) {iex $a;}
@@ -26,7 +26,7 @@ powershell.exe $code = Invoke-RestMethod "https://raw.githubusercontent.com/MrEn
 
 #### Linux
 
-Make sure curl is installed then run this command.
+Make sure [curl](https://github.com/curl/curl) is installed then run this command. It will automatically install git for you.
 
 ```bash
 curl -s https://raw.githubusercontent.com/MrEnder0/Grid9/main/scripts/build_and_install_linux.sh | bash
