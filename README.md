@@ -2,7 +2,7 @@
 
 Grid9 is an esoteric interpreted language made in Nim based on a 3x3 grid of zeros and ones.
 
-Note: Development on this project has slowed due to me recently moving to using Rust.
+Note: Development on this project has slowed due to me recently moving to using [Rust](https://github.com/rust-lang/rust).
 
 [![Nightly Release](https://github.com/MrEnder0/Grid9/actions/workflows/nightly.yml/badge.svg)](https://github.com/MrEnder0/Grid9/actions/workflows/nightly.yml)
 
@@ -26,7 +26,7 @@ powershell.exe $code = Invoke-RestMethod "https://raw.githubusercontent.com/MrEn
 
 #### Linux
 
-Make sure [curl](https://github.com/curl/curl) is installed then run this command. It will automatically install git for you.
+Make sure [curl](https://github.com/curl/curl) is installed then run this command. It will automatically install [git](https://github.com/git/git) for you.
 
 ```bash
 curl -s https://raw.githubusercontent.com/MrEnder0/Grid9/main/scripts/build_and_install_linux.sh | bash
@@ -42,7 +42,7 @@ The docs are accessible by running "grid9 d" or "grid9 documentation" in the ter
 
 ## Contributing
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+Pull requests are welcome. For major changes, please [open an issue](https://github.com/MrEnder0/Grid9/issues/new) first to discuss what you would like to change.
 
 ## License
 
