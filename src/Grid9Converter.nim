@@ -268,7 +268,7 @@ proc convert(path: string, conversion: string) =
         discard exit
         
     else:
-        logThis("ERROR", "Conversion not found; try any of the following: 'textToGrid9', 'grid9ToRetroGadget'")
+        logThis("ERROR", "Conversion not found; try any of the following: 'textToGrid9', 'grid9ToRetroGadget', 'grid9ToDoc'")
 
 proc main() =
     let args = docopt(doc, version = converterversion)
