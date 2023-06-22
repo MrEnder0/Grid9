@@ -39,7 +39,7 @@ proc logThis(mode: string, message: string) : string {.discardable.} =
     logFile.writeLine(fmt"{time} - {mode} - {message}")
 
 proc about() =
-    echo "\nGrid9Converter is tool for the Grid9 programming language that is used to convert your Grid9 projects to other things.\n"
+    echo "\nGrid9Converter is tool for the Grid9 programming language that is used to convert your Grid9 projects to other formats.\n"
 
 proc version() =
     echo "\n", converterversion, "\n"
@@ -66,12 +66,11 @@ proc convert(path: string, conversion: string) =
         logThis("INFO", "Converting text to Grid9")
         logThis("INFO", "Reading config file")
 
-        var minGrid9Ver = "2022.001"
         if os.fileExists(replace(path, re".g9", ".toml")):
             let
                 tomlPath = replace(path, re".g9", ".toml")
                 config = toml_manager.getConfig(tomlPath)
-            minGrid9Ver = config[7]
+            var minGrid9Ver = config[7]
             if minGrid9Ver > "2022-013":
                 logThis("WARNING", "This conversion method is not supported for Grid9 versions below 2022-013, the output may not work as expected, continue? (y/n)")
                 let answer = readLine(stdin)
@@ -131,12 +130,11 @@ proc convert(path: string, conversion: string) =
         logThis("INFO", "Converting Grid9 to RetroGadget Grid9")
         logThis("INFO", "Reading config file")
         
-        var minGrid9Ver = "2022.001"
         if os.fileExists(replace(path, re".g9", ".toml")):
             let
                 tomlPath = replace(path, re".g9", ".toml")
                 config = toml_manager.getConfig(tomlPath)
-            minGrid9Ver = config[7]
+            var minGrid9Ver = config[7]
             if minGrid9Ver > "2022.013":
                 logThis("WARNING", "This conversion method is not supported for Grid9 versions below 2022.020, the output may not work as expected, continue? (y/n)")
                 let answer = readLine(stdin)
@@ -180,6 +178,92 @@ proc convert(path: string, conversion: string) =
         inputData = replace(inputData, "w8", "w9")
 
         logThis("INFO", "Conversion completed...\n\n" & inputData)
+        let exit = readLine(stdin)
+        discard exit
+
+    of "grid9ToDoc":
+        logThis("INFO", "Converting Grid9 to Grid9 Docs")
+        logThis("INFO", "Reading config file")
+
+        if os.fileExists(replace(path, re".g9", ".toml")):
+            let
+                tomlPath = replace(path, re".g9", ".toml")
+                config = toml_manager.getConfig(tomlPath)
+            var minGrid9Ver = config[7]
+            if minGrid9Ver > "2022.013":
+                logThis("WARNING", "This conversion method is not supported for Grid9 versions below 2022.020, the output may not work as expected, continue? (y/n)")
+                let answer = readLine(stdin)
+                if answer != "y":
+                    discard answer
+                    return
+                discard answer
+
+        let inputFile = open(path, fmRead)
+        var inputData = inputFile.readAll()
+        inputFile.close()
+
+        var outputData = ""
+        
+        # Replace all the characters with doc <span class="{type}">{content}</span>
+        var currentChar = 0
+        while currentChar < len(inputData):
+            case inputData[currentChar]
+            of 's':
+                outputData &= "<span class='cm'>s" & inputData[currentChar + 1] & inputData[currentChar + 2] & "</span>"
+                currentChar += 2
+            of 'f':
+                outputData &= "<span class='cm'>f" & inputData[currentChar + 1] & "</span>"
+                currentChar += 1
+            of 'a':
+                outputData &= "<span class='cm'>a" & inputData[currentChar + 1] & "</span>"
+                currentChar += 1
+            of 'p':
+                outputData &= "<span class='io'>p</span>"
+            of 'q':
+                outputData &= "<span class='io'>q" & inputData[currentChar + 1] & "</span>"
+                currentChar += 1
+            of 'i':
+                outputData &= "<span class='log'>i" & inputData[currentChar + 1] & inputData[currentChar + 2] & inputData[currentChar + 3] & "</span>"
+                currentChar += 3
+            of 'w':
+                outputData &= "<span class='log'>w" & inputData[currentChar + 1] & inputData[currentChar + 2] & inputData[currentChar + 3] & "</span>"
+                currentChar += 3
+            of '}':
+                outputData &= "<span class='log'>}</span>"
+            of ']':
+                outputData &= "<span class='log'>]</span>"
+            of 'e':
+                outputData &= "<span class='log'>e</span>"
+            of 'g':
+                if inputData[currentChar + 1 ] == 'g':
+                    outputData &= "<span class='io'>gg</span>"
+                    currentChar += 1
+                else:
+                    outputData &= "<span class='msk'>g" & inputData[currentChar + 1] & inputData[currentChar + 2] & "</span>"
+                    currentChar += 2
+            of 'b':
+                outputData &= "<span class='msk'>b"
+                var rootChar = currentChar
+                currentChar += 1
+                while currentChar < len(inputData) and inputData[currentChar].isDigit():
+                    outputData &= inputData[currentChar]
+                    currentChar += 1
+                outputData &= "</span>"
+            of 'd':
+                outputData &= "<span class='msk'>d"
+                var rootChar = currentChar
+                currentChar += 1
+                while currentChar < len(inputData) and inputData[currentChar].isDigit():
+                    outputData &= inputData[currentChar]
+                    currentChar += 1
+                outputData &= "</span>"
+            of 't':
+                outputData &= "<span class='msk'>t</span>"
+            else:
+                outputData &= "<span class='com'>" & inputData[currentChar] & "</span>"
+            currentChar += 1
+
+        logThis("INFO", "Conversion completed...\n\n" & outputData)
         let exit = readLine(stdin)
         discard exit
         
