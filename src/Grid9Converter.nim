@@ -243,7 +243,6 @@ proc convert(path: string, conversion: string) =
                     currentChar += 2
             of 'b':
                 outputData &= "<span class='msk'>b"
-                var rootChar = currentChar
                 currentChar += 1
                 while currentChar < len(inputData) and inputData[currentChar].isDigit():
                     outputData &= inputData[currentChar]
@@ -251,7 +250,6 @@ proc convert(path: string, conversion: string) =
                 outputData &= "</span>"
             of 'd':
                 outputData &= "<span class='msk'>d"
-                var rootChar = currentChar
                 currentChar += 1
                 while currentChar < len(inputData) and inputData[currentChar].isDigit():
                     outputData &= inputData[currentChar]
@@ -269,6 +267,8 @@ proc convert(path: string, conversion: string) =
         
     else:
         logThis("ERROR", "Conversion not found; try any of the following: 'textToGrid9', 'grid9ToRetroGadget', 'grid9ToDoc'")
+
+    clean()
 
 proc main() =
     let args = docopt(doc, version = converterversion)
