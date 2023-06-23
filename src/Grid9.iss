@@ -37,7 +37,6 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Tasks]
 Name: "envPath"; Description: "Add to PATH variables"; GroupDescription: "Registry:"; Components: baseinstall
-Name: "browserprot"; Description: "Register the grid9 browser protocal"; GroupDescription: "Registry:"; Components: baseinstall\documentation
 Name: "startmenuicon"; Description: "Create a startmenu shortcut"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked; Components: baseinstall
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked; Components: baseinstall
 
@@ -75,12 +74,7 @@ Root: HKA; Subkey: "Software\Classes\{#MyAppAssocExt}\OpenWithProgids"; ValueTyp
 Root: HKA; Subkey: "Software\Classes\{#MyAppAssocKey}"; ValueType: string; ValueName: ""; ValueData: "{#MyAppAssocName}"; Flags: uninsdeletekey
 Root: HKA; Subkey: "Software\Classes\{#MyAppAssocKey}\DefaultIcon"; ValueType: string; ValueName: ""; ValueData: "{app}\{#MyAppExeName},0"
 Root: HKA; Subkey: "Software\Classes\{#MyAppAssocKey}\shell\open\command"; ValueType: string; ValueName: ""; ValueData: """{app}\{#MyAppExeName}"" ""%1"""
-Root: HKA; Subkey: "Software\Classes\Applications\{#MyAppExeName}\SupportedTypes"; ValueType: string; ValueName: ".myp"; ValueData: ""
-Root: HKCR; Subkey: "grid9"; ValueType: string; ValueName: ""; ValueData: "Open your grid9 scripts from the browser."; Flags: uninsdeletekey; Tasks: browserprot
-Root: HKCR; Subkey: "grid9"; ValueType: string; ValueName: "URL Protocol"; ValueData: ""; Flags: uninsdeletevalue; Tasks: browserprot
-Root: HKCR; Subkey: "grid9\shell"; ValueType: string; ValueName: ""; ValueData: ""; Flags: uninsdeletekey; Tasks: browserprot
-Root: HKCR; Subkey: "grid9\shell\open"; ValueType: string; ValueName: ""; ValueData: ""; Flags: uninsdeletekey; Tasks: browserprot
-Root: HKCR; Subkey: "grid9\shell\open\command"; ValueType: string; ValueName: ""; ValueData: "c:\Program Files (x86)\Grid9\Grid9.exe"; Flags: uninsdeletekey; Tasks: browserprot
+Root: HKA; Subkey: "Software\Classes\Applications\{#MyAppExeName}\SupportedTypes"; ValueType: string; ValueName: ".g9"; ValueData: ""
 
 [Icons]
 Name: "{autoprograms}\Grid9\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: startmenuicon
