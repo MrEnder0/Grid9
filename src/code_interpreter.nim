@@ -341,5 +341,5 @@ proc interpret*(parsed_code: string, echoGridMod: bool, noLog: bool, verbosity: 
 
     except:
         if not noLog:
-            logThis("ERROR", "Unknown error in script with the character " & parsed_code[c_index] & " at index " & $c_index, verbosity)
+            logThis("ERROR", "Unknown error in script with the character " & parsed_code[c_index] & " this error was at the index " & $c_index, verbosity & " inside the script")
         return
