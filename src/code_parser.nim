@@ -115,13 +115,27 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool, ver
                     parsedCode = parsedCode[0..cIndex]
             
             if ifDepth < 0:
-                if not noLog: logThis("ERROR", "If depth is less than 0", verbosity)
+                if not noLog: logThis("WARNING", "If depth is less than 0", verbosity)
+                if parsedCode[-1] == '}':
+                    if not noLog: logThis("WARNING", "Possible fix would be removing the } at the end of your code, would you like to automatically fix (y,n)", verbosity)
+                    let responce = readLine(stdin)
+                    if $responce == $'y':
+                        parsedCode = parsedCode[0..cIndex]
+                    discard responce
             if whileDepth < 0:
-                if not noLog: logThis("ERROR", "While depth is less than 0", verbosity)
+                if not noLog: logThis("WARNING", "While depth is less than 0", verbosity)
+                if parsedCode[-1] == ']':
+                    if not noLog: logThis("WARNING", "Possible fix would be removing the ] at the end of your code, would you like to automatically fix (y,n)", verbosity)
+                    let responce = readLine(stdin)
+                    if $responce == $'y':
+                        parsedCode = parsedCode[0..cIndex]
+                    discard responce
             cIndex += 1
 
         if ifDepth > 0:
             if not noLog: logThis("WARNING", "If depth is greater than 0 would you like to automatically fix (y,n)", verbosity)
+            if ifDepth > 1:
+                if not noLog: logThis("WARNING", "If depth is greater than 1 which decreases the likelyhood this fix would help, it is recomended to manually fix.", verbosity)
             let responce = readLine(stdin)
             if $responce == $'y':
                 var fixTimes = 0
@@ -132,6 +146,8 @@ proc parse*(path: string, advancedParse: bool, dontCache: bool, noLog: bool, ver
             discard responce
         if whileDepth > 0:
             if not noLog: logThis("WARNING", "While depth is greater than 0 would you like to automatically fix (y,n)", verbosity)
+            if whileDepth > 1:
+                if not noLog: logThis("WARNING", "While depth is greater than 1 which decreases the likelyhood this fix would help, it is recomended to manually fix.", verbosity)
             let responce = readLine(stdin)
             if $responce == $'y':
                 var fixTimes = 0
